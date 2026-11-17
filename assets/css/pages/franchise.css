@@ -24,7 +24,7 @@
 
 /* ---------- 3. Key metrics (home .proof band) ---------- */
 .page-franchise .proof { padding-bottom: 72px; }
-.page-franchise .proof__note { margin-top: 36px; text-align: center; font-size: 16px; color: var(--white); }
+.page-franchise .proof__note { margin-top: 36px; text-align: center; font-size: 16px; line-height: 19px; color: var(--white); }
 
 /* ---------- 4. Opportunity ---------- */
 .opportunity { padding-top: 96px; padding-bottom: 40px; background: var(--cream); }
@@ -72,8 +72,8 @@
 }
 .format-block__img { aspect-ratio: 302 / 260; }
 .format-block__img img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 16px 24px rgba(0, 0, 0, .3)); }
-.format-block__title { margin: 12px 8px 0; font-size: 34px; font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; }
-.format-block__text { margin: 10px 8px 0; font-size: 17px; font-weight: 500; line-height: 20px; opacity: .85; }
+.format-block__title { margin: 12px 4px 0 8px; font-size: 34px; font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; }
+.format-block__text { margin: 10px 4px 0 8px; font-size: 17px; font-weight: 500; line-height: 20px; opacity: .85; }
 .format-block--dark { background: var(--char); color: var(--cream); }
 .format-block--red { background: var(--red); color: var(--white); }
 .format-block--yellow { background: var(--yellow); color: var(--char); }
@@ -287,7 +287,7 @@
 }
 .faq__head .lead { max-width: 440px; line-height: 1.55; letter-spacing: 0; }
 .faq__body { flex: 1 1 884px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
-.faq__note { font-size: 13px; font-weight: 500; color: rgba(107, 96, 92, .8); }
+.faq__note { font-size: 13px; font-weight: 500; line-height: 16px; color: rgba(107, 96, 92, .8); }
 
 /* ==========================================================================
    Large desktop → tablet
@@ -358,6 +358,7 @@
   /* 3. Key metrics */
   .page-franchise .proof { padding: 40px 20px; }
   .page-franchise .proof__item { gap: 8px; }
+  .page-franchise .proof__num { line-height: 48px; }
   .page-franchise .proof__label { font-weight: 500; line-height: 1.4; }
   .page-franchise .proof__note { margin-top: 28px; text-align: left; font-size: 14px; font-weight: 500; line-height: 1.2; color: rgba(255, 255, 255, .8); }
 
@@ -382,8 +383,8 @@
   .format-block { flex: 0 0 250px; min-height: 320px; padding: 14px; border-radius: 26px; scroll-snap-align: start; }
   .format-block__img { aspect-ratio: 222 / 188; }
   .format-block__img img { filter: none; }
-  .format-block__title { margin: 12px 6px 0; font-size: 28px; }
-  .format-block__text { margin: 10px 6px 0; font-size: 15px; line-height: 18px; }
+  .format-block__title { margin: 12px 2px 0 6px; font-size: 28px; }
+  .format-block__text { margin: 10px 2px 0 6px; font-size: 15px; line-height: 18px; }
   .other-formats { gap: 12px; padding-right: 20px; }
   .other-formats__title { font-size: 18px; }
   .other-formats__list { gap: 10px; }
