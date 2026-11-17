@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Apply (142-871 / 148-2067) and Apply – Thank you (142-1057 / 148-2222)
+   Form components: assets/css/apply-modal.css
+   ========================================================================== */
+
+/* The form is the page — no floating "Submit your application" button here */
+.page-apply .floating-cta,
+.page-apply-thanks .floating-cta { display: none; }
+
+/* ---------- Apply ---------- */
+.app-section--page { padding-top: 200px; }
+.app-premises { font-size: 18px; line-height: 1.5; letter-spacing: -0.002em; color: var(--muted); }
+.app-premises a { color: inherit; text-decoration: underline; text-underline-offset: 3px; transition: color .15s ease; }
+.app-premises a:hover { color: var(--red); }
+
+@media (max-width: 1199px) {
+  .app-section--page { padding-top: 160px; }
+}
+@media (max-width: 767px) {
+  .app-section--page { padding-top: 96px; }
+  .app-premises { font-size: 15px; letter-spacing: 0; color: rgba(34, 30, 31, .75); }
+}
+
+/* ---------- Thank you: confirmation card (reuses the home .closing / .cta-card) ---------- */
+.thanks.closing {
+  margin-bottom: 0;
+  background:
+    radial-gradient(55.56% 41.67% at 50% 45.83%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .16) 50%, rgba(34, 30, 31, 0) 100%),
+    var(--char);
+}
+.thanks.closing::after { display: none; }
+
+/* ---------- Thank you: confirmation email preview ---------- */
+.confirm-email {
+  display: flex; align-items: center; gap: 96px;
+  padding-top: 120px; padding-bottom: 120px;
+  background: var(--white);
+}
+.confirm-email__preview {
+  flex: 0 1 760px; min-width: 0;
+  min-height: 460px;
+  padding: 28px;
+  border-radius: 32px;
+  border: 1.5px dashed rgba(34, 30, 31, .3);
+  background: rgba(255, 255, 255, .6);
+  font-size: 16px; font-weight: 500; line-height: 1.5;
+  color: rgba(34, 30, 31, .55);
+}
+.confirm-email__preview p + p { margin-top: 24px; }
+.confirm-email__text { flex: 1 1 584px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.confirm-email__text .lead { line-height: 1.55; letter-spacing: 0; }
+
+@media (max-width: 1199px) {
+  .confirm-email { flex-direction: column; align-items: stretch; gap: 48px; }
+  .confirm-email__preview, .confirm-email__text { flex-basis: auto; }
+}
+
+@media (max-width: 767px) {
+  .thanks.closing {
+    padding: 120px 20px 78px;
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%),
+      var(--char);
+  }
+  .thanks .btn-row { gap: 16px; }
+
+  .confirm-email { gap: 18px; padding: 56px 20px; }
+  .confirm-email__preview { min-height: 244px; padding: 18px; border-radius: 24px; font-size: 13px; line-height: 16px; }
+  .confirm-email__preview p + p { margin-top: 16px; }
+  .confirm-email__text { display: contents; }
+  .confirm-email .lead { font-size: 16px; line-height: 1.52; }
+}

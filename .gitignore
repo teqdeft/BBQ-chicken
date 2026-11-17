@@ -1,0 +1,11 @@
+# Original full-size image exports from Figma (the site uses the optimized copies in assets/img)
+assets/img/raw/
+
+# Local tooling
+.claude/
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini

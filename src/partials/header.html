@@ -1,0 +1,80 @@
+<header class="site-header" data-header>
+  <nav class="main-nav" aria-label="Main">
+    <div class="main-nav__item" data-dropdown>
+      <button class="main-nav__link" type="button" aria-expanded="false" aria-controls="dd-discover" {{current:discover}}>Discover bb.q {{icon:chevdown}}</button>
+      <div class="dropdown" id="dd-discover">
+        <a class="dropdown__link" href="discover.html">Our story</a>
+        <a class="dropdown__link" href="menu.html">The menu</a>
+        <a class="dropdown__link" href="discover.html#chibboq">ChiBBoQ and friends</a>
+        <a class="dropdown__link" href="news.html">News</a>
+      </div>
+    </div>
+    <div class="main-nav__item" data-dropdown>
+      <button class="main-nav__link" type="button" aria-expanded="false" aria-controls="dd-franchise" {{current:franchise}}>Franchise {{icon:chevdown}}</button>
+      <div class="dropdown" id="dd-franchise">
+        <a class="dropdown__link" href="franchise.html">Franchise opportunity</a>
+        <a class="dropdown__link" href="franchise.html#markets">Markets</a>
+        <a class="dropdown__link" href="franchise.html#faq">FAQ</a>
+        <a class="dropdown__link" href="apply.html" data-apply>Submit your application</a>
+      </div>
+    </div>
+    <div class="main-nav__item"><a class="main-nav__link" href="franchise.html#markets" {{current:markets}}>Markets</a></div>
+    <div class="main-nav__item"><a class="main-nav__link" href="real-estate.html" {{current:realestate}}>Real estate</a></div>
+    <div class="main-nav__item"><a class="main-nav__link" href="careers.html" {{current:careers}}>Careers</a></div>
+  </nav>
+
+  <a class="site-header__logo" href="index.html" aria-label="bb.q Chicken – home">
+    <img src="assets/svg/logo-on-dark.svg" alt="bb.q Chicken" width="250" height="42">
+  </a>
+
+  <div class="header-right">
+    <a class="lang-switch" href="#" aria-label="Language: English">EN ▾</a>
+    <div class="order-menu" data-dropdown>
+      <button class="btn btn--outline-light" type="button" aria-expanded="false" aria-controls="dd-order">
+        Order now <span class="btn__chip">{{icon:chevdown}}</span>
+      </button>
+      <div class="dropdown" id="dd-order">
+        <span class="dropdown__label">Order bb.q on</span>
+        <div class="dropdown__list">
+          <a class="platform-link" href="#" target="_blank" rel="noopener"><span>Glovo</span><span aria-hidden="true">↗</span></a>
+          <a class="platform-link" href="#" target="_blank" rel="noopener"><span>Uber Eats</span><span aria-hidden="true">↗</span></a>
+          <a class="platform-link" href="#" target="_blank" rel="noopener"><span>Just Eat</span><span aria-hidden="true">↗</span></a>
+          <a class="platform-link" href="#" target="_blank" rel="noopener"><span>Deliveroo</span><span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="dropdown__divider"></div>
+        <a class="dropdown__find" href="index.html#find">Find a restaurant (map) →</a>
+        <p class="dropdown__note">Spain: Glovo, Uber Eats, Just Eat. UK: Uber Eats, Just Eat, Deliveroo. Only the platforms for the visitor's country are shown. [Links to be supplied by BLT]</p>
+      </div>
+    </div>
+    <a class="btn btn--cream" href="apply.html" data-apply>Submit your application <span class="btn__chip">{{icon:arrow}}</span></a>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-burger>
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-label="Menu">
+  <div class="mobile-menu__inner">
+    <div class="mobile-menu__group">
+      <span class="mobile-menu__title">Discover bb.q</span>
+      <a class="mobile-menu__link" href="discover.html">Our story</a>
+      <a class="mobile-menu__link" href="menu.html">The menu</a>
+      <a class="mobile-menu__link" href="discover.html#chibboq">ChiBBoQ and friends</a>
+      <a class="mobile-menu__link" href="news.html">News</a>
+    </div>
+    <div class="mobile-menu__group">
+      <span class="mobile-menu__title">Franchise</span>
+      <a class="mobile-menu__link" href="franchise.html">Franchise opportunity</a>
+      <a class="mobile-menu__link" href="franchise.html#markets">Markets</a>
+      <a class="mobile-menu__link" href="real-estate.html">Real estate</a>
+      <a class="mobile-menu__link" href="careers.html">Careers</a>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn--red" href="apply.html" data-apply>Submit your application <span class="btn__chip">{{icon:arrow}}</span></a>
+      <a class="btn btn--outline-light" href="contact.html">Contact <span class="btn__chip">{{icon:arrow}}</span></a>
+    </div>
+    <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
+  </div>
+</div>
+
+<a class="floating-cta" href="apply.html" data-apply data-floating-cta>Submit your application <span class="btn__chip">{{icon:arrow}}</span></a>

@@ -1,0 +1,45 @@
+/* ==========================================================================
+   News article page
+   Figma: "News article – Desktop 1680" (144:1333) · "News article – Mobile 390" (149:2586)
+   Related articles reuse the home .news section and .news-card.
+   ========================================================================== */
+
+/* 1. Page header: exact Figma radial (tf [[0.9,0,0.25],[0,1.3,-0.15]]) */
+.page-news-article .page-hero {
+  background:
+    radial-gradient(55.56% 38.46% at 27.78% 50%, rgba(227, 25, 55, .85) 0%, rgba(140, 24, 30, .35) 50%, rgba(34, 30, 31, 0) 100%),
+    var(--char);
+}
+
+/* 2. Article body: one 760 column */
+.article-body { padding-top: 120px; padding-bottom: 120px; background: var(--cream); }
+.article-body__col { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; color: var(--char); }
+.article-body__col p { font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; }
+.article-body__col .article-body__intro { font-size: 18px; line-height: 1.5; letter-spacing: -0.002em; }
+.article-body__subhead { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.article-body__media { aspect-ratio: 760 / 428; border-radius: 24px; background: var(--sand); }
+.article-body__col .article-share { font-size: 14px; line-height: 1.5; letter-spacing: 0; }
+.article-share a,
+.article-share button { font: inherit; color: inherit; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .15s ease, color .15s ease; }
+.article-share a:hover,
+.article-share button:hover { color: var(--red); text-decoration-color: currentColor; }
+
+/* 3. Related articles (placeholder cards) */
+.news-card__img--placeholder { background: var(--sand); }
+
+/* Mobile (390 reference) */
+@media (max-width: 767px) {
+  .page-news-article .page-hero {
+    padding-bottom: 64px;
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%),
+      var(--char);
+  }
+  .page-news-article .page-hero__text .lead { font-weight: 500; }
+
+  .article-body { padding: 56px 20px 72px; }
+  .article-body__col { gap: 20px; }
+  .article-body__subhead { font-size: 22px; line-height: 1.25; letter-spacing: -0.005em; }
+  .article-body__media { aspect-ratio: 350 / 220; border-radius: 20px; }
+  .article-body__col .article-share { color: var(--muted); }
+}

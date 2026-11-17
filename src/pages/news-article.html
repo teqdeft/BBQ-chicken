@@ -1,0 +1,83 @@
+<!-- page {"title": "[Article title] – News – bb.q Chicken Europe", "description": "[Intro paragraph in Body L. Two or three sentences that tell the whole story.]", "active": "discover", "bodyClass": "page-news-article", "extraHead": "<link rel=\"stylesheet\" href=\"assets/css/pages/news-article.css\">"} -->
+
+<article class="article" aria-labelledby="article-title">
+  <!-- 1. Page header -->
+  <header class="section page-hero page-hero--short">
+    <div class="page-hero__text">
+      <span class="eyebrow">News / Europe</span>
+      <h1 class="h-display" id="article-title">[Article title, max two lines]</h1>
+      <p class="lead">[Date] · [Category: Europe or Global] · [3 min read]</p>
+    </div>
+  </header>
+
+  <!-- 2. Article body -->
+  <div class="section article-body">
+    <div class="article-body__col">
+      <p class="article-body__intro">[Intro paragraph in Body L. Two or three sentences that tell the whole story.]</p>
+      <h2 class="article-body__subhead">[Subheading]</h2>
+      <p>[Body text. Articles are written in English first and translated per language version. Images, quotes and video can be added as blocks.]</p>
+      <div class="article-body__media" aria-hidden="true"></div>
+      <p>[Body text continues.]</p>
+      <p class="article-share" data-share>Share: <a href="https://www.linkedin.com/sharing/share-offsite/" target="_blank" rel="noopener" data-share-linkedin>LinkedIn</a> · <a href="https://x.com/intent/post" target="_blank" rel="noopener" data-share-x>X</a> · <a href="mailto:" data-share-email>Email</a> · <button type="button" data-share-copy>Copy link</button></p>
+    </div>
+  </div>
+</article>
+
+<!-- 3. Related articles -->
+<section class="section news related" aria-labelledby="related-title">
+  <div class="news__head">
+    <div class="news__head-text">
+      <span class="eyebrow">More news</span>
+      <h2 class="h2" id="related-title">Related articles</h2>
+    </div>
+    <a class="btn btn--outline-dark" href="news.html">All news <span class="btn__chip">{{icon:arrow}}</span></a>
+  </div>
+  <div class="news__list">
+    <a class="news-card" href="news-article.html">
+      <div class="news-card__img news-card__img--placeholder" aria-hidden="true"></div>
+      <div class="news-card__meta"><span class="news-card__date">[Date]</span><h3 class="news-card__title">[Article title]</h3></div>
+    </a>
+    <a class="news-card" href="news-article.html">
+      <div class="news-card__img news-card__img--placeholder" aria-hidden="true"></div>
+      <div class="news-card__meta"><span class="news-card__date">[Date]</span><h3 class="news-card__title">[Article title]</h3></div>
+    </a>
+    <a class="news-card" href="news-article.html">
+      <div class="news-card__img news-card__img--placeholder" aria-hidden="true"></div>
+      <div class="news-card__meta"><span class="news-card__date">[Date]</span><h3 class="news-card__title">[Article title]</h3></div>
+    </a>
+  </div>
+</section>
+
+<!-- 4. Closing CTA -->
+<section class="section closing" aria-labelledby="closing-title">
+  <div class="stamp">{{stamp}}</div>
+  <span class="sparkle-lg" aria-hidden="true">{{icon:sparkleplain}}</span>
+  <span class="sparkle-sm" aria-hidden="true">{{icon:sparkleplain}}</span>
+  <div class="cta-card">
+    <h2 class="h2" id="closing-title">Ready to bring bb.q to your market?</h2>
+    <p class="lead">Tell us who you are and where you'd like to grow. It takes two minutes. Our European team reads every enquiry and gets back to you personally.</p>
+    <a class="btn btn--red" href="apply.html" data-apply data-hides-floating>Submit your application <span class="btn__chip">{{icon:arrow}}</span></a>
+  </div>
+  <div class="cutout cutout--shadow-dark cutout--fried"><img src="assets/img/cut-2pcs-fried.png" alt="" width="880" height="463" loading="lazy"></div>
+</section>
+
+<script>
+  /* Share links: fill in this page's URL; "Copy link" copies it to the clipboard. */
+  (function () {
+    var share = document.querySelector('[data-share]');
+    if (!share) return;
+    var url = encodeURIComponent(location.href);
+    var title = encodeURIComponent(document.title);
+    share.querySelector('[data-share-linkedin]').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+    share.querySelector('[data-share-x]').href = 'https://x.com/intent/post?url=' + url + '&text=' + title;
+    share.querySelector('[data-share-email]').href = 'mailto:?subject=' + title + '&body=' + url;
+    var copy = share.querySelector('[data-share-copy]');
+    copy.addEventListener('click', function () {
+      if (!navigator.clipboard) return;
+      navigator.clipboard.writeText(location.href).then(function () {
+        copy.textContent = 'Link copied';
+        setTimeout(function () { copy.textContent = 'Copy link'; }, 2000);
+      });
+    });
+  })();
+</script>

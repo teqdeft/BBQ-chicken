@@ -1,0 +1,175 @@
+/* ==========================================================================
+   Discover bb.q page (Figma: Discover bb.q – Desktop 1680 / Mobile 390)
+   ========================================================================== */
+
+/* ---------- 1. Hero (Hero pattern) ---------- */
+.page-discover .page-hero__media { left: calc(50% + 101px); top: 130px; width: 569px; height: 720px; }
+.page-discover .page-hero .stamp { left: calc(50% + 21px); top: 508px; transform-origin: 0 0; transform: rotate(12deg); }
+
+/* ---------- 2. Our story (Process pattern) ---------- */
+.story {
+  display: flex; flex-direction: column; align-items: center; gap: 72px;
+  padding-top: 140px; padding-bottom: 140px;
+  color: var(--white);
+  background:
+    radial-gradient(55.6% 27.8% at 50% 16.7%, rgba(34, 30, 31, 0) 0%, rgba(140, 24, 30, .35) 60%, rgba(94, 17, 24, .6) 100%),
+    var(--red);
+}
+.story__head { width: 100%; max-width: 820px; }
+.story__head .h2 { max-width: none; }
+.story__intro { display: grid; gap: 24px; font-size: 16px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
+
+.timeline {
+  position: relative;
+  width: 100%;
+  min-height: 276px;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px;
+  counter-reset: none;
+}
+/* dashed line from the first to the last icon centre */
+.timeline::before {
+  content: "";
+  position: absolute; top: 51px; height: 2px;
+  left: calc(10% - 12.8px); right: calc(10% - 12.8px);
+  background: repeating-linear-gradient(90deg, rgba(255, 255, 255, .5) 0 6px, transparent 6px 14px);
+}
+.timeline__step { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.timeline__icon {
+  position: relative; flex: none;
+  width: 104px; height: 104px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--cream);
+  color: var(--char);
+}
+.timeline__icon--yellow { background: var(--yellow); }
+.timeline__icon svg { width: 39px; height: 39px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.timeline__num {
+  position: absolute; left: 74px; top: -4px;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--char); color: var(--white);
+  font-size: 15px; font-weight: 900; line-height: 1;
+}
+.timeline__title { font-size: 22px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
+.timeline__text { margin-top: 14px; font-size: 16px; line-height: 1.5; color: rgba(255, 255, 255, .85); }
+
+/* ---------- 3. What makes it Korean (format cards) ---------- */
+.formats {
+  display: flex; flex-direction: column; align-items: center; gap: 56px;
+  padding-top: 80px; padding-bottom: 140px;
+  background: var(--cream);
+}
+.formats__head { max-width: 820px; }
+.formats__head .h2 { max-width: none; }
+.formats__lead { font-size: 17px; font-weight: 500; line-height: 1.2; color: var(--muted); }
+
+.format-grid { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.format-card {
+  min-height: 420px;
+  padding: 20px 20px 28px;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.format-card__img { height: 275px; flex: none; }
+.format-card__img img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 16px 24px rgba(0, 0, 0, .3)); }
+.format-card__title { margin: 12px 8px 0; font-size: 34px; font-weight: 900; line-height: 1.02; letter-spacing: -0.02em; }
+.format-card__text { margin: 10px 8px 0; font-size: 17px; font-weight: 500; line-height: 1.2; opacity: .85; }
+.format-card--dark { background: var(--char); color: var(--cream); }
+.format-card--red { background: var(--red); color: var(--white); }
+.format-card--yellow { background: var(--yellow); color: var(--char); }
+.format-card--sand { background: var(--sand); color: var(--char); }
+
+/* ---------- 4. Global presence (map card) ---------- */
+.presence__map {
+  position: relative;
+  flex: 0 1 760px;
+  min-width: 0;
+  aspect-ratio: 760 / 460;
+  border-radius: 32px;
+  overflow: hidden;
+  background: var(--char);
+}
+.presence__map img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.presence__legend {
+  position: absolute; left: 24px; top: 24px;
+  display: flex; gap: 10px;
+  padding: 8px;
+  border-radius: 14px;
+  background: rgba(34, 30, 31, .92);
+}
+
+/* ---------- 6. Mascot ---------- */
+.page-discover .mascot__text p { letter-spacing: -0.002em; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1199px) {
+  .page-discover .page-hero__media { left: auto; right: -40px; top: 170px; width: 420px; height: 532px; }
+  .page-discover .page-hero__text { max-width: calc(100% - 400px); }
+  .page-discover .page-hero .stamp { left: auto; right: 300px; top: auto; bottom: 40px; width: 140px; height: 140px; }
+
+  /* vertical timeline (as on mobile) */
+  .timeline { min-height: 0; max-width: 640px; grid-template-columns: 1fr; gap: 0; }
+  .timeline::before { display: none; }
+  .timeline__step { display: grid; grid-template-columns: 62.4px minmax(0, 1fr); column-gap: 16px; align-items: start; text-align: left; padding-bottom: 24px; }
+  .timeline__step:last-child { padding-bottom: 0; }
+  .timeline__step:not(:last-child)::after { content: ""; position: absolute; left: 30.2px; top: 62.4px; bottom: 24px; width: 2px; background: rgba(255, 255, 255, .4); }
+  .timeline__icon { grid-row: 1 / span 2; width: 62.4px; height: 62.4px; margin: 0; }
+  .timeline__icon svg { width: 23px; height: 23px; }
+  .timeline__num, .timeline__sep { display: none; }
+  .timeline__title { padding-top: 6px; font-size: 20px; line-height: 1.15; }
+  .timeline__year { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 700; line-height: 14px; letter-spacing: .12em; color: rgba(255, 255, 255, .7); }
+  .timeline__text { margin-top: 6px; font-size: 15px; line-height: 1.48; }
+
+  .format-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+
+  .presence { flex-direction: column; align-items: stretch; }
+  .presence__map { order: -1; flex-basis: auto; width: 100%; }
+}
+
+/* small tablet: image above the text, as on mobile */
+@media (max-width: 1023px) {
+  .page-discover .page-hero { flex-direction: column; gap: 24px; padding-top: 150px; }
+  .page-discover .page-hero__media { position: relative; right: auto; top: auto; width: 400px; height: 506px; max-width: 100%; }
+  .page-discover .page-hero__text { max-width: 640px; }
+  .page-discover .page-hero .stamp { left: calc(var(--gutter) - 8px); right: auto; top: 470px; bottom: auto; width: 130px; height: 130px; }
+}
+
+/* ---------- Mobile (390 reference) ---------- */
+@media (max-width: 767px) {
+  .page-discover .page-hero {
+    gap: 18px; padding-top: 152px; padding-bottom: 48px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%), var(--char);
+  }
+  .page-discover .page-hero__media { position: relative; left: auto; right: auto; top: auto; width: 300px; height: 380px; opacity: 1; }
+  .page-discover .page-hero__media img { filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .5)); }
+  .page-discover .page-hero__text { max-width: none; }
+  .page-discover .page-hero__text .lead { font-weight: 500; }
+  .page-discover .page-hero .stamp { left: 12px; right: auto; top: 376px; bottom: auto; width: 101.2px; height: 101.2px; }
+
+  .story { align-items: stretch; gap: 20px; padding: 56px 20px; background: var(--red); }
+  .story__head { gap: 20px; }
+  .story .h2 { font-size: 32px; line-height: 1.06; }
+  .story__intro { gap: 22px; font-size: 15px; line-height: 1.48; }
+  .timeline { max-width: none; }
+
+  .formats { align-items: stretch; gap: 20px; padding: 40px 0 48px 20px; }
+  .formats__head { gap: 14px; padding-right: 20px; }
+  .formats .h2 { font-size: 32px; line-height: 1.06; }
+  .formats__lead { font-size: 16px; line-height: 1.5; letter-spacing: -0.02em; }
+  .format-grid { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-right: 20px; }
+  .format-grid::-webkit-scrollbar { display: none; }
+  .format-card { flex: 0 0 250px; min-height: 320px; padding: 14px 14px 20px; border-radius: 26px; scroll-snap-align: start; }
+  .format-card__img { height: 152px; }
+  .format-card__img img { filter: none; }
+  .format-card__title { margin: 12px 6px 0; font-size: 28px; }
+  .format-card__text { margin: 10px 6px 0; font-size: 15px; }
+
+  .page-discover .team__text .lead { line-height: 1.52; }
+  .presence__map { aspect-ratio: 350 / 240; border-radius: 24px; }
+  .presence__legend { left: 12px; top: 12px; transform: scale(.8); transform-origin: 0 0; }
+
+  .page-discover .mascot .h2 { font-size: 36px; }
+}

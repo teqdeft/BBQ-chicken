@@ -1,0 +1,72 @@
+<!-- page {"title": "Submit your application – bb.q Chicken franchise | bb.q Chicken Europe", "description": "Apply to become a bb.q Chicken franchise partner in Europe. Tell us who you are and where you'd like to grow. Our expansion team reads every application personally.", "active": "", "bodyClass": "page-apply", "extraHead": "<link rel=\"stylesheet\" href=\"assets/css/apply-modal.css\"><link rel=\"stylesheet\" href=\"assets/css/pages/apply.css\">", "extraScripts": "<script src=\"assets/js/apply.js\" defer></script>"} -->
+
+<!-- Application form. assets/js/apply.js fetches this page and reuses #application-form in the
+     "Submit your application" modal / mobile sheet, so the form is defined once. -->
+<section class="section form-section app-section app-section--page" aria-labelledby="apply-title">
+  <div class="form-card form-card--app">
+    <div class="form-card__intro">
+      <span class="eyebrow">Franchise / Apply</span>
+      <h1 class="h2" id="apply-title">Submit your application</h1>
+      <p class="lead">Tell us who you are and where you'd like to grow. No investment details or business plans yet, we'll get to those together.</p>
+      <div class="info-box">
+        <p class="info-box__title">What happens next</p>
+        <p class="info-box__step">We review your enquiry and get back to you within 5 working days.</p>
+        <p class="info-box__step">We call you to walk through the terms, store costs and support.</p>
+        <p class="info-box__step">If it's a fit on both sides, we meet in person.</p>
+      </div>
+      <p class="app-premises">Have premises for a restaurant or dark kitchen? <a href="real-estate.html">Offer your premises →</a></p>
+    </div>
+
+    <form class="form app-form" id="application-form" action="#" method="post" enctype="multipart/form-data" data-form data-success-url="apply-thank-you.html">
+      <div class="form-row">
+        <div class="field">
+          <label class="field__label" for="app-name">Full name *</label>
+          <input class="input" id="app-name" name="name" type="text" autocomplete="name" placeholder="First and last name" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="app-email">Email *</label>
+          <input class="input" id="app-email" name="email" type="email" autocomplete="email" placeholder="name@company.com" required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field__label" for="app-role">Current role &amp; Company *</label>
+        <input class="input" id="app-role" name="role_company" type="text" autocomplete="organization-title" placeholder="e.g. Managing Director, Example Foods Ltd" required>
+      </div>
+      <div class="field">
+        <label class="field__label" for="app-country">Country or city you're targeting *</label>
+        <select class="select" id="app-country" name="country" required>
+          <option value="" disabled selected>Select a country</option>
+          <option>Albania</option><option>Andorra</option><option>Austria</option><option>Belgium</option><option>Bosnia and Herzegovina</option><option>Bulgaria</option><option>Croatia</option><option>Cyprus</option><option>Czech Republic</option><option>Denmark</option><option>Estonia</option><option>Finland</option><option>France</option><option>Germany</option><option>Greece</option><option>Hungary</option><option>Iceland</option><option>Ireland</option><option>Italy</option><option>Latvia</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Malta</option><option>Moldova</option><option>Monaco</option><option>Montenegro</option><option>Netherlands</option><option>North Macedonia</option><option>Norway</option><option>Poland</option><option>Portugal</option><option>Romania</option><option>San Marino</option><option>Serbia</option><option>Slovakia</option><option>Slovenia</option><option>Spain</option><option>Sweden</option><option>Switzerland</option><option>United Kingdom</option><option>Several countries / other</option>
+        </select>
+      </div>
+      <fieldset class="app-options">
+        <legend class="field__label">How many restaurants do you plan to open? *</legend>
+        <div class="app-options__list">
+          <label class="app-option"><input type="radio" name="restaurants" value="1-4" required><span>1 to 4</span></label>
+          <label class="app-option"><input type="radio" name="restaurants" value="5-9"><span>5 to 9</span></label>
+          <label class="app-option"><input type="radio" name="restaurants" value="10-24"><span>10 to 24</span></label>
+          <label class="app-option"><input type="radio" name="restaurants" value="25+"><span>25 or more</span></label>
+        </div>
+      </fieldset>
+      <div class="field app-upload" data-upload>
+        <label class="field__label" for="app-docs">Relevant documents (optional)</label>
+        <div class="app-upload__zone">
+          <div class="app-upload__drop">
+            <input class="app-upload__input" id="app-docs" name="documents" type="file" accept=".pdf,application/pdf" aria-describedby="app-docs-hint">
+            <span class="app-upload__icon" aria-hidden="true">↑</span>
+            <span class="app-upload__title" aria-hidden="true" data-upload-title><span class="only-desktop">Drag a file here or browse</span><span class="only-mobile">Tap to upload a file</span></span>
+          </div>
+          <p class="app-upload__hint" id="app-docs-hint">CV, LinkedIn profile, company presentation or a short note on why bb.q suits you. PDF, max 10 MB.</p>
+        </div>
+      </div>
+      <label class="check app-consent">
+        <input type="checkbox" name="consent" value="yes" required>
+        <span>I agree that BLT Global Brands processes my details to handle this application. <a href="legal.html">Privacy policy</a></span>
+      </label>
+      <div class="form-submit">
+        <button class="btn btn--red" type="submit">Submit your application <span class="btn__chip">{{icon:arrow}}</span></button>
+        <p class="form-submit__note">No obligation. We never share your details with third parties.</p>
+      </div>
+    </form>
+  </div>
+</section>

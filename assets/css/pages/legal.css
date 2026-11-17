@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Legal page template (privacy policy, cookie policy, website terms, …)
+   Figma: "Legal page template – Desktop 1680" (145:2083) · "– Mobile 390" (149:3384)
+   ========================================================================== */
+
+/* The legal frames have no floating CTA and no fries cut-out over the footer */
+.page-legal .floating-cta,
+.page-legal .site-footer .cutout--fries { display: none; }
+
+/* 1. Page header: 560 tall, exact Figma radial (tf [[0.9,0,0.25],[0,1.3,-0.15]]) */
+.page-legal .page-hero--short {
+  min-height: 560px;
+  padding-top: 223px;
+  background:
+    radial-gradient(55.56% 38.46% at 27.78% 50%, rgba(227, 25, 55, .85) 0%, rgba(140, 24, 30, .35) 50%, rgba(34, 30, 31, 0) 100%),
+    var(--char);
+}
+
+/* 2. Legal body: sticky "On this page" + 760 content column */
+.legal {
+  display: flex; justify-content: center; align-items: flex-start; gap: 120px;
+  padding-top: 120px; padding-bottom: 160px;
+  background: var(--cream);
+}
+.legal-toc {
+  position: sticky;
+  top: calc(var(--header-top) + var(--header-h) + 24px);
+  flex: 0 0 320px; min-width: 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.legal-toc__title { color: var(--red); font-size: 13px; font-weight: 700; line-height: 1.2; letter-spacing: .12em; text-transform: uppercase; }
+.legal-toc__list { display: grid; gap: 14px; }
+.legal-toc__list a {
+  display: inline-block;
+  font-size: 16px; line-height: 1.55; letter-spacing: -0.001em;
+  color: var(--muted);
+  transition: color .15s ease;
+}
+.legal-toc__list a:hover { color: var(--char); }
+
+.legal-content { flex: 0 1 760px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.legal-section {
+  display: flex; flex-direction: column; gap: 16px;
+  padding-bottom: 32px;
+  scroll-margin-top: calc(var(--header-top) + var(--header-h) + 24px);
+}
+.legal-section h2 { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; color: var(--char); }
+.legal-section p { font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; color: var(--muted); }
+
+/* Tablet */
+@media (max-width: 1199px) {
+  .legal { gap: 56px; }
+  .legal-toc { flex-basis: 240px; }
+}
+/* Narrow tablet: "On this page" becomes a card above the text (as on mobile) */
+@media (max-width: 991px) {
+  .legal { flex-direction: column; align-items: stretch; gap: 32px; }
+  .legal-toc { position: static; flex: none; padding: 24px; border-radius: 16px; background: var(--white); }
+  .legal-content { flex: none; max-width: 760px; }
+}
+
+/* Mobile (390 reference) */
+@media (max-width: 767px) {
+  .page-legal .page-hero--short {
+    min-height: 0;
+    padding-top: 120px; padding-bottom: 64px;
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%),
+      var(--char);
+  }
+  .page-legal .page-hero__text .lead { font-weight: 500; }
+
+  .legal { gap: 12px; padding: 48px 20px 72px; }
+  .legal-toc { gap: 10px; padding: 20px; }
+  .legal-toc__list { gap: 10px; }
+  .legal-content { gap: 12px; }
+  .legal-section { gap: 10px; padding: 24px 0 0; }
+  .legal-section h2 { font-size: 22px; line-height: 1.25; letter-spacing: -0.005em; }
+}

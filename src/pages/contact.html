@@ -1,0 +1,90 @@
+<!-- page {"title": "Contact – bb.q Chicken Europe", "description": "Get in touch with BLT Global Brands, the team bringing bb.q Chicken to Europe. Franchise, real estate, press or any other question.", "active": "", "bodyClass": "page-contact", "extraHead": "<link rel=\"stylesheet\" href=\"assets/css/pages/contact.css\">"} -->
+
+<!-- 1. Page header -->
+<section class="section page-hero page-hero--short" aria-labelledby="contact-title">
+  <div class="page-hero__text">
+    <span class="eyebrow">Contact</span>
+    <h1 class="h-display" id="contact-title">Get in touch</h1>
+    <p class="lead">Pick the topic that fits and your message goes straight to the right person.</p>
+  </div>
+</section>
+
+<!-- 2. Shortcuts -->
+<section class="section shortcuts" aria-label="Contact shortcuts">
+  <div class="tiles">
+    <article class="tile tile--yellow">
+      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+      <h2 class="tile__title">Franchise</h2>
+      <p class="tile__text">Want to open bb.q restaurants? Use the short application.</p>
+      <a class="tile__link" href="apply.html" data-apply>Submit your application →</a>
+    </article>
+    <article class="tile tile--red">
+      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg></span>
+      <h2 class="tile__title">Real estate</h2>
+      <p class="tile__text">Have a site that could suit bb.q?</p>
+      <a class="tile__link" href="real-estate.html#offer">Offer your premises →</a>
+    </article>
+    <article class="tile tile--sand">
+      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+      <h2 class="tile__title">Press and media</h2>
+      <p class="tile__text">Interview requests, images and press releases.</p>
+      <span class="tile__link">[press email]</span>
+    </article>
+  </div>
+  <img class="chibboq-peek" src="assets/img/chibboq-glasses.png" alt="" width="714" height="906" loading="lazy">
+</section>
+
+<!-- 3. Contact form -->
+<section class="section form-section" id="message" aria-labelledby="message-title">
+  <div class="form-card">
+    <div class="form-card__intro">
+      <span class="eyebrow">Other questions</span>
+      <h2 class="h2" id="message-title">Send us a message</h2>
+      <address class="lead contact-address">BLT Global Brands<br>Calle Fernando el Santo, 25, 4º D<br>28010 Madrid, Spain<br>[Email address]</address>
+      <div class="info-box">
+        <p class="info-box__title">Good to know</p>
+        <p class="info-box__step">We usually reply within [3] working days.</p>
+      </div>
+    </div>
+
+    <form class="form" action="#" method="post" data-form data-success="Thank you! Your message has been received. We usually reply within [3] working days. [Form handling to be connected]">
+      <div class="form-row">
+        <div class="field">
+          <label class="field__label" for="ct-name">Full name <span aria-hidden="true">*</span></label>
+          <input class="input" id="ct-name" name="name" type="text" autocomplete="name" placeholder="First and last name" required>
+        </div>
+        <div class="field">
+          <label class="field__label" for="ct-email">Email <span aria-hidden="true">*</span></label>
+          <input class="input" id="ct-email" name="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+        </div>
+      </div>
+      <div class="field">
+        <label class="field__label" for="ct-topic">Topic <span aria-hidden="true">*</span></label>
+        <select class="select" id="ct-topic" name="topic" required>
+          <option value="" disabled selected>Franchise, real estate, press, careers, customer question, other</option>
+          <option value="franchise">Franchise</option>
+          <option value="real-estate">Real estate</option>
+          <option value="press">Press</option>
+          <option value="careers">Careers</option>
+          <option value="customer">Customer question</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <!-- Shown (CSS :has) when Franchise or Real estate is chosen, as described in the design note -->
+      <p class="topic-hint topic-hint--franchise">Want to open bb.q restaurants? <a href="apply.html" data-apply>Submit your application →</a></p>
+      <p class="topic-hint topic-hint--real-estate">Have a site that could suit bb.q? <a href="real-estate.html#offer">Offer your premises →</a></p>
+      <div class="field">
+        <label class="field__label" for="ct-message">Message <span aria-hidden="true">*</span></label>
+        <textarea class="textarea" id="ct-message" name="message" rows="5" placeholder="Your message" required></textarea>
+      </div>
+      <label class="check">
+        <input type="checkbox" name="consent" value="yes" required>
+        <span>I agree that BLT Global Brands processes my details to answer my question. <a href="legal.html">Privacy policy</a></span>
+      </label>
+      <div class="form-submit">
+        <button class="btn btn--red" type="submit">Send message <span class="btn__chip">{{icon:arrow}}</span></button>
+        <p class="form-submit__note">Choosing Franchise or Real estate shows a link to the dedicated form above the message field.</p>
+      </div>
+    </form>
+  </div>
+</section>

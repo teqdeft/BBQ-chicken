@@ -1,0 +1,24 @@
+# source-prefix (in assets/img/raw)  dest-name (in assets/img)  max-width
+img_1b89cd8c cut-2pcs-secret-sauce.png 760
+img_c1504cdb cut-2pcs-fried.png 880
+img_d3952454 cut-bucket.png 1000
+img_705e8c88 cut-fries.png 480
+img_5b4b085f cut-4pcs-cheesling.png 860
+img_7fd1fa38 chibboq-peeking.png 300
+img_5f141f18 chibboq-sitting.png 582
+img_432bb5c9 food-2pcs-secret-sauce.jpg 960
+img_6c4a8b94 food-2pcs-fried.jpg 960
+img_4aa277c7 food-3pcs-strips.jpg 960
+img_67746b45 food-8pcs-fried.jpg 960
+img_dfe39e10 food-8pcs-secret-sauce.jpg 960
+img_84dbeb4e team.jpg 1600
+img_a3e403c4 news-barcelona.jpg 960
+img_d3b7240a news-times-square.jpg 960
+img_aa78ddf8 news-drumstick.jpg 783
+img_125475ff hero-mobile.jpg 800
+img_3739ae75 food-signature-sauces.jpg 900
+crop_23-20 hero-left.jpg 1200
+crop_23-21 hero-right.jpg 1200
+crop_5-203 why-partner-bg.jpg 1920
+img_3739ae75 hero-sauces.jpg 1440
+img_341f5567 hero-golden.jpg 1440
