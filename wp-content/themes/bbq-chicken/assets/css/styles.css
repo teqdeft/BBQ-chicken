@@ -522,14 +522,16 @@ ul, ol { padding: 0; list-style: none; }
 .order-bar__sub { font-size: 16px; font-weight: 500; line-height: 20px; color: var(--white); }
 
 .footer-brand { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
-.footer-brand__logo { width: 342px; filter: drop-shadow(0 2px 18px rgba(13, 5, 5, .8)); }
+/* Figma shadows (logo 0 2 18 @80%, slogan 0 4 24 @55%) drawn with half the blur: browsers spread the same
+   blur value about twice as wide, so this is what matches the Figma render */
+.footer-brand__logo { width: 342px; filter: drop-shadow(0 2px 9px rgba(13, 5, 5, .8)); }
 .footer-brand__slogan {
   font-size: clamp(46px, 6.25vw, 104px);
   font-weight: 900;
   line-height: .95;
   letter-spacing: -0.03em;
   color: var(--cream);
-  text-shadow: 0 4px 24px rgba(13, 5, 5, .55);
+  text-shadow: 0 4px 12px rgba(13, 5, 5, .55);
 }
 .footer-brand__sub { font-size: 16px; font-weight: 500; line-height: 19px; color: rgba(245, 241, 232, .75); }
 .socials { display: flex; gap: 14px; }
@@ -587,6 +589,9 @@ ul, ol { padding: 0; list-style: none; }
   .footer-brand { gap: 14px; }
   .footer-brand__logo { width: 224px; }
   .footer-brand__slogan { font-size: 46px; line-height: .92; }
+  /* the 390 design has no shadows in the footer */
+  .footer-brand__logo { filter: none; }
+  .footer-brand__slogan, .footer-col__title, .footer-col a { text-shadow: none; }
   .footer-brand__sub { font-size: 14px; line-height: 1.45; }
   .footer-links { flex-direction: column; gap: 0; }
   .footer-col { gap: 0; border-bottom: 1px solid rgba(245, 241, 232, .14); }
