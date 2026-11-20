@@ -1,5 +1,23 @@
-# Original full-size image exports from Figma (the site uses the optimized copies in assets/img)
-**/assets/img/raw/
+# ---------------------------------------------------------------------------
+# This repository is the WordPress site (core, plugins, themes).
+# ---------------------------------------------------------------------------
+
+# Per-install configuration and runtime files (never commit: database password, keys)
+wp-config.php
+.htaccess
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+wp-content/cache/
+wp-content/backup*/
+wp-content/debug.log
+*.log
+
+# Kept on this computer only (not part of the WordPress site).
+# The static HTML site is in git history: tag static-html-v4.
+html-backup/
+design-data/
+dist/
 
 # Local tooling
 .claude/
@@ -9,10 +27,3 @@ node_modules/
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Local WordPress uploads/cache if a WordPress install is ever placed in the repo
-wp-content/uploads/
-wp-content/cache/
-
-# Theme zip built by design-data/tools/make-theme-zip.ps1
-dist/

@@ -1,6 +1,8 @@
 # Converting a static page to the theme
 
-The static site is in `html-backup/` (sources in `html-backup/src/pages/*.html`). Each page becomes
+The static site is in git tag `static-html-v4` (and, on the development machine, in `html-backup/`, with the
+comparison tools in `design-data/tools/`; both are kept out of the repository's main branch). Page sources:
+`html-backup/src/pages/*.html`. Each page becomes
 `templates/<key>.php`, which prints **exactly the same markup** with every text, image and link turned
 into an editable field. `templates/contact.php` (+ `inc/forms/contact.php`) is the worked example.
 
