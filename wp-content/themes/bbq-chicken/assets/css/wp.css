@@ -1,0 +1,64 @@
+/* ==========================================================================
+   WordPress-only adjustments. The design itself lives in styles.css, motion.css,
+   apply-modal.css and pages/*.css (the same files as the static site).
+   ========================================================================== */
+
+/* WordPress's screen-reader helper class */
+.screen-reader-text {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Logged-in admin bar: keep the floating header below it */
+body.admin-bar .site-header { top: calc(24px + 32px); }
+body.admin-bar .site-header.is-scrolled { top: calc(12px + 32px); }
+@media (max-width: 782px) {
+  body.admin-bar .site-header { top: calc(12px + 46px); }
+  body.admin-bar .site-header.is-scrolled { top: calc(8px + 46px); }
+}
+
+/* ---------- Contact Form 7: fit its output into the design's form styles ---------- */
+/* CF7 wraps the <form> in <div class="wpcf7">; let the form sit directly in the card's grid/flex
+   layout as in the static site (the phone layout flattens the form into the card). */
+.form-card > .wpcf7 { display: contents; }
+.wpcf7-form-control-wrap { display: block; position: relative; }
+.wpcf7-form-control-wrap > input, .wpcf7-form-control-wrap > select, .wpcf7-form-control-wrap > textarea { display: block; }
+.wpcf7-form .wpcf7-not-valid { border-color: var(--red-text); }
+.wpcf7-not-valid-tip { display: block; margin-top: 6px; font-size: 13px; font-weight: 600; line-height: 1.3; color: var(--red-text); }
+.wpcf7 form .wpcf7-response-output {
+  margin: 0; padding: 12px 16px;
+  border: 0; border-radius: var(--radius-btn);
+  background: rgba(214, 24, 52, .08); color: var(--char);
+  font-size: 15px; font-weight: 600; line-height: 1.4;
+}
+.wpcf7 form.sent .wpcf7-response-output { background: rgba(31, 138, 76, .12); }
+.wpcf7 form.init .wpcf7-response-output, .wpcf7 form.resetting .wpcf7-response-output, .wpcf7 form.submitting .wpcf7-response-output { display: none; }
+.wpcf7-spinner { margin: 0 0 0 8px; vertical-align: middle; }
+.wpcf7-list-item { margin: 0; }
+.wpcf7-form .hidden-fields-container { display: none; }
+/* consent checkbox: [acceptance] inside <div class="check"> */
+.check .wpcf7-form-control-wrap, .check .wpcf7-form-control, .check .wpcf7-list-item { display: block; }
+.check .wpcf7-list-item label { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+.check .wpcf7-list-item-label { display: block; }
+/* dropdown placeholder (CF7 "first_as_label" option has an empty value) */
+.select:has(option[value=""]:checked) { color: rgba(107, 96, 92, .9); }
+@media (max-width: 767px) { .form-card .select:has(option[value=""]:checked) { color: rgba(34, 30, 31, .65); } }
+.wpcf7-form button[type="submit"][disabled] { opacity: .6; cursor: progress; }
+
+/* ---------- Plain pages (index.php fallback) and block-editor content ---------- */
+.wp-content-section { padding: 96px var(--gutter) 120px; background: var(--cream); color: var(--char); }
+.wp-content { max-width: 760px; margin: 0 auto; font-size: 17px; line-height: 1.65; }
+.wp-content > * + * { margin-top: 1em; }
+.wp-content h2 { font-size: 30px; font-weight: 800; line-height: 1.15; letter-spacing: -0.015em; margin-top: 1.6em; }
+.wp-content h3 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-top: 1.4em; }
+.wp-content a { color: var(--red-text); text-decoration: underline; text-underline-offset: 2px; }
+.wp-content ul, .wp-content ol { padding-left: 1.4em; }
+.wp-content ul { list-style: disc; }
+.wp-content ol { list-style: decimal; }
+.wp-content img { max-width: 100%; height: auto; border-radius: var(--radius-img); }
+.wp-content figcaption { margin-top: 8px; font-size: 14px; color: var(--muted); }
+.wp-content .nav-links { display: flex; gap: 12px; margin-top: 40px; }
+@media (max-width: 767px) {
+  .wp-content-section { padding: 56px 20px 72px; }
+  .wp-content { font-size: 16px; }
+}

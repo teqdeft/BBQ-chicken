@@ -13,3 +13,6 @@ desktop.ini
 # Local WordPress uploads/cache if a WordPress install is ever placed in the repo
 wp-content/uploads/
 wp-content/cache/
+
+# Theme zip built by design-data/tools/make-theme-zip.ps1
+dist/

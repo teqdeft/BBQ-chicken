@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Contact page
+   Figma "Design v4": Desktop 1680 (145:1768) · Desktop 1440 (433:3241) · Mobile 390 (149:3101)
+   ========================================================================== */
+
+/* 1. Page header: 600 tall, text at y 243, photo background (same image as the closing CTA) */
+.page-contact .page-hero { padding-top: 243px; }
+
+/* 2. Shortcuts (Franchise / Real estate / Press & Media) */
+.shortcuts { padding-top: 80px; padding-bottom: 140px; background: var(--cream); }
+
+.tiles { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.tile {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 14px;
+  padding: 32px 32px 40px;
+  border-radius: var(--radius-card);
+}
+.tile--yellow { background: var(--yellow); color: var(--char); }
+.tile--red { background: var(--red); color: var(--cream); }
+.tile--sand { background: var(--sand); color: var(--char); }
+.tile__icon {
+  flex: none;
+  width: 72px; height: 72px;
+  margin-bottom: 54px;             /* 40px spacer + 14px gap, as in Figma */
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(34, 30, 31, .14);
+}
+.tile--red .tile__icon { background: rgba(245, 241, 232, .14); }
+.tile__icon svg { width: 40px; height: 40px; }
+.tile__title { font-size: 26px; font-weight: 800; line-height: 1.2; letter-spacing: -0.015em; }
+.tile__text,
+.tile__link { font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; opacity: .85; }
+.tile--red .tile__text,
+.tile--red .tile__link { color: var(--white); opacity: 1; }
+.tile__link { font-weight: 800; }
+.tile__link--email { max-width: 100%; overflow-wrap: anywhere; }
+a.tile__link { text-underline-offset: 3px; transition: opacity .15s ease; }
+a.tile__link:hover { opacity: 1; text-decoration: underline; }
+.tiles-nav { display: none; }
+
+/* ChiBBoQ peeking over the corner of the last card:
+   158 × 200 at x 1482 / y 350 (1680), 135 × 171 at x 1278 / y 350 (1440) */
+.chibboq-peek {
+  position: absolute; z-index: 2;
+  top: 350px;
+  right: max(calc(50% - 800px), clamp(20px, calc(5.4167vw - 51px), 40px));
+  width: min(158px, 9.405vw); height: auto; aspect-ratio: 158 / 200;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .18));
+  pointer-events: none;
+}
+
+/* 3. Contact form
+      v4: photo background fading to #161213, padding 100 / 100, card radius 16, fields radius 6,
+      "Good to know" box radius 8 */
+.page-contact .select { text-overflow: ellipsis; }
+.contact-address { font-style: normal; }
+
+/* Link to the dedicated form, shown when Franchise or Real estate is picked as the topic */
+.topic-hint {
+  display: none;
+  padding: 14px 18px;
+  border-radius: var(--radius-btn);
+  background: rgba(214, 210, 196, .5);
+  font-size: 15px; font-weight: 500; line-height: 1.4;
+}
+.topic-hint a { font-weight: 700; color: var(--red-text); white-space: nowrap; }
+.topic-hint a:hover { text-decoration: underline; }
+.form:has(#ct-topic option[value="Franchise"]:checked) .topic-hint--franchise,
+.form:has(#ct-topic option[value="Real estate"]:checked) .topic-hint--real-estate { display: block; }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1199px) {
+  .tile { padding: 28px 24px 32px; }
+  .tile__title { font-size: 22px; }
+}
+
+/* ---------- Mobile (390 reference) ---------- */
+@media (max-width: 767px) {
+  /* Page header */
+  .page-contact .page-hero { padding-top: 152px; padding-bottom: 64px; }
+
+  /* Shortcuts: cards become a swipe row with arrows + dots below */
+  .shortcuts { padding: 40px 0 158px; }
+  .tiles {
+    display: flex; align-items: flex-start; gap: 12px;
+    overflow-x: auto;
+    padding: 0 20px;
+    scroll-padding-inline: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tiles::-webkit-scrollbar { display: none; }
+  .tile { flex: 0 0 250px; padding: 22px 22px 26px; border-radius: 12px; scroll-snap-align: start; }
+  .tile__title { font-size: 22px; }
+
+  .page-contact .tiles-nav { display: flex; justify-content: space-between; gap: 24px; margin-top: 20px; padding: 0 20px; }
+  .page-contact .tiles-nav .slider__arrow { display: grid; transition: opacity .2s ease; }
+  .page-contact .tiles-slider:has(.slider__dot:first-child.is-active) [data-slider-prev],
+  .page-contact .tiles-slider:has(.slider__dot:last-child.is-active) [data-slider-next] { opacity: .4; }
+  .page-contact .tiles-nav .slider__dots { gap: 8px; }
+  .page-contact .tiles-nav .slider__dot { width: 8px; height: 8px; }
+  .page-contact .tiles-nav .slider__dot.is-active { width: 24px; }
+
+  .chibboq-peek { top: auto; right: 20px; bottom: 16px; width: 102px; height: 130px; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .18)); }
+
+  /* Form card: white, single column, everything 16px apart (Figma mobile card) */
+  .page-contact .form-card { display: flex; flex-direction: column; }
+  .page-contact .form-card__intro,
+  .page-contact .form-card .form,
+  .page-contact .form-row,
+  .page-contact .form-submit { display: contents; }
+  .page-contact .form-card .info-box { order: 1; }
+  .page-contact .form-submit__note { font-size: 13px; line-height: 1.45; color: rgba(34, 30, 31, .65); }
+
+  .page-contact .check { gap: 10px; font-size: 13px; line-height: 1.45; color: rgba(34, 30, 31, .75); }
+  .page-contact .check input { border-radius: 5px; }
+
+  .topic-hint { padding: 12px 14px; background: var(--cream); font-size: 14px; }
+}

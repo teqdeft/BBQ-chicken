@@ -1,0 +1,98 @@
+/* ==========================================================================
+   News article page
+   Figma v4: "News article – Desktop 1680" (144:1333) · "– Desktop 1440" (433:2660) · "– Mobile 390" (149:2586)
+   Related articles reuse the home .news section and .news-card.
+   ========================================================================== */
+
+/* 2. Article body: one 760 column */
+.article-body { padding-top: 120px; padding-bottom: 120px; background: var(--cream); }
+.article-body__col { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; color: var(--char); }
+.article-body__col p { font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; }
+.article-body__col .article-body__intro { font-size: 18px; line-height: 1.5; letter-spacing: -0.002em; }
+.article-body__subhead { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+
+.article-body__figure { margin: 0; display: flex; flex-direction: column; gap: 24px; }
+.article-body__media { aspect-ratio: 760 / 422; border-radius: var(--radius-img); overflow: hidden; background: var(--sand); }
+.article-body__media img { width: 100%; height: 100%; object-fit: cover; }
+.article-body__caption { font-size: 14px; line-height: 1.5; color: var(--char); }
+
+.article-source { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+.article-body__col .article-source__text { font-size: 14px; line-height: 1.5; letter-spacing: 0; }
+.article-source__link { font-size: 15px; font-weight: 700; line-height: 1.2; color: var(--char); transition: color .15s ease; }
+.article-source__link:hover { color: var(--red); }
+
+.article-body__col .article-share { font-size: 14px; line-height: 1.5; letter-spacing: 0; }
+.article-share a,
+.article-share button { font: inherit; color: inherit; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 3px; transition: text-decoration-color .15s ease, color .15s ease; }
+.article-share a:hover,
+.article-share button:hover { color: var(--red); text-decoration-color: currentColor; }
+
+/* 3. Related articles: Figma keeps the card images 270 tall at every desktop width (458×270 at 1680, 405×270 at 1440) */
+.related .news-card__img { aspect-ratio: auto; height: 270px; }
+.news-card--static:hover .news-card__img img { transform: none; }
+.related__nav { display: none; }
+
+/* Mobile (390 reference) */
+@media (max-width: 767px) {
+  .page-news-article .page-hero { padding-bottom: 64px; }
+
+  .article-body { padding: 56px 20px 72px; }
+  .article-body__col { gap: 20px; }
+  .article-body__subhead { font-size: 22px; line-height: 1.25; letter-spacing: -0.005em; }
+  .article-body__figure { gap: 20px; }
+  .article-body__media { aspect-ratio: 350 / 194; border-radius: 8px; }
+  .article-body__caption,
+  .article-body__col .article-source__text,
+  .article-body__col .article-share { color: var(--muted); }
+  .article-source { gap: 12px; }
+
+  /* related: swipe row bleeds to the screen edge; first card lines up with the 20px gutter */
+  .related .news__list { margin-left: -20px; padding-left: 20px; scroll-padding-left: 20px; }
+  .related .news-card__img { height: 190px; border-radius: 8px; }
+  .related__nav { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin: 20px 20px 0 0; }
+  .related__arrow {
+    width: 44px; height: 44px; border-radius: var(--radius-btn);
+    display: grid; place-items: center;
+    background: var(--char); color: var(--cream);
+    transition: opacity .2s ease;
+  }
+  .related__arrow svg { width: 16px; height: 16px; }
+  .related__arrow:disabled { opacity: .4; cursor: default; }
+  .related__dots { display: flex; align-items: center; gap: 8px; }
+  .related .slider__dot { width: 8px; height: 8px; }
+  .related .slider__dot.is-active { width: 24px; }
+}
+
+/* ---------- WordPress: the article text is block-editor output (post content) ----------
+   Same look as the static article: paragraphs, h2 = .article-body__subhead, the first paragraph =
+   .article-body__intro, Image blocks = .article-body__figure / __media / __caption. */
+.article-body__col > p:first-child { font-size: 18px; line-height: 1.5; letter-spacing: -0.002em; }
+.article-body__col > h2 { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.article-body__col > h3 { font-size: 22px; font-weight: 700; line-height: 1.25; letter-spacing: -0.005em; }
+.article-body__col > figure,
+.article-body__col > .wp-block-image { margin: 0; display: flex; flex-direction: column; gap: 24px; }
+.article-body__col > .wp-block-image img,
+.article-body__col > figure img { display: block; width: 100%; height: auto; border-radius: var(--radius-img); background: var(--sand); }
+.article-body__col > figure figcaption,
+.article-body__col > .wp-block-image .wp-element-caption { margin: 0; font-size: 14px; line-height: 1.5; color: var(--char); }
+.article-body__col > ul,
+.article-body__col > ol { display: grid; gap: 8px; padding-left: 1.4em; font-size: 16px; line-height: 1.55; }
+.article-body__col > ul { list-style: disc; }
+.article-body__col > ol { list-style: decimal; }
+.article-body__col > blockquote { margin: 0; padding-left: 20px; border-left: 3px solid var(--red); }
+.article-body__col > blockquote p { font-size: 18px; line-height: 1.5; }
+.article-body__col > :is(p, ul, ol, blockquote):not(.article-share) a,
+.article-source__text a { text-decoration: underline; text-underline-offset: 3px; transition: color .15s ease; }
+.article-body__col > :is(p, ul, ol, blockquote):not(.article-share) a:hover,
+.article-source__text a:hover { color: var(--red); }
+
+@media (max-width: 767px) {
+  .article-body__col > h2 { font-size: 22px; line-height: 1.25; letter-spacing: -0.005em; }
+  .article-body__col > h3 { font-size: 19px; }
+  .article-body__col > figure,
+  .article-body__col > .wp-block-image { gap: 20px; }
+  .article-body__col > .wp-block-image img,
+  .article-body__col > figure img { border-radius: 8px; }
+  .article-body__col > figure figcaption,
+  .article-body__col > .wp-block-image .wp-element-caption { color: var(--muted); }
+}

@@ -1,0 +1,13 @@
+/*
+Theme Name: bb.q Chicken Europe
+Theme URI: https://github.com/teqdeft/BBQ-chicken
+Author: BLT Global Brands
+Description: Custom theme for bb.q Chicken Europe, built from the Figma v4 design. Every page text and image is an editable field (with the design's content as default), news stories are posts, and the forms use Contact Form 7. Run "Appearance → bb.q setup" once to create the pages, menus, news and forms.
+Version: 1.0.0
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 8.0
+Text Domain: bbq
+*/
+
+/* The site styles live in assets/css (styles.css, motion.css, apply-modal.css, pages/*.css, wp.css). */

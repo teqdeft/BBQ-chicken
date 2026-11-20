@@ -1,0 +1,216 @@
+/* ==========================================================================
+   Real estate page
+   Figma "Design v4": Desktop 1680 (141:754) · Desktop 1440 (432:2076) · Mobile 390 (146:2460)
+   ========================================================================== */
+
+/* 1. Hero
+      Desktop: dark red radial glow (Figma tf [[0.833,0,0.083],[0,0.556,0.333]]) with two food cut-outs
+      in the bottom corners. Both frames (1680 and 1440) keep the hero 860 tall and the text at y 267;
+      the cut-outs scale with the screen width, their top stays put.
+      Mobile (≤767) is unchanged: the shared photo hero from styles.css. */
+.re-hero__cutout { display: none; }
+@media (min-width: 768px) {
+  .re-hero {
+    height: clamp(620px, 59.72vw, 860px);
+    background:
+      radial-gradient(60% 90% at 50% 30%, #C8101C 0%, rgba(150, 14, 26, .85) 45%, rgba(26, 12, 15, 0) 100%),
+      #1A0C0F;
+  }
+  .re-hero .hero__content { margin-top: clamp(150px, 18.54vw, 267px); }
+  .re-hero__cutout { display: block; position: absolute; z-index: 1; top: 54.65%; pointer-events: none; }
+  .re-hero__cutout img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 24px 40px rgba(0, 0, 0, .35)); }
+  .re-hero__cutout--sauce { left: -6.548vw; width: 36.905vw; aspect-ratio: 620 / 336; }   /* 620 × 336 at x -110 (1680) */
+  .re-hero__cutout--fried { left: 67.857vw; width: 35.714vw; aspect-ratio: 600 / 316; top: 55.81%; } /* 600 × 316 at x 1140 */
+  /* stamp: 184 at x 181 (1680), 158 at x 134 (1440); Figma rotation is around the top-left corner */
+  .re-hero .stamp {
+    left: calc(19.583vw - 148px); top: 73.49%;
+    width: clamp(120px, calc(10.833vw + 2px), 184px); height: auto; aspect-ratio: 1;
+    transform-origin: 0 0; transform: rotate(-10deg);
+    z-index: 2;
+  }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* smaller screens: tuck the cut-outs lower so they frame the text instead of covering it */
+  .re-hero__cutout { top: auto; bottom: -4%; }
+  .re-hero__cutout--sauce { left: -9vw; width: 34vw; }
+  .re-hero__cutout--fried { left: auto; right: -9vw; width: 33vw; }
+  .re-hero .stamp { left: 4vw; top: auto; bottom: 2%; width: 120px; }
+}
+
+/* 2. What we look for (site criteria + accordion)
+      Figma radial tf [[0.9,0,-0.1],[0,1.4,-0.1]]; padding 120 / 100, columns 96 apart at 1680 and 1440 */
+.criteria {
+  display: flex; align-items: flex-start; gap: 96px;
+  padding-top: 120px; padding-bottom: 100px;
+  color: var(--white);
+  background:
+    radial-gradient(55.56% 35.71% at 66.67% 42.86%, rgba(227, 25, 55, .45) 0%, rgba(140, 24, 30, .14) 50%, rgba(34, 30, 31, 0) 100%),
+    var(--char);
+}
+.criteria__head { flex: 0 0 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
+.criteria__head .lead { max-width: 460px; color: rgba(255, 255, 255, .8); }
+.criteria__cutout {
+  width: 420px; height: 244px;
+  margin: 0 0 56px 34px;           /* rotated box: 450 × 300 in the column, as in Figma */
+  transform-origin: 0 0; transform: rotate(8deg);
+  pointer-events: none;
+}
+.criteria__cutout img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 24px 36px rgba(0, 0, 0, .45)); }
+
+.criteria__list { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.crit {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .1);
+  background: linear-gradient(90deg, rgba(255, 255, 255, .09) 0%, rgba(255, 255, 255, .03) 100%);
+}
+.crit__row {
+  display: flex; align-items: center; gap: 20px;
+  padding: 20px 24px 20px 20px;
+  border-radius: 12px;
+  list-style: none;
+  cursor: pointer;
+}
+.crit__row::-webkit-details-marker { display: none; }
+.crit__row:focus-visible { outline-offset: -3px; border-radius: 12px; }
+.crit__icon {
+  flex: none;
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--red);
+  color: var(--white);
+}
+.crit__icon svg { width: 34px; height: 34px; }
+.crit:nth-child(2) .crit__icon { background: #E73F39; }
+.crit:nth-child(3) .crit__icon { background: #EB663A; }
+.crit:nth-child(4) .crit__icon { background: #EE8D3B; }
+.crit:nth-child(5) .crit__icon { background: var(--yellow); color: var(--char); }
+.crit__title { flex: 1; min-width: 0; font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; }
+.crit__toggle {
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: var(--radius-btn);
+  display: grid; place-items: center;
+  background: rgba(255, 255, 255, .12);
+  font-size: 26px; font-weight: 700; line-height: 1;
+  transition: background-color .2s ease;
+}
+.crit__toggle::before { content: "+"; }
+.crit__row:hover .crit__toggle { background: rgba(255, 255, 255, .2); }
+.crit[open] .crit__toggle { background: var(--red); }
+.crit[open] .crit__toggle::before { content: "–"; }
+.crit__answer {
+  margin-top: -4px;                /* 16px below the row, as in Figma */
+  padding: 0 24px 20px 20px;
+  font-size: 16px; line-height: 1.55;
+  color: rgba(255, 255, 255, .82);
+}
+
+/* 3. Offer your premises (form)
+      v4: photo background (same image as the closing CTA) fading to #161213, padding 100 / 100,
+      card radius 16, fields and chips radius 6, "What happens next" box radius 8 */
+.page-realestate .info-box__step a { text-decoration: underline; text-underline-offset: 2px; }
+.page-realestate .info-box__step a:hover { color: var(--red); }
+
+/* Number field without spinners (looks like the other inputs) */
+.page-realestate input[type="number"] { -moz-appearance: textfield; appearance: textfield; }
+.page-realestate input[type="number"]::-webkit-outer-spin-button,
+.page-realestate input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Segmented choice ("You are *") */
+.choice { min-width: 0; margin: 0; padding: 0; border: 0; }
+.choice > .field__label { float: left; width: 100%; margin: 0 0 10px; padding: 0; }
+.choice__options { clear: both; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+/* WordPress: Contact Form 7 prints each option as span.wpcf7-list-item > label > input + span.wpcf7-list-item-label
+   (= .choice__opt / .choice__chip); its outer spans drop out of the grid so every option is a grid cell. */
+.choice__options .wpcf7-form-control-wrap,
+.choice__options .wpcf7-form-control { display: contents; }
+.choice__options .wpcf7-list-item { display: block; margin: 0; }
+.choice__options .wpcf7-list-item-label::before,
+.choice__options .wpcf7-list-item-label::after { content: none; }
+.choice__options .wpcf7-not-valid-tip { grid-column: 1 / -1; margin-top: -4px; }
+.choice__opt,
+.choice__options .wpcf7-list-item > label { position: relative; display: block; cursor: pointer; }
+.choice__opt input,
+.choice__options .wpcf7-list-item input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.choice__chip,
+.choice__options .wpcf7-list-item-label {
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px 8px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(34, 30, 31, .15);
+  background: var(--white);
+  font-size: 15px; font-weight: 700; line-height: 18px; text-align: center;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.choice__opt:hover .choice__chip,
+.choice__options label:hover .wpcf7-list-item-label { border-color: rgba(34, 30, 31, .45); }
+.choice__opt input:checked + .choice__chip,
+.choice__options input:checked + .wpcf7-list-item-label { background: var(--char); border-color: var(--char); color: var(--cream); }
+.choice__opt input:focus-visible + .choice__chip,
+.choice__options input:focus-visible + .wpcf7-list-item-label { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+/* WordPress: Contact Form 7 wraps the file input in a span; let it drop out so the input still covers
+   the whole drop zone, and show its error message under the zone. */
+.dropzone > .wpcf7-form-control-wrap { display: contents; }
+.dropzone .wpcf7-not-valid-tip { position: absolute; left: 0; top: 100%; }
+.dropzone:has(.wpcf7-not-valid-tip) { margin-bottom: 23px; }
+
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1199px) {
+  .criteria { flex-direction: column; align-items: stretch; gap: 48px; padding-top: 120px; padding-bottom: 120px; }
+  .criteria__head, .criteria__list { flex: none; }
+  .criteria__cutout { display: none; }
+}
+
+/* ---------- Mobile (390 reference) ---------- */
+@media (max-width: 767px) {
+  /* What we look for */
+  .criteria {
+    gap: 18px;
+    padding: 56px 20px;
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%),
+      var(--char);
+  }
+  .criteria__head { gap: 18px; }
+  .criteria__head .h2 { font-size: 32px; line-height: 1.06; letter-spacing: -0.02em; }
+  .criteria__head .lead { font-size: 16px; line-height: 1.52; }
+  .criteria__list { gap: 10px; }
+  .crit { border-radius: 12px; }
+  .crit__row { gap: 20px; padding: 14px; border-radius: 12px; }
+  .crit__row:focus-visible { border-radius: 12px; }
+  .crit__icon { width: 53px; height: 53px; }
+  .crit__icon svg { width: 27px; height: 27px; }
+  .crit__title { font-size: 16px; line-height: 20px; }
+  .crit__answer { margin-top: 2px; padding: 0 14px 14px; font-size: 15px; }
+
+  /* Form card: white, single column, everything 16px apart (Figma mobile card) */
+  .page-realestate .form-card { display: flex; flex-direction: column; }
+  .page-realestate .form-card__intro,
+  .page-realestate .form-card .form,
+  .page-realestate .form-row,
+  .page-realestate .form-submit { display: contents; }
+  .page-realestate .form-card .info-box { order: 1; }
+  .page-realestate .form-submit__note { order: 2; font-size: 13px; line-height: 1.45; color: rgba(34, 30, 31, .65); }
+
+  .page-realestate .check,
+  .page-realestate .check .wpcf7-list-item > label { gap: 10px; }
+  .page-realestate .check { font-size: 13px; line-height: 1.45; color: rgba(34, 30, 31, .75); }
+  .page-realestate .check input { border-radius: 5px; }
+
+  .choice > .field__label { margin-bottom: 8px; }
+  .choice__options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .choice__options .wpcf7-not-valid-tip { margin-top: -2px; }
+  .choice__chip,
+  .choice__options .wpcf7-list-item-label { border-radius: var(--radius-btn); background: var(--cream); font-weight: 600; }
+  .choice__opt input:checked + .choice__chip,
+  .choice__options input:checked + .wpcf7-list-item-label { color: var(--white); }
+
+  /* drop zone error: below the hint, which sits under the zone on phones */
+  .dropzone .wpcf7-not-valid-tip { top: calc(100% + 26px); }
+  .dropzone:has(.wpcf7-not-valid-tip) { margin-bottom: 49px; }
+
+
+}

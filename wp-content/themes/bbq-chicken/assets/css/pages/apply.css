@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Apply (142-871 / 148-2067) and Apply – Thank you (142-1057 / 148-2222), Figma v4
+   Form components: assets/css/apply-modal.css
+   ========================================================================== */
+
+/* The form is the page — no floating "Submit your application" button here */
+.page-apply .floating-cta,
+.page-apply-thanks .floating-cta { display: none; }
+
+/* ---------- Apply ---------- */
+.app-section--page { padding-top: 200px; padding-bottom: 80px; }
+.app-premises { font-size: 18px; line-height: 1.5; letter-spacing: -0.002em; color: var(--muted); }
+.app-premises a { color: inherit; text-decoration: underline; text-underline-offset: 3px; transition: color .15s ease; }
+.app-premises a:hover { color: var(--red); }
+
+@media (max-width: 1199px) {
+  .app-section--page { padding-top: 160px; }
+}
+@media (max-width: 767px) {
+  .app-section--page { padding-top: 96px; padding-bottom: 56px; }
+  .app-premises { font-size: 15px; letter-spacing: 0; color: rgba(34, 30, 31, .75); }
+}
+
+/* ---------- Thank you: confirmation card (reuses the home .closing / .cta-card) ----------
+   Figma v4: dark band with a red glow (no photo); stamp, cut-out and sparkles sit on the card's corners.
+   Positions are linear between the 1440 and 1680 frames and keep the 1680 offsets from the centre above that. */
+.thanks.closing {
+  margin-bottom: 0;
+  padding-top: 230px; padding-bottom: 190px;
+  background:
+    radial-gradient(55.56% 41.67% at 50% 45.83%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .16) 50%, rgba(34, 30, 31, 0) 100%),
+    var(--char);
+}
+.thanks.closing::after { display: none; }
+.thanks.closing .stamp { /* 184 at 256,174 (1680) · 158 at 201,174 (1440) */
+  left: max(calc(22.917% - 129px), calc(50% - 584px)); top: 174px;
+  width: min(calc(10.833% + 2px), 184px); height: auto; aspect-ratio: 1;
+  transform-origin: 0 0; transform: rotate(-14deg);
+}
+.thanks.closing .cutout--fried { /* 400×218 at 1060,469 (1680) · 343×187 at 928,469 (1440) */
+  left: min(calc(55% + 136px), calc(50% + 220px)); top: 469px;
+  width: min(calc(23.75% + 1px), 400px); height: auto; aspect-ratio: 400 / 218;
+}
+.thanks.closing .sparkle-lg { left: min(calc(76.667% + 84px), calc(50% + 532px)); top: 190px; }
+.thanks.closing .sparkle-sm { left: min(calc(77.917% + 113px), calc(50% + 582px)); top: 236px; }
+
+@media (max-width: 767px) {
+  .thanks.closing {
+    padding: 196px 20px 78px;
+    background:
+      radial-gradient(50% 50% at 50% 50%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%),
+      var(--char);
+  }
+  .thanks .cta-card { border-radius: var(--radius-img); }
+  .thanks .btn-row { gap: 16px; }
+  .thanks.closing .stamp { left: 14px; top: 144px; width: 92px; height: 92px; }
+  .thanks.closing .cutout--fried { left: calc(100% - 200px); right: auto; top: auto; bottom: 22px; width: 190px; height: 100px; }
+}

@@ -1,0 +1,211 @@
+/* ==========================================================================
+   Careers page
+   Figma "Design v4": Desktop 1680 (145:1448) · Desktop 1440 (433:2931) · Mobile 390 (149:2814)
+   ========================================================================== */
+
+/* 1. Page header: 600 tall, text at y 175, photo background (same image as the closing CTA) */
+.page-careers .page-hero { padding-top: 175px; }
+
+/* 2. Why work with us: photo cards (photo 240 tall at 1680, 220 at 1440) */
+.join {
+  display: flex; flex-direction: column; align-items: center; gap: 64px;
+  padding-top: 80px; padding-bottom: 214px;
+  background: var(--cream);
+}
+.join .section-head .h2 { max-width: 820px; }
+
+.tiles-slider { width: 100%; }
+.tiles { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.tile {
+  display: flex; flex-direction: column;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.tile--yellow { background: var(--yellow); color: var(--char); }
+.tile--red { background: var(--red); color: var(--cream); }
+.tile--sand { background: var(--sand); color: var(--char); }
+.tile__img { flex: none; height: clamp(200px, calc(100vw / 12 + 100px), 240px); }
+.tile__img img { width: 100%; height: 100%; object-fit: cover; }
+.tile__body { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 28px 32px 40px; }
+.tile__icon {
+  flex: none;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(34, 30, 31, .14);
+}
+.tile--red .tile__icon { background: rgba(245, 241, 232, .14); }
+.tile__icon svg { width: 40px; height: 40px; }
+.tile__title { font-size: 26px; font-weight: 800; line-height: 1.2; letter-spacing: -0.015em; }
+.tile__text { font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; opacity: .85; }
+.tile--red .tile__text { color: var(--white); opacity: 1; }
+.tiles-nav { display: none; }
+
+/* ChiBBoQ peeking over the edge into "Open positions":
+   338 × 369 at 1680 (60 from the right edge, 195 below the section), 290 × 316 at 1440 (40 from the right) */
+.chibboq-peek {
+  position: absolute; z-index: 2;
+  right: max(calc(50% - 780px), calc(var(--gutter) / 2));
+  bottom: max(-195px, -11.607vw);
+  width: min(338px, 20.119vw); height: auto; aspect-ratio: 338 / 369;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .18));
+  pointer-events: none;
+}
+
+/* 3. Open positions */
+.vacancies {
+  display: flex; flex-direction: column; align-items: center; gap: 24px;
+  padding-top: 80px; padding-bottom: 100px;
+  background: var(--cream);
+}
+.vacancies .section-head { text-align: center; }
+.vacancy-list { width: 100%; max-width: 900px; margin: 0; padding: 0; list-style: none; display: grid; gap: 16px; }
+.vacancy {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 28px 32px;
+  border-radius: 12px;
+  background: var(--white);
+}
+.vacancy__role { min-width: 0; display: grid; gap: 6px; }
+.vacancy__title { font-size: 24px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.vacancy__meta { font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; color: var(--muted); }
+.vacancy__link {
+  flex: none; align-self: flex-start;
+  font-size: 16px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em;
+  color: var(--red-text);
+  text-underline-offset: 3px;
+}
+.vacancy__link:hover { text-decoration: underline; }
+.empty-state {
+  width: 100%; max-width: 900px;
+  display: grid; gap: 12px;
+  padding: 48px 56px;
+  border-radius: 12px;
+  background: var(--white);
+  text-align: center;
+}
+.empty-state[hidden] { display: none; }
+.empty-state__title { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+.empty-state__text { font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; color: var(--muted); }
+
+/* 4. Open application (form)
+      v4: photo background fading to #161213, padding 100 / 100, card radius 16, fields and chips radius 6 */
+
+.choice { min-width: 0; margin: 0; padding: 0; border: 0; }
+.choice > .field__label { float: left; width: 100%; margin: 0 0 10px; padding: 0; }
+.choice__options { clear: both; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+/* WordPress: Contact Form 7 prints each option as span.wpcf7-list-item > label > input + span.wpcf7-list-item-label
+   (= .choice__opt / .choice__chip); its outer spans drop out of the grid so every option is a grid cell. */
+.choice__options .wpcf7-form-control-wrap,
+.choice__options .wpcf7-form-control { display: contents; }
+.choice__options .wpcf7-list-item { display: block; margin: 0; }
+.choice__options .wpcf7-list-item-label::before,
+.choice__options .wpcf7-list-item-label::after { content: none; }
+.choice__options .wpcf7-not-valid-tip { grid-column: 1 / -1; margin-top: -4px; }
+.choice__opt,
+.choice__options .wpcf7-list-item > label { position: relative; display: block; cursor: pointer; }
+.choice__opt input,
+.choice__options .wpcf7-list-item input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.choice__chip,
+.choice__options .wpcf7-list-item-label {
+  display: flex; align-items: center; justify-content: center;
+  padding: 14px 8px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(34, 30, 31, .15);
+  background: var(--white);
+  font-size: 15px; font-weight: 700; line-height: 18px; text-align: center;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.choice__opt:hover .choice__chip,
+.choice__options label:hover .wpcf7-list-item-label { border-color: rgba(34, 30, 31, .45); }
+.choice__opt input:checked + .choice__chip,
+.choice__options input:checked + .wpcf7-list-item-label { background: var(--char); border-color: var(--char); color: var(--cream); }
+.choice__opt input:focus-visible + .choice__chip,
+.choice__options input:focus-visible + .wpcf7-list-item-label { outline: 3px solid var(--yellow); outline-offset: 2px; }
+
+/* WordPress: Contact Form 7 wraps the file input in a span; let it drop out so the input still covers
+   the whole drop zone, and show its error message under the zone. */
+.dropzone > .wpcf7-form-control-wrap { display: contents; }
+.dropzone .wpcf7-not-valid-tip { position: absolute; left: 0; top: 100%; }
+.dropzone:has(.wpcf7-not-valid-tip) { margin-bottom: 23px; }
+
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1199px) {
+  .tile__body { padding: 24px 24px 32px; }
+  .tile__title { font-size: 22px; }
+}
+
+/* ---------- Mobile (390 reference) ---------- */
+@media (max-width: 767px) {
+  /* Page header */
+  .page-careers .page-hero { padding-top: 152px; padding-bottom: 64px; }
+
+  /* Why work with us: cards become a swipe row with arrows + dots below */
+  .join { align-items: stretch; gap: 20px; padding: 40px 0 158px; }
+  .join .section-head { gap: 14px; padding-inline: 20px; }
+  .join .h2 { font-size: 32px; line-height: 1.06; letter-spacing: -0.02em; }
+  .tiles {
+    display: flex; align-items: flex-start; gap: 12px;
+    overflow-x: auto;
+    padding: 0 20px;
+    scroll-padding-inline: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .tiles::-webkit-scrollbar { display: none; }
+  .tile { flex: 0 0 250px; border-radius: 12px; scroll-snap-align: start; }
+  .tile__img { height: 160px; }
+  .tile__body { padding: 20px 22px 26px; }
+  .tile__title { font-size: 22px; }
+
+  .page-careers .tiles-nav { display: flex; justify-content: space-between; gap: 24px; margin-top: 20px; padding: 0 20px; }
+  .page-careers .tiles-nav .slider__arrow { display: grid; transition: opacity .2s ease; }
+  .page-careers .tiles-slider:has(.slider__dot:first-child.is-active) [data-slider-prev],
+  .page-careers .tiles-slider:has(.slider__dot:last-child.is-active) [data-slider-next] { opacity: .4; }
+  .page-careers .tiles-nav .slider__dots { gap: 8px; }
+  .page-careers .tiles-nav .slider__dot { width: 8px; height: 8px; }
+  .page-careers .tiles-nav .slider__dot.is-active { width: 24px; }
+
+  .chibboq-peek { right: 20px; bottom: 16px; width: 102px; height: 130px; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .18)); }
+
+  /* Open positions: plain red label instead of the pill, cards stack */
+  .vacancies { align-items: stretch; gap: 16px; padding: 40px 20px 56px; }
+  .vacancies .section-head { gap: 16px; text-align: left; }
+  .vacancies .eyebrow { padding: 0; border-radius: 0; background: none; color: var(--red-text); font-size: 13px; font-weight: 700; line-height: 1.2; letter-spacing: .12em; }
+  .vacancies .h2 { font-size: 32px; font-weight: 700; line-height: 1.15; letter-spacing: -0.01em; }
+  .vacancy-list { gap: 12px; }
+  .vacancy { flex-direction: column; align-items: stretch; gap: 12px; padding: 20px; }
+  .vacancy__title { font-size: 20px; line-height: 1.25; letter-spacing: -0.005em; }
+  .vacancy__link { line-height: 1.25; letter-spacing: -0.005em; }
+  .empty-state { gap: 10px; padding: 28px 24px; border-radius: 8px; text-align: left; }
+  .empty-state__title { font-size: 22px; line-height: 1.25; letter-spacing: -0.005em; }
+
+  /* Form card: white, single column, everything 16px apart (Figma mobile card) */
+  .page-careers .form-card { display: flex; flex-direction: column; }
+  .page-careers .form-card__intro,
+  .page-careers .form-card .form,
+  .page-careers .form-row,
+  .page-careers .form-submit { display: contents; }
+  .page-careers .form-submit__note { font-size: 13px; line-height: 1.45; color: rgba(34, 30, 31, .75); }
+
+  .page-careers .check,
+  .page-careers .check .wpcf7-list-item > label { gap: 10px; }
+  .page-careers .check { font-size: 13px; line-height: 1.45; color: rgba(34, 30, 31, .75); }
+  .page-careers .check input { border-radius: 5px; }
+
+  .choice > .field__label { margin-bottom: 8px; }
+  .choice__options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .choice__options .wpcf7-not-valid-tip { margin-top: -2px; }
+  .choice__chip,
+  .choice__options .wpcf7-list-item-label { border-radius: var(--radius-btn); background: var(--cream); font-weight: 600; }
+  .choice__opt input:checked + .choice__chip,
+  .choice__options input:checked + .wpcf7-list-item-label { color: var(--white); }
+
+  /* drop zone error: below the hint, which sits under the zone on phones */
+  .dropzone .wpcf7-not-valid-tip { top: calc(100% + 26px); }
+  .dropzone:has(.wpcf7-not-valid-tip) { margin-bottom: 49px; }
+
+}

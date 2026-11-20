@@ -1,0 +1,299 @@
+/* ==========================================================================
+   "Submit your application" — form components + modal (desktop) / sheet (mobile)
+   Loaded on every page (after styles.css): the same form is used on the
+   Franchise page (#apply), on the Apply page and inside the modal that
+   assets/js/apply.js builds from the Apply page (#application-form).
+   Figma: Franchise 68-47 / 110-428, Apply 142-871 / 148-2067,
+          modal 93-362, mobile sheet 116-520.
+   ========================================================================== */
+
+/* Form section band and card radii are shared: see .form-section / .form-card in styles.css */
+
+/* WordPress: the form is a Contact Form 7 form (inc/forms/application.php). CF7 prints the radio
+   options as span.wpcf7-radio.app-options__list > span.wpcf7-list-item > label > input + span.wpcf7-list-item-label,
+   wraps every control in span.wpcf7-form-control-wrap and nests the consent checkbox in its own label;
+   the selectors below style that markup exactly like the static .app-option / .app-upload / .app-consent. */
+
+/* ---------- Restaurants planned: segmented radio options ---------- */
+.app-options { margin: 0; padding: 0; border: 0; min-width: 0; }
+.app-options > legend { display: block; padding: 0; margin: 0 0 10px; }
+.app-options__list { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.app-option,
+.app-options .wpcf7-list-item { position: relative; display: block; margin: 0; }
+.app-options .wpcf7-list-item > label { display: block; }
+.app-option input,
+.app-options .wpcf7-list-item input {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; margin: 0;
+  opacity: 0; cursor: pointer;
+}
+.app-option span,
+.app-options .wpcf7-list-item-label {
+  display: flex; align-items: center; justify-content: center;
+  height: 48px; padding: 0 8px;
+  border-radius: var(--radius-btn);
+  border: 1px solid rgba(34, 30, 31, .15);
+  background: var(--white);
+  color: var(--char);
+  font-size: 15px; font-weight: 700; line-height: 18px;
+  text-align: center; white-space: nowrap;
+  pointer-events: none;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.app-options .wpcf7-list-item-label::before,
+.app-options .wpcf7-list-item-label::after { content: none; }
+.app-option:hover span,
+.app-options .wpcf7-list-item:hover .wpcf7-list-item-label { border-color: rgba(34, 30, 31, .45); }
+.app-options .wpcf7-not-valid .wpcf7-list-item-label { border-color: var(--red-text); }
+.app-option input:checked + span,
+.app-options .wpcf7-list-item input:checked + .wpcf7-list-item-label { background: var(--char); border-color: var(--char); color: var(--cream); }
+.app-option input:focus-visible + span,
+.app-options .wpcf7-list-item input:focus-visible + .wpcf7-list-item-label { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+/* ---------- Relevant documents: drop zone (the file input covers the zone, so drag & drop is native) ---------- */
+/* CF7's wrapper around the file input takes no box, so the input still covers the whole zone */
+.app-upload .wpcf7-form-control-wrap { display: contents; }
+/* CF7 error message ("Please choose a PDF file."): a third row inside the zone, under the hint */
+.app-upload .wpcf7-not-valid-tip { grid-column: 2; grid-row: 3; margin-top: 4px; }
+.app-upload:has(.wpcf7-not-valid) .app-upload__zone { border-color: var(--red-text); }
+.app-upload__zone {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  column-gap: 14px; row-gap: 2px;
+  align-items: center;
+  min-height: 87px;
+  padding: 16px 18px;
+  border: 1.5px dashed rgba(34, 30, 31, .3);
+  border-radius: var(--radius-btn);
+  background: rgba(255, 255, 255, .6);
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.app-upload__drop { display: contents; }
+.app-upload__input {
+  position: absolute; inset: 0; z-index: 1;
+  width: 100%; height: 100%; margin: 0;
+  opacity: 0; cursor: pointer;
+}
+.app-upload__icon {
+  grid-row: 1 / span 2;
+  width: 36px; height: 36px;
+  border-radius: var(--radius-btn);
+  background: var(--char); color: var(--white);
+  display: grid; place-items: center;
+  font-size: 18px; font-weight: 700; line-height: 1;
+}
+.app-upload__title { grid-column: 2; align-self: end; font-size: 15px; font-weight: 700; line-height: 18px; overflow-wrap: anywhere; }
+.app-upload__hint { grid-column: 2; align-self: start; font-size: 13px; line-height: 16px; color: var(--muted); }
+.app-upload__zone:hover,
+.app-upload.is-dragover .app-upload__zone { border-color: var(--char); background: var(--white); }
+.app-upload__zone:focus-within { outline: 3px solid var(--yellow); outline-offset: 3px; }
+.app-upload.is-filled .app-upload__icon { background: var(--red); }
+
+/* ---------- Consent ---------- */
+.app-consent a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+.app-consent a:hover { text-decoration-thickness: 2px; }
+/* CF7 [acceptance]: error message lined up with the text, red box while it is missing */
+.app-consent .wpcf7-not-valid-tip { padding-left: 32px; }
+.app-consent .wpcf7-not-valid input { border-color: var(--red-text); }
+
+/* ---------- Mobile: white application card, fields in Figma mobile sizes ---------- */
+@media (max-width: 767px) {
+  .form-card--app {
+    display: flex; flex-direction: column; gap: 16px;
+    padding: 24px 18px;
+    border-radius: var(--radius-img);
+    background: var(--white);
+    box-shadow: none;
+  }
+  /* intro texts first, then the form, then "What happens next" */
+  .form-card--app .form-card__intro { display: contents; }
+  .form-card--app .form { order: 1; gap: 16px; }
+  .form-card--app .info-box { order: 2; }
+
+  .form-card--app .form-row { grid-template-columns: 1fr; gap: 16px; }
+  .form-card--app .select { padding-right: 40px; }
+
+  .app-options > legend { margin-bottom: 8px; }
+  .app-options__list { grid-template-columns: repeat(2, 150px); gap: 8px; }
+  .app-option span,
+  .app-options .wpcf7-list-item-label { border-radius: var(--radius-btn); background: var(--cream); font-weight: 600; }
+  .app-option input:checked + span,
+  .app-options .wpcf7-list-item input:checked + .wpcf7-list-item-label { color: var(--white); }
+
+  .app-upload__zone {
+    display: flex; flex-direction: column; align-items: stretch; gap: 6px;
+    min-height: 0; padding: 0;
+    border: 0; border-radius: 0; background: none;
+  }
+  .app-upload__zone:hover,
+  .app-upload.is-dragover .app-upload__zone { background: none; }
+  .app-upload__zone:focus-within { outline: none; }
+  .app-upload__drop {
+    position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    padding: 18px 14px;
+    border: 1px dashed rgba(34, 30, 31, .3);
+    border-radius: var(--radius-btn);
+    background: var(--cream);
+    text-align: center;
+  }
+  .app-upload__drop:focus-within { outline: 3px solid var(--yellow); outline-offset: 3px; }
+  .app-upload.is-dragover .app-upload__drop { border-color: var(--char); }
+  .app-upload__icon, .app-upload.is-filled .app-upload__icon { width: auto; height: 21px; border-radius: 0; background: none; color: var(--red-text); }
+  .app-upload__icon, .app-upload__title { align-self: center; }
+  .app-upload__title { font-weight: 600; }
+  .app-upload__hint { line-height: 1.45; color: rgba(34, 30, 31, .65); }
+  .app-upload .wpcf7-not-valid-tip { order: 1; margin-top: 0; }
+  .app-upload:has(.wpcf7-not-valid) .app-upload__drop { border-color: var(--red-text); }
+
+  .app-consent,
+  .check.app-consent .wpcf7-list-item label { gap: 10px; }
+  .app-consent { font-size: 13px; line-height: 1.45; color: rgba(34, 30, 31, .75); }
+  .app-consent input { border-radius: 5px; }
+  .app-consent a { color: inherit; font-weight: 600; }
+  .app-consent .wpcf7-not-valid-tip { padding-left: 30px; }
+
+  .form-card--app .form-submit { gap: 16px; }
+  .form-card--app .form-submit .btn { --btn-fg: var(--white); --chip-bg: var(--white); }
+}
+
+/* ==========================================================================
+   Modal / sheet (built by assets/js/apply.js)
+   ========================================================================== */
+html.apply-modal-open { overflow: hidden; scrollbar-gutter: stable; }
+html.apply-modal-loading, html.apply-modal-loading [data-apply] { cursor: progress; }
+
+.apply-modal { position: fixed; inset: 0; z-index: 300; }
+.apply-modal[hidden],
+.apply-modal [hidden] { display: none !important; }
+
+.apply-modal__backdrop {
+  position: absolute; inset: 0;
+  background: rgba(34, 30, 31, .72);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.apply-modal__scroller {
+  position: absolute; inset: 0;
+  display: flex;
+  padding: 40px 24px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.apply-modal__dialog {
+  position: relative;
+  width: 100%; max-width: 1280px;
+  margin: auto;
+  opacity: 0;
+  transform: translateY(16px) scale(.985);
+  transition: opacity .25s ease, transform .3s cubic-bezier(.2, .8, .2, 1), max-width .2s ease;
+}
+.apply-modal__dialog:focus { outline: none; }
+.apply-modal.is-open .apply-modal__backdrop { opacity: 1; }
+.apply-modal.is-open .apply-modal__dialog { opacity: 1; transform: none; }
+
+.apply-modal .apply-modal__card { margin: 0; }
+.apply-modal__close {
+  position: absolute; top: 20px; right: 20px; z-index: 3;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--char); color: var(--white);
+  display: grid; place-items: center;
+  transition: transform .2s ease, background-color .2s ease;
+}
+.apply-modal__close:hover { transform: rotate(90deg); }
+.apply-modal__close svg { width: 14px; height: 14px; }
+.apply-modal__bar, .apply-modal__sticky { display: none; }
+
+/* Thank-you state (sheet frame B3; same content in the desktop modal) */
+.apply-modal__dialog.is-done { max-width: 640px; }
+.apply-modal__done {
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  padding: 72px 64px;
+  border-radius: var(--radius-card);
+  background: var(--cream);
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, .35);
+}
+.apply-modal__check {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--red); color: var(--white);
+  display: grid; place-items: center;
+}
+.apply-modal__check svg { width: 30px; height: 30px; }
+.apply-modal__done-title { font-size: 40px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+.apply-modal__done-title:focus { outline: none; }
+.apply-modal__done-text { font-size: 16px; line-height: 1.5; color: rgba(34, 30, 31, .75); }
+.apply-modal__done .btn { margin-top: 8px; }
+
+/* ---------- Mobile: full-screen sheet ---------- */
+@media (max-width: 767px) {
+  .apply-modal__backdrop { background: rgba(0, 0, 0, .55); -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .apply-modal__scroller { position: static; display: block; padding: 0; overflow: visible; }
+  .apply-modal__dialog {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    height: 92%;
+    max-width: none;
+    margin: 0;
+    display: flex; flex-direction: column;
+    border-radius: var(--radius-img) var(--radius-img) 0 0;
+    background: var(--white);
+    overflow: hidden;
+    opacity: 1;
+    transform: translateY(100%);
+    transition: transform .35s cubic-bezier(.2, .8, .2, 1), height .3s ease, border-radius .3s ease;
+  }
+  .apply-modal__dialog.is-full { height: 100%; border-radius: 0; }
+  .apply-modal__dialog.is-done { max-width: none; }
+  /* WordPress: logged-in editors – keep the full-screen sheet below the admin bar */
+  body.admin-bar .apply-modal__dialog.is-full { height: calc(100% - 46px); }
+
+  .apply-modal__bar {
+    flex: none;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    padding: 10px 16px 12px;
+    border-bottom: 1px solid rgba(34, 30, 31, .08);
+    touch-action: none;
+  }
+  .apply-modal__handle { width: 40px; height: 4px; border-radius: 2px; background: rgba(34, 30, 31, .2); }
+  .apply-modal__bar-title {
+    align-self: stretch;
+    min-height: 36px; padding-right: 48px;
+    display: flex; align-items: center;
+    font-size: 18px; font-weight: 800; line-height: 21px;
+    color: var(--char);
+  }
+  .apply-modal__close { top: 24px; right: 16px; width: 36px; height: 36px; background: var(--cream); color: var(--char); }
+  .apply-modal__close:hover { transform: none; }
+  .apply-modal__close svg { width: 12px; height: 12px; }
+
+  .apply-modal__body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+  .apply-modal .apply-modal__card { border-radius: 0; max-width: none; }
+  .apply-modal .apply-modal__card .form-card__intro > .eyebrow,
+  .apply-modal .apply-modal__card .form-card__intro > .h2 { display: none; }
+
+  .apply-modal__sticky {
+    display: block;
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+    padding: 12px 16px 24px;
+    background: var(--white);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, .1);
+    transform: translateY(110%);
+    visibility: hidden;
+    transition: transform .25s ease, visibility 0s linear .25s;
+  }
+  .apply-modal__dialog.has-sticky .apply-modal__sticky { transform: none; visibility: visible; transition: transform .25s ease, visibility 0s; }
+  .apply-modal__sticky .btn { width: 100%; --btn-fg: var(--white); --chip-bg: var(--white); }
+
+  .apply-modal__done { min-height: 100%; justify-content: center; padding: 28px; border-radius: 0; background: none; box-shadow: none; }
+  .apply-modal__done-title { font-size: 28px; line-height: 1.1; }
+  .apply-modal__done .btn { width: 100%; margin-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apply-modal__backdrop, .apply-modal__dialog, .apply-modal__sticky { transition: none !important; }
+}
