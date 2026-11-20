@@ -1,6 +1,6 @@
 /* ==========================================================================
    Motion & hover effects (matched to the Studio Ubique prototype)
-   Scroll reveals, count-ups, parallax, aurora glow, rising steam, bobbing,
+   Scroll reveals, count-ups, parallax, rising steam, bobbing,
    spinning stamps, twinkling sparkles and hover lifts.
    Classes added by assets/js/motion.js; everything is off for reduced motion.
    ========================================================================== */
@@ -14,19 +14,6 @@
 .site-header.is-scrolled { top: 12px; box-shadow: inset 0 0 0 1px rgba(245, 241, 232, .1), 0 14px 34px rgba(0, 0, 0, .28); }
 @media (max-width: 767px) { .site-header.is-scrolled { top: 8px; } }
 
-/* ---------- Aurora: slow, blurred red light drifting behind dark sections ---------- */
-.aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-.aurora i { position: absolute; border-radius: 50%; filter: blur(90px); mix-blend-mode: screen; will-change: transform; }
-.aurora i:nth-child(1) { width: 52%; height: 70%; left: 2%; top: -22%; background: #ff2a45; opacity: .5; animation: aurora-1 16s ease-in-out infinite alternate; }
-.aurora i:nth-child(2) { width: 46%; height: 72%; right: 0; top: -10%; background: #d0101e; opacity: .48; animation: aurora-2 20s ease-in-out infinite alternate; }
-.aurora i:nth-child(3) { width: 40%; height: 52%; left: 30%; bottom: -18%; background: #ff6a2a; opacity: .3; animation: aurora-3 13s ease-in-out infinite alternate; }
-.aurora--soft i { opacity: .32; }
-.aurora--soft i:nth-child(3) { opacity: .2; }
-.closing .aurora--soft i { opacity: .45; }
-.closing .aurora--soft i:nth-child(3) { opacity: .28; }
-@keyframes aurora-1 { 0% { transform: translate(-12%, -4%) scale(1); } 50% { transform: translate(28%, 16%) scale(1.25); } 100% { transform: translate(8%, 30%) scale(.9); } }
-@keyframes aurora-2 { 0% { transform: translate(10%, 0) scale(1.05); } 50% { transform: translate(-30%, -10%) scale(.88); } 100% { transform: translate(-12%, 22%) scale(1.25); } }
-@keyframes aurora-3 { 0% { transform: translate(0, 0) scale(.9); } 50% { transform: translate(-34%, -26%) scale(1.3); } 100% { transform: translate(30%, -10%) scale(1); } }
 /* keep section content above the light */
 .site-footer__inner { position: relative; z-index: 1; }
 
@@ -118,5 +105,5 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
-  .aurora, .steam { display: none; }
+  .steam { display: none; }
 }

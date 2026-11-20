@@ -1,5 +1,5 @@
 /* bb.q Chicken Europe — motion (matched to the Studio Ubique prototype).
-   Scroll reveals, count-up numbers, cut-out parallax, aurora light, rising steam.
+   Scroll reveals, count-up numbers, cut-out parallax, rising steam.
    Works on every page: it looks for known blocks and also honours
    [data-reveal], [data-reveal-group], [data-count] and [data-par] in the markup. */
 (function () {
@@ -7,21 +7,6 @@
   var doc = document;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || doc).querySelectorAll(sel)); };
-
-  /* ---------- Aurora light behind dark sections ---------- */
-  function addAurora(el, soft) {
-    if (!el || el.querySelector(':scope > .aurora')) return;
-    var a = doc.createElement('div');
-    a.className = 'aurora' + (soft ? ' aurora--soft' : '');
-    a.setAttribute('aria-hidden', 'true');
-    a.innerHTML = '<i></i><i></i><i></i>';
-    el.insertBefore(a, el.firstChild);
-  }
-  if (!reduced) {
-    $('.hero').forEach(function (el) { addAurora(el, false); });
-    // Not on the closing banner or the footer: their Figma backgrounds (a photo with a dark fade, and the
-    // footer photo with its red band behind the slogan) are shown as designed.
-  }
 
   /* ---------- Steam: wisps of noise that rise above hot food ---------- */
   if (!reduced) {
@@ -107,7 +92,7 @@
       var fixedLike = /^(absolute|fixed|sticky)$/;
       var canMove = function (el) {
         if (used.has(el) || insideUsed(el) || el.querySelector('.reveal')) return false;
-        if (el.matches('.marquee, .aurora, .steam, script, template, [hidden]')) return false;
+        if (el.matches('.marquee, .steam, script, template, [hidden]')) return false;
         var cs = getComputedStyle(el);
         // leave rotated or positioned pieces alone: the reveal would override their transform
         return !fixedLike.test(cs.position) && cs.transform === 'none' && cs.display !== 'none';

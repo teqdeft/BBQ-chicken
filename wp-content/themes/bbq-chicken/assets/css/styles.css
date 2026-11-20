@@ -501,8 +501,10 @@ ul, ol { padding: 0; list-style: none; }
   position: relative;
   padding: 96px var(--gutter) 40px;
   color: var(--cream);
-  /* Figma v4: dark base + photo, anchored to the top */
-  background: var(--ink-deep) url("../img/footer-bg.jpg") center top / cover no-repeat;
+  /* Figma v4: dark base + photo, anchored to the top. The photo keeps its design height (1134px; the 1680
+     frame shows its top 1038px) and stretches to the full width, so on screens wider than 1680 the red band
+     stays behind the slogan and the link columns sit on the dark part, as in Figma */
+  background: var(--ink-deep) url("../img/footer-bg.jpg") center top / 100% 1134px no-repeat;
   isolation: isolate;
 }
 .closing { isolation: isolate; }
@@ -580,7 +582,7 @@ ul, ol { padding: 0; list-style: none; }
 }
 
 @media (max-width: 767px) {
-  .site-footer { padding: 56px 20px 32px; background-image: url("../img/footer-bg-m.jpg"); }
+  .site-footer { padding: 56px 20px 32px; background-image: url("../img/footer-bg-m.jpg"); background-size: cover; }
   .site-footer__inner { align-items: stretch; gap: 36px; }
   .order-bar { flex-direction: column; align-items: stretch; gap: 14px; padding: 22px 20px; }
   .order-bar__title { font-size: 26px; }
@@ -727,8 +729,11 @@ ul, ol { padding: 0; list-style: none; }
 .hero--home {
   height: auto;
   min-height: 860px;
+  /* Figma: red radial glow over #1A0C0F. The colours are precomputed the way Figma blends gradient stops
+     (straight alpha); browsers blend premultiplied, which would leave the corners and the bottom lighter. */
   background:
-    radial-gradient(60% 90% at 50% 30%, #C8101C 0%, rgba(150, 14, 26, .85) 45%, rgba(26, 12, 15, 0) 100%),
+    radial-gradient(60% 90% at 50% 30%, #C8101C 0%, #AF0F1B 15%, #990E1A 30%, #830E18 45%, #710D17 50%, #610D15 55%, #520D14 60%,
+      #450D13 65%, #390D12 70%, #300C11 75%, #280C10 80%, #220C10 85%, #1D0C0F 90%, #1B0C0F 95%, #1A0C0F 100%),
     #1A0C0F;
 }
 .hero--home .hero__content { margin-top: 267px; }
@@ -811,9 +816,10 @@ ul, ol { padding: 0; list-style: none; }
   display: flex; align-items: center; gap: 80px;
   padding-top: 120px; padding-bottom: 120px;
   color: var(--white);
-  background:
-    radial-gradient(75% 75% at 50% 50%, rgba(94, 17, 24, 0) 0%, rgba(140, 24, 30, .35) 70%, rgba(94, 17, 24, .55) 100%),
-    var(--red);
+  /* Figma radial (colours precomputed the way Figma blends stops, see design-data/tools/figma-gradient.js) */
+  background: radial-gradient(55.56% 31.25% at 11.11% 31.25%, #E31937 0%, #E01936 5%, #DD1935 10%, #DA1935 15%, #D71834 20%,
+    #D41833 25%, #D21833 30%, #D01832 35%, #CE1831 40%, #CC1831 45%, #CA1830 50%, #C81830 55%, #C7182F 60%, #C6192F 65%,
+    #C5192E 70%, #BF182D 75%, #B8182C 80%, #B2172A 85%, #AA1629 90%, #A21528 95%, #9A1526 100%), #E31937;
 }
 /* text column stays 620; the map shrinks from 740 (1680) to 580 (1440) */
 .find__text { flex: 1 0 620px; min-width: 0; display: flex; flex-direction: column; gap: 24px; }
@@ -901,9 +907,10 @@ ul, ol { padding: 0; list-style: none; }
 .markets {
   padding-top: 128px; padding-bottom: 128px;
   color: var(--white);
-  background:
-    radial-gradient(60% 45% at 50% 22%, rgba(191, 13, 31, .45) 0%, rgba(128, 10, 20, .14) 50%, rgba(34, 30, 31, 0) 100%),
-    var(--char);
+  /* Figma radial (colours precomputed the way Figma blends stops, see design-data/tools/figma-gradient.js) */
+  background: radial-gradient(55.56% 31.25% at 50% 31.25%, #69161F 0%, #61171F 5%, #5A171E 10%, #53181E 15%, #4D181E 20%,
+    #47191D 25%, #41191D 30%, #3C1A1D 35%, #381A1D 40%, #331B1D 45%, #2F1B1D 50%, #2D1C1E 55%, #2A1C1E 60%, #281D1E 65%,
+    #271D1E 70%, #251D1F 75%, #241E1F 80%, #231E1F 85%, #231E1F 90%, #221E1F 95%, #221E1F 100%), #221E1F;
   overflow: hidden;
 }
 .section-head { display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
@@ -1161,7 +1168,7 @@ ul, ol { padding: 0; list-style: none; }
   .slider .slider__nav { padding: 0 20px; margin-top: 22px; }
   .food__cta { padding: 0 20px; margin-top: 22px; }
 
-  .find { padding: 64px 20px; gap: 20px; }
+  .find { padding: 64px 20px; gap: 20px; background: var(--red); } /* the 390 design has no gradient here */
   .find__text { gap: 20px; }
   .find__text .lead { font-weight: 500; line-height: 1.52; color: var(--white); }
   .postcode { flex-direction: column; align-items: stretch; padding: 0; background: none; gap: 8px; }
@@ -1180,7 +1187,12 @@ ul, ol { padding: 0; list-style: none; }
   .kitchen-card .btn { display: none; }
   .find .cutout--bucket { display: none; }
 
-  .markets { padding: 64px 20px; background: radial-gradient(90% 40% at 50% 10%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%), var(--char); }
+  .markets {
+    padding: 64px 20px;
+    background: radial-gradient(50% 50% at 50% 50%, #831C2B 0%, #791C29 5%, #711C28 10%, #691C26 15%, #611C25 20%, #5A1C24 25%,
+      #531C23 30%, #4C1C22 35%, #461C21 40%, #401D20 45%, #3B1D20 50%, #361D1F 55%, #321D1F 60%, #2E1D1F 65%, #2B1D1F 70%,
+      #281E1F 75%, #261E1F 80%, #241E1F 85%, #231E1F 90%, #221E1F 95%, #221E1F 100%), #221E1F;
+  }
   .section-head { align-items: flex-start; text-align: left; gap: 20px; }
   .markets__body { margin-top: 20px; gap: 20px; }
   .markets__text { display: contents; }
