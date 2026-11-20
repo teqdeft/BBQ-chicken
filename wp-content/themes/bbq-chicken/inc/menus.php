@@ -123,12 +123,34 @@ function bbq_menu_resolve( $items ) {
 	return $items;
 }
 
+/**
+ * URL of the page being viewed, built from what WordPress is showing (not from the request path,
+ * which would repeat the folder on sites installed in a subfolder such as /bbq-chicken/).
+ */
+function bbq_current_url() {
+	static $url = null;
+	if ( null === $url ) {
+		if ( is_front_page() ) {
+			$url = home_url( '/' );
+		} elseif ( is_home() ) {
+			$url = bbq_page_url( 'news' );
+		} elseif ( is_singular() ) {
+			$url = get_permalink( get_queried_object_id() );
+		} else {
+			global $wp;
+			$url = home_url( trailingslashit( isset( $wp->request ) ? $wp->request : '' ) );
+		}
+		$url = untrailingslashit( strtok( (string) $url, '?' ) );
+	}
+	return $url;
+}
+
 /** Is this URL the page being viewed? (Links with a #section don't count, like in the design.) */
 function bbq_menu_is_current( $url ) {
 	if ( ! $url || false !== strpos( $url, '#' ) ) {
 		return false;
 	}
-	$here = untrailingslashit( strtok( home_url( add_query_arg( array() ) ), '?' ) );
+	$here = bbq_current_url();
 	$url  = untrailingslashit( strtok( $url, '?' ) );
 	if ( $url === $here ) {
 		return true;

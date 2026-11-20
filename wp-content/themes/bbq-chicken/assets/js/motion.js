@@ -18,9 +18,9 @@
     el.insertBefore(a, el.firstChild);
   }
   if (!reduced) {
-    $$('.hero').forEach(function (el) { addAurora(el, false); });
-    $$('.closing').forEach(function (el) { addAurora(el, true); });
-    $$('.site-footer').forEach(function (el) { addAurora(el, true); });
+    $('.hero').forEach(function (el) { addAurora(el, false); });
+    // Not on the closing banner or the footer: their Figma backgrounds (a photo with a dark fade, and the
+    // footer photo with its red band behind the slogan) are shown as designed.
   }
 
   /* ---------- Steam: wisps of noise that rise above hot food ---------- */
