@@ -1,0 +1,91 @@
+(Chili icon sub-layers condensed: each "Chili" frame 22x22 = 2 vectors, body 12.8x14.7 @6.1,5.5 + stem 2.4x3.7 @14.1,1.8, stroke 1.4;
+ active = fill+stroke #E31937, inactive = fill #FFFFFF stroke #A7A9AC)
+~ F 140:637 "Menu – Desktop 1680 – Design v4" 1680x6462.2 @7520,-150 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#F5F1E8 clip
+~     F 140:639 "IMG · 8pcs_fried (cutout)" 569x720 @941,130 sz:FF fill:IMG(19e89c23,FIT) fx:DROP_SHADOW(#000000/0.50 0,40 r70)
+~       F 140:641 "Eyebrow" 98x30 @0,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#F5F1E8/0.14 r:4 clip
+~         T 140:642 74x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "THE MENU"
+~       T 140:644 600x81 @0,250 sz:FH {Pretendard Regular 18/150% ls-0.2% #FFFFFF/0.92 LEFT} "Our European menu is built around quick-service favourites: boneless, tenders, burgers, wraps and bowls, with a few Korean sides for the curious."
+~         F 140:646 "Button – Submit your application" 151x52 @0,0 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#F5F1E8 r:6 clip
+~           T 140:647 79x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F LEFT} "Order now"
+~         F 140:651 "Button – How it works" 179x55 @274,0 HIDDEN sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER stroke:#F5F1E8 1.5 r:6 clip
+~           T 140:652 98x20 @25.5,17.5 sz:HH {Pretendard Bold 16/20 ls0 #F5F1E8 LEFT} "How it works"
+~   F 140:695 "The chicken" 1680x1215 @0,860 sz:FH AL:V gap56 p[80,120,100,120] MIN/CENTER fill:#F5F1E8 clip
+~       F 140:697 "Eyebrow" 89x30 @365.5,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#221E1F r:4 clip
+~         T 140:698 65x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "CHICKEN"
+~       F 140:701 "Card – Real Korean Fried Chicken" 464x420 @0,0 sz:FF fill:#221E1F r:16 clip
+~         T 140:703 408x70 @28,292 sz:FF {Pretendard Black 34/102% ls-2.0% #FFFFFF LEFT} "Real Korean Fried Chicken"
+~         T 140:704 408x20 @28,372 sz:FF {Pretendard Medium 16/20 ls0 #FFFFFF LEFT} "Golden Original, double-fried. 2, 4 or 8 pieces."
+~       F 140:705 "Card – Real Crispy Tenders" 464x420 @488,0 sz:FF fill:#E31937 r:16 clip
+~         F 140:706 "IMG · strips (cutout)" 424x260 @20,20 sz:FF fill:IMG(004e8813,FIT) fx:DROP_SHADOW(#000000/0.30 0,16 r24) clip
+~         T 140:708 408x20 @28,337 sz:FF {Pretendard Medium 16/20 ls0 #FFFFFF LEFT} "Crispy chicken strips. 3, 6 or 12 pieces."
+~       F 140:709 "Card – Crispy Chicken Burger" 464x420 @976,0 sz:FF fill:#8E1220 r:16 clip
+~         T 140:711 408x35 @28,292 sz:FF {Pretendard Black 34/102% ls-2.0% #FFFFFF LEFT} "Crispy Chicken Burger"
+~         T 140:712 408x20 @28,337 sz:FF {Pretendard Medium 16/20 ls0 #FFFFFF LEFT} "Crispy chicken in a soft bun."
+~       F 140:713 "Card – Wraps" 464x420 @0,444 sz:FF fill:#8E1220 r:16 clip
+~         T 140:715 408x35 @28,292 sz:FF {Pretendard Black 34/102% ls-2.0% #FFFFFF LEFT} "Wraps"
+~         T 140:716 408x20 @28,337 sz:FF {Pretendard Medium 16/20 ls0 #FFFFFF LEFT} "Crispy or grilled chicken, wrapped to go."
+~       F 140:717 "Card – Rice and salad bowls" 464x420 @488,444 sz:FF fill:#221E1F r:16 clip
+~         T 140:719 408x35 @28,292 sz:FF {Pretendard Black 34/102% ls-2.0% #FFFFFF LEFT} "Rice and salad bowls"
+~         T 140:720 408x20 @28,337 sz:FF {Pretendard Medium 16/20 ls0 #FFFFFF LEFT} "Crispy or grilled chicken on rice or salad."
+~       F 140:721 "Card – Mega Party Bucket" 464x420 @976,444 sz:FF fill:#E31937 r:16 clip
+~         F 140:722 "IMG · bucket (cutout)" 424x260 @20,20 sz:FF fill:IMG(19e89c23,FIT) fx:DROP_SHADOW(#000000/0.30 0,16 r24) clip
+~         T 140:723 408x35 @28,292 sz:FF {Pretendard Black 34/102% ls-2.0% #FFFFFF LEFT} "Mega Party Bucket"
+~         T 140:724 408x40 @28,337 sz:FF {Pretendard Medium 16/20 ls0 #FFFFFF LEFT} "Our biggest box of Real Korean Fried Chicken, made for sharing."
+~   F 140:725 "Sauces" 1680x1640 @0,2075 sz:FH AL:V gap64 p[80,120,100,120] MIN/CENTER fill:#F5F1E8 clip
+~       F 140:727 "Eyebrow" 82x30 @369,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#221E1F r:4 clip
+~         T 140:728 58x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "SAUCES"
+~     F 140:730 "Sauces grid (3 per row, 9 sauces)" 1440x1133 @120,259 sz:FH AL:H gap32 p[0,0,0,0] MIN/MIN wrap clip
++       F 391:2846 "Sauce – Secret Sauce" 458x348 @0,0 sz:FH AL:V gap10 p[16,16,24,16] MIN/MIN fill:#FFFFFF r:16 clip
+          F 391:2857 "IMG · Secret Sauce (dipping sauce photo)" 426x200 @16,16 sz:FF fill:IMG(0f4e5f46,FILL) r:8 clip
+          T 391:2855 426x31 @16,226 sz:FH {Pretendard ExtraBold 26/auto ls-1.5% #221E1F LEFT} "Secret Sauce"
+          T 391:2856 426x25 @16,267 sz:FH {Pretendard Regular 16/155% ls-0.1% #221E1F LEFT} "Sweet and chilli, the bb.q classic."
+          F 391:2859 "Spice level 1 of 3 (draft, to be confirmed by BLT)" 121x22 @16,302 sz:HH AL:H gap6 MIN/CENTER  [chili red, white, white]
+            T 391:2869 37x16 @84,3 sz:HH {Pretendard Regular 13/auto ls0 #6B605C LEFT} "(draft)"
++       F 391:2870 "Sauce – Galbi" 458x348 @490,0 (same card) IMG(c7701ddc,FILL)
+          T 391:2879 "Galbi" / T 391:2880 "Sweet and sour, smoky Korean barbecue sauce."
+          F 391:2882 "Spice level 0 of 3 (draft, to be confirmed by BLT)" [white x3] T "(draft)"
++       F 391:2893 "Sauce – Gangjeong" 458x348 @980,0 IMG(f6389670,FILL)
+          T 391:2902 "Gangjeong" / T 391:2903 "Sweet, crunchy and slightly spicy."
+          F 391:2906 "Spice level 1 of 3 (draft, to be confirmed by BLT)" [red, white, white] T "(draft)"
++       F 391:2917 "Sauce – Jasoman" 458x348 @0,380 IMG(74b1175c,FILL)
+          T 391:2926 "Jasoman" / T 391:2927 "[Description to follow from BLT]"
+          F 391:2930 "Spice level 2 of 3 (draft, to be confirmed by BLT)" [red, red, white] T "(draft)"
++       F 391:2965 "Sauce – Cheesling" 458x348 @490,380 IMG(d6e8afd1,FILL)
+          T 391:2974 "Cheesling" / T 391:2975 "[Description to follow from BLT]"
+          F 391:2978 "Spice level 0 of 3 (draft, to be confirmed by BLT)" [white x3] T "(draft)"
++       F 510:1801 "Sauce – Red Chak Chak Mayo" 458x348 @980,380 IMG(b6052eaf,FILL)
+          T 510:1804 "Red Chak Chak Mayo" / T 510:1805 "[Description to follow from BLT]"
+          F 510:1806 "Spice level to be confirmed by BLT" 185x22 [white x3] T 510:1816 101x16 "(to be confirmed)"
++       F 391:2941 "Sauce – Galbi Mayo" 458x373 @0,760 IMG(760cc6c4,FILL)
+          T 391:2950 "Galbi Mayo" / T 391:2951 426x50 "Creamy mayonnaise with the sweet and sour touch of Galbi."
+          F 391:2954 "Spice level 0 of 3 (draft, to be confirmed by BLT)" [white x3] T "(draft)"
++       F 510:1817 "Sauce – Garlic Mayo" 458x348 @490,760 IMG(14e8b30c,FILL)
+          T 510:1820 "Garlic Mayo" / T 510:1821 "[Description to follow from BLT]"
+          F 510:1822 "Spice level to be confirmed by BLT" [white x3] T "(to be confirmed)"
++       F 510:1833 "Sauce – Jamaica Mayo" 458x348 @980,760 IMG(2e458709,FILL)
+          T 510:1836 "Jamaica Mayo" / T 510:1837 "[Description to follow from BLT]"
+          F 510:1838 "Spice level to be confirmed by BLT" [white x3] T "(to be confirmed)"
+~     F 140:767 "Mid-page CTA" 860x84 @410,1456 sz:HH AL:H gap24 p[16,16,16,40] MIN/CENTER fill:#221E1F r:12 clip
+~       F 140:769 "Button – Submit your application" 151x52 @693,16 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#F5F1E8 r:6 clip
+~         T 140:770 79x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F LEFT} "Order now"
+~     F 140:776 "BG · gradient (no photo)" 1680x1007 @0,0 ABS sz:FF fill:#1A0E10+G-RADIAL[#B01222/0.95@0.00 #6E101C/0.50@0.50 #1A0E10/0.00@1.00] clip
+~     R 140:777 "Overlay" 1680x1007 @0,0 ABS sz:FF fill:G-LINEAR[#221E1F/0.35@0.00 #221E1F/0.25@0.45 #221E1F/0.55@1.00]+G-RADIAL[#221E1F/0.78@0.00 #221E1F/0.45@0.45 #221E1F/0.00@0.80]
+~       F 140:779 "Eyebrow" 66x30 @397,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#F5F1E8/0.14 r:4 clip
+~         T 140:780 42x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "SIDES"
+~       F 140:784 "Side – Fries" 268.8x362 @0,0 sz:FF AL:V gap12 p[28,28,32,28] MIN/MIN fill:#FFFFFF/0.07 stroke:#FFFFFF/0.14 1 r:12 fx:BACKGROUND_BLUR(r20) clip
++         F 391:2989 "IMG · Fries (photo)" 210.8x170 @29,29 sz:FF fill:IMG(e1a4f9e7,FILL) r:8 clip
+~       F 140:789 "Side – Shaken Galaxy Fries" (same)
++         F 391:2990 "IMG · Shaken Galaxy Fries (photo)" 210.8x170 IMG(3fe336e8,FILL) r:8
+~       F 140:794 "Side – Coleslaw" (same)
++         F 391:2991 "IMG · Coleslaw (photo)" 210.8x170 IMG(7565711e,FILL) r:8
+~       F 140:799 "Side – Tteokbokki" (same)
++         F 391:2992 "IMG · Tteokbokki (photo)" 210.8x170 IMG(792e159d,FILL) r:8
+~       F 213:2782 "Side – ChiBBoQ Sweet Bites" (same)
++         F 391:2993 "IMG · ChiBBoQ Sweet Bites (photo)" 210.8x170 IMG(a88bf540,FILL) r:8
+~       F 140:805 "Button – Explore the franchise" HIDDEN
+~       F 140:810 "Button – Submit your application" 151x52 fill:#F5F1E8 r:6 / T 140:811 "Order now"
+~   F 140:815 "Closing CTA" 1680x702 @0,4722 sz:FH AL:V gap28 p[160,120,210,120] MIN/CENTER fill:#180D10+IMG(abee8490,FILL)+G-LINEAR[#161213/0.00@0.70 #161213@1.00]
+~     F 140:816 "CTA card (overlaps CTA photo and footer)" 1040x332 @320,160 sz:FH AL:V gap24 p[72,80,72,80] MIN/CENTER fill:#F5F1E8 r:16 clip
+~       F 140:819 "Button – Submit your application (red)" 151x52 fill:#E31937 r:6 / T 140:820 "Order now"
+~   I 140:868 "Footer" / I 140:945 "Header" / I 140:983 "HIDDEN – Floating CTA (removed on client request, 18 Nov)"
+REMOVED: 140:731,140:732,140:733,140:739,140:740,140:741,140:742,140:743,140:744,140:748,140:749,140:750,140:751,140:752,140:753,140:754,140:755,140:756,140:757,140:758,140:759,140:760,140:761,140:762,140:763,140:764,140:765,140:766,140:785,140:786,140:790,140:791,140:795,140:796,140:800,140:801,213:2791,213:2783,213:2784

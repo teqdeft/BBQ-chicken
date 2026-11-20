@@ -1,0 +1,37 @@
+~     F 93:364 "IMG · bucket_02 (cutout)" 629.7x720 @1010.3,130 sz:FF fill:IMG(689ed37e,FIT) rot:-6 fx:DROP_SHADOW(#000000/0.50 0,40 r70)
+~       F 93:366 "Eyebrow" 106x30 @0,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#F5F1E8/0.14 r:4 clip
+~         T 93:367 82x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "FRANCHISE"
+~       T 93:369 600x54 @0,332 sz:FH {Pretendard Regular 18/150% ls-0.2% #FFFFFF/0.92 LEFT} "Ready to join the bb.q Chicken franchise network in Europe? We're looking for experienced operators to open bb.q restaurants across the continent."
+~         F 93:371 "Button – Submit your application" 251x52 @0,0 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#F5F1E8 r:6 clip
+~           T 93:372 179x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F LEFT} "Submit your application"
+~         F 93:376 "Button – How it works" 179x55 @274,0 HIDDEN sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER stroke:#F5F1E8 1.5 r:6 clip
+~           T 93:377 98x20 @25.5,17.5 sz:HH {Pretendard Bold 16/20 ls0 #F5F1E8 LEFT} "How it works"
+~         T 93:462 125x25 @0,74 sz:HH {Pretendard Regular 16/155% ls-0.1% #FFFFFF LEFT} "Founded in Korea"
+~         T 93:465 164x25 @33,74 sz:HH {Pretendard Regular 16/155% ls-0.1% #FFFFFF LEFT} "Restaurants worldwide"
+~         T 93:468 70x25 @33,74 sz:HH {Pretendard Regular 16/155% ls-0.1% #FFFFFF LEFT} "Countries"
+~         T 93:471 155x25 @33,74 sz:HH {Pretendard Regular 16/155% ls-0.1% #FFFFFF LEFT} "Restaurants in the US"
+~   I 93:472 "Header / Desktop 1680 (sticky)" 1584x88 @48,24 ABS sz:FF AL:H gap0 p[0,20,0,20] SPACE_BETWEEN/CENTER fill:#221E1F stroke:#F5F1E8/0.1 1 r:12 clip comp:Header / Desktop 1680 (sticky)
+~   F 93:511 "Modal – Submit your application" 1280x757 @200,171.5 sz:FH AL:H gap72 p[72,72,72,72] MIN/MIN fill:#F5F1E8 r:16 fx:DROP_SHADOW(#000000/0.35 0,30 r60) clip
+~       F 93:513 "Eyebrow" 70x30 @0,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#221E1F r:4 clip
+~         T 93:514 46x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "APPLY"
+~       F 93:517 "What happens next" 440x178 @0,278 sz:FH AL:V gap14 p[22,24,22,24] MIN/MIN fill:#D6D2C4/0.5 r:8 clip
+~         T 93:518 152x14 @24,22 sz:HH {Pretendard Bold 12/auto ls12.0% #D61834 LEFT} "WHAT HAPPENS NEXT"
+~           T 93:522 354x18 @38,4 sz:FH {Pretendard Medium 15/auto ls0 #221E1F LEFT} "We reply within 5 working days."
+~           F 93:535 "Input" 304x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 93:536 136x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "First and last name"
+~           F 93:539 "Input" 304x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 93:540 154x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "name@company.com"
+~         F 93:544 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~           T 93:545 305x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "e.g. Managing Director, Example Foods Ltd"
+~         F 93:548 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~           T 93:549 117x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "Select a country"
+~           F 93:554 "Option – 1 to 4" 148.5x48 @0,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~           F 93:556 "Option – 5 to 9 (selected)" 148.5x48 @158.5,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#221E1F stroke:#221E1F 1 r:6 clip
+~           F 93:558 "Option – 10 to 24" 148.5x48 @317,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~           F 93:560 "Option – 25 or more" 148.5x48 @475.5,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~         F 93:564 "Drop zone" 624x87 @0,25 sz:FH AL:H gap14 p[16,18,16,18] MIN/CENTER fill:#FFFFFF/0.6 stroke:#221E1F/0.3 1.5 dash6,6 r:6 clip
+~           F 93:565 "Upload icon" 36x36 @19.5,25.5 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#221E1F r:6 clip
+~         F 93:574 "Button – Submit your application (red)" 251x52 @0,0 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#E31937 r:6 clip
+~           T 93:575 179x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #FFFFFF LEFT} "Submit your application"
+~         T 93:579 353x34 @271,9 sz:FH {Pretendard Regular 14/auto ls0 #6B605C LEFT} "No obligation. We never share your details with third parties."
+REMOVED: 

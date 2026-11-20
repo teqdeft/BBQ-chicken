@@ -9,7 +9,7 @@
   /* ---------- Header shadow on scroll ---------- */
   var header = doc.querySelector('[data-header]');
   function onScroll() {
-    if (header) header.classList.toggle('is-scrolled', window.scrollY > 8);
+    if (header) header.classList.toggle('is-scrolled', window.scrollY > 40);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
@@ -58,6 +58,16 @@
     });
   }
 
+  /* Expandable items in the mobile menu (Discover bb.q, Franchise) */
+  doc.querySelectorAll('[data-mnav]').forEach(function (item) {
+    var btn = item.querySelector('button');
+    btn.addEventListener('click', function () {
+      var open = !item.classList.contains('is-open');
+      item.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', String(open));
+    });
+  });
+
   /* ---------- Marquees: duplicate content for a seamless loop ---------- */
   doc.querySelectorAll('[data-marquee]').forEach(function (track) {
     var html = track.innerHTML;
@@ -69,43 +79,82 @@
     track.style.animationDuration = seconds + 's';
   });
 
-  /* ---------- Card slider (home food cards) ---------- */
+  /* ---------- Card sliders ----------
+     [data-slider]       one row of cards with arrows and dots. Desktop centres the active card,
+                         mobile lines it up on the left edge. Arrows dim at either end.
+     [data-slider-loop]  endless row (home food cards): the set is repeated on both sides,
+                         so the arrows never run out; clicking a side card brings it to the middle.
+     Mouse users can also drag the row left or right. */
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   doc.querySelectorAll('[data-slider]').forEach(function (slider) {
     var viewport = slider.querySelector('[data-slider-viewport]');
-    var cards = Array.prototype.slice.call(viewport.children).filter(function (c) {
+    if (!viewport) return;
+    var loop = slider.hasAttribute('data-slider-loop');
+    var real = Array.prototype.slice.call(viewport.children).filter(function (c) {
       return getComputedStyle(c).display !== 'none';
     });
+    var n = real.length;
+    if (!n) return;
+    var SETS = loop ? 9 : 1, MID = loop ? 4 : 0; // 9 copies of the set, start in the middle one
+    var cards = real;
+    if (loop) {
+      var before = doc.createDocumentFragment(), after = doc.createDocumentFragment();
+      cards = [];
+      for (var s = 0; s < SETS; s++) {
+        real.forEach(function (c) {
+          if (s === MID) { cards.push(c); return; }
+          var copy = c.cloneNode(true);
+          copy.setAttribute('aria-hidden', 'true');
+          copy.querySelectorAll('a, button').forEach(function (el) { el.tabIndex = -1; });
+          (s < MID ? before : after).appendChild(copy);
+          cards.push(copy);
+        });
+      }
+      viewport.insertBefore(before, viewport.firstChild);
+      viewport.appendChild(after);
+    }
+    cards.forEach(function (c) { c.querySelectorAll('img').forEach(function (img) { img.draggable = false; }); });
+
     var dotsWrap = slider.querySelector('[data-slider-dots]');
+    var prev = slider.querySelector('[data-slider-prev]');
+    var next = slider.querySelector('[data-slider-next]');
     var startAttr = mqMobile.matches && slider.hasAttribute('data-start-mobile') ? 'data-start-mobile' : 'data-start';
-    var active = Math.min(Number(slider.getAttribute(startAttr) || 0), cards.length - 1);
+    var active = MID * n + Math.min(Number(slider.getAttribute(startAttr) || 0), n - 1);
     var dots = [];
 
     if (dotsWrap) {
-      cards.forEach(function (_, i) {
+      real.forEach(function (_, i) {
         var d = doc.createElement('button');
         d.type = 'button';
         d.className = 'slider__dot';
-        d.setAttribute('aria-label', 'Show card ' + (i + 1));
-        d.addEventListener('click', function () { go(i); });
+        d.setAttribute('aria-label', 'Show card ' + (i + 1) + ' of ' + n);
+        d.addEventListener('click', function () { go(active - (active % n) + i); });
         dotsWrap.appendChild(d);
         dots.push(d);
       });
     }
 
+    function maxScroll() { return viewport.scrollWidth - viewport.clientWidth; }
+    function updateArrows() {
+      // endless row: on mobile the back arrow fades on the first card of the set, as in the design
+      if (loop) { if (prev) prev.classList.toggle('is-dim', mqMobile.matches && active % n === 0); return; }
+      if (prev) prev.disabled = active <= 0 && viewport.scrollLeft <= 2;
+      if (next) next.disabled = active >= cards.length - 1 || viewport.scrollLeft >= maxScroll() - 2;
+    }
     function setActive(i) {
       active = i;
       cards.forEach(function (c, k) { c.classList.toggle('is-active', k === i); });
-      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i % n); });
+      updateArrows();
     }
-
     function go(i, instant) {
-      i = (i + cards.length) % cards.length;
+      i = Math.max(0, Math.min(cards.length - 1, i));
       setActive(i);
       var card = cards[i];
       var target = mqMobile.matches
         ? card.offsetLeft - viewport.offsetLeft - 20
         : card.offsetLeft - viewport.offsetLeft - (viewport.clientWidth - card.offsetWidth) / 2;
-      viewport.scrollTo({ left: target, behavior: instant ? 'auto' : 'smooth' });
+      viewport.scrollTo({ left: target, behavior: instant || reducedMotion ? 'auto' : 'smooth' });
     }
 
     var raf = null;
@@ -121,18 +170,41 @@
           var dist = Math.abs(pos - anchor);
           if (dist < bestDist) { bestDist = dist; best = k; }
         });
-        if (best !== active) setActive(best);
+        if (best !== active) setActive(best); else updateArrows();
       });
     }, { passive: true });
 
-    var prev = slider.querySelector('[data-slider-prev]');
-    var next = slider.querySelector('[data-slider-next]');
     if (prev) prev.addEventListener('click', function () { go(active - 1); });
     if (next) next.addEventListener('click', function () { go(active + 1); });
+
+    // drag with the mouse (touch already scrolls natively): a flick of 40px+ moves one card,
+    // a long drag moves one card per 400px
+    var dragX = null, dragged = false;
+    viewport.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse' || e.button !== 0 || maxScroll() <= 2) return;
+      dragX = e.clientX; dragged = false;
+    });
+    window.addEventListener('pointerup', function (e) {
+      if (dragX === null) return;
+      var dx = e.clientX - dragX;
+      dragX = null;
+      if (Math.abs(dx) > 40) {
+        dragged = true;
+        go(active + (dx < 0 ? 1 : -1) * Math.max(1, Math.round(Math.abs(dx) / 400)));
+      }
+    });
+    viewport.addEventListener('click', function (e) {
+      if (dragged) { e.preventDefault(); e.stopPropagation(); dragged = false; return; }
+      if (!loop) return;
+      var card = e.target.closest('[data-slider-viewport] > *');
+      var k = cards.indexOf(card);
+      if (k > -1 && k !== active) { e.preventDefault(); go(k); }
+    }, true);
 
     setActive(active);
     // wait for layout (fonts/images) before centring the starting card
     window.addEventListener('load', function () { go(active, true); });
+    window.addEventListener('resize', function () { go(active, true); });
     go(active, true);
   });
 
@@ -199,15 +271,68 @@
     ['dragleave', 'drop'].forEach(function (t) { zone.addEventListener(t, function () { zone.classList.remove('is-dragover'); }); });
   });
 
-  /* ---------- Floating CTA: hide while another apply button is in view ---------- */
-  var floating = doc.querySelector('[data-floating-cta]');
-  var hiders = doc.querySelectorAll('[data-hides-floating], .site-footer');
-  if (floating && hiders.length && 'IntersectionObserver' in window) {
-    var visible = new Set();
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) visible.add(en.target); else visible.delete(en.target); });
-      floating.classList.toggle('is-hidden', visible.size > 0);
-    }, { threshold: 0.01 });
-    hiders.forEach(function (el) { io.observe(el); });
-  }
+  /* ---------- Swipe rows ----------
+     [data-carousel] with [data-carousel-viewport], -prev, -next, -dots and -nav: a scroll row lined up
+     on the left, one dot per stop, no wrap-around, arrows dim at either end, nav hidden when it all fits.
+     (Home brand cards, reasons and news.) */
+  doc.querySelectorAll('[data-carousel]').forEach(function (root) {
+    var vp = root.querySelector('[data-carousel-viewport]');
+    var nav = root.querySelector('[data-carousel-nav]');
+    var dotsWrap = root.querySelector('[data-carousel-dots]');
+    var prev = root.querySelector('[data-carousel-prev]');
+    var next = root.querySelector('[data-carousel-next]');
+    if (!vp) return;
+    var stops = [0], dots = [], active = 0, timer = 0;
+
+    function measure() {
+      var max = vp.scrollWidth - vp.clientWidth;
+      var pad = parseFloat(getComputedStyle(vp).scrollPaddingLeft) || 0;
+      var origin = vp.getBoundingClientRect().left - vp.scrollLeft;
+      stops = [];
+      Array.prototype.forEach.call(vp.children, function (item) {
+        if (!item.offsetWidth) return;
+        var x = Math.max(0, Math.min(max, Math.round(item.getBoundingClientRect().left - origin - pad)));
+        if (!stops.length || x - stops[stops.length - 1] > 2) stops.push(x);
+      });
+      if (max <= 2 || !stops.length) stops = [0];
+      if (nav) nav.hidden = stops.length < 2;
+      if (dotsWrap) {
+        dotsWrap.innerHTML = '';
+        dots = stops.map(function (_, i) {
+          var d = doc.createElement('button');
+          d.type = 'button';
+          d.className = 'slider__dot';
+          d.setAttribute('aria-label', 'Go to position ' + (i + 1) + ' of ' + stops.length);
+          d.addEventListener('click', function () { go(i); });
+          dotsWrap.appendChild(d);
+          return d;
+        });
+      }
+      update();
+    }
+    function update() {
+      var x = vp.scrollLeft;
+      active = 0;
+      stops.forEach(function (s, i) { if (Math.abs(s - x) < Math.abs(stops[active] - x)) active = i; });
+      dots.forEach(function (d, i) { d.classList.toggle('is-active', i === active); });
+      if (prev) prev.disabled = active === 0;
+      if (next) next.disabled = active === stops.length - 1;
+    }
+    function go(i) {
+      i = Math.max(0, Math.min(stops.length - 1, i));
+      vp.scrollTo({ left: stops[i], behavior: reducedMotion ? 'auto' : 'smooth' });
+    }
+    if (prev) prev.addEventListener('click', function () { go(active - 1); });
+    if (next) next.addEventListener('click', function () { go(active + 1); });
+    vp.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', function () { clearTimeout(timer); timer = setTimeout(measure, 150); });
+    window.addEventListener('load', measure);
+    measure();
+  });
+
+  /* ---------- Placeholder links (href="#") don't jump to the top ---------- */
+  doc.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#"]');
+    if (a) e.preventDefault();
+  });
 })();

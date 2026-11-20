@@ -1,0 +1,78 @@
+~ F 141:754 "Real estate – Desktop 1680 – Design v4" 1680x4221.2 @9400,-150 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#F5F1E8 clip
+~   F 141:755 "Hero" 1680x860 @0,0 sz:FF fill:#1A0C0F+G-RADIAL[#C8101C@0.00 #960E1A/0.85@0.45 #1A0C0F/0.00@1.00] clip
+~     F 141:756 "IMG · 2pcs_secret_sauce (cutout, hero left)" 620x335.8 @-110,470 sz:FF fill:IMG(1b89cd8c,FIT) fx:DROP_SHADOW(#000000/0.35 0,24 r40)
+~     F 141:757 "IMG · 2pcs_fried (cutout, hero right)" 600x315.7 @1140,480 sz:FF fill:IMG(c1504cdb,FIT) fx:DROP_SHADOW(#000000/0.35 0,24 r40)
+~     G 141:758 "Seam blend (hides join between hero images)" 640x860 @520,0 HIDDEN sz:FF
+~       T 141:764 660x84 @120,192 sz:FH fx:DROP_SHADOW(#140505/0.70 0,2 r14) {Pretendard Medium 18/155% ls-0.2% #FFFFFF CENTER} "We're looking for busy, visible locations for bb.q restaurants across Europe. Landlords, agents and developers: tell us about your premises, and we'll tell you quickly whether it fits."
+~         F 141:766 "Button – Order now (opens platform menu)" 222x52 @0,0 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#F5F1E8 r:6 clip
+~           T 141:767 150x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F LEFT} "Offer your premises"
+~         F 141:771 "Button – Find a restaurant" 65x55 @244,0 HIDDEN sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER stroke:#F5F1E8 1.5 r:6 clip
+~           T 141:772 128x20 @25.5,17.5 HIDDEN sz:FF {Pretendard Bold 16/20 ls0 #F5F1E8 LEFT} "Find a restaurant"
+~   F 141:815 "What we look for" 1680x892 @0,860 sz:FH AL:H gap96 p[120,120,100,120] MIN/MIN fill:#221E1F+G-RADIAL[#E31937/0.45@0.00 #8C181E/0.14@0.50 #221E1F/0.00@1.00] clip
+~       F 141:817 "Eyebrow" 127x30 @0,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#F5F1E8/0.14 r:4 clip
+~         T 141:818 103x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "SITE CRITERIA"
+~       F 141:823 "Criterion – Size (open)" 864x176 @0,0 sz:FH AL:V gap16 p[20,24,20,20] MIN/MIN fill:G-LINEAR[#FFFFFF/0.09@0.00 #FFFFFF/0.03@1.00] stroke:#FFFFFF/0.1 1 r:12 clip
+~           T 141:829 666x29 @88,19.5 sz:FH {Pretendard ExtraBold 24/auto ls-1.0% #FFFFFF LEFT} "Size"
+~           F 141:830 "Toggle" 44x44 @774,12 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#E31937 r:6 clip
+~             T 141:831 13x26 @15.5,9 sz:HH {Pretendard Bold 26/26 ls0 #FFFFFF LEFT} "–"
+~         T 141:832 "Answer [placeholder]" 818x50 @21,105 sz:FH {Pretendard Regular 16/155% ls0 #FFFFFF/0.82 LEFT} "Flagship 300 to 500 m², traditional restaurant 120 to 200 m², shop-in-shop 60 to 120 m², Express kiosk 10 to 40 m²."
+~       F 141:833 "Criterion – Location (closed)" 864x110 @0,190 sz:FH AL:V gap16 p[20,24,20,20] MIN/MIN fill:G-LINEAR[#FFFFFF/0.09@0.00 #FFFFFF/0.03@1.00] stroke:#FFFFFF/0.1 1 r:12 clip
+~           T 141:839 666x29 @88,19.5 sz:FH {Pretendard ExtraBold 24/auto ls-1.0% #FFFFFF LEFT} "Location"
+~           F 141:840 "Toggle" 44x44 @774,12 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#FFFFFF/0.12 r:6 clip
+~             T 141:841 17x26 @13.5,9 sz:HH {Pretendard Bold 26/26 ls0 #FFFFFF LEFT} "+"
+~         T 141:842 "Answer [placeholder]" 818x25 @21,105 HIDDEN sz:FF {Pretendard Regular 16/155% ls0 #FFFFFF/0.82 LEFT} "High streets, transport hubs, shopping centres and retail parks in or near city centres."
+~       F 141:843 "Criterion – Footfall and visibility (closed)" 864x110 @0,314 sz:FH AL:V gap16 p[20,24,20,20] MIN/MIN fill:G-LINEAR[#FFFFFF/0.09@0.00 #FFFFFF/0.03@1.00] stroke:#FFFFFF/0.1 1 r:12 clip
+~           T 141:850 666x29 @88,19.5 sz:FH {Pretendard ExtraBold 24/auto ls-1.0% #FFFFFF LEFT} "Footfall and visibility"
+~           F 141:851 "Toggle" 44x44 @774,12 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#FFFFFF/0.12 r:6 clip
+~             T 141:852 17x26 @13.5,9 sz:HH {Pretendard Bold 26/26 ls0 #FFFFFF LEFT} "+"
+~         T 141:853 "Answer [placeholder]" 818x25 @21,105 HIDDEN sz:FF {Pretendard Regular 16/155% ls0 #FFFFFF/0.82 LEFT} "Strong daytime and evening footfall, a visible frontage and room for signage."
+~       F 141:854 "Criterion – Technical (closed)" 864x110 @0,438 sz:FH AL:V gap16 p[20,24,20,20] MIN/MIN fill:G-LINEAR[#FFFFFF/0.09@0.00 #FFFFFF/0.03@1.00] stroke:#FFFFFF/0.1 1 r:12 clip
+~               V 141:888 "Vector" 25.5x28.3 @4.2,2.8 sz:FF stroke:#FFFFFF 2.549999952316284
+~           T 141:860 666x29 @88,19.5 sz:FH {Pretendard ExtraBold 24/auto ls-1.0% #FFFFFF LEFT} "Technical"
+~           F 141:861 "Toggle" 44x44 @774,12 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#FFFFFF/0.12 r:6 clip
+~             T 141:862 17x26 @13.5,9 sz:HH {Pretendard Bold 26/26 ls0 #FFFFFF LEFT} "+"
+~         T 141:863 "Answer [placeholder]" 818x25 @21,105 HIDDEN sz:FF {Pretendard Regular 16/155% ls0 #FFFFFF/0.82 LEFT} "Extraction possible, sufficient power supply [kW to be confirmed] and delivery access."
+~       F 141:864 "Criterion – Terms (closed)" 864x110 @0,562 sz:FH AL:V gap16 p[20,24,20,20] MIN/MIN fill:G-LINEAR[#FFFFFF/0.09@0.00 #FFFFFF/0.03@1.00] stroke:#FFFFFF/0.1 1 r:12 clip
+~           T 141:870 666x29 @88,19.5 sz:FH {Pretendard ExtraBold 24/auto ls-1.0% #FFFFFF LEFT} "Terms"
+~           F 141:871 "Toggle" 44x44 @774,12 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#FFFFFF/0.12 r:6 clip
+~             T 141:872 17x26 @13.5,9 sz:HH {Pretendard Bold 26/26 ls0 #FFFFFF LEFT} "+"
+~         T 141:873 "Answer [placeholder]" 818x25 @21,105 HIDDEN sz:FF {Pretendard Regular 16/155% ls0 #FFFFFF/0.82 LEFT} "Leasehold preferred. [Lease length and terms to be confirmed]"
+~   F 141:895 "Offer your premises (form)" 1680x1431 @0,1752 sz:FH AL:V gap0 p[100,0,100,0] MIN/CENTER fill:#180D10+IMG(abee8490,FILL)+G-LINEAR[#161213/0.00@0.70 #161213@1.00] clip
+~     F 141:896 "Application card – Submit your application" 1280x1231 @200,100 sz:FH AL:H gap72 p[72,72,72,72] MIN/MIN fill:#F5F1E8 r:16 fx:DROP_SHADOW(#000000/0.35 0,30 r60) clip
+~         F 141:898 "Eyebrow" 190x30 @0,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#221E1F r:4 clip
+~           T 141:899 166x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "OFFER YOUR PREMISES"
+~         T 141:901 440x54 @0,200 sz:FH {Pretendard Regular 18/150% ls-0.2% #6B605C LEFT} "The basics are enough to start. Plans and photos help us answer faster."
+~         F 141:902 "What happens next" 440x188 @0,278 sz:FH AL:V gap14 p[22,24,22,24] MIN/MIN fill:#D6D2C4/0.5 r:8 clip
+~           T 141:903 152x14 @24,22 sz:HH {Pretendard Bold 12/auto ls12.0% #D61834 LEFT} "WHAT HAPPENS NEXT"
+~             T 141:907 354x18 @38,4 sz:FH {Pretendard Medium 15/auto ls0 #221E1F LEFT} "We reply within 5 working days."
+~             F 141:920 "Input" 304x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~               T 141:921 136x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "First and last name"
+~             F 141:924 "Input" 304x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~               T 141:925 154x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "name@company.com"
+~           F 141:928 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 141:929 113x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "Company name"
+~           F 141:966 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 141:967 47x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "+44 …"
+~             F 141:938 "Option – 1 to 4" 148.5x48 @0,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             F 141:940 "Option – 5 to 9 (selected)" 148.5x48 @158.5,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#221E1F stroke:#221E1F 1 r:6 clip
+~             F 141:942 "Option – 10 to 24" 148.5x48 @317,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             F 141:944 "Option – 25 or more" 148.5x48 @475.5,0 sz:FH AL:H gap0 p[14,0,14,0] CENTER/MIN fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~           F 141:970 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 141:971 78x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "Street, city"
+~           F 141:932 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 141:933 117x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "Select a country"
+~           F 141:974 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 141:975 50x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "e.g. 90"
+~           F 141:978 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 141:979 60x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "Optional"
+~           F 141:948 "Drop zone" 624x71 @0,25 sz:FH AL:H gap14 p[16,18,16,18] MIN/CENTER fill:#FFFFFF/0.6 stroke:#221E1F/0.3 1.5 dash6,6 r:6 clip
+~             F 141:949 "Upload icon" 36x36 @19.5,17.5 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#221E1F r:6 clip
+~           F 141:982 "Input" 624x53 @0,25 sz:FH AL:H gap0 p[16,18,16,18] SPACE_BETWEEN/CENTER fill:#FFFFFF stroke:#221E1F/0.15 1 r:6 clip
+~             T 141:983 60x19 @19,17 sz:HH {Pretendard Regular 16/auto ls0 #6B605C/0.90 LEFT} "Optional"
+~           F 141:958 "Button – Submit your application (red)" 222x52 @0,0 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#E31937 r:6 clip
+~             T 141:959 150x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #FFFFFF LEFT} "Offer your premises"
+~           T 141:963 382x17 @242,17.5 sz:FH {Pretendard Regular 14/auto ls0 #6B605C LEFT} "No obligation. We never share your details with third parties."
+~   I 141:984 "Footer" 1680x1038.2 @0,3183 sz:FH AL:V gap64 p[96,120,40,120] MIN/CENTER fill:#161213+IMG(744c520e,CROP) comp:Footer / Desktop 1680 (option 2 + feedback)
+~   I 141:1061 "Header (fixed on scroll)" 1584x88 @48,24 ABS sz:FF AL:H gap0 p[0,20,0,20] SPACE_BETWEEN/CENTER fill:#221E1F stroke:#F5F1E8/0.1 1 r:12 clip comp:Header / Desktop 1680 (sticky)
+~   I 141:1099 "HIDDEN – Floating CTA (removed on client request, 18 Nov)" 253x56 @1368,980 HIDDEN ABS sz:HH AL:H gap10 p[18,18,18,26] MIN/CENTER fill:#E31937 r:8 fx:DROP_SHADOW(#66000D/0.35 0,14 r30) clip comp:Floating CTA / Submit your application
+REMOVED:

@@ -32,7 +32,7 @@ const ICONS = {
 };
 
 // "Since 1995" stamp: yellow disc, ring, text on a circle, emblem in the middle.
-const STAMP = `<svg viewBox="0 0 184 184" aria-hidden="true"><defs><path id="stampPath" d="M92 32a60 60 0 1 1 0 120a60 60 0 1 1 0-120"/></defs><circle cx="92" cy="92" r="92" fill="#F2B33D"/><circle cx="92" cy="92" r="83" fill="none" stroke="#221E1F" stroke-width="1.5"/><text font-family="Pretendard, sans-serif" font-weight="800" font-size="15" fill="#221E1F" letter-spacing="1.6"><textPath href="#stampPath" startOffset="0" textLength="372" lengthAdjust="spacing">SINCE 1995 • KOREAN FRIED CHICKEN •</textPath></text><image href="assets/svg/stamp-emblem.svg" x="63" y="62.7" width="58" height="58.7"/></svg>`;
+const STAMP = `<svg viewBox="0 0 184 184" aria-hidden="true"><defs><path id="stampPath" d="M92 32a60 60 0 1 1 0 120a60 60 0 1 1 0-120"/></defs><circle cx="92" cy="92" r="92" fill="#F2B33D"/><circle cx="92" cy="92" r="83" fill="none" stroke="#221E1F" stroke-width="1.5"/><g class="stamp__ring"><text font-family="Pretendard, sans-serif" font-weight="800" font-size="15" fill="#221E1F" letter-spacing="1.6"><textPath href="#stampPath" startOffset="0" textLength="372" lengthAdjust="spacing">SINCE 1995 • KOREAN FRIED CHICKEN •</textPath></text></g><image href="assets/svg/stamp-emblem.svg" x="63" y="62.7" width="58" height="58.7"/></svg>`;
 
 function render(file) {
   let src = fs.readFileSync(path.join(SRC, 'pages', file), 'utf8');

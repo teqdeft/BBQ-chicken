@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/apply-modal.css">
+  <link rel="stylesheet" href="assets/css/motion.css">
   <link rel="stylesheet" href="assets/css/pages/careers.css">
 </head>
 <body class="page-careers">
@@ -72,62 +73,86 @@
 
 <div class="mobile-menu" id="mobile-menu" aria-label="Menu">
   <div class="mobile-menu__inner">
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Discover bb.q</span>
-      <a class="mobile-menu__link" href="discover.html">Our story</a>
-      <a class="mobile-menu__link" href="menu.html">The menu</a>
-      <a class="mobile-menu__link" href="discover.html#chibboq">ChiBBoQ and friends</a>
-      <a class="mobile-menu__link" href="news.html">News</a>
+    <nav class="mobile-nav" aria-label="Mobile">
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Discover bb.q <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="discover.html">Our story</a>
+          <a href="menu.html">The menu</a>
+          <a href="discover.html#chibboq">ChiBBoQ and friends</a>
+          <a href="news.html">News</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Franchise <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="franchise.html">Franchise opportunity</a>
+          <a href="index.html#markets">Markets</a>
+          <a href="franchise.html#faq">FAQ</a>
+          <a href="apply.html" data-apply>Submit your application</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="index.html#markets">Markets <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="real-estate.html">Real estate <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="careers.html">Careers <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+    </nav>
+    <div class="mobile-menu__actions">
+      <a class="btn btn--cream" href="apply.html" data-apply>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a class="btn btn--outline-light" href="index.html#find">Order now <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
     </div>
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Franchise</span>
-      <a class="mobile-menu__link" href="franchise.html">Franchise opportunity</a>
-      <a class="mobile-menu__link" href="index.html#markets">Markets</a>
-      <a class="mobile-menu__link" href="real-estate.html">Real estate</a>
-      <a class="mobile-menu__link" href="careers.html">Careers</a>
-    </div>
-    <div class="btn-row">
-      <a class="btn btn--red" href="apply.html" data-apply>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-      <a class="btn btn--outline-light" href="contact.html">Contact <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-    </div>
-    <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
   </div>
+  <img class="mobile-menu__peek" src="assets/img/chibboq-peeking.png" alt="" width="300" height="537" loading="lazy">
 </div>
-
-<a class="floating-cta" href="apply.html" data-apply data-floating-cta>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 
 <main id="main">
 <!-- 1. Page header -->
 <section class="section page-hero page-hero--short" aria-labelledby="careers-title">
   <div class="page-hero__text">
-    <span class="eyebrow">Careers</span>
-    <h1 class="h-display" id="careers-title">Grow with bb.q in Europe</h1>
+    <span class="eyebrow eyebrow--glass">Careers</span>
+    <h1 class="h-display" id="careers-title">Grow with bb.q<br> in Europe</h1>
     <p class="lead">We're building bb.q across Europe from the ground up. That means new restaurants, new markets and plenty of room to grow, for cooks, managers and the people behind the scenes.</p>
   </div>
 </section>
 
-<!-- 2. Why work with us -->
+<!-- 2. Why work with us (mobile: swipe row with arrows and dots) -->
 <section class="section join" aria-labelledby="join-title">
   <div class="section-head">
     <span class="eyebrow">Why bb.q</span>
     <h2 class="h2" id="join-title">Why people join us</h2>
   </div>
-  <div class="tiles">
-    <article class="tile tile--yellow">
-      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span>
-      <h3 class="tile__title">Early days</h3>
-      <p class="tile__text">Join a brand at the start of its European story and help shape it.</p>
-    </article>
-    <article class="tile tile--red">
-      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
-      <h3 class="tile__title">Real training</h3>
-      <p class="tile__text">Learn the bb.q way, from the fryer to running your own restaurant.</p>
-    </article>
-    <article class="tile tile--sand">
-      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
-      <h3 class="tile__title">Room to move</h3>
-      <p class="tile__text">New restaurants and markets open up new roles all the time.</p>
-    </article>
+  <div class="tiles-slider" data-slider>
+    <div class="tiles" data-slider-viewport>
+      <article class="tile tile--yellow">
+        <div class="tile__img"><img src="assets/img/team.jpg" alt="The bb.q team in Europe" width="1600" height="968" loading="lazy"></div>
+        <div class="tile__body">
+          <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></svg></span>
+          <h3 class="tile__title">Early days</h3>
+          <p class="tile__text">Join a brand at the start of its European story and help shape it.</p>
+        </div>
+      </article>
+      <article class="tile tile--red">
+        <div class="tile__img"><img src="assets/img/chicken-university.jpg" alt="bb.q's Chicken University training centre" width="1520" height="776" loading="lazy"></div>
+        <div class="tile__body">
+          <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+          <h3 class="tile__title">Real training</h3>
+          <p class="tile__text">Learn the bb.q way, from the fryer to running your own restaurant.</p>
+        </div>
+      </article>
+      <article class="tile tile--sand">
+        <div class="tile__img"><img src="assets/img/news-barcelona.jpg" alt="A bb.q restaurant in Europe" width="960" height="541" loading="lazy"></div>
+        <div class="tile__body">
+          <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+          <h3 class="tile__title">Room to move</h3>
+          <p class="tile__text">New restaurants and markets open up new roles all the time.</p>
+        </div>
+      </article>
+    </div>
+    <div class="slider__nav tiles-nav">
+      <button class="slider__arrow" type="button" aria-label="Previous" data-slider-prev><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="slider__dots" data-slider-dots></div>
+      <button class="slider__arrow" type="button" aria-label="Next" data-slider-next><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
   </div>
   <img class="chibboq-peek" src="assets/img/chibboq-glasses.png" alt="" width="714" height="906" loading="lazy">
 </section>
@@ -138,11 +163,28 @@
     <span class="eyebrow">Open positions</span>
     <h2 class="h2" id="vacancies-title">Current vacancies</h2>
   </div>
-  <div class="empty-state">
+  <ul class="vacancy-list">
+    <li class="vacancy">
+      <div class="vacancy__role">
+        <h3 class="vacancy__title">Kitchen Staff</h3>
+        <p class="vacancy__meta">London, United Kingdom · [Contract type TBC]</p>
+      </div>
+      <!-- [Link to the job page when it exists; the open application form until then] -->
+      <a class="vacancy__link" href="#open-application" aria-label="View role: Kitchen Staff, London">View role →</a>
+    </li>
+    <li class="vacancy">
+      <div class="vacancy__role">
+        <h3 class="vacancy__title" lang="es">Responsables de Cocina</h3>
+        <p class="vacancy__meta">Madrid, Spain · [Contract type TBC]</p>
+      </div>
+      <a class="vacancy__link" href="#open-application" aria-label="View role: Responsables de Cocina, Madrid">View role →</a>
+    </li>
+  </ul>
+  <!-- Empty state: shown instead of the list when there are no vacancies -->
+  <div class="empty-state" hidden>
     <h3 class="empty-state__title">No open positions right now</h3>
     <p class="empty-state__text">New roles open as we grow. Send us an open application and we'll keep you in mind for your country.</p>
   </div>
-  <p class="vacancies__note">When vacancies exist: list with job title, city, country and contract type, each linking to a job page. [Job page template follows the article layout]</p>
 </section>
 
 <!-- 4. Open application (form) -->
@@ -154,7 +196,7 @@
       <p class="lead">Kitchen, restaurant management, operations or head office. A short note and your CV are enough.</p>
     </div>
 
-    <form class="form" action="#" method="post" enctype="multipart/form-data" data-form data-success="Thank you! We've received your application and will keep you in mind for your country. [Form handling to be connected]">
+    <form class="form" action="#" method="post" enctype="multipart/form-data" data-form data-success="Thank you! We've received your application and will reply within 5 working days. [Form handling to be connected]">
       <div class="form-row">
         <div class="field">
           <label class="field__label" for="ca-name">Full name <span aria-hidden="true">*</span></label>
@@ -232,6 +274,7 @@
       </label>
       <div class="form-submit">
         <button class="btn btn--red" type="submit">Send application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <p class="form-submit__note">We reply within 5 working days.</p>
       </div>
     </form>
   </div>
@@ -240,7 +283,6 @@
 </main>
 
 <footer class="site-footer">
-  <div class="cutout cutout--fries"><img src="assets/img/cut-fries.png" alt="" loading="lazy" width="480" height="624"></div>
   <div class="site-footer__inner">
     <div class="order-bar">
       <div class="order-bar__text">
@@ -266,7 +308,7 @@
 
     <nav class="footer-links" aria-label="Footer">
       <div class="footer-col is-open" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="true"><span class="footer-col__title">Discover</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="true"><span class="footer-col__title">Discover</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="discover.html">Our story</a>
           <a href="menu.html">The menu</a>
@@ -275,7 +317,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Franchise</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Franchise</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="franchise.html">Franchise opportunity</a>
           <a href="index.html#markets">Markets</a>
@@ -285,7 +327,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Company</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Company</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="about.html">About BLT Global Brands</a>
           <a href="about.html#team">Our team</a>
@@ -294,7 +336,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Legal</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Legal</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="legal.html">Privacy policy</a>
           <a href="legal.html">Cookie policy</a>
@@ -318,6 +360,8 @@
 
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/apply.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/map.js" defer></script>
 
 </body>
 </html>

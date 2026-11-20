@@ -18,12 +18,11 @@
   </div>
 </section>
 
-<!-- 2. Mission (Home hero pattern, no buttons) -->
+<!-- 2. Mission (desktop: red glow with two bucket cut-outs; mobile: photo header) -->
 <section class="hero mission" aria-labelledby="mission-title">
-  <div class="hero__art" aria-hidden="true">
-    <div class="hero__pic hero__pic--left"><img src="assets/img/hero-sauces.jpg" alt="" width="1440" height="1800" loading="lazy"></div>
-    <div class="hero__pic hero__pic--right"><img src="assets/img/hero-golden.jpg" alt="" width="1440" height="1800" loading="lazy"></div>
-    <div class="hero__seam"></div>
+  <div class="mission__art" aria-hidden="true">
+    <img class="mission__cut mission__cut--left" src="assets/img/cut-8pcs-secret-sauce-bucket.png" alt="" width="760" height="962" loading="lazy">
+    <img class="mission__cut mission__cut--right" src="assets/img/cut-8pcs-fried-bucket.png" alt="" width="660" height="838" loading="lazy">
   </div>
   <img class="hero__mobile-bg" src="assets/img/hero-mobile.jpg" alt="" width="800" height="1000" loading="lazy">
   <div class="hero__content">
@@ -33,76 +32,104 @@
   <div class="stamp">{{stamp}}</div>
 </section>
 
-<!-- 3. Values -->
+<!-- 3. Values (bento grid on desktop, swipe row on mobile) -->
 <section class="section values" aria-labelledby="values-title">
   <div class="section-head">
     <span class="eyebrow">BLT Global Brands</span>
     <h2 class="h2" id="values-title">Our core values</h2>
     <p class="values__lead">At BLT Global Brands, our culture and daily operations are driven by a steadfast commitment to excellence, integrity, and people.</p>
   </div>
-  <div class="value-grid">
-    <article class="value value--yellow">
-      <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"/><path d="M8 6v8"/></svg></span>
-      <h3 class="value__title">Act as brand ambassadors</h3>
-      <p class="value__text">We champion the quality, heritage, and values of every brand we represent.</p>
-    </article>
-    <article class="value value--red">
-      <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></svg></span>
-      <h3 class="value__title">Customers first</h3>
-      <p class="value__text">We prioritise guest satisfaction and franchisee success in everything we do.</p>
-    </article>
-    <article class="value value--sand">
-      <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-      <h3 class="value__title">High ethical standards</h3>
-      <p class="value__text">We conduct business with absolute transparency, honesty, and integrity.</p>
-    </article>
-    <article class="value value--dark">
-      <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 21a8 8 0 0 0-16 0"/><circle cx="10" cy="8" r="5"/><path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3"/></svg></span>
-      <h3 class="value__title">Respect one another and value our employees</h3>
-      <p class="value__text">We foster an inclusive, supportive workplace where every team member is valued.</p>
-    </article>
-    <article class="value value--yellow">
-      <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></span>
-      <h3 class="value__title">Foster continuous learning</h3>
-      <p class="value__text">We embrace innovation, training, and ongoing professional development.</p>
-    </article>
-    <article class="value value--red">
-      <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M11 14h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 16"/><path d="m7 20 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9"/><path d="m2 15 6 6"/><path d="M19.5 8.5c.7-.7 1.5-1.6 1.5-2.7A2.73 2.73 0 0 0 16 4a2.78 2.78 0 0 0-5 1.8c0 1.2.8 2 1.5 2.8L16 12Z"/></svg></span>
-      <h3 class="value__title">Give back to our communities</h3>
-      <p class="value__text">We actively enrich and support the neighbourhoods and local communities we serve.</p>
-    </article>
-    <article class="value value--sand">
-      <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="m9 12 2 2 4-4"/></svg></span>
-      <h3 class="value__title">Believe in the power of possible</h3>
-      <p class="value__text">We approach expansion and challenges with an ambitious, forward-thinking mindset.</p>
-    </article>
+  <div class="value-tile value-tile--chibboq value-tile--mobile" aria-hidden="true"><img src="assets/img/chibboq-glasses.png" alt="" width="714" height="906" loading="lazy"></div>
+  <div class="row-slider" data-slider>
+    <div class="value-grid" data-slider-viewport>
+      <article class="value value--yellow value--act">
+        <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
+        <h3 class="value__title">Act as brand ambassadors</h3>
+        <p class="value__text">We champion the quality, heritage, and values of every brand we represent.</p>
+      </article>
+      <article class="value value--red value--customers">
+        <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3 class="value__title">Customers first</h3>
+        <p class="value__text">We prioritise guest satisfaction and franchisee success in everything we do.</p>
+      </article>
+      <article class="value value--sand value--ethics">
+        <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3 class="value__title">High ethical standards</h3>
+        <p class="value__text">We conduct business with absolute transparency, honesty, and integrity.</p>
+      </article>
+      <article class="value value--photo value--respect">
+        <img class="value__photo" src="assets/img/team.jpg" alt="" width="1600" height="968" loading="lazy">
+        <h3 class="value__title">Respect one another and value our employees</h3>
+        <p class="value__text">We foster an inclusive, supportive workplace where every team member is valued.</p>
+      </article>
+      <article class="value value--photo value--learning">
+        <img class="value__photo" src="assets/img/chicken-university.jpg" alt="" width="1520" height="776" loading="lazy">
+        <h3 class="value__title">Foster continuous learning</h3>
+        <p class="value__text">We embrace innovation, training, and ongoing professional development.</p>
+      </article>
+      <article class="value value--dark value--give">
+        <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+        <h3 class="value__title">Give back to our communities</h3>
+        <p class="value__text">We actively enrich and support the neighbourhoods and local communities we serve.</p>
+      </article>
+      <article class="value value--sand value--possible">
+        <span class="value__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3 class="value__title">Believe in the power of possible</h3>
+        <p class="value__text">We approach expansion and challenges with an ambitious, forward-thinking mindset.</p>
+      </article>
+      <div class="value-tile value-tile--chibboq value-tile--desktop" aria-hidden="true"><img src="assets/img/chibboq-glasses.png" alt="" width="714" height="906" loading="lazy"></div>
+      <div class="value-tile value-tile--product value-tile--desktop" aria-hidden="true"><img src="assets/img/cut-8pcs-fried-bucket.png" alt="" width="660" height="838" loading="lazy"></div>
+    </div>
+    <div class="row-nav">
+      <button class="row-nav__arrow" type="button" aria-label="Previous" data-slider-prev>{{icon:left}}</button>
+      <div class="row-nav__dots" data-slider-dots></div>
+      <button class="row-nav__arrow" type="button" aria-label="Next" data-slider-next>{{icon:right}}</button>
+    </div>
   </div>
-  <img class="values__peek" src="assets/img/chibboq-glasses.png" alt="" width="714" height="906" loading="lazy">
 </section>
 
-<!-- 4. Leadership -->
+<!-- 4. Leadership (4 per row, wraps as the team grows) -->
 <section class="section leaders" id="team" aria-labelledby="leaders-title">
   <div class="section-head leaders__head">
     <span class="eyebrow">Leadership</span>
     <h2 class="h2" id="leaders-title">One team, one community</h2>
   </div>
-  <div class="leaders__list">
-    <article class="person">
-      <div class="person__photo" aria-hidden="true"></div>
-      <div class="person__meta"><p class="person__role">CEO and Partner</p><h3 class="person__name">Thomas C. Talarico</h3></div>
-    </article>
-    <article class="person">
-      <div class="person__photo" aria-hidden="true"></div>
-      <div class="person__meta"><p class="person__role">Marketing</p><h3 class="person__name">María de los Reyes Barrenengoa</h3></div>
-    </article>
-    <article class="person">
-      <div class="person__photo" aria-hidden="true"></div>
-      <div class="person__meta"><p class="person__role">[Role]</p><h3 class="person__name">[Name]</h3></div>
-    </article>
-    <article class="person">
-      <div class="person__photo" aria-hidden="true"></div>
-      <div class="person__meta"><p class="person__role">[Role]</p><h3 class="person__name">[Name]</h3></div>
-    </article>
+  <div class="row-slider" data-slider>
+    <div class="leaders__list" data-slider-viewport>
+      <article class="person">
+        <div class="person__photo"><img src="assets/img/team-thomas-talarico.jpg" alt="Portrait of Thomas C. Talarico" width="720" height="900" loading="lazy"></div>
+        <div class="person__meta"><p class="person__role">CEO and Partner</p><h3 class="person__name">Thomas C. Talarico</h3></div>
+      </article>
+      <article class="person">
+        <div class="person__photo"><img src="assets/img/team-maria-de-los-reyes-barrenengoa.jpg" alt="Portrait of María de los Reyes Barrenengoa" width="720" height="900" loading="lazy"></div>
+        <div class="person__meta"><p class="person__role">Marketing Coordinator</p><h3 class="person__name">María de los Reyes Barrenengoa</h3></div>
+      </article>
+      <article class="person">
+        <div class="person__photo"><img src="assets/img/team-daniela-haack.jpg" alt="Portrait of Daniela Haack" width="720" height="900" loading="lazy"></div>
+        <div class="person__meta"><p class="person__role">Marketing</p><h3 class="person__name">Daniela Haack</h3></div>
+      </article>
+      <article class="person">
+        <div class="person__photo"><img src="assets/img/team-patricia-rader.jpg" alt="Portrait of Patricia Rader" width="720" height="900" loading="lazy"></div>
+        <div class="person__meta"><p class="person__role">Human Resources</p><h3 class="person__name">Patricia Rader</h3></div>
+      </article>
+      <article class="person">
+        <div class="person__photo"><img src="assets/img/team-julian-de-miguel.jpg" alt="Portrait of Julián de Miguel" width="720" height="900" loading="lazy"></div>
+        <div class="person__meta"><p class="person__role">IT</p><h3 class="person__name">Julián de Miguel</h3></div>
+      </article>
+      <article class="person">
+        <div class="person__photo"><img src="assets/img/team-julieta-cruz.jpg" alt="Portrait of Julieta Cruz" width="720" height="900" loading="lazy"></div>
+        <div class="person__meta"><p class="person__role">Staff Accountant</p><h3 class="person__name">Julieta Cruz</h3></div>
+      </article>
+      <article class="person">
+        <div class="person__photo"><img src="assets/img/team-emma-heckel.jpg" alt="Portrait of Emma Heckel" width="720" height="900" loading="lazy"></div>
+        <div class="person__meta"><p class="person__role">Procurement</p><h3 class="person__name">Emma Heckel</h3></div>
+      </article>
+    </div>
+    <div class="row-nav">
+      <button class="row-nav__arrow" type="button" aria-label="Previous" data-slider-prev>{{icon:left}}</button>
+      <div class="row-nav__dots" data-slider-dots></div>
+      <button class="row-nav__arrow" type="button" aria-label="Next" data-slider-next>{{icon:right}}</button>
+    </div>
   </div>
 </section>
 

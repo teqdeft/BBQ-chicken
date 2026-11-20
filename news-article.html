@@ -3,14 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>[Article title] – News – bb.q Chicken Europe</title>
-  <meta name="description" content="[Intro paragraph in Body L. Two or three sentences that tell the whole story.]">
+  <title>Spain is bb.q's door to Europe – News – bb.q Chicken Europe</title>
+  <meta name="description" content="bb.q is coming to Europe. On 8 December 2025, Genesis BBQ Group announced that it has set up bb.q's European headquarters in Spain, through a joint venture with BLT F&B Group.">
   <meta name="theme-color" content="#221E1F">
   <link rel="icon" href="assets/svg/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/apply-modal.css">
+  <link rel="stylesheet" href="assets/css/motion.css">
   <link rel="stylesheet" href="assets/css/pages/news-article.css">
 </head>
 <body class="page-news-article">
@@ -72,56 +73,85 @@
 
 <div class="mobile-menu" id="mobile-menu" aria-label="Menu">
   <div class="mobile-menu__inner">
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Discover bb.q</span>
-      <a class="mobile-menu__link" href="discover.html">Our story</a>
-      <a class="mobile-menu__link" href="menu.html">The menu</a>
-      <a class="mobile-menu__link" href="discover.html#chibboq">ChiBBoQ and friends</a>
-      <a class="mobile-menu__link" href="news.html">News</a>
+    <nav class="mobile-nav" aria-label="Mobile">
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Discover bb.q <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="discover.html">Our story</a>
+          <a href="menu.html">The menu</a>
+          <a href="discover.html#chibboq">ChiBBoQ and friends</a>
+          <a href="news.html">News</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Franchise <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="franchise.html">Franchise opportunity</a>
+          <a href="index.html#markets">Markets</a>
+          <a href="franchise.html#faq">FAQ</a>
+          <a href="apply.html" data-apply>Submit your application</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="index.html#markets">Markets <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="real-estate.html">Real estate <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="careers.html">Careers <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+    </nav>
+    <div class="mobile-menu__actions">
+      <a class="btn btn--cream" href="apply.html" data-apply>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a class="btn btn--outline-light" href="index.html#find">Order now <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
     </div>
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Franchise</span>
-      <a class="mobile-menu__link" href="franchise.html">Franchise opportunity</a>
-      <a class="mobile-menu__link" href="index.html#markets">Markets</a>
-      <a class="mobile-menu__link" href="real-estate.html">Real estate</a>
-      <a class="mobile-menu__link" href="careers.html">Careers</a>
-    </div>
-    <div class="btn-row">
-      <a class="btn btn--red" href="apply.html" data-apply>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-      <a class="btn btn--outline-light" href="contact.html">Contact <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-    </div>
-    <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
   </div>
+  <img class="mobile-menu__peek" src="assets/img/chibboq-peeking.png" alt="" width="300" height="537" loading="lazy">
 </div>
-
-<a class="floating-cta" href="apply.html" data-apply data-floating-cta>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 
 <main id="main">
 <article class="article" aria-labelledby="article-title">
   <!-- 1. Page header -->
   <header class="section page-hero page-hero--short">
     <div class="page-hero__text">
-      <span class="eyebrow">News / Europe</span>
-      <h1 class="h-display" id="article-title">[Article title, max two lines]</h1>
-      <p class="lead">[Date] · [Category: Europe or Global] · [3 min read]</p>
+      <span class="eyebrow eyebrow--glass">Press / Europe</span>
+      <h1 class="h-display" id="article-title">Spain is bb.q's door to Europe</h1>
+      <p class="lead">8 December 2025 · Europe · 2 min read</p>
     </div>
   </header>
 
   <!-- 2. Article body -->
   <div class="section article-body">
     <div class="article-body__col">
-      <p class="article-body__intro">[Intro paragraph in Body L. Two or three sentences that tell the whole story.]</p>
-      <h2 class="article-body__subhead">[Subheading]</h2>
-      <p>[Body text. Articles are written in English first and translated per language version. Images, quotes and video can be added as blocks.]</p>
-      <div class="article-body__media" aria-hidden="true"></div>
-      <p>[Body text continues.]</p>
+      <p class="article-body__intro">bb.q is coming to Europe. On 8 December 2025, Genesis BBQ Group announced that it has set up bb.q's European headquarters in Spain, through a joint venture with BLT F&amp;B Group.</p>
+
+      <h2 class="article-body__subhead">A launch in Seoul</h2>
+      <p>Officials from both companies marked the start with a launch ceremony at Genesis BBQ's headquarters in Seoul. According to The Korea Herald, BLT F&amp;B Group runs food and beverage brands in Spain and the United States, including Domino's Pizza, Applebee's and IHOP.</p>
+
+      <h2 class="article-body__subhead">Why Europe</h2>
+      <p>Genesis BBQ sees Europe as the last big step in taking its Korean fried chicken worldwide. The region is one of the world's largest tourism markets, with customers who have strong purchasing power and a taste for premium food. According to the company, brands with a real story behind their culture and quality do well there.</p>
+
+      <figure class="article-body__figure">
+        <div class="article-body__media"><img src="assets/img/news-europe-hq.jpg" alt="Officials from Genesis BBQ Group and BLT F&amp;B Group in front of the BBQ Europe HQ Inauguration Ceremony banner" width="1280" height="710" loading="lazy"></div>
+        <figcaption class="article-body__caption">Officials from Genesis BBQ Group and BLT F&amp;B Group at the inauguration of the European headquarters, held at Genesis BBQ's head office in Seoul. Photo: Genesis BBQ Group.</figcaption>
+      </figure>
+
+      <h2 class="article-body__subhead">What the Spanish headquarters will do</h2>
+      <p>The headquarters in Spain is the hub for bb.q's European supply chain: local production, sourcing of ingredients, regional logistics and distribution. That speeds up the rest: adapting the menu to local tastes, opening flagship restaurants and signing franchise partners.</p>
+
+      <h2 class="article-body__subhead">Where bb.q opens first</h2>
+      <p>The first flagship restaurants are planned in Spain, the United Kingdom, France, Poland and the Netherlands. From there, bb.q will grow into neighbouring countries step by step.</p>
+      <p>Genesis BBQ Group chair Yoon Hong-geun called Europe "a strategic gateway to complete K-food's globalization". He said the brand will bring the premium value of Korean chicken across Europe, with localised menus and an advanced logistics network.</p>
+
+      <div class="article-source">
+        <p class="article-source__text">Sources: The Korea Herald and The Korea Times, both 8 December 2025. Also reported in Spanish by Yonhap.</p>
+        <a class="btn btn--outline-dark only-desktop" href="https://www.koreaherald.com/article/10631888" target="_blank" rel="noopener">Read the full article <span class="sr-only">(opens in a new tab)</span><span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a class="article-source__link only-mobile" href="https://www.koreaherald.com/article/10631888" target="_blank" rel="noopener">Read the full article →<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+
       <p class="article-share" data-share>Share: <a href="https://www.linkedin.com/sharing/share-offsite/" target="_blank" rel="noopener" data-share-linkedin>LinkedIn</a> · <a href="https://x.com/intent/post" target="_blank" rel="noopener" data-share-x>X</a> · <a href="mailto:" data-share-email>Email</a> · <button type="button" data-share-copy>Copy link</button></p>
     </div>
   </div>
 </article>
 
-<!-- 3. Related articles -->
-<section class="section news related" aria-labelledby="related-title">
+<!-- 3. Related articles (mobile: swipe row with arrows + dots, uses the shared [data-slider] behaviour) -->
+<section class="section news related" aria-labelledby="related-title" data-slider>
   <div class="news__head">
     <div class="news__head-text">
       <span class="eyebrow">More news</span>
@@ -129,25 +159,31 @@
     </div>
     <a class="btn btn--outline-dark" href="news.html">All news <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
   </div>
-  <div class="news__list">
-    <a class="news-card" href="news-article.html">
-      <div class="news-card__img news-card__img--placeholder" aria-hidden="true"></div>
-      <div class="news-card__meta"><span class="news-card__date">[Date]</span><h3 class="news-card__title">[Article title]</h3></div>
+  <div class="news__list" data-slider-viewport>
+    <!-- Links to the bb.q global media page: URL still to be supplied -->
+    <div class="news-card news-card--static">
+      <div class="news-card__img"><img src="assets/img/news-times-square.jpg" alt="bb.q Chicken advertising in Times Square" width="960" height="686" loading="lazy"></div>
+      <div class="news-card__meta"><span class="news-card__date">2025 · Global</span><h3 class="news-card__title">bb.q takes over Times Square</h3></div>
+    </div>
+    <a class="news-card" href="https://www.koreajoongangdaily.com/business/genesis-bbq-marks-30th-anniversary-with-fc-barcelona-ticket-giveaway/11941713" target="_blank" rel="noopener">
+      <div class="news-card__img"><img src="assets/img/news-fcb-30th.jpg" alt="Genesis BBQ chair speaking at the FC Barcelona 30th anniversary briefing" width="960" height="838" loading="lazy"></div>
+      <div class="news-card__meta"><span class="news-card__date">10 Jun 2025 · Korea JoongAng Daily</span><h3 class="news-card__title">Genesis BBQ marks 30th anniversary with FC Barcelona ticket giveaway<span class="sr-only"> (opens in a new tab)</span></h3></div>
     </a>
-    <a class="news-card" href="news-article.html">
-      <div class="news-card__img news-card__img--placeholder" aria-hidden="true"></div>
-      <div class="news-card__meta"><span class="news-card__date">[Date]</span><h3 class="news-card__title">[Article title]</h3></div>
+    <a class="news-card" href="https://www.koreajoongangdaily.com/business/genesis-bbq-spreads-the-love-with-britishinspired-afternoon-tea-experience/10206597" target="_blank" rel="noopener">
+      <div class="news-card__img"><img src="assets/img/news-afternoon-tea.jpg" alt="The Love in London afternoon tea set-up" width="960" height="564" loading="lazy"></div>
+      <div class="news-card__meta"><span class="news-card__date">5 Feb 2025 · Korea JoongAng Daily</span><h3 class="news-card__title">Genesis BBQ spreads the love with British-inspired afternoon tea experience<span class="sr-only"> (opens in a new tab)</span></h3></div>
     </a>
-    <a class="news-card" href="news-article.html">
-      <div class="news-card__img news-card__img--placeholder" aria-hidden="true"></div>
-      <div class="news-card__meta"><span class="news-card__date">[Date]</span><h3 class="news-card__title">[Article title]</h3></div>
-    </a>
+  </div>
+  <div class="related__nav">
+    <button class="related__arrow" type="button" aria-label="Previous article" data-slider-prev><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="related__dots" data-slider-dots></div>
+    <button class="related__arrow" type="button" aria-label="Next article" data-slider-next><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </section>
 
 <!-- 4. Closing CTA -->
 <section class="section closing" aria-labelledby="closing-title">
-  <div class="stamp"><svg viewBox="0 0 184 184" aria-hidden="true"><defs><path id="stampPath1" d="M92 32a60 60 0 1 1 0 120a60 60 0 1 1 0-120"/></defs><circle cx="92" cy="92" r="92" fill="#F2B33D"/><circle cx="92" cy="92" r="83" fill="none" stroke="#221E1F" stroke-width="1.5"/><text font-family="Pretendard, sans-serif" font-weight="800" font-size="15" fill="#221E1F" letter-spacing="1.6"><textPath href="#stampPath1" startOffset="0" textLength="372" lengthAdjust="spacing">SINCE 1995 • KOREAN FRIED CHICKEN •</textPath></text><image href="assets/svg/stamp-emblem.svg" x="63" y="62.7" width="58" height="58.7"/></svg></div>
+  <div class="stamp"><svg viewBox="0 0 184 184" aria-hidden="true"><defs><path id="stampPath1" d="M92 32a60 60 0 1 1 0 120a60 60 0 1 1 0-120"/></defs><circle cx="92" cy="92" r="92" fill="#F2B33D"/><circle cx="92" cy="92" r="83" fill="none" stroke="#221E1F" stroke-width="1.5"/><g class="stamp__ring"><text font-family="Pretendard, sans-serif" font-weight="800" font-size="15" fill="#221E1F" letter-spacing="1.6"><textPath href="#stampPath1" startOffset="0" textLength="372" lengthAdjust="spacing">SINCE 1995 • KOREAN FRIED CHICKEN •</textPath></text></g><image href="assets/svg/stamp-emblem.svg" x="63" y="62.7" width="58" height="58.7"/></svg></div>
   <span class="sparkle-lg" aria-hidden="true"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0C5.375 3 7 4.625 10 5C7 5.375 5.375 7 5 10C4.625 7 3 5.375 0 5C3 4.625 4.625 3 5 0Z" fill="currentColor"/></svg></span>
   <span class="sparkle-sm" aria-hidden="true"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M5 0C5.375 3 7 4.625 10 5C7 5.375 5.375 7 5 10C4.625 7 3 5.375 0 5C3 4.625 4.625 3 5 0Z" fill="currentColor"/></svg></span>
   <div class="cta-card">
@@ -177,12 +213,12 @@
       });
     });
   })();
+
 </script>
 
 </main>
 
 <footer class="site-footer">
-  <div class="cutout cutout--fries"><img src="assets/img/cut-fries.png" alt="" loading="lazy" width="480" height="624"></div>
   <div class="site-footer__inner">
     <div class="order-bar">
       <div class="order-bar__text">
@@ -208,7 +244,7 @@
 
     <nav class="footer-links" aria-label="Footer">
       <div class="footer-col is-open" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="true"><span class="footer-col__title">Discover</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="true"><span class="footer-col__title">Discover</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="discover.html">Our story</a>
           <a href="menu.html">The menu</a>
@@ -217,7 +253,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Franchise</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Franchise</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="franchise.html">Franchise opportunity</a>
           <a href="index.html#markets">Markets</a>
@@ -227,7 +263,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Company</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Company</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="about.html">About BLT Global Brands</a>
           <a href="about.html#team">Our team</a>
@@ -236,7 +272,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Legal</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Legal</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="legal.html">Privacy policy</a>
           <a href="legal.html">Cookie policy</a>
@@ -260,6 +296,8 @@
 
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/apply.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/map.js" defer></script>
 
 </body>
 </html>

@@ -129,7 +129,7 @@
                 '<p class="lead"><span class="only-desktop">Ready to join the bb.q Chicken franchise network? You\'ll stay on this page.</span><span class="only-mobile">Ready to join the bb.q Chicken franchise network? Tell us who you are and where you\'d like to grow. Our expansion team reads every application.</span></p>' +
                 '<div class="info-box">' +
                   '<p class="info-box__title">What happens next</p>' +
-                  '<p class="info-box__step">We review your application within 5 working days.</p>' +
+                  '<p class="info-box__step">We reply within 5 working days.</p>' +
                   '<p class="info-box__step">We schedule an introductory meeting.</p>' +
                   '<p class="info-box__step">Together we look at your territory and the right site.</p>' +
                 '</div>' +

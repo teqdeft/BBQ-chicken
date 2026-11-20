@@ -1,0 +1,16 @@
+~ F 148:2222 "Apply – Thank you – Mobile 390 – Design v4" 390x2789.5 @4990,-150 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#F5F1E8 clip
+~   F 148:2223 "Confirmation" 390x639 @0,0 sz:FH AL:V gap0 p[196,20,78,20] MIN/CENTER fill:#221E1F+G-RADIAL[#E31937/0.50@0.00 #8C181E/0.15@0.60 #221E1F/0.00@1.00]
+~     F 148:2224 "CTA card" 350x365 @20,196 sz:FH AL:V gap16 p[40,24,28,24] MIN/CENTER fill:#F5F1E8 r:12 clip
+~       F 148:2227 "Button – Read the franchise FAQ (red)" 302x50 @24,219 sz:FH AL:H gap8 p[15,14,15,20] SPACE_BETWEEN/CENTER fill:#E31937 r:6 clip
+~       F 148:2272 "Button – Discover bb.q (on light)" 302x52 @24,285 sz:FH AL:H gap10 p[16,18,16,24] SPACE_BETWEEN/CENTER stroke:#221E1F 1.5 r:6 clip
+~         T 148:2273 104x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F LEFT} "Discover bb.q"
+~     F 148:2278 "Confirmation email (designed preview)" 350x524.1 @20,56 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#FFFFFF r:12 fx:DROP_SHADOW(#211F1F/0.14 0,18 r44) clip
++       F 399:2867 "Mail window bar", 399:2871 "Mail meta", 399:2874 "Brand band", 399:2885 "Mail body" (mobile version of the designed email preview)
+~         T 148:2279 (confirmation email body text) 314x242 {Pretendard Medium 14/155% ls0 #221E1F LEFT}
+~     F 148:2280 "Eyebrow" 168x26 @20,598.1 sz:HH AL:H gap0 p[6,10,6,10] MIN/MIN fill:#221E1F r:4 clip
+~       T 148:2281 148x14 @10,6 sz:HH {Pretendard ExtraBold 12/auto ls8.0% #FFFFFF LEFT} "CONFIRMATION EMAIL"
+~     T 148:2283 350x72 @20,730.1 sz:FH {Pretendard Regular 16/152% ls0 #6B605C LEFT} (designer annotation about the internal notification; internal address omitted; not published)
+~     F 148:2284 "Button – Meet the team" 350x53 @20,536 HIDDEN sz:FH AL:H gap8 p[15,14,15,20] SPACE_BETWEEN/CENTER stroke:#221E1F/0.8 1.5 r:6 clip
+~   I 148:2289 "Footer" 390x1292.4 @0,1497.1 sz:FH AL:V gap36 p[56,20,32,20] MIN/MIN fill:#161213+IMG(875c197a,CROP) comp:Footer / Mobile 390 (option 2 + feedback)
+~   I 148:2358 "Header (fixed on scroll)" 366x60 @12,12 ABS sz:FF AL:H gap8 p[0,8,0,16] MIN/CENTER fill:#221E1F stroke:#F5F1E8/0.1 1 r:8 clip comp:Header / Mobile 390 (sticky)
+REMOVED:

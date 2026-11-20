@@ -1,16 +1,13 @@
 <!-- page {"title": "Real estate – bb.q Chicken Europe", "description": "Got premises that suit bb.q? Landlords, agents and developers: tell us about your site for a bb.q Express restaurant or dark kitchen in Europe.", "active": "realestate", "bodyClass": "page-realestate", "extraHead": "<link rel=\"stylesheet\" href=\"assets/css/pages/real-estate.css\">"} -->
 
-<!-- 1. Hero (same art direction as the Home hero) -->
-<section class="hero" aria-labelledby="re-hero-title">
-  <div class="hero__art" aria-hidden="true">
-    <div class="hero__pic hero__pic--left"><img src="assets/img/hero-sauces.jpg" alt="" width="1440" height="1800"></div>
-    <div class="hero__pic hero__pic--right"><img src="assets/img/hero-golden.jpg" alt="" width="1440" height="1800"></div>
-    <div class="hero__seam"></div>
-  </div>
+<!-- 1. Hero: red glow with two food cut-outs on desktop (Figma v4); mobile keeps the photo hero -->
+<section class="hero re-hero" aria-labelledby="re-hero-title">
+  <div class="re-hero__cutout re-hero__cutout--sauce" aria-hidden="true"><img src="assets/img/cut-2pcs-secret-sauce.png" alt="" width="760" height="412"></div>
+  <div class="re-hero__cutout re-hero__cutout--fried" aria-hidden="true"><img src="assets/img/cut-2pcs-fried.png" alt="" width="880" height="463"></div>
   <img class="hero__mobile-bg" src="assets/img/hero-mobile.jpg" alt="" width="800" height="1000" style="display:none">
   <div class="hero__content">
     <h1 class="h-display hero__title" id="re-hero-title">Got premises that suit bb.q?</h1>
-    <p class="hero__lead">We're looking for busy, visible locations for bb.q Express restaurants across Europe. Landlords, agents and developers: tell us about your premises, for a restaurant or a dark kitchen, and we'll tell you quickly whether it fits.</p>
+    <p class="hero__lead">We're looking for busy, visible locations for bb.q restaurants across Europe. Landlords, agents and developers: tell us about your premises, and we'll tell you quickly whether it fits.</p>
     <div class="btn-row">
       <a class="btn btn--cream" href="#offer">Offer your premises <span class="btn__chip">{{icon:arrow}}</span></a>
     </div>
@@ -21,7 +18,7 @@
 <!-- 2. What we look for (site criteria) -->
 <section class="section criteria" aria-labelledby="criteria-title">
   <div class="criteria__head">
-    <span class="eyebrow">Site criteria</span>
+    <span class="eyebrow eyebrow--glass">Site criteria</span>
     <h2 class="h2" id="criteria-title">What we look for</h2>
     <p class="lead">A starting point. Every site gets a proper look from our team. [Replace with BLT's own site checklist when available]</p>
     <div class="criteria__cutout" aria-hidden="true"><img src="assets/img/cut-2pcs-secret-sauce.png" alt="" width="760" height="412" loading="lazy"></div>
@@ -77,16 +74,16 @@
     <div class="form-card__intro">
       <span class="eyebrow">Offer your premises</span>
       <h2 class="h2" id="offer-title">Tell us about your premises</h2>
-      <p class="lead">The basics are enough to start. Plans and photos help us answer faster. Restaurant unit or dark kitchen, we look at both.</p>
+      <p class="lead">The basics are enough to start. Plans and photos help us answer faster.</p>
       <div class="info-box">
         <p class="info-box__title">What happens next</p>
-        <p class="info-box__step">We reply within [10] working days.</p>
+        <p class="info-box__step">We reply within 5 working days.</p>
         <p class="info-box__step">Our real estate team takes a look at the site.</p>
         <p class="info-box__step"><span>Want to open a bb.q yourself? <a href="apply.html" data-apply>Submit your application →</a></span></p>
       </div>
     </div>
 
-    <form class="form" action="#" method="post" enctype="multipart/form-data" data-form data-success="Thank you! Our real estate team will get back to you within [10] working days. [Form handling to be connected]">
+    <form class="form" action="#" method="post" enctype="multipart/form-data" data-form data-success="Thank you! Our real estate team will get back to you within 5 working days. [Form handling to be connected]">
       <div class="form-row">
         <div class="field">
           <label class="field__label" for="re-name">Full name <span aria-hidden="true">*</span></label>

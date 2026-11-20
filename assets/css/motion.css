@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Motion & hover effects (matched to the Studio Ubique prototype)
+   Scroll reveals, count-ups, parallax, aurora glow, rising steam, bobbing,
+   spinning stamps, twinkling sparkles and hover lifts.
+   Classes added by assets/js/motion.js; everything is off for reduced motion.
+   ========================================================================== */
+
+/* ---------- Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .8, .2, 1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- Header: tucks up and casts a shadow once you scroll ---------- */
+.site-header { transition: top .3s ease, box-shadow .3s ease; }
+.site-header.is-scrolled { top: 12px; box-shadow: inset 0 0 0 1px rgba(245, 241, 232, .1), 0 14px 34px rgba(0, 0, 0, .28); }
+@media (max-width: 767px) { .site-header.is-scrolled { top: 8px; } }
+
+/* ---------- Aurora: slow, blurred red light drifting behind dark sections ---------- */
+.aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.aurora i { position: absolute; border-radius: 50%; filter: blur(90px); mix-blend-mode: screen; will-change: transform; }
+.aurora i:nth-child(1) { width: 52%; height: 70%; left: 2%; top: -22%; background: #ff2a45; opacity: .5; animation: aurora-1 16s ease-in-out infinite alternate; }
+.aurora i:nth-child(2) { width: 46%; height: 72%; right: 0; top: -10%; background: #d0101e; opacity: .48; animation: aurora-2 20s ease-in-out infinite alternate; }
+.aurora i:nth-child(3) { width: 40%; height: 52%; left: 30%; bottom: -18%; background: #ff6a2a; opacity: .3; animation: aurora-3 13s ease-in-out infinite alternate; }
+.aurora--soft i { opacity: .32; }
+.aurora--soft i:nth-child(3) { opacity: .2; }
+.closing .aurora--soft i { opacity: .45; }
+.closing .aurora--soft i:nth-child(3) { opacity: .28; }
+@keyframes aurora-1 { 0% { transform: translate(-12%, -4%) scale(1); } 50% { transform: translate(28%, 16%) scale(1.25); } 100% { transform: translate(8%, 30%) scale(.9); } }
+@keyframes aurora-2 { 0% { transform: translate(10%, 0) scale(1.05); } 50% { transform: translate(-30%, -10%) scale(.88); } 100% { transform: translate(-12%, 22%) scale(1.25); } }
+@keyframes aurora-3 { 0% { transform: translate(0, 0) scale(.9); } 50% { transform: translate(-34%, -26%) scale(1.3); } 100% { transform: translate(30%, -10%) scale(1); } }
+/* keep section content above the light */
+.site-footer__inner { position: relative; z-index: 1; }
+
+/* ---------- Steam rising from hot food ---------- */
+.steam {
+  position: absolute; left: 4%; right: 4%; bottom: 56%;
+  height: 340px;
+  pointer-events: none; z-index: 3; overflow: hidden;
+  /* fades out upwards, and narrows towards the top like a real plume */
+  -webkit-mask-image: linear-gradient(to top, transparent 0, #000 24%, rgba(0, 0, 0, .55) 60%, transparent 100%), radial-gradient(ellipse 50% 100% at 50% 100%, #000 25%, rgba(0, 0, 0, .5) 60%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to top, transparent 0, #000 24%, rgba(0, 0, 0, .55) 60%, transparent 100%), radial-gradient(ellipse 50% 100% at 50% 100%, #000 25%, rgba(0, 0, 0, .5) 60%, transparent 100%);
+  mask-composite: intersect;
+}
+/* per dish, as in the prototype; rotated cut-outs turn their steam back upright */
+.hero__cut--right .steam { bottom: 78%; }
+.cutout--cheesling .steam { transform: rotate(-10deg); bottom: 62%; height: 260px; }
+.closing .cutout--fried .steam { transform: rotate(-6deg); bottom: 60%; height: 240px; }
+.steam i { position: absolute; left: 0; right: 0; top: 0; height: calc(100% + 720px); background-repeat: repeat; will-change: transform; filter: blur(6px); }
+.steam i:nth-child(1) { background-image: var(--steam-1); background-size: 360px 720px; opacity: .7; animation: steam-rise 12s linear infinite; }
+.steam i:nth-child(2) { background-image: var(--steam-2); background-size: 240px 720px; background-position: 90px 0; opacity: .45; animation: steam-rise 8s linear infinite; }
+@keyframes steam-rise { from { transform: translateY(0); } to { transform: translateY(-720px); } }
+@media (max-width: 767px) {
+  .steam { height: 200px; }
+  .closing .cutout--fried .steam { height: 150px; }
+}
+
+/* ---------- Gentle loops ---------- */
+@keyframes bob { 50% { transform: translateY(-8px); } }
+.intro .peek { animation: bob 5s ease-in-out infinite; }
+.mascot__img img { animation: bob 6s ease-in-out infinite; }
+.map-card__pin { animation: bob 2.8s ease-in-out infinite; }
+
+/* the "since 1995" lettering turns slowly around the emblem */
+.stamp__ring { transform-origin: 92px 92px; animation: spin 60s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* sparkles twinkle */
+.sparkle-lg, .sparkle-sm { animation: twinkle 3.2s ease-in-out infinite; }
+.sparkle-sm { animation-delay: -1.6s; }
+@keyframes twinkle { 50% { transform: scale(.7) rotate(18deg); opacity: .6; } }
+
+/* parallax uses the independent `translate` property so it never fights a rotation */
+[data-par] { will-change: translate; }
+
+/* ---------- Hover effects ---------- */
+.btn { transition: transform .25s cubic-bezier(.2, .8, .2, 1), box-shadow .25s, background-color .25s, color .25s; }
+.btn:hover .btn__chip { transform: translateX(3px); }
+.order-menu .btn:hover .btn__chip { transform: translateY(2px); }
+
+.brand-card { transition: translate .4s cubic-bezier(.2, .8, .2, 1); }
+.brand-card:not(.brand-card--soon):hover { translate: 0 -6px; }
+.brand-card .cutout { transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.brand-card:hover .cutout { transform: rotate(8deg) scale(1.05); }
+
+.food-card__img img, .news-card__img img { transition: transform .9s cubic-bezier(.2, .8, .2, 1); }
+.food-card:hover .food-card__img img, .news-card:hover .news-card__img img { transform: scale(1.05); }
+.team__img img { transition: transform 1.2s cubic-bezier(.2, .8, .2, 1); }
+@media (hover: hover) and (min-width: 768px) { .team__img:hover img { transform: scale(1.04); } }
+
+.slider__arrow { transition: transform .2s ease, background-color .2s ease; }
+@media (hover: hover) { .slider__arrow:not(:disabled):hover { background: var(--red); color: var(--white); transform: scale(1.06); } }
+.slider__dot { transition: width .4s ease, opacity .4s ease; }
+
+.platform { transition: background-color .2s ease, translate .2s ease; }
+.platform:hover { background: rgba(255, 255, 255, .26); translate: 0 -2px; }
+
+.reason { transition: translate .4s cubic-bezier(.2, .8, .2, 1), background-color .4s ease; }
+.reason:hover { translate: 0 -6px; background: rgba(255, 255, 255, .12); }
+
+.socials a { transition: transform .25s cubic-bezier(.2, .8, .2, 1), background-color .25s ease; }
+.socials a:hover { transform: translateY(-4px) scale(1.05); background: #ff2b4b; }
+
+.footer-col a, .dropdown__link, .platform-link { transition: color .2s ease, background-color .2s ease; }
+
+/* inner pages: format cards behave like the home brand cards, photos zoom like the food cards */
+.format-card, .format-block, .tile, .vacancy { transition: translate .4s cubic-bezier(.2, .8, .2, 1), box-shadow .4s ease; }
+.format-card__img img, .format-block__img img { transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+.tile__img { overflow: hidden; }
+.tile__img img { transition: transform .9s cubic-bezier(.2, .8, .2, 1); }
+@media (hover: hover) {
+  .format-card:hover, .format-block:hover, .tile:hover { translate: 0 -6px; }
+  .format-card:hover .format-card__img img, .format-block:hover .format-block__img img { transform: rotate(4deg) scale(1.05); }
+  .tile:hover .tile__img img { transform: scale(1.05); }
+  .vacancy:hover { translate: 0 -3px; box-shadow: 0 14px 30px rgba(34, 30, 31, .08); }
+}
+
+/* ---------- Reduced motion: everything still, nothing hidden ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+  .aurora, .steam { display: none; }
+}

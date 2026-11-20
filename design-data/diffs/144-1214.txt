@@ -1,0 +1,63 @@
+~ F 144:1214 "News – Desktop 1680 – Design v4" 1680x4138.2 @16920,-150 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#F5F1E8 clip
+~   F 144:1215 "Page header" 1680x600 @0,0 sz:FF fill:#180D10+IMG(abee8490,FILL) clip
+~     F 144:1216 "IMG · 8pcs_fried (cutout)" 379x480 @1131,80 HIDDEN sz:FF fill:IMG(19e89c23,FIT) fx:DROP_SHADOW(#000000/0.50 0,40 r70)
+~       F 144:1218 "Eyebrow" 66x30 @0,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#F5F1E8/0.14 r:4 clip
+~         T 144:1219 42x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "NEWS"
+~         F 144:1223 "Button – Submit your application" 251x52 @0,0 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#F5F1E8 r:6 clip
+~           T 144:1224 179x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F LEFT} "Submit your application"
+~         F 144:1228 "Button – How it works" 179x55 @274,0 HIDDEN sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER stroke:#F5F1E8 1.5 r:6 clip
+~           T 144:1229 98x20 @25.5,17.5 sz:HH {Pretendard Bold 16/20 ls0 #F5F1E8 LEFT} "How it works"
+~   F 144:1272 "Featured article (latest news; links to the News article page. The Madrid article takes this spot when it arrives)" 1680x700 @0,600 sz:FH AL:H gap96 p[120,120,120,120] MIN/CENTER fill:#FFFFFF clip
+~     F 144:1273 "IMG · Europe HQ inauguration ceremony (Genesis BBQ press photo)" 760x460 @120,120 sz:FF fill:IMG(1dd9fd21,FILL) r:16 clip
+~       F 144:1276 "Eyebrow" 227x30 @0,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#221E1F r:4 clip
+~         T 144:1277 203x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "8 DECEMBER 2025 · EUROPE"
+~       T 144:1278 584x122 @0,54 sz:FH {Pretendard ExtraBold 60/102% ls-2.0% #221E1F LEFT} "Spain is bb.q's door to Europe"
+~       T 144:1279 "Genesis BBQ Group and BLT F&B Group set up bb.q's European h" 584x84 @0,200 sz:FH {Pretendard Regular 18/155% ls0 #6B605C LEFT} "Genesis BBQ Group and BLT F&B Group set up bb.q's European headquarters in Spain, the base for flagship restaurants in Spain, the UK, France, Poland and the Netherlands."
+~       F 144:1280 "Button – Meet the team (on light)" 153x52 @0,308 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER stroke:#221E1F 1.5 r:6 clip
+~         T 144:1281 81x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F LEFT} "Read more"
+~         F 144:1288 "Eyebrow" 66x30 @129,0 sz:HH AL:H gap12 p[7,12,7,12] MIN/CENTER fill:#221E1F r:4 clip
+~           T 144:1289 42x16 @12,7 sz:HH {Pretendard ExtraBold 13/120% ls8.0% #FFFFFF CENTER} "NEWS"
+~       F 144:1291 "Button – All news (on light)" 136x52 @648.5,135 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER stroke:#221E1F 1.5 r:6 clip
+~         T 144:1292 64x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #221E1F CENTER} "All news"
+~     F 144:1296 "Articles" 1440x784 @120,128 sz:FH AL:H gap32 p[0,0,0,0] MIN/MIN wrap clip
+~       F 144:1297 "Card – Madrid openings article, supplied by BLT (placeholder: BLT article on the three Madrid kitchens, expected next week)" 458x344 @0,0 sz:FH AL:V gap20 p[0,0,0,0] MIN/MIN clip
+~         F 144:1298 "Image placeholder (photo supplied with the article)" 458x270 @0,0 sz:FF fill:#E4DED2 r:12 clip
+~           T 144:1300 114x16 @0,0 sz:HH {Pretendard Bold 13/120% ls12.0% #D61834 LEFT} "[Date] · Madrid"
+~           T 144:1301 458x28 @0,26 sz:FH {Pretendard Bold 22/125% ls-0.5% #221E1F LEFT} "[Madrid openings article, supplied by BLT]"
++       F 497:1570 "Card – UK openings article, supplied by BLT (placeholder: BLT article on the UK openings, expected before Christmas)" 458x344 @490,0 sz:FH AL:V gap20 p[0,0,0,0] MIN/MIN clip
+          F 497:1571 "Image placeholder (photo supplied with the article)" 458x270 @0,0 sz:FF fill:#E4DED2 r:12 clip
+          F 497:1572 "Frame" 458x54 @0,290 sz:FH AL:V gap10 p[0,0,0,0] MIN/MIN clip
+            T 497:1573 182x16 @0,0 sz:HH {Pretendard Bold 13/120% ls12.0% #D61834 LEFT} "[Date] · United Kingdom"
+            T 497:1574 458x28 @0,26 sz:FH {Pretendard Bold 22/125% ls-0.5% #221E1F LEFT} "[UK openings article, supplied by BLT]"
++       F 497:1575 "Card – Genesis BBQ marks 30th anniversary with FC Barcelona ticket giveaway (external link, new tab: https://www.koreajoongangdaily.com/business/genesis-bbq-marks-30th-anniversary-with-fc-barcelona-ticket-giveaway/11941713)" 458x372 @980,0 sz:FH AL:V gap20 p[0,0,0,0] MIN/MIN clip
+          F 497:1576 "IMG · FC Barcelona 30th anniversary briefing (Genesis BBQ press photo)" 458x270 @0,0 sz:FF fill:IMG(00c33435,FILL) r:12 clip
+          F 497:1577 "Frame" 458x82 @0,290 sz:FH AL:V gap10 p[0,0,0,0] MIN/MIN clip
+            T 497:1578 272x16 @0,0 sz:HH {Pretendard Bold 13/120% ls12.0% #D61834 LEFT} "10 Jun 2025 · Korea JoongAng Daily"
+            T 497:1579 458x56 @0,26 sz:FH {Pretendard Bold 22/125% ls-0.5% #221E1F LEFT} "Genesis BBQ marks 30th anniversary with FC Barcelona ticket giveaway"
++       F 497:1580 "Card – Genesis BBQ spreads the love with British-inspired afternoon tea experience (external link, new tab: https://www.koreajoongangdaily.com/business/genesis-bbq-spreads-the-love-with-britishinspired-afternoon-tea-experience/10206597)" 458x372 @0,412 sz:FH AL:V gap20 p[0,0,0,0] MIN/MIN clip
+          F 497:1581 "IMG · Love in London afternoon tea (Genesis BBQ press photo)" 458x270 @0,0 sz:FF fill:IMG(083daca8,FILL) r:12 clip
+          F 497:1582 "Frame" 458x82 @0,290 sz:FH AL:V gap10 p[0,0,0,0] MIN/MIN clip
+            T 497:1583 264x16 @0,0 sz:HH {Pretendard Bold 13/120% ls12.0% #D61834 LEFT} "5 Feb 2025 · Korea JoongAng Daily"
+            T 497:1584 458x56 @0,26 sz:FH {Pretendard Bold 22/125% ls-0.5% #221E1F LEFT} "Genesis BBQ spreads the love with British-inspired afternoon tea experience"
++       F 497:1585 "Card – bb.q takes over Times Square (links to bb.q global media page)" 458x344 @490,412 sz:FH AL:V gap20 p[0,0,0,0] MIN/MIN clip
+          F 497:1586 "IMG · 07_news_times-square" 458x270 @0,0 sz:FF fill:IMG(d3b7240a,FILL) r:12 clip
+          F 497:1587 "Frame" 458x54 @0,290 sz:FH AL:V gap10 p[0,0,0,0] MIN/MIN clip
+            T 497:1588 101x16 @0,0 sz:HH {Pretendard Bold 13/120% ls12.0% #D61834 LEFT} "2025 · Global"
+            T 497:1589 458x28 @0,26 sz:FH {Pretendard Bold 22/125% ls-0.5% #221E1F LEFT} "bb.q takes over Times Square"
+~       F 144:1302 "Card – Ranked 7th on Yelp's fastest growing brands (links to bb.q global media page)" 458x344 @980,412 sz:FH AL:V gap20 p[0,0,0,0] MIN/MIN clip
+~         F 144:1303 "IMG · 10_news_close-up-drumstick" 458x270 @0,0 sz:FF fill:IMG(aa78ddf8,FILL) r:12 clip
+~           T 144:1305 73x16 @0,0 sz:HH {Pretendard Bold 13/120% ls12.0% #D61834 LEFT} "2025 · US"
+~           T 144:1306 458x28 @0,26 sz:FH {Pretendard Bold 22/125% ls-0.5% #221E1F LEFT} "Ranked 7th on Yelp's fastest growing brands"
+~     F 144:1327 "Pagination (hidden: shows when there are more than 6 articles in the grid)" 241x20 @719.5,960 HIDDEN sz:HH AL:H gap28 p[0,0,0,0] MIN/MIN clip
+~       T 144:1328 85x20 @0,0 sz:HH {Pretendard Bold 16/20 ls0 #221E1F CENTER} "← Previous"
+~       T 144:1329 8x20 @113,0 sz:HH {Pretendard Bold 16/20 ls0 #221E1F CENTER} "1"
+~       T 144:1330 10x20 @149,0 sz:HH {Pretendard Bold 16/20 ls0 #221E1F CENTER} "2"
+~       T 144:1332 54x20 @187,0 sz:HH {Pretendard Bold 16/20 ls0 #221E1F CENTER} "Next →"
+~   F 144:1666 "Closing CTA" 1680x760 @0,2340 sz:FH AL:V gap28 p[160,120,180,120] MIN/CENTER fill:#180D10+IMG(abee8490,FILL)+G-LINEAR[#161213/0.00@0.70 #161213@1.00]
+~     F 144:1667 "CTA card (overlaps CTA photo and footer)" 1040x420 @320,160 sz:FH AL:V gap24 p[72,80,72,80] MIN/CENTER fill:#F5F1E8 r:16 clip
+~       F 144:1670 "Button – Submit your application (red)" 251x52 @394.5,296 sz:HH AL:H gap10 p[16,18,16,24] MIN/CENTER fill:#E31937 r:6 clip
+~         T 144:1671 179x20 @24,16 sz:HH {Pretendard Bold 16/20 ls0 #FFFFFF LEFT} "Submit your application"
+~   I 144:1426 "Footer" 1680x1038.2 @0,3100 sz:FH AL:V gap64 p[96,120,40,120] MIN/CENTER fill:#161213+IMG(744c520e,CROP) comp:Footer / Desktop 1680 (option 2 + feedback)
+~   I 144:1503 "Header (fixed on scroll)" 1584x88 @48,24 ABS sz:FF AL:H gap0 p[0,20,0,20] SPACE_BETWEEN/CENTER fill:#221E1F stroke:#F5F1E8/0.1 1 r:12 clip comp:Header / Desktop 1680 (sticky)
+~   I 144:1541 "HIDDEN – Floating CTA (removed on client request, 18 Nov)" 253x56 @1368,790 HIDDEN ABS sz:HH AL:H gap10 p[18,18,18,26] MIN/CENTER fill:#E31937 r:8 fx:DROP_SHADOW(#66000D/0.35 0,14 r30) clip comp:Floating CTA / Submit your application
+REMOVED: 144:1274,144:1307,144:1308,144:1309,144:1310,144:1311,144:1312,144:1313,144:1314,144:1315,144:1316,144:1317,144:1318,144:1319,144:1320,144:1321,144:1322,144:1323,144:1324,144:1325,144:1326,144:1331

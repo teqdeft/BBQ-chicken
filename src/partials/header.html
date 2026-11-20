@@ -55,26 +55,34 @@
 
 <div class="mobile-menu" id="mobile-menu" aria-label="Menu">
   <div class="mobile-menu__inner">
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Discover bb.q</span>
-      <a class="mobile-menu__link" href="discover.html">Our story</a>
-      <a class="mobile-menu__link" href="menu.html">The menu</a>
-      <a class="mobile-menu__link" href="discover.html#chibboq">ChiBBoQ and friends</a>
-      <a class="mobile-menu__link" href="news.html">News</a>
+    <nav class="mobile-nav" aria-label="Mobile">
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Discover bb.q <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="discover.html">Our story</a>
+          <a href="menu.html">The menu</a>
+          <a href="discover.html#chibboq">ChiBBoQ and friends</a>
+          <a href="news.html">News</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Franchise <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="franchise.html">Franchise opportunity</a>
+          <a href="index.html#markets">Markets</a>
+          <a href="franchise.html#faq">FAQ</a>
+          <a href="apply.html" data-apply>Submit your application</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="index.html#markets">Markets <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="real-estate.html">Real estate <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="careers.html">Careers <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+    </nav>
+    <div class="mobile-menu__actions">
+      <a class="btn btn--cream" href="apply.html" data-apply>Submit your application <span class="btn__chip">{{icon:arrow}}</span></a>
+      <a class="btn btn--outline-light" href="index.html#find">Order now <span class="btn__chip">{{icon:arrow}}</span></a>
+      <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
     </div>
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Franchise</span>
-      <a class="mobile-menu__link" href="franchise.html">Franchise opportunity</a>
-      <a class="mobile-menu__link" href="index.html#markets">Markets</a>
-      <a class="mobile-menu__link" href="real-estate.html">Real estate</a>
-      <a class="mobile-menu__link" href="careers.html">Careers</a>
-    </div>
-    <div class="btn-row">
-      <a class="btn btn--red" href="apply.html" data-apply>Submit your application <span class="btn__chip">{{icon:arrow}}</span></a>
-      <a class="btn btn--outline-light" href="contact.html">Contact <span class="btn__chip">{{icon:arrow}}</span></a>
-    </div>
-    <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
   </div>
+  <img class="mobile-menu__peek" src="assets/img/chibboq-peeking.png" alt="" width="300" height="537" loading="lazy">
 </div>
-
-<a class="floating-cta" href="apply.html" data-apply data-floating-cta>Submit your application <span class="btn__chip">{{icon:arrow}}</span></a>

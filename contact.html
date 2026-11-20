@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/apply-modal.css">
+  <link rel="stylesheet" href="assets/css/motion.css">
   <link rel="stylesheet" href="assets/css/pages/contact.css">
 </head>
 <body class="page-contact">
@@ -72,35 +73,43 @@
 
 <div class="mobile-menu" id="mobile-menu" aria-label="Menu">
   <div class="mobile-menu__inner">
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Discover bb.q</span>
-      <a class="mobile-menu__link" href="discover.html">Our story</a>
-      <a class="mobile-menu__link" href="menu.html">The menu</a>
-      <a class="mobile-menu__link" href="discover.html#chibboq">ChiBBoQ and friends</a>
-      <a class="mobile-menu__link" href="news.html">News</a>
+    <nav class="mobile-nav" aria-label="Mobile">
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Discover bb.q <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="discover.html">Our story</a>
+          <a href="menu.html">The menu</a>
+          <a href="discover.html#chibboq">ChiBBoQ and friends</a>
+          <a href="news.html">News</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item" data-mnav>
+        <button class="mobile-nav__link" type="button" aria-expanded="false">Franchise <span class="mobile-nav__mark" aria-hidden="true"></span></button>
+        <div class="mobile-nav__sub">
+          <a href="franchise.html">Franchise opportunity</a>
+          <a href="index.html#markets">Markets</a>
+          <a href="franchise.html#faq">FAQ</a>
+          <a href="apply.html" data-apply>Submit your application</a>
+        </div>
+      </div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="index.html#markets">Markets <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="real-estate.html">Real estate <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+      <div class="mobile-nav__item"><a class="mobile-nav__link" href="careers.html">Careers <span class="mobile-nav__mark mobile-nav__mark--arrow" aria-hidden="true">→</span></a></div>
+    </nav>
+    <div class="mobile-menu__actions">
+      <a class="btn btn--cream" href="apply.html" data-apply>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <a class="btn btn--outline-light" href="index.html#find">Order now <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
     </div>
-    <div class="mobile-menu__group">
-      <span class="mobile-menu__title">Franchise</span>
-      <a class="mobile-menu__link" href="franchise.html">Franchise opportunity</a>
-      <a class="mobile-menu__link" href="index.html#markets">Markets</a>
-      <a class="mobile-menu__link" href="real-estate.html">Real estate</a>
-      <a class="mobile-menu__link" href="careers.html">Careers</a>
-    </div>
-    <div class="btn-row">
-      <a class="btn btn--red" href="apply.html" data-apply>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-      <a class="btn btn--outline-light" href="contact.html">Contact <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
-    </div>
-    <p class="mobile-menu__lang">English · <a href="#">Español</a></p>
   </div>
+  <img class="mobile-menu__peek" src="assets/img/chibboq-peeking.png" alt="" width="300" height="537" loading="lazy">
 </div>
-
-<a class="floating-cta" href="apply.html" data-apply data-floating-cta>Submit your application <span class="btn__chip"><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M3.5 1.5 7 5 3.5 8.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
 
 <main id="main">
 <!-- 1. Page header -->
 <section class="section page-hero page-hero--short" aria-labelledby="contact-title">
   <div class="page-hero__text">
-    <span class="eyebrow">Contact</span>
+    <span class="eyebrow eyebrow--glass">Contact</span>
     <h1 class="h-display" id="contact-title">Get in touch</h1>
     <p class="lead">Pick the topic that fits and your message goes straight to the right person.</p>
   </div>
@@ -108,25 +117,32 @@
 
 <!-- 2. Shortcuts -->
 <section class="section shortcuts" aria-label="Contact shortcuts">
-  <div class="tiles">
-    <article class="tile tile--yellow">
-      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></span>
-      <h2 class="tile__title">Franchise</h2>
-      <p class="tile__text">Want to open bb.q restaurants? Use the short application.</p>
-      <a class="tile__link" href="apply.html" data-apply>Submit your application →</a>
-    </article>
-    <article class="tile tile--red">
-      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg></span>
-      <h2 class="tile__title">Real estate</h2>
-      <p class="tile__text">Have a site that could suit bb.q?</p>
-      <a class="tile__link" href="real-estate.html#offer">Offer your premises →</a>
-    </article>
-    <article class="tile tile--sand">
-      <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
-      <h2 class="tile__title">Press and media</h2>
-      <p class="tile__text">Interview requests, images and press releases.</p>
-      <span class="tile__link">[press email]</span>
-    </article>
+  <div class="tiles-slider" data-slider>
+    <div class="tiles" data-slider-viewport>
+      <article class="tile tile--yellow">
+        <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg></span>
+        <h2 class="tile__title">Franchise</h2>
+        <p class="tile__text">Want to open bb.q restaurants? Use the short application.</p>
+        <a class="tile__link" href="apply.html" data-apply>Submit your application →</a>
+      </article>
+      <article class="tile tile--red">
+        <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg></span>
+        <h2 class="tile__title">Real estate</h2>
+        <p class="tile__text">Have a site that could suit bb.q?</p>
+        <a class="tile__link" href="real-estate.html#offer">Offer your premises →</a>
+      </article>
+      <article class="tile tile--sand">
+        <span class="tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+        <h2 class="tile__title">Press &amp; Media</h2>
+        <p class="tile__text">Interview requests, images and press releases.</p>
+        <a class="tile__link tile__link--email" href="mailto:marketing@bltglobalbrands.com">marketing@<wbr>bltglobalbrands.com</a>
+      </article>
+    </div>
+    <div class="slider__nav tiles-nav">
+      <button class="slider__arrow" type="button" aria-label="Previous" data-slider-prev><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="slider__dots" data-slider-dots></div>
+      <button class="slider__arrow" type="button" aria-label="Next" data-slider-next><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
   </div>
   <img class="chibboq-peek" src="assets/img/chibboq-glasses.png" alt="" width="714" height="906" loading="lazy">
 </section>
@@ -140,11 +156,11 @@
       <address class="lead contact-address">BLT Global Brands<br>Calle Fernando el Santo, 25, 4º D<br>28010 Madrid, Spain<br>[Email address]</address>
       <div class="info-box">
         <p class="info-box__title">Good to know</p>
-        <p class="info-box__step">We usually reply within [3] working days.</p>
+        <p class="info-box__step">We reply within 5 working days.</p>
       </div>
     </div>
 
-    <form class="form" action="#" method="post" data-form data-success="Thank you! Your message has been received. We usually reply within [3] working days. [Form handling to be connected]">
+    <form class="form" action="#" method="post" data-form data-success="Thank you! Your message has been received. We reply within 5 working days. [Form handling to be connected]">
       <div class="form-row">
         <div class="field">
           <label class="field__label" for="ct-name">Full name <span aria-hidden="true">*</span></label>
@@ -158,10 +174,10 @@
       <div class="field">
         <label class="field__label" for="ct-topic">Topic <span aria-hidden="true">*</span></label>
         <select class="select" id="ct-topic" name="topic" required>
-          <option value="" disabled selected>Franchise, real estate, press, careers, customer question, other</option>
+          <option value="" disabled selected>Franchise, real estate, press &amp; media, careers, customer question, other</option>
           <option value="franchise">Franchise</option>
           <option value="real-estate">Real estate</option>
-          <option value="press">Press</option>
+          <option value="press">Press &amp; media</option>
           <option value="careers">Careers</option>
           <option value="customer">Customer question</option>
           <option value="other">Other</option>
@@ -189,7 +205,6 @@
 </main>
 
 <footer class="site-footer">
-  <div class="cutout cutout--fries"><img src="assets/img/cut-fries.png" alt="" loading="lazy" width="480" height="624"></div>
   <div class="site-footer__inner">
     <div class="order-bar">
       <div class="order-bar__text">
@@ -215,7 +230,7 @@
 
     <nav class="footer-links" aria-label="Footer">
       <div class="footer-col is-open" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="true"><span class="footer-col__title">Discover</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="true"><span class="footer-col__title">Discover</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="discover.html">Our story</a>
           <a href="menu.html">The menu</a>
@@ -224,7 +239,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Franchise</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Franchise</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="franchise.html">Franchise opportunity</a>
           <a href="index.html#markets">Markets</a>
@@ -234,7 +249,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Company</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Company</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="about.html">About BLT Global Brands</a>
           <a href="about.html#team">Our team</a>
@@ -243,7 +258,7 @@
         </div>
       </div>
       <div class="footer-col" data-accordion>
-        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Legal</span><svg class="chev" viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="footer-col__head" type="button" aria-expanded="false"><span class="footer-col__title">Legal</span><span class="footer-col__toggle" aria-hidden="true"></span></button>
         <div class="footer-col__list">
           <a href="legal.html">Privacy policy</a>
           <a href="legal.html">Cookie policy</a>
@@ -267,6 +282,8 @@
 
 <script src="assets/js/main.js" defer></script>
 <script src="assets/js/apply.js" defer></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/map.js" defer></script>
 
 </body>
 </html>

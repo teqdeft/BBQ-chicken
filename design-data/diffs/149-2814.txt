@@ -1,0 +1,79 @@
+~ F 149:2814 "Careers – Mobile 390 – Design v4" 390x4133.4 @7350,-150 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#F5F1E8 clip
+~   F 149:2815 "Page header" 390x456 @0,0 sz:FH AL:V gap18 p[152,20,64,20] MIN/MIN fill:#180D10+IMG(9ae57924,FILL) clip
+~     F 149:2816 "IMG · 8pcs_fried (cutout)" 300x380 @70,96 HIDDEN sz:FF fill:IMG(19e89c23,FIT) fx:DROP_SHADOW(#000000/0.50 0,24 r40)
+~     F 149:2817 "Eyebrow" 81x26 @20,152 sz:HH AL:H gap0 p[6,10,6,10] MIN/MIN fill:#F5F1E8/0.14 r:4 clip
+~       T 149:2818 61x14 @10,6 sz:HH {Pretendard ExtraBold 12/auto ls8.0% #FFFFFF LEFT} "CAREERS"
+~     T 149:2819 "Grow with bb.q in Europe" 350x82 @20,196 sz:FH {Pretendard ExtraBold 40/102% ls-2.5% #FFFFFF LEFT} "Grow with bb.q\nin Europe"
+~       F 149:2822 "Button – Submit your application" 350x50 @0,0 sz:FH AL:H gap8 p[15,14,15,20] SPACE_BETWEEN/CENTER fill:#F5F1E8 r:6 clip
+~       F 149:2827 "Button – How it works" 350x53 @0,60 HIDDEN sz:FH AL:H gap8 p[15,14,15,20] SPACE_BETWEEN/CENTER stroke:#F5F1E8/0.8 1.5 r:6 clip
+~   F 149:2871 "Why work with us" 390x763 @0,456 sz:FH AL:V gap20 p[40,0,158,20] MIN/MIN fill:#F5F1E8 clip
+~       F 149:2873 "Eyebrow" 88x26 @0,0 sz:HH AL:H gap0 p[6,10,6,10] MIN/MIN fill:#221E1F r:4 clip
+~         T 149:2874 68x14 @10,6 sz:HH {Pretendard ExtraBold 12/auto ls8.0% #FFFFFF LEFT} "WHY BB.Q"
+~       F 149:2877 "Card – Early days" 250x407 @0,0 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#F2B33D r:12 clip
++         F 465:4427 "IMG · European team (photo)" 250x160 @0,0 sz:FF fill:IMG(84dbeb4e,FILL) clip
++         F 465:4426 "Body" 250x247 @0,160 sz:FH AL:V gap14 p[20,22,26,22] MIN/MIN clip
+~           F 149:2885 "spacer" 10x40 @0,0 HIDDEN sz:FF clip
+~       F 149:2888 "Card – Real training" 250x407 @262,0 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#E31937 r:12 clip
++         F 465:4429 "IMG · Chicken University (photo)" 250x160 @0,0 sz:FF fill:IMG(ade9ae13,FILL) clip
++         F 465:4428 "Body" 250x247 @0,160 sz:FH AL:V gap14 p[20,22,26,22] MIN/MIN clip
+~           F 149:2894 "spacer" 10x40 @0,0 HIDDEN sz:FF clip
+~           T 149:2896 206x75 @22,146 sz:FH {Pretendard Regular 16/155% ls-0.1% #FFFFFF LEFT} "Learn the bb.q way, from the fryer to running your own restaurant."
+~       F 149:2897 "Card – Room to move" 250x407 @524,0 sz:FH AL:V gap0 p[0,0,0,0] MIN/MIN fill:#D6D2C4 r:12 clip
++         F 465:4431 "IMG · bb.q store in Europe (photo)" 250x160 @0,0 sz:FF fill:IMG(a3e403c4,FILL) clip
++         F 465:4430 "Body" 250x247 @0,160 sz:FH AL:V gap14 p[20,22,26,22] MIN/MIN clip
+~           F 149:2902 "spacer" 10x40 @0,0 HIDDEN sz:FF clip
++     F 374:2959 "Slider nav (arrows + dots, 3 cards)" 350x44 @20,561 sz:FH AL:H gap24 p[0,0,0,0] SPACE_BETWEEN/CENTER clip
+        F 374:2960 "Arrow left" 44x44 @0,0 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#221E1F r:6 op:0.4 clip
+          F 374:2961 "Frame" 16x16 @14,14 sz:FF clip
+            V 374:2962 "Vector" 10x8 @3,4 sz:FF stroke:#F5F1E8 2
+        F 374:2963 "Dots" 56x8 @147,18 sz:HH AL:H gap8 p[0,0,0,0] MIN/CENTER clip
+          R 374:2964 "Rectangle" 24x8 @0,0 sz:FF fill:#221E1F r:4
+          R 374:2965 "Rectangle" 8x8 @32,0 sz:FF fill:#221E1F/0.35 r:4
+          R 374:2966 "Rectangle" 8x8 @48,0 sz:FF fill:#221E1F/0.35 r:4
+        F 374:2968 "Arrow right" 44x44 @306,0 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#221E1F r:6 clip
+          F 374:2969 "Frame" 16x16 @14,14 sz:FF clip
+            V 374:2970 "Vector" 10x8 @3,4 sz:FF stroke:#F5F1E8 2
+~     F 149:2913 "Mid-page CTA" 300x154 @20,433 HIDDEN sz:FH AL:V gap14 p[20,20,20,20] MIN/MIN fill:#221E1F r:12 clip
+~       F 149:2915 "Button – Submit your application" 260x50 @20,84 sz:FH AL:H gap8 p[15,14,15,20] SPACE_BETWEEN/CENTER fill:#F5F1E8 r:6 clip
+~   F 149:2932 "Open positions" 390x474 @0,1219 sz:FH AL:V gap16 p[40,20,56,20] MIN/MIN fill:#F5F1E8 clip
+~     T 149:2933 350x16 @20,40 sz:FH {Pretendard Bold 13/120% ls12.0% #D61834 LEFT} "OPEN POSITIONS"
++     F 396:2857 "Vacancy list" 350x293 @20,125 sz:FH AL:V gap12 p[0,0,0,0] MIN/MIN clip
+        F 396:2858 "Vacancy – Kitchen Staff, London" 350x153 @0,0 sz:FH AL:V gap12 p[20,20,20,20] MIN/MIN fill:#FFFFFF r:12 clip
+          F 396:2859 "Role" 310x81 @20,20 sz:FH AL:V gap6 p[0,0,0,0] MIN/MIN clip
+            T 396:2860 310x25 @0,0 sz:FH {Pretendard Bold 20/125% ls-0.5% #221E1F LEFT} "Kitchen Staff"
+            T 396:2861 310x50 @0,31 sz:FH {Pretendard Regular 16/155% ls-0.1% #6B605C LEFT} "London, United Kingdom · [Contract type TBC]"
+          T 396:2862 310x20 @20,113 sz:FH {Pretendard Bold 16/125% ls-0.5% #D61834 LEFT} "View role →"
+        F 396:2863 "Vacancy – Responsables de Cocina, Madrid" 350x128 @0,165 sz:FH AL:V gap12 p[20,20,20,20] MIN/MIN fill:#FFFFFF r:12 clip
+          F 396:2864 "Role" 310x56 @20,20 sz:FH AL:V gap6 p[0,0,0,0] MIN/MIN clip
+            T 396:2865 310x25 @0,0 sz:FH {Pretendard Bold 20/125% ls-0.5% #221E1F LEFT} "Responsables de Cocina"
+            T 396:2866 310x25 @0,31 sz:FH {Pretendard Regular 16/155% ls-0.1% #6B605C LEFT} "Madrid, Spain · [Contract type TBC]"
+          T 396:2867 310x20 @20,88 sz:FH {Pretendard Bold 16/125% ls-0.5% #D61834 LEFT} "View role →"
+~     F 149:2935 "Empty state (hidden: shown when there are no vacancies)" 350x169 @20,409 HIDDEN sz:FH AL:V gap10 p[28,24,28,24] MIN/MIN fill:#FFFFFF r:8 clip
+~     T 149:2938 350x63 @20,409 HIDDEN sz:FF {Pretendard Regular 14/150% ls0 #6B605C LEFT} "When vacancies exist: list with job title, city, country and contract type, each linking to a job page. [Job page template follows the article layout]"
+~   F 149:2939 "Open application (form)" 390x1148 @0,1693 sz:FH AL:V gap0 p[56,16,56,16] MIN/MIN fill:#180D10+IMG(9ae57924,FILL)+G-LINEAR[#161213/0.00@0.70 #161213@1.00] clip
+~     F 149:2940 "Application card – Submit your application" 358x1036 @16,56 sz:FH AL:V gap16 p[24,18,24,18] MIN/MIN fill:#FFFFFF r:12 clip
+~       F 149:2941 "Eyebrow" 149x26 @18,24 sz:HH AL:H gap0 p[6,10,6,10] MIN/MIN fill:#221E1F r:4 clip
+~         T 149:2942 129x14 @10,6 sz:HH {Pretendard ExtraBold 12/auto ls8.0% #FFFFFF LEFT} "OPEN APPLICATION"
+~         F 149:2947 "Input" 322x48 @0,24 sz:FH AL:H gap8 p[14,14,14,14] MIN/CENTER fill:#F5F1E8 stroke:#221E1F/0.15 1 r:6 clip
+~           T 149:2948 292x18 @15,15 sz:FH {Pretendard Regular 15/auto ls0 #221E1F/0.65 LEFT} "First and last name"
+~         F 149:2951 "Input" 322x48 @0,24 sz:FH AL:H gap8 p[14,14,14,14] MIN/CENTER fill:#F5F1E8 stroke:#221E1F/0.15 1 r:6 clip
+~           T 149:2952 292x18 @15,15 sz:FH {Pretendard Regular 15/auto ls0 #221E1F/0.65 LEFT} "name@example.com"
+~         F 149:2959 "Input" 322x48 @0,24 sz:FH AL:H gap8 p[14,14,14,14] MIN/CENTER fill:#F5F1E8 stroke:#221E1F/0.15 1 r:6 clip
+~           T 149:2960 278x18 @15,15 sz:FH {Pretendard Regular 15/auto ls0 #221E1F/0.65 LEFT} "Select a country"
+~           T 149:2961 6x17 @301,15.5 sz:HH {Pretendard Bold 14/auto ls0 #221E1F/0.65 LEFT} "▾"
+~           F 149:2965 "Band – 1 to 4" 150x48 @0,0 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#F5F1E8 stroke:#221E1F/0.15 1 r:6 clip
+~           F 149:2967 "Band – 5 to 9" 150x48 @158,0 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#221E1F stroke:#221E1F/0.15 1 r:6 clip
+~           F 149:2969 "Band – 10 to 24" 150x48 @0,56 sz:FF AL:H gap0 p[0,0,0,0] CENTER/CENTER fill:#F5F1E8 stroke:#221E1F/0.15 1 r:6 clip
+~         F 149:2975 "Upload zone" 322x83 @0,24 sz:FH AL:V gap6 p[18,14,18,14] MIN/CENTER fill:#F5F1E8 stroke:#221E1F/0.3 1 dash6,4 r:6 clip
+~           T 149:2976 17x21 @152.5,19 sz:HH {Pretendard Bold 18/auto ls0 #D61834 LEFT} "↑"
+~         T 149:2978 322x19 @0,113 sz:FH {Pretendard Regular 13/145% ls0 #221E1F/0.65 LEFT} "PDF, max 5 MB"
+~         F 149:3004 "Input" 322x48 @0,24 sz:FH AL:H gap8 p[14,14,14,14] MIN/CENTER fill:#F5F1E8 stroke:#221E1F/0.15 1 r:6 clip
+~           T 149:3005 292x18 @15,15 sz:FH {Pretendard Regular 15/auto ls0 #221E1F/0.65 LEFT} "Optional"
+~       F 149:2982 "Button – Submit your application" 322x50 @18,927 sz:FH AL:H gap8 p[15,14,15,20] SPACE_BETWEEN/CENTER fill:#E31937 r:6 clip
++       T 405:2865 184x19 @18,993 sz:HF {Pretendard Regular 13/145% ls0 #221E1F/0.75 LEFT} "We reply within 5 working days."
+~       F 149:2988 "What happens next" 322x180 @18,993 HIDDEN sz:FH AL:V gap10 p[16,16,16,16] MIN/MIN fill:#F5F1E8 r:6 clip
+~           T 149:2993 256x20 @34,0 sz:FH {Pretendard Regular 14/145% ls0 #221E1F/0.85 LEFT} "We reply within 5 working days."
+~   I 149:3006 "Footer" 390x1292.4 @0,2841 sz:FH AL:V gap36 p[56,20,32,20] MIN/MIN fill:#161213+IMG(875c197a,CROP) comp:Footer / Mobile 390 (option 2 + feedback)
+~   I 149:3075 "Header (fixed on scroll)" 366x60 @12,12 ABS sz:FF AL:H gap8 p[0,8,0,16] MIN/CENTER fill:#221E1F stroke:#F5F1E8/0.1 1 r:8 clip comp:Header / Mobile 390 (sticky)
+~   I 149:3096 "Floating CTA (sticky, directly under the header)" 366x56 @12,80 ABS sz:FF AL:H gap0 p[0,14,0,20] SPACE_BETWEEN/CENTER fill:#E31937 r:8 fx:DROP_SHADOW(#66000D/0.35 0,12 r28) clip comp:Floating CTA / Mobile (sticky bottom)
+REMOVED:
