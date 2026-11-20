@@ -23,6 +23,7 @@ require BBQ_DIR . '/inc/options.php';
 require BBQ_DIR . '/inc/menus.php';
 require BBQ_DIR . '/inc/news.php';
 require BBQ_DIR . '/inc/forms.php';
+require BBQ_DIR . '/inc/analytics.php';
 require BBQ_DIR . '/inc/importer.php';
 
 // Helpers that belong to one page template (functions can't live in templates/*.php, which run more than once).
