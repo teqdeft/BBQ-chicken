@@ -1,5 +1,5 @@
 # Original full-size image exports from Figma (the site uses the optimized copies in assets/img)
-assets/img/raw/
+**/assets/img/raw/
 
 # Local tooling
 .claude/
@@ -9,3 +9,7 @@ node_modules/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local WordPress uploads/cache if a WordPress install is ever placed in the repo
+wp-content/uploads/
+wp-content/cache/
