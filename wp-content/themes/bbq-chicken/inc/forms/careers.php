@@ -46,7 +46,7 @@ return array(
 <label class="field__label" for="ca-note">Short note</label>
 [text note id:ca-note class:input placeholder "Optional"]
 </div>
-<div class="check">[acceptance consent]I agree that my details are kept for &#91;12 months&#93; to match me with future vacancies. <a href="' . esc_url( bbq_page_url( 'legal' ) ) . '">Privacy policy</a>[/acceptance]</div>
+<div class="check">[acceptance consent]I agree that my details are kept to match me with future vacancies. <a href="' . esc_url( bbq_page_url( 'legal' ) ) . '">Privacy policy</a>[/acceptance]</div>
 <div class="form-submit">
 <button class="btn btn--red wpcf7-submit" type="submit">Send application <span class="btn__chip">' . $arrow . '</span></button>
 <p class="form-submit__note">We reply within 5 working days.</p>

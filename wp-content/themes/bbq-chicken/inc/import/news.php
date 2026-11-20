@@ -79,30 +79,6 @@ return ( function () {
 				'full_article' => array( 'label' => 'Read the full article', 'url' => 'https://www.koreaherald.com/article/10631888', 'new_tab' => true ),
 			),
 		),
-		// Placeholder: BLT article on the three Madrid kitchens.
-		array(
-			'slug'    => 'madrid-openings',
-			'title'   => '[Madrid openings article, supplied by BLT]',
-			'date'    => '2025-12-12',
-			'excerpt' => '',
-			'content' => $p( '[Article on the three Madrid kitchens, supplied by BLT.]' ),
-			'fields'  => array(
-				'card_meta'   => '[Date] · Madrid',
-				'placeholder' => 1,
-			),
-		),
-		// Placeholder: BLT article on the UK openings.
-		array(
-			'slug'    => 'uk-openings',
-			'title'   => '[UK openings article, supplied by BLT]',
-			'date'    => '2025-12-10',
-			'excerpt' => '',
-			'content' => $p( '[Article on the UK openings, supplied by BLT.]' ),
-			'fields'  => array(
-				'card_meta'   => '[Date] · United Kingdom',
-				'placeholder' => 1,
-			),
-		),
 		array(
 			'slug'    => 'genesis-bbq-30th-anniversary-fc-barcelona',
 			'title'   => 'Genesis BBQ marks 30th anniversary with FC Barcelona ticket giveaway',

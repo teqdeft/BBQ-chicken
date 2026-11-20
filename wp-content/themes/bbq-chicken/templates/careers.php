@@ -99,8 +99,8 @@ $tile_sizes = array(
           'link'  => array( 'link', 'Link (job page, or #open-application for the form below)' ),
       ),
       array(
-          array( 'title' => 'Kitchen Staff', 'lang' => '', 'meta' => 'London, United Kingdom · [Contract type TBC]', 'link' => array( 'label' => 'View role →', 'url' => '#open-application' ) ),
-          array( 'title' => 'Responsables de Cocina', 'lang' => 'es', 'meta' => 'Madrid, Spain · [Contract type TBC]', 'link' => array( 'label' => 'View role →', 'url' => '#open-application' ) ),
+          array( 'title' => 'Kitchen Staff', 'lang' => '', 'meta' => 'London, United Kingdom', 'link' => array( 'label' => 'View role →', 'url' => '#open-application' ) ),
+          array( 'title' => 'Responsables de Cocina', 'lang' => 'es', 'meta' => 'Madrid, Spain', 'link' => array( 'label' => 'View role →', 'url' => '#open-application' ) ),
       )
   );
   if ( $vacancies ) :

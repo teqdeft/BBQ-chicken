@@ -12,18 +12,22 @@ function bbq_menu_spice_levels() {
 		'1'   => '1 chilli (1 of 3)',
 		'2'   => '2 chillies (2 of 3)',
 		'3'   => '3 chillies (3 of 3)',
-		'tbc' => 'Not confirmed yet',
+		'tbc' => 'Not confirmed yet (no chillies shown)',
 	);
 }
 
 /**
  * The chilli rating of a sauce card: a screen-reader text, three chilli icons (the first $level lit)
- * and an optional note such as "(draft)". Same markup as the static page (no whitespace between spans).
+ * and an optional note. Same markup as the static page (no whitespace between spans).
+ * A level that isn't confirmed yet ("tbc") shows no chillies at all, unless there is a note.
  */
 function bbq_menu_spice( $level, $note, $sr_label ) {
 	$level = (string) $level;
 	$known = in_array( $level, array( '0', '1', '2', '3' ), true );
 	$lit   = $known ? (int) $level : 0;
+	if ( ! $known && '' === trim( (string) $note ) ) {
+		return '';
+	}
 	$html  = '<p class="spice"><span class="sr-only">' . esc_html( $known ? $sr_label . ' ' . $lit . ' of 3' : $sr_label ) . '</span>';
 	for ( $i = 1; $i <= 3; $i++ ) {
 		$html .= '<span class="chili' . ( $i <= $lit ? ' chili--on' : '' ) . '" aria-hidden="true"></span>';

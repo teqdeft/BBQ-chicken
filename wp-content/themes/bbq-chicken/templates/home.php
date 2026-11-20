@@ -208,7 +208,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
   <div class="find__text">
     <span class="eyebrow"><?php bbq_text( 'find_eyebrow', 'Order now', 'Label' ); ?></span>
     <h2 class="h2" id="find-title"><?php bbq_text( 'find_title', 'Find bb.q near you', 'Heading' ); ?></h2>
-    <p class="lead"><?php bbq_textarea( 'find_lead', 'Our first kitchens open in [Madrid] from [28 October 2026]. Enter your postcode to see if we deliver to you, or order straight from your favourite app.', 'Intro text' ); ?></p>
+    <p class="lead"><?php bbq_textarea( 'find_lead', 'Our first kitchens are in Madrid. Enter your postcode to see if we deliver to you, or order straight from your favourite app.', 'Intro text' ); ?></p>
     <form class="postcode" action="#" data-postcode>
       <?php $placeholder = bbq_get( 'postcode_placeholder', 'Your postcode', 'Postcode field: placeholder and label' ); ?>
       <label class="sr-only" for="postcode"><?php bbq_e( $placeholder ); ?></label>
@@ -238,7 +238,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
       <a class="platform"<?php bbq_link_attrs( $platform['link'] ); ?>><?php bbq_e( $platform['link']['label'] ); ?> <span aria-hidden="true">↗</span></a>
       <?php endforeach; ?>
     </div>
-    <?php $note = bbq_get( 'find_note', 'Spain: Glovo, Uber Eats, Just Eat. UK: Uber Eats, Just Eat, Deliveroo. Only the platforms for the visitor\'s country are shown. [Links to be supplied by BLT]', 'Note under the links (desktop only, empty = hidden)', 'textarea' ); ?>
+    <?php $note = bbq_get( 'find_note', 'Spain: Glovo, Uber Eats, Just Eat. UK: Uber Eats, Just Eat, Deliveroo.', 'Note under the links (desktop only, empty = hidden)', 'textarea' ); ?>
     <?php if ( '' !== trim( (string) $note ) ) : ?>
     <p class="find__note only-desktop"><?php bbq_e( $note ); ?></p>
     <?php endif; ?>
@@ -257,13 +257,22 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
     </picture>
     <div class="map-card__area"></div>
     <img class="map-card__pin" src="<?php echo esc_url( bbq_asset( 'svg/pin.svg' ) ); ?>" alt="" width="56" height="70">
-    <p class="map-card__caption"><?php bbq_text( 'map_caption', 'Map: kitchens and delivery areas [Madrid, UK locations TBC]', 'Caption' ); ?></p>
+    <p class="map-card__caption"><?php bbq_text( 'map_caption', 'Map: kitchens and delivery areas', 'Caption' ); ?></p>
+    <?php
+    // Kitchen card on the map: shown once a kitchen name is filled in
+    $kitchen_name = bbq_get( 'kitchen_name', '', 'Kitchen card: name (empty = no card)' );
+    $kitchen_info = bbq_get( 'kitchen_info', '', 'Kitchen card: details, e.g. opening hours (optional)' );
+    $l            = bbq_link( 'kitchen_btn', array( 'label' => 'Order now', 'url' => '#' ), 'Kitchen card: button' );
+    if ( '' !== trim( (string) $kitchen_name ) ) :
+        ?>
     <div class="kitchen-card">
-      <strong><?php bbq_text( 'kitchen_name', '[bb.q Madrid, kitchen name]', 'Kitchen card: name' ); ?></strong>
-      <p><?php bbq_text( 'kitchen_info', 'Delivery only · Open today until 23:00 [TBC]', 'Kitchen card: details' ); ?></p>
-      <?php $l = bbq_link( 'kitchen_btn', array( 'label' => 'Order now', 'url' => '#' ), 'Kitchen card: button' ); ?>
+      <strong><?php bbq_e( $kitchen_name ); ?></strong>
+      <?php if ( '' !== trim( (string) $kitchen_info ) ) : ?>
+      <p><?php bbq_e( $kitchen_info ); ?></p>
+      <?php endif; ?>
       <a class="btn btn--red"<?php bbq_link_attrs( $l ); ?>><?php bbq_e( $l['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a>
     </div>
+    <?php endif; ?>
   </div>
 </section>
 
@@ -369,7 +378,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
                 array( 'title' => 'A brand guests already know', 'text' => 'Korea\'s best-known fried chicken, with restaurants from Seoul to New York and a fast-growing following in the US.' ),
                 array( 'title' => 'Express, built for speed', 'text' => 'Our Express kiosk runs on 10 to 40 m², focused on takeaway and delivery, with a tight menu and low labour costs.' ),
                 array( 'title' => 'Training from the source', 'text' => 'Owners and teams train at Chicken University, bb.q\'s own training and R&D centre, running since 1999.' ),
-                array( 'title' => 'A European team behind you', 'text' => 'Site selection, supply, launch marketing and day-to-day support from the team leading bb.q in Europe. [Scope to be confirmed]' ),
+                array( 'title' => 'A European team behind you', 'text' => 'Site selection, supply, launch marketing and day-to-day support from the team leading bb.q in Europe.' ),
             )
         );
         foreach ( $reasons as $i => $reason ) :
@@ -414,7 +423,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
   <div class="team__text">
     <span class="eyebrow"><?php bbq_text( 'team_eyebrow', 'Our team', 'Label' ); ?></span>
     <h2 class="h2" id="team-title"><?php bbq_text( 'team_title', 'The people bringing bb.q to Europe', 'Heading' ); ?></h2>
-    <p class="lead"><?php bbq_textarea( 'team_lead', 'A European team with years of experience in international restaurant franchising, building bb.q one market at a time. [Team intro to be supplied by BLT]', 'Intro text' ); ?></p>
+    <p class="lead"><?php bbq_textarea( 'team_lead', 'A European team with years of experience in international restaurant franchising, building bb.q one market at a time.', 'Intro text' ); ?></p>
     <?php $l = bbq_link( 'team_btn', array( 'label' => 'Meet the team', 'url' => 'page:about#team' ), 'Button' ); ?>
     <div class="btn-row"><a class="btn btn--outline-dark"<?php bbq_link_attrs( $l ); ?>><?php bbq_e( $l['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a></div>
   </div>

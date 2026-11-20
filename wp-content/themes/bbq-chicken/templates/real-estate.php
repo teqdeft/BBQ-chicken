@@ -41,7 +41,7 @@ $crit_icons = array(
   <div class="criteria__head">
     <span class="eyebrow eyebrow--glass"><?php bbq_text( 'criteria_eyebrow', 'Site criteria', 'Label' ); ?></span>
     <h2 class="h2" id="criteria-title"><?php bbq_text( 'criteria_title', 'What we look for', 'Heading' ); ?></h2>
-    <p class="lead"><?php bbq_textarea( 'criteria_lead', "A starting point. Every site gets a proper look from our team. [Replace with BLT's own site checklist when available]", 'Intro text' ); ?></p>
+    <p class="lead"><?php bbq_textarea( 'criteria_lead', 'A starting point. Every site gets a proper look from our team.', 'Intro text' ); ?></p>
     <div class="criteria__cutout" aria-hidden="true"><?php bbq_image( 'criteria_img', 'cut-2pcs-secret-sauce.png', 'Cut-out image (desktop)', array( 'alt' => '', 'width' => 760, 'height' => 412, 'loading' => 'lazy' ) ); ?></div>
   </div>
 
@@ -59,8 +59,8 @@ $crit_icons = array(
             array( 'icon' => 'ruler', 'title' => 'Size', 'text' => 'Flagship 300 to 500 m², traditional restaurant 120 to 200 m², shop-in-shop 60 to 120 m², Express kiosk 10 to 40 m².' ),
             array( 'icon' => 'pin', 'title' => 'Location', 'text' => 'High streets, transport hubs, shopping centres and retail parks in or near city centres.' ),
             array( 'icon' => 'eye', 'title' => 'Footfall and visibility', 'text' => 'Strong daytime and evening footfall, a visible frontage and room for signage.' ),
-            array( 'icon' => 'bolt', 'title' => 'Technical', 'text' => 'Extraction possible, sufficient power supply [kW to be confirmed] and delivery access.' ),
-            array( 'icon' => 'document', 'title' => 'Terms', 'text' => 'Leasehold preferred. [Lease length and terms to be confirmed]' ),
+            array( 'icon' => 'bolt', 'title' => 'Technical', 'text' => 'Extraction possible, sufficient power supply and delivery access.' ),
+            array( 'icon' => 'document', 'title' => 'Terms', 'text' => 'Leasehold preferred.' ),
         )
     );
     foreach ( $criteria as $i => $crit ) :

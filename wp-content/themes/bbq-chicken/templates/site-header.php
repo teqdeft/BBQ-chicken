@@ -47,7 +47,7 @@ $apply = bbq_link( 'header_apply', array( 'label' => 'Submit your application', 
         <div class="dropdown__divider"></div>
         <?php $find = bbq_link( 'order_find', array( 'label' => 'Find a restaurant (map) →', 'url' => 'page:home#find' ), 'Order menu: find a restaurant link' ); ?>
         <a class="dropdown__find"<?php bbq_link_attrs( $find ); ?>><?php bbq_e( $find['label'] ); ?></a>
-        <p class="dropdown__note"><?php bbq_text( 'order_note', 'Spain: Glovo, Uber Eats, Just Eat. UK: Uber Eats, Just Eat, Deliveroo. Only the platforms for the visitor\'s country are shown. [Links to be supplied by BLT]', 'Order menu: note' ); ?></p>
+        <p class="dropdown__note"><?php bbq_text( 'order_note', 'Spain: Glovo, Uber Eats, Just Eat. UK: Uber Eats, Just Eat, Deliveroo.', 'Order menu: note' ); ?></p>
       </div>
     </div>
     <a class="btn btn--cream"<?php bbq_link_attrs( $apply ); ?>><?php bbq_e( $apply['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a>

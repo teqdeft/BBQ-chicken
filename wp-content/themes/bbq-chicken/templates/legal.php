@@ -27,7 +27,7 @@ if ( $live && have_posts() ) {
     <span class="eyebrow eyebrow--glass"><?php bbq_text( 'hero_eyebrow', 'Legal', 'Label' ); ?></span>
     <h1 class="h-display" id="legal-title"><?php bbq_text( 'hero_title', $title, 'Heading', array( 'help' => 'Starts as the page title.' ) ); ?></h1>
     <?php
-    $hero_lead = bbq_get( 'hero_lead', '[Last updated: date]', 'Text below the heading', 'text', array( 'help' => 'e.g. Last updated: 1 January 2026' ) );
+    $hero_lead = bbq_get( 'hero_lead', '', 'Text below the heading', 'text', array( 'help' => 'e.g. Last updated: 1 January 2026' ) );
     if ( '' !== trim( (string) $hero_lead ) ) :
         ?>
     <p class="lead"><?php bbq_e( $hero_lead ); ?></p>

@@ -102,19 +102,19 @@ $img_dims = array(
               'title' => array( 'text', 'Name' ),
               'text'  => array( 'textarea', 'Description' ),
               'spice' => array( 'select', 'Spice level (chilli icons)', bbq_menu_spice_levels() ),
-              'note'  => array( 'text', 'Note after the chillies, e.g. "(draft)" (optional)' ),
+              'note'  => array( 'text', 'Note after the chillies (optional)' ),
               'alt'   => array( 'text', 'Photo description (alt text)' ),
           ),
           array(
-              array( 'img' => 'sauce-secret-sauce.jpg', 'title' => 'Secret Sauce', 'text' => 'Sweet and chilli, the bb.q classic.', 'spice' => '1', 'note' => '(draft)', 'alt' => 'A bowl of Secret Sauce' ),
-              array( 'img' => 'sauce-galbi.jpg', 'title' => 'Galbi', 'text' => 'Sweet and sour, smoky Korean barbecue sauce.', 'spice' => '0', 'note' => '(draft)', 'alt' => 'A bowl of Galbi sauce' ),
-              array( 'img' => 'sauce-gangjeong.jpg', 'title' => 'Gangjeong', 'text' => 'Sweet, crunchy and slightly spicy.', 'spice' => '1', 'note' => '(draft)', 'alt' => 'A bowl of Gangjeong sauce' ),
-              array( 'img' => 'sauce-jasoman.jpg', 'title' => 'Jasoman', 'text' => '[Description to follow from BLT]', 'spice' => '2', 'note' => '(draft)', 'alt' => 'A bowl of Jasoman sauce' ),
-              array( 'img' => 'sauce-cheesling.jpg', 'title' => 'Cheesling', 'text' => '[Description to follow from BLT]', 'spice' => '0', 'note' => '(draft)', 'alt' => 'A bowl of Cheesling seasoning' ),
-              array( 'img' => 'sauce-red-chak-chak-mayo.jpg', 'title' => 'Red Chak Chak Mayo', 'text' => '[Description to follow from BLT]', 'spice' => 'tbc', 'note' => '(to be confirmed)', 'alt' => 'A bowl of Red Chak Chak Mayo' ),
-              array( 'img' => 'sauce-galbi-mayo.jpg', 'title' => 'Galbi Mayo', 'text' => 'Creamy mayonnaise with the sweet and sour touch of Galbi.', 'spice' => '0', 'note' => '(draft)', 'alt' => 'A bowl of Galbi Mayo' ),
-              array( 'img' => 'sauce-garlic-mayo.jpg', 'title' => 'Garlic Mayo', 'text' => '[Description to follow from BLT]', 'spice' => 'tbc', 'note' => '(to be confirmed)', 'alt' => 'A bowl of Garlic Mayo' ),
-              array( 'img' => 'sauce-jamaica-mayo.jpg', 'title' => 'Jamaica Mayo', 'text' => '[Description to follow from BLT]', 'spice' => 'tbc', 'note' => '(to be confirmed)', 'alt' => 'A bowl of Jamaica Mayo' ),
+              array( 'img' => 'sauce-secret-sauce.jpg', 'title' => 'Secret Sauce', 'text' => 'Sweet and chilli, the bb.q classic.', 'spice' => '1', 'note' => '', 'alt' => 'A bowl of Secret Sauce' ),
+              array( 'img' => 'sauce-galbi.jpg', 'title' => 'Galbi', 'text' => 'Sweet and sour, smoky Korean barbecue sauce.', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Galbi sauce' ),
+              array( 'img' => 'sauce-gangjeong.jpg', 'title' => 'Gangjeong', 'text' => 'Sweet, crunchy and slightly spicy.', 'spice' => '1', 'note' => '', 'alt' => 'A bowl of Gangjeong sauce' ),
+              array( 'img' => 'sauce-jasoman.jpg', 'title' => 'Jasoman', 'text' => '', 'spice' => '2', 'note' => '', 'alt' => 'A bowl of Jasoman sauce' ),
+              array( 'img' => 'sauce-cheesling.jpg', 'title' => 'Cheesling', 'text' => '', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Cheesling seasoning' ),
+              array( 'img' => 'sauce-red-chak-chak-mayo.jpg', 'title' => 'Red Chak Chak Mayo', 'text' => '', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Red Chak Chak Mayo' ),
+              array( 'img' => 'sauce-galbi-mayo.jpg', 'title' => 'Galbi Mayo', 'text' => 'Creamy mayonnaise with the sweet and sour touch of Galbi.', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Galbi Mayo' ),
+              array( 'img' => 'sauce-garlic-mayo.jpg', 'title' => 'Garlic Mayo', 'text' => '', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Garlic Mayo' ),
+              array( 'img' => 'sauce-jamaica-mayo.jpg', 'title' => 'Jamaica Mayo', 'text' => '', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Jamaica Mayo' ),
           )
       );
       foreach ( $sauces as $sauce ) :
@@ -122,7 +122,9 @@ $img_dims = array(
       <article class="sauce">
         <div class="sauce__img"><?php bbq_img( $sauce['img'], array( 'alt' => $sauce['alt'], 'width' => 900, 'height' => 422, 'loading' => 'lazy' ) ); ?></div>
         <h3 class="sauce__title"><?php bbq_e( $sauce['title'] ); ?></h3>
+        <?php if ( '' !== trim( (string) $sauce['text'] ) ) : ?>
         <p class="sauce__text"><?php bbq_e( $sauce['text'] ); ?></p>
+        <?php endif; ?>
         <?php echo bbq_menu_spice( $sauce['spice'], $sauce['note'], $spice_sr ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in the helper ?>
       </article>
       <?php endforeach; ?>
@@ -149,7 +151,7 @@ $img_dims = array(
   <div class="section-head">
     <span class="eyebrow eyebrow--glass"><?php bbq_text( 'sides_eyebrow', 'Sides', 'Label' ); ?></span>
     <h2 class="h2" id="sides-title"><?php bbq_text( 'sides_title', 'On the side', 'Heading' ); ?></h2>
-    <p class="lead"><?php bbq_textarea( 'sides_lead', 'Allergen and nutrition information per market will be published here. [Content and legal check by BLT per country]', 'Intro text' ); ?></p>
+    <p class="lead"><?php bbq_textarea( 'sides_lead', 'Allergen and nutrition information per market will be published here.', 'Intro text' ); ?></p>
   </div>
   <div class="row-slider" data-slider>
     <div class="side-grid" data-slider-viewport>
@@ -202,7 +204,7 @@ $img_dims = array(
   <span class="sparkle-sm" aria-hidden="true"><?php bbq_icon( 'sparkleplain' ); ?></span>
   <div class="cta-card">
     <h2 class="h2" id="closing-title"><?php bbq_text( 'closing_title', 'Hungry already?', 'Heading' ); ?></h2>
-    <p class="lead"><?php bbq_textarea( 'closing_lead', 'Order from our first kitchens in [Madrid], or find the bb.q nearest to you.', 'Text' ); ?></p>
+    <p class="lead"><?php bbq_textarea( 'closing_lead', 'Order from our first kitchens in Madrid, or find the bb.q nearest to you.', 'Text' ); ?></p>
     <?php $closing_cta = bbq_link( 'closing_cta', array( 'label' => 'Order now', 'url' => 'page:home#find' ), 'Button' ); ?>
     <?php if ( $closing_cta['label'] ) : ?>
     <a class="btn btn--red"<?php bbq_link_attrs( $closing_cta, ' data-hides-floating' ); ?>><?php bbq_e( $closing_cta['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a>
