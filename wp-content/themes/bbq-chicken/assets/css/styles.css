@@ -764,6 +764,9 @@ ul, ol { padding: 0; list-style: none; }
   scroll-padding-inline: calc(50% - 240px);
 }
 .slider__viewport::-webkit-scrollbar { display: none; }
+/* the food row keeps its height (20 + 520 active card + 20) while one card grows and another shrinks,
+   so the arrows and the button below don't jump */
+@media (min-width: 768px) { .slider[data-slider-loop] .slider__viewport { min-height: 560px; } }
 .food-card {
   flex: none;
   width: 440px; height: 475px;

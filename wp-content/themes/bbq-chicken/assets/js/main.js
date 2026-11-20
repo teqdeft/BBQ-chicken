@@ -147,30 +147,79 @@
       dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i % n); });
       updateArrows();
     }
+    /* The active card can be bigger than the others (home food cards grow from 440 to 480 wide).
+       Positions are worked out for the END of that size change, otherwise the row lands up to
+       40px off and then jumps. Sizes are measured with transitions switched off. */
+    var sizes = null;
+    function measure() {
+      var a = cards[active], o = cards[(active + 1) % cards.length];
+      var keepA = a.style.transition, keepO = o.style.transition;
+      a.style.transition = o.style.transition = 'none';
+      sizes = {
+        active: a.offsetWidth,
+        other: o.offsetWidth,
+        gap: parseFloat(getComputedStyle(viewport).columnGap) || 0,
+        first: cards[0].offsetLeft - viewport.offsetLeft
+      };
+      a.style.transition = keepA; o.style.transition = keepO;
+    }
+    function grows() { return !mqMobile.matches && sizes && sizes.active !== sizes.other; }
+    function targetFor(i) {
+      var card = cards[i];
+      if (mqMobile.matches) return card.offsetLeft - viewport.offsetLeft - 20;
+      if (grows()) {
+        // once the old active card has shrunk and this one has grown, every card before it is "other" wide
+        return sizes.first + i * (sizes.other + sizes.gap) + sizes.active / 2 - viewport.clientWidth / 2;
+      }
+      return card.offsetLeft - viewport.offsetLeft - (viewport.clientWidth - card.offsetWidth) / 2;
+    }
+    function nearest() {
+      var anchor = mqMobile.matches ? viewport.scrollLeft + 20 : viewport.scrollLeft + viewport.clientWidth / 2;
+      var best = active, bestDist = Infinity;
+      cards.forEach(function (c, k) {
+        var pos = mqMobile.matches ? c.offsetLeft - viewport.offsetLeft : c.offsetLeft - viewport.offsetLeft + c.offsetWidth / 2;
+        var dist = Math.abs(pos - anchor);
+        if (dist < bestDist) { bestDist = dist; best = k; }
+      });
+      return best;
+    }
+
+    // While the row animates to a card, scroll-snap is off (it would tug the row around as the
+    // cards change size) and scroll events don't change the active card.
+    var settling = false, settleTimer = null;
+    function settled() { settling = false; viewport.style.scrollSnapType = ''; }
     function go(i, instant) {
       i = Math.max(0, Math.min(cards.length - 1, i));
       setActive(i);
-      var card = cards[i];
-      var target = mqMobile.matches
-        ? card.offsetLeft - viewport.offsetLeft - 20
-        : card.offsetLeft - viewport.offsetLeft - (viewport.clientWidth - card.offsetWidth) / 2;
-      viewport.scrollTo({ left: target, behavior: instant || reducedMotion ? 'auto' : 'smooth' });
+      var smooth = !instant && !reducedMotion;
+      if (smooth) {
+        settling = true;
+        viewport.style.scrollSnapType = 'none';
+        clearTimeout(settleTimer);
+        settleTimer = setTimeout(settled, 1000); // fallback for browsers without "scrollend"
+      }
+      viewport.scrollTo({ left: targetFor(i), behavior: smooth ? 'smooth' : 'auto' });
     }
+    viewport.addEventListener('scrollend', function () {
+      if (!settling) return;
+      clearTimeout(settleTimer);
+      settleTimer = setTimeout(settled, 400); // let the .35s size transition finish first
+    });
 
-    var raf = null;
+    var raf = null, idle = null;
     viewport.addEventListener('scroll', function () {
+      if (settling) return;
       if (raf) cancelAnimationFrame(raf);
       raf = requestAnimationFrame(function () {
-        var anchor = mqMobile.matches
-          ? viewport.scrollLeft + 20
-          : viewport.scrollLeft + viewport.clientWidth / 2;
-        var best = active, bestDist = Infinity;
-        cards.forEach(function (c, k) {
-          var pos = mqMobile.matches ? c.offsetLeft - viewport.offsetLeft : c.offsetLeft - viewport.offsetLeft + c.offsetWidth / 2;
-          var dist = Math.abs(pos - anchor);
-          if (dist < bestDist) { bestDist = dist; best = k; }
-        });
-        if (best !== active) setActive(best); else updateArrows();
+        if (!grows()) {
+          // same-size cards: follow the scroll live (dots, arrows)
+          var best = nearest();
+          if (best !== active) setActive(best); else updateArrows();
+          return;
+        }
+        // cards that change size: wait until the visitor stops scrolling, then centre the nearest one
+        clearTimeout(idle);
+        idle = setTimeout(function () { var b = nearest(); if (b !== active) go(b); }, 140);
       });
     }, { passive: true });
 
@@ -202,9 +251,14 @@
     }, true);
 
     setActive(active);
+    measure();
     // wait for layout (fonts/images) before centring the starting card
-    window.addEventListener('load', function () { go(active, true); });
-    window.addEventListener('resize', function () { go(active, true); });
+    window.addEventListener('load', function () { measure(); go(active, true); });
+    var resizeTimer = null;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { measure(); go(active, true); }, 120);
+    });
     go(active, true);
   });
 
