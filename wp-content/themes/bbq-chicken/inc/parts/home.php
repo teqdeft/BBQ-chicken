@@ -32,7 +32,7 @@ function bbq_home_marquee( $key, $label, $defaults ) {
  * The most recent news posts for the home "What's new" row: published posts, newest first,
  * leaving out placeholder cards (News card box → "Placeholder card").
  */
-function bbq_home_news_ids( $count = 3 ) {
+function bbq_home_news_ids( $count = 5 ) {
 	$ids = get_posts(
 		array(
 			'post_type'           => 'post',

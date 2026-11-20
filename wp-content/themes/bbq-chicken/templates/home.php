@@ -421,7 +421,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
 </section>
 
 <!-- 12. News (the latest posts; edit them under Posts) -->
-<?php bbq_section( 'News (cards: the 3 latest posts that aren\'t placeholder cards)' ); ?>
+<?php bbq_section( 'News (cards: the 5 latest posts that aren\'t placeholder cards)' ); ?>
 <section class="section news news--home" aria-labelledby="news-title">
   <div class="news__head">
     <div class="news__head-text">
@@ -435,7 +435,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
   <div class="carousel" data-carousel>
     <div class="news__track" data-carousel-viewport>
       <?php
-      foreach ( bbq_schema_mode() ? array() : bbq_home_news_ids( 3 ) as $news_id ) :
+      foreach ( bbq_schema_mode() ? array() : bbq_home_news_ids( 5 ) as $news_id ) :
           $news_link = bbq_news_card_link( $news_id );
           $news_tag  = $news_link ? 'a' : 'div';
           $news_img  = get_post_thumbnail_id( $news_id );
