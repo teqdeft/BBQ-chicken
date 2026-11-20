@@ -11,17 +11,19 @@ wp-content/upgrade-temp-backup/
 wp-content/cache/
 wp-content/backup*/
 wp-content/debug.log
-*.log
+/wp-content/*.log
 
 # Kept on this computer only (not part of the WordPress site).
 # The static HTML site is in git history: tag static-html-v4.
-html-backup/
-design-data/
-dist/
+# The leading "/" matters: without it "dist/" would also hide WordPress's own
+# wp-includes/css/dist and wp-includes/js/dist (the admin and editor styles/scripts).
+/html-backup/
+/design-data/
+/dist/
 
 # Local tooling
-.claude/
-node_modules/
+/.claude/
+/node_modules/
 
 # OS files
 .DS_Store
