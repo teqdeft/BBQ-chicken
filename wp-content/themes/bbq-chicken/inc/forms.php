@@ -13,6 +13,55 @@ defined( 'ABSPATH' ) || exit;
 /** Our form markup is written with its own wrappers: don't let CF7 add <p> and <br>. */
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
+/**
+ * Is $host (default: this site's host) a local development host: localhost, 127.0.0.1, ::1, *.test,
+ * *.localhost, *.local? Decided by the address rather than WP_ENVIRONMENT_TYPE, because a wp-config.php
+ * copied from a local install keeps saying "local" on the live server.
+ */
+function bbq_is_local_host( $host = null ) {
+	$host = strtolower( trim( (string) ( null === $host ? wp_parse_url( home_url(), PHP_URL_HOST ) : $host ), '[]' ) );
+	return in_array( $host, array( 'localhost', '127.0.0.1', '::1' ), true ) || (bool) preg_match( '/\.(test|localhost|local)$/', $host );
+}
+
+/** Domain part of the first email address in $text ('' if none). */
+function bbq_email_domain( $text ) {
+	return preg_match( '/@([a-z0-9.-]+)/i', (string) $text, $m ) ? strtolower( $m[1] ) : '';
+}
+
+/** IDs of the CF7 forms this theme created. */
+function bbq_form_ids() {
+	return array_map( 'intval', array_values( (array) get_option( 'bbq_forms', array() ) ) );
+}
+
+/*
+ * A database copied from a local install (e.g. with WP Migrate DB) brings local-only mail settings to the
+ * live site: "skip_mail: on" (added on local installs, see bbq_install_forms()) and a sender address at the
+ * local domain. On a live host our forms always send mail, and a local sender becomes wordpress@<site domain>.
+ */
+add_filter(
+	'wpcf7_skip_mail',
+	function ( $skip, $contact_form ) {
+		if ( $skip && $contact_form && ! bbq_is_local_host() && in_array( (int) $contact_form->id(), bbq_form_ids(), true ) ) {
+			return false;
+		}
+		return $skip;
+	},
+	10,
+	2
+);
+add_filter(
+	'wpcf7_mail_components',
+	function ( $components ) {
+		$domain = bbq_email_domain( $components['sender'] );
+		if ( '' === $domain || ! bbq_is_local_host( $domain ) || bbq_is_local_host() ) {
+			return $components;
+		}
+		$site = preg_replace( '/^www\./', '', strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) ) );
+		$components['sender'] = preg_replace( '/[^\s<>"]+@' . preg_quote( $domain, '/' ) . '/i', 'wordpress@' . $site, $components['sender'] );
+		return $components;
+	}
+);
+
 /** Form definitions: array( name => array( title, form, mail, mail_2?, messages?, additional_settings?, html_id?, html_class? ) ). */
 function bbq_form_definitions() {
 	$defs = array();
@@ -83,7 +132,7 @@ function bbq_install_forms( $overwrite = false, $only = array() ) {
 			}
 		}
 		$settings = isset( $def['additional_settings'] ) ? (string) $def['additional_settings'] : '';
-		if ( 'local' === wp_get_environment_type() && false === strpos( $settings, 'skip_mail' ) ) {
+		if ( bbq_is_local_host() && false === strpos( $settings, 'skip_mail' ) ) {
 			// Local install: no mail server, so CF7 would report every submission as failed.
 			$settings = trim( $settings . "\nskip_mail: on" );
 		}
