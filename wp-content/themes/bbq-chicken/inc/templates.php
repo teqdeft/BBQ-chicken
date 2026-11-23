@@ -234,6 +234,19 @@ add_action(
 		if ( $t && ! empty( $t['css'] ) ) {
 			$css( 'bbq-page', 'css/pages/' . $t['css'] . '.css', array( 'bbq-motion' ) );
 		}
+		// Sections taken from another page type (ACF "Sections") bring that page's stylesheet along.
+		if ( is_singular( 'page' ) || is_front_page() || is_home() ) {
+			$page_id = is_home() ? (int) get_option( 'page_for_posts' ) : get_queried_object_id();
+			$list    = bbq_templates();
+			$layouts = bbq_layouts();
+			foreach ( (array) bbq_stored_sections( $page_id ) as $layout ) {
+				$page = isset( $layouts[ $layout ] ) ? $layouts[ $layout ]['page'] : '';
+				$file = isset( $list[ $page ]['css'] ) ? $list[ $page ]['css'] : '';
+				if ( $file && ( ! $t || $file !== $t['css'] ) && ! wp_style_is( 'bbq-page-' . $file ) ) {
+					$css( 'bbq-page-' . $file, 'css/pages/' . $file . '.css', array( 'bbq-motion' ) );
+				}
+			}
+		}
 		// WordPress-only adjustments (Contact Form 7 output, admin bar, editor content).
 		$css( 'bbq-wp', 'css/wp.css', array( 'bbq-motion' ) );
 

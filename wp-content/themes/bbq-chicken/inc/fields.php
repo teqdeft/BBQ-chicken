@@ -30,15 +30,33 @@ const BBQ_OPTION = 'bbq_site';
 
 $GLOBALS['bbq_ctx'] = null;
 
-/** Start a field context: values of a post (int id) or of the site options ('options'). */
+/**
+ * Start a field context. $store:
+ *   int        a post's old "_bbq_fields" values
+ *   'options'  the "Website settings" (ACF options page), falling back to the old "bbq_site" option
+ *   array      ACF values: array( 'acf' => post id | 'option', 'prefix' => 'sections_2_' (a section row),
+ *              'legacy' => int | 'options' | null (older values to fall back on) )
+ */
 function bbq_ctx_start( $store, $schema_mode = false ) {
-	if ( 'options' === $store ) {
+	$acf    = null;
+	$prefix = '';
+	$legacy = $store;
+	if ( is_array( $store ) ) {
+		$acf    = isset( $store['acf'] ) ? $store['acf'] : null;
+		$prefix = isset( $store['prefix'] ) ? (string) $store['prefix'] : '';
+		$legacy = isset( $store['legacy'] ) ? $store['legacy'] : null;
+	} elseif ( 'options' === $store ) {
+		$acf = 'option';
+	}
+	if ( 'options' === $legacy ) {
 		$values = get_option( BBQ_OPTION, array() );
 	} else {
-		$values = $store ? get_post_meta( (int) $store, BBQ_META, true ) : array();
+		$values = $legacy ? get_post_meta( (int) $legacy, BBQ_META, true ) : array();
 	}
 	$GLOBALS['bbq_ctx'] = array(
 		'store'       => $store,
+		'acf'         => $acf,
+		'prefix'      => $prefix,
 		'values'      => is_array( $values ) ? $values : array(),
 		'schema_mode' => (bool) $schema_mode,
 		'schema'      => array(),
@@ -76,6 +94,13 @@ function bbq_field( $key, $type, $label, $default, $args = array() ) {
 			'section' => $c['section'],
 		);
 	}
+	if ( null !== $c['acf'] && ! $c['schema_mode'] ) {
+		$found = false;
+		$value = bbq_acf_value( $c['acf'], $c['prefix'] . $key, $type, $args, $found );
+		if ( $found ) {
+			return $value;
+		}
+	}
 	if ( array_key_exists( $key, $c['values'] ) ) {
 		$value = $c['values'][ $key ];
 		if ( 'link' === $type && is_array( $value ) ) {
@@ -84,6 +109,72 @@ function bbq_field( $key, $type, $label, $default, $args = array() ) {
 		return $value;
 	}
 	return $default;
+}
+
+/* ---------- ACF values ---------- */
+
+/**
+ * A stored ACF value, read from the database as ACF saves it (post meta "<name>", options "options_<name>";
+ * repeater rows as "<name>_<row>_<sub field>"). $found is false when nothing usable is stored, so the
+ * caller falls back to the older value or the design default (an empty image or an empty repeater counts
+ * as "use the design's").
+ */
+function bbq_acf_value( $store, $name, $type, $args, &$found ) {
+	$found = false;
+	if ( 'option' === $store ) {
+		$raw = get_option( 'options_' . $name, null );
+		if ( null === $raw ) {
+			return null;
+		}
+	} else {
+		if ( ! $store || ! metadata_exists( 'post', (int) $store, $name ) ) {
+			return null;
+		}
+		$raw = get_post_meta( (int) $store, $name, true );
+	}
+	switch ( $type ) {
+		case 'image':
+			if ( ! is_numeric( $raw ) || ! (int) $raw ) {
+				return null;
+			}
+			$found = true;
+			return (int) $raw;
+		case 'link':
+			$raw   = maybe_unserialize( $raw );
+			$found = true;
+			if ( ! is_array( $raw ) ) {
+				return array( 'label' => '', 'url' => '', 'new_tab' => false );
+			}
+			return array(
+				'label'   => isset( $raw['title'] ) ? (string) $raw['title'] : '',
+				'url'     => isset( $raw['url'] ) ? (string) $raw['url'] : '',
+				'new_tab' => isset( $raw['target'] ) && '_blank' === $raw['target'],
+			);
+		case 'toggle':
+			$found = true;
+			return (int) $raw;
+		case 'rows':
+			$count = (int) $raw;
+			if ( $count < 1 ) {
+				return null;
+			}
+			$fields = isset( $args['fields'] ) ? (array) $args['fields'] : array();
+			$rows   = array();
+			for ( $i = 0; $i < $count; $i++ ) {
+				$row = array();
+				foreach ( $fields as $sub => $def ) {
+					$sub_found   = false;
+					$value       = bbq_acf_value( $store, $name . '_' . $i . '_' . $sub, $def[0], array(), $sub_found );
+					$row[ $sub ] = $sub_found ? $value : ( 'link' === $def[0] ? array( 'label' => '', 'url' => '', 'new_tab' => false ) : '' );
+				}
+				$rows[] = $row;
+			}
+			$found = true;
+			return $rows;
+		default:
+			$found = true;
+			return is_scalar( $raw ) ? (string) $raw : '';
+	}
 }
 
 /* ---------- Typed helpers ---------- */
@@ -156,11 +247,15 @@ function bbq_rows( $key, $label, $subfields, $defaults ) {
 		$blank[ $sub ] = 'link' === $def[0] ? array( 'label' => '', 'url' => '', 'new_tab' => false ) : '';
 	}
 	$out = array();
-	foreach ( $rows as $row ) {
+	foreach ( array_values( $rows ) as $i => $row ) {
 		$row = array_merge( $blank, (array) $row );
 		foreach ( $subfields as $sub => $def ) {
 			if ( 'link' === $def[0] ) {
 				$row[ $sub ] = array_merge( $blank[ $sub ], (array) $row[ $sub ] );
+			}
+			// An empty image shows the design's image of that row (e.g. SVG logos, which the Media Library can't hold).
+			if ( 'image' === $def[0] && empty( $row[ $sub ] ) && isset( $defaults[ $i ][ $sub ] ) ) {
+				$row[ $sub ] = $defaults[ $i ][ $sub ];
 			}
 		}
 		$out[] = $row;
@@ -187,8 +282,11 @@ function bbq_img( $value, $attrs = array() ) {
 
 /* ---------- Reading stored values outside templates ---------- */
 
-/** A stored value of a page (no default handling), e.g. the SEO fields. */
+/** A stored value of a page (no default handling), e.g. the SEO fields: the ACF field, else the old box's value. */
 function bbq_meta_value( $post_id, $key ) {
+	if ( metadata_exists( 'post', (int) $post_id, $key ) ) {
+		return (string) get_post_meta( (int) $post_id, $key, true );
+	}
 	$values = get_post_meta( (int) $post_id, BBQ_META, true );
 	return is_array( $values ) && isset( $values[ $key ] ) ? $values[ $key ] : '';
 }
@@ -200,14 +298,19 @@ function bbq_meta_value( $post_id, $key ) {
  * News articles share one set of layout fields, stored on the posts page.
  */
 function bbq_render_fields( $key, $post_id = null ) {
+	if ( 'news-article' === $key ) {
+		// The article page's own texts live in "Website settings" → News articles (formerly on the News page).
+		bbq_ctx_start( array( 'acf' => 'option', 'legacy' => (int) get_option( 'page_for_posts' ) ) );
+		bbq_render( $key );
+		return;
+	}
 	if ( null === $post_id ) {
-		$post_id = 'news-article' === $key ? (int) get_option( 'page_for_posts' ) : get_queried_object_id();
-		if ( 'home' === $key ) {
-			$post_id = (int) get_option( 'page_on_front' );
+		$post_id = 'home' === $key ? (int) get_option( 'page_on_front' ) : get_queried_object_id();
+		if ( 'news' === $key ) {
+			$post_id = (int) get_option( 'page_for_posts' );
 		}
 	}
-	bbq_ctx_start( $post_id );
-	bbq_render( $key );
+	bbq_render_page( $key, $post_id ); // inc/sections.php
 }
 
 /** Render a site-wide part (header/footer) with the site options as its field store. */
@@ -226,6 +329,14 @@ function bbq_collect_schema( $keys, $store ) {
 	$saved  = $GLOBALS['bbq_ctx'];
 	$schema = array();
 	foreach ( (array) $keys as $key ) {
+		// A page template is a list of sections: collect each section's fields.
+		$sections = bbq_default_sections( $key );
+		if ( $sections ) {
+			foreach ( $sections as $layout ) {
+				$schema = array_merge( $schema, bbq_layout_schema( $layout, $store ) );
+			}
+			continue;
+		}
 		$file = BBQ_DIR . '/templates/' . $key . '.php';
 		if ( ! file_exists( $file ) ) {
 			continue;

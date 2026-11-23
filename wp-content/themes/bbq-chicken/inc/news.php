@@ -41,6 +41,14 @@ function bbq_news_schema() {
 /** A news field of a post (with the schema default). */
 function bbq_news_field( $post_id, $key ) {
 	$schema = bbq_news_schema();
+	// ACF "News card" fields (post meta news_<key>), else the old box's values
+	if ( isset( $schema[ $key ] ) ) {
+		$found = false;
+		$value = bbq_acf_value( (int) $post_id, 'news_' . $key, $schema[ $key ]['type'], (array) $schema[ $key ]['args'], $found );
+		if ( $found ) {
+			return $value;
+		}
+	}
 	$values = get_post_meta( (int) $post_id, BBQ_META, true );
 	if ( is_array( $values ) && array_key_exists( $key, $values ) ) {
 		$value = $values[ $key ];
@@ -241,6 +249,9 @@ add_filter(
 add_action(
 	'add_meta_boxes_post',
 	function () {
+		if ( bbq_acf_ready() ) {
+			return; // the ACF "News card" group (inc/acf-fields.php)
+		}
 		add_meta_box( 'bbq-news', 'News card', 'bbq_news_box', 'post', 'normal', 'high' );
 	}
 );

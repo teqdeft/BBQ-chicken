@@ -76,6 +76,9 @@ function bbq_run_setup( $overwrite_forms = false ) {
 	$log = array_merge( $log, bbq_setup_news() );
 	$ids = bbq_install_forms( $overwrite_forms );
 	$log[] = $ids ? 'Forms ready: ' . implode( ', ', array_keys( $ids ) ) : 'Forms skipped (Contact Form 7 not active).';
+	if ( bbq_acf_ready() ) {
+		$log = array_merge( $log, bbq_acf_migrate() ); // sections, Website settings and News cards in ACF (inc/acf-migrate.php)
+	}
 	update_option( 'bbq_setup_done', 1 );
 	flush_rewrite_rules();
 	return $log;

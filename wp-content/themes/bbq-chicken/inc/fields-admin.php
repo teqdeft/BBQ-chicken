@@ -93,7 +93,8 @@ add_action(
 add_action(
 	'add_meta_boxes_page',
 	function ( $post ) {
-		if ( ! bbq_field_keys_for( $post->ID ) ) {
+		// With ACF Pro the page is edited in its ACF "Page content" group (inc/acf-fields.php).
+		if ( bbq_acf_ready() || ! bbq_field_keys_for( $post->ID ) ) {
 			return;
 		}
 		add_meta_box( 'bbq-fields', 'Page content', 'bbq_page_box', 'page', 'normal', 'high' );

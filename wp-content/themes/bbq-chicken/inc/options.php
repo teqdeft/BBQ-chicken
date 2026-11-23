@@ -20,6 +20,9 @@ function bbq_opt( $key, $default = '' ) {
 add_action(
 	'admin_menu',
 	function () {
+		if ( bbq_acf_ready() ) {
+			return; // replaced by the ACF options page "Website settings" (inc/acf-fields.php)
+		}
 		add_theme_page( 'bb.q settings', 'bb.q settings', 'edit_theme_options', 'bbq-settings', 'bbq_settings_screen' );
 	}
 );

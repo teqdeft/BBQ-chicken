@@ -1,6 +1,6 @@
 <?php
 /**
- * Site header + mobile menu. Fields: Appearance → bb.q settings. Links: Appearance → Menus (Header menu).
+ * Site header + mobile menu. Fields: Website settings (ACF options page). Links: Appearance → Menus (Header menu).
  */
 defined( 'ABSPATH' ) || exit;
 

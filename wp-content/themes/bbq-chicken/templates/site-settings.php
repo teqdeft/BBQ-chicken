@@ -1,6 +1,6 @@
 <?php
 /**
- * Site-wide settings that aren't printed in the header or footer (Appearance → bb.q settings).
+ * Site-wide settings that aren't printed in the header or footer (Website settings, ACF options page).
  * Read them anywhere with bbq_opt( 'key', 'default' ).
  */
 defined( 'ABSPATH' ) || exit;

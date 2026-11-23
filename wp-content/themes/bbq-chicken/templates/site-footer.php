@@ -1,6 +1,6 @@
 <?php
 /**
- * Site footer. Fields: Appearance → bb.q settings. Link columns: Appearance → Menus (Footer menu).
+ * Site footer. Fields: Website settings (ACF options page). Link columns: Appearance → Menus (Footer menu).
  */
 defined( 'ABSPATH' ) || exit;
 
