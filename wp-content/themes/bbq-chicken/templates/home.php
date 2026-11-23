@@ -223,7 +223,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
           array(
               array( 'link' => array( 'label' => 'Glovo', 'url' => 'https://glovo.go.link/open?link_type=store&store_id=617208&adjust_t=s321jkn', 'new_tab' => true ) ),
               array( 'link' => array( 'label' => 'Uber Eats', 'url' => 'https://www.ubereats.com/store-browse-uuid/7a2ca0a0-0ec2-5a74-997a-08690eed5876?diningMode=DELIVERY', 'new_tab' => true ) ),
-              array( 'link' => array( 'label' => 'Just Eat', 'url' => '', 'new_tab' => true ) ),
+              array( 'link' => array( 'label' => 'Just Eat', 'url' => 'https://www.just-eat.es/restaurants-bbq-chicken-madrid/menu', 'new_tab' => true ) ),
               array( 'link' => array( 'label' => 'Deliveroo', 'url' => '', 'new_tab' => true ) ),
           )
       );

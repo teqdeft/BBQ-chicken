@@ -35,7 +35,7 @@ $apply = bbq_link( 'header_apply', array( 'label' => 'Submit your application', 
               array(
                   array( 'name' => 'Glovo', 'url' => 'https://glovo.go.link/open?link_type=store&store_id=617208&adjust_t=s321jkn' ),
                   array( 'name' => 'Uber Eats', 'url' => 'https://www.ubereats.com/store-browse-uuid/7a2ca0a0-0ec2-5a74-997a-08690eed5876?diningMode=DELIVERY' ),
-                  array( 'name' => 'Just Eat', 'url' => '' ),
+                  array( 'name' => 'Just Eat', 'url' => 'https://www.just-eat.es/restaurants-bbq-chicken-madrid/menu' ),
                   array( 'name' => 'Deliveroo', 'url' => '' ),
               )
           );
