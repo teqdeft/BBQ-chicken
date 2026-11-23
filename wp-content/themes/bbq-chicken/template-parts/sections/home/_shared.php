@@ -4,5 +4,5 @@
  */
 defined( 'ABSPATH' ) || exit;
 // Food card colours (food-card--<value>).
-$food_styles = bbq_food_styles(); // inc/food.php
+$food_styles = bbq_food_styles(); // inc/card-types.php
 ?>

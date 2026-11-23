@@ -186,25 +186,18 @@ $news_group = array(
 	'menu_order' => 0,
 );
 
-// ---------- Team members (post type team_member, inc/team.php) ----------
-$team_group = array(
-	'key'      => 'group_bbq_team_member',
-	'title'    => 'Team member',
-	'fields'   => $fields_of( 'team', array_values( bbq_team_schema() ) ),
-	'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'team_member' ) ) ),
-	'position' => 'acf_after_title',
-	'menu_order' => 0,
-);
-
-// ---------- Food cards (post type food_card, inc/food.php) ----------
-$food_group = array(
-	'key'      => 'group_bbq_food_card',
-	'title'    => 'Food card',
-	'fields'   => $fields_of( 'food', array_values( bbq_food_schema() ) ),
-	'location' => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'food_card' ) ) ),
-	'position' => 'acf_after_title',
-	'menu_order' => 0,
-);
+// ---------- Card post types (inc/card-types.php): one group per type ----------
+$card_groups = array();
+foreach ( bbq_card_types() as $type => $t ) {
+	$card_groups[] = array(
+		'key'        => 'group_bbq_' . $type,
+		'title'      => $t['singular'],
+		'fields'     => $fields_of( $t['prefix'], bbq_card_schema( $type ) ),
+		'location'   => array( array( array( 'param' => 'post_type', 'operator' => '==', 'value' => $type ) ) ),
+		'position'   => 'acf_after_title',
+		'menu_order' => 0,
+	);
+}
 
 // ---------- Write the PHP file ----------
 $export = function ( $v, $ind = 1 ) use ( &$export ) {
@@ -227,9 +220,9 @@ $export = function ( $v, $ind = 1 ) use ( &$export ) {
 	}
 	return $out . $pad . ')';
 };
-$php  = "<?php\n/**\n * ACF field groups (ACF Pro), defined in code like the Sokkies theme: no acf-json, nothing to sync, and the\n * field setup can't be changed (or broken) from the admin. Labels are in English.\n *\n *   Page content       every page: \"Sections\" (Flexible Content, one layout per section file in\n *                      template-parts/sections/, see inc/layouts.php) and SEO\n *   Website settings   options page: header, footer, ordering links, map, news article texts\n *   News card          posts: card date line, links, placeholder and the article extras\n *   Team member        team members (menu: Team, inc/team.php): role and portrait photo\n *   Food card          home \"The food\" slider cards (menu: Food cards, inc/food.php)\n *\n * Generated from the theme's field lists (the bbq_text()/bbq_rows()… calls in the section files and\n * templates): field names are those keys, defaults the design's content. After adding or changing a field in\n * a section file, regenerate it: wp eval-file wp-content/themes/bbq-chicken/tools/acf-generate.php\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nadd_action(\n\t'acf/init',\n\tfunction () {\n\t\tif ( ! function_exists( 'acf_add_local_field_group' ) ) {\n\t\t\treturn;\n\t\t}\n\n";
+$php  = "<?php\n/**\n * ACF field groups (ACF Pro), defined in code like the Sokkies theme: no acf-json, nothing to sync, and the\n * field setup can't be changed (or broken) from the admin. Labels are in English.\n *\n *   Page content       every page: \"Sections\" (Flexible Content, one layout per section file in\n *                      template-parts/sections/, see inc/layouts.php) and SEO\n *   Website settings   options page: header, footer, ordering links, map, news article texts\n *   News card          posts: card date line, links, placeholder and the article extras\n *   Team member, Food card, Chicken card, Sauce   the card post types (inc/card-types.php)\n *\n * Generated from the theme's field lists (the bbq_text()/bbq_rows()… calls in the section files and\n * templates): field names are those keys, defaults the design's content. After adding or changing a field in\n * a section file, regenerate it: wp eval-file wp-content/themes/bbq-chicken/tools/acf-generate.php\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nadd_action(\n\t'acf/init',\n\tfunction () {\n\t\tif ( ! function_exists( 'acf_add_local_field_group' ) ) {\n\t\t\treturn;\n\t\t}\n\n";
 $php .= "\t\tacf_add_options_page(\n\t\t\tarray(\n\t\t\t\t'page_title'      => 'Website settings',\n\t\t\t\t'menu_title'      => 'Website settings',\n\t\t\t\t'menu_slug'       => 'bbq-website-settings',\n\t\t\t\t'capability'      => 'edit_theme_options',\n\t\t\t\t'position'        => 25,\n\t\t\t\t'icon_url'        => 'dashicons-admin-settings',\n\t\t\t\t'redirect'        => false,\n\t\t\t\t'update_button'   => 'Save settings',\n\t\t\t\t'updated_message' => 'Settings saved.',\n\t\t\t)\n\t\t);\n\n";
-foreach ( array( $page_group, $site_group, $news_group, $team_group, $food_group ) as $g ) {
+foreach ( array_merge( array( $page_group, $site_group, $news_group ), $card_groups ) as $g ) {
 	$php .= "\t\tacf_add_local_field_group( " . $export( $g, 2 ) . " );\n\n";
 }
 $php = rtrim( $php ) . "\n\t}\n);\n";

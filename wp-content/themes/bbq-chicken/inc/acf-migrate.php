@@ -188,14 +188,7 @@ function bbq_acf_migrate( $force = false ) {
 	if ( $n ) {
 		$log[] = 'News cards filled in: ' . $n . ' posts.';
 	}
-	$team = bbq_team_setup(); // team members from the About page (inc/team.php)
-	if ( $team ) {
-		$log[] = $team;
-	}
-	$food = bbq_food_setup(); // food cards from the home page (inc/food.php)
-	if ( $food ) {
-		$log[] = $food;
-	}
+	$log = array_merge( $log, bbq_cards_setup_all() ); // Team, Food cards, Chicken cards, Sauces (inc/card-types.php)
 	$log[] = 'Images in the Media Library: ' . count( (array) get_option( 'bbq_asset_media', array() ) ) . '.';
 	update_option( 'bbq_acf_migrated', time(), false );
 	return $log;

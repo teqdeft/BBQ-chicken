@@ -17,7 +17,7 @@ include __DIR__ . '/_shared.php';
       <?php
       // The people are Team posts (menu: Team): the picked ones in the picked order, else all in their order.
       $picked = bbq_posts( 'leaders_pick', 'Team members', 'team_member', array( 'help' => 'Pick the people for this section and drag them into order. Empty = all team members, in their Order. People are added and edited under Team in the admin menu.' ) );
-      $people = bbq_team_people( $picked );
+      $people = bbq_cards( 'team_member', $picked ); // inc/card-types.php
       foreach ( $people as $person ) :
           ?>
       <article class="person">

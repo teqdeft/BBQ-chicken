@@ -21,7 +21,7 @@ include __DIR__ . '/_shared.php';
       <?php
       // The cards are Food cards posts (menu: Food cards): the picked ones in the picked order, else all in their order.
       $picked = bbq_posts( 'food_cards_pick', 'Food cards', 'food_card', array( 'help' => 'Pick the cards for this slider and drag them into order. Empty = all food cards, in their Order. Cards are added and edited under Food cards in the admin menu; the third card starts in the middle on desktop.' ) );
-      $food   = bbq_food_cards( $picked );
+      $food   = bbq_cards( 'food_card', $picked ); // inc/card-types.php
       foreach ( $food as $card ) :
           $style = isset( $food_styles[ $card['style'] ] ) ? $card['style'] : 'dark';
           ?>
