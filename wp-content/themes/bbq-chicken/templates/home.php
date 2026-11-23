@@ -90,7 +90,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
   <?php bbq_image( 'hero_mobile_bg', 'hero-mobile.jpg', 'Background photo on phones', array( 'class' => 'hero__mobile-bg', 'alt' => '', 'width' => 800, 'height' => 1000, 'loading' => 'lazy', 'style' => 'display:none' ) ); ?>
   <div class="hero__content">
     <h2 class="h-display hero__title" id="hero-title"><?php bbq_text( 'hero_title', 'Korea\'s favourite fried chicken is now in Europe.', 'Heading' ); ?></h2>
-    <p class="hero__lead"><?php bbq_textarea( 'hero_lead', 'Double-fried for real crunch, glazed in sauces from Secret Sauce to Honey Garlic, and made for sharing. More than 3,500 restaurants worldwide since 1995. Now delivering in Europe.', 'Intro text' ); ?></p>
+    <p class="hero__lead"><?php bbq_textarea( 'hero_lead', 'Double-fried for real crunch, with sauces from Secret Sauce to Jasoman, and made for sharing. More than 3,500 restaurants worldwide since 1995. Now delivering in Europe.', 'Intro text' ); ?></p>
     <div class="btn-row">
       <?php $l = bbq_link( 'hero_btn1', array( 'label' => 'Order now', 'url' => '#find' ), 'First button' ); ?>
       <a class="btn btn--cream"<?php bbq_link_attrs( $l ); ?>><?php bbq_e( $l['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a>
@@ -171,10 +171,10 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
               'alt'          => array( 'text', 'Photo description (alt text)' ),
           ),
           array(
-              array( 'style' => 'yellow', 'desktop_only' => 0, 'img' => 'food-2pcs-fried.jpg', 'alt' => 'Two pieces of golden fried chicken', 'tag' => 'Meals', 'title' => 'Combo meals', 'text' => 'Pieces, tenders, a burger, wrap or bowl, with fries and a drink. Lunch, sorted.' ),
+              array( 'style' => 'yellow', 'desktop_only' => 0, 'img' => 'food-combo-meal.jpg', 'alt' => 'A meal of two pieces of Korean fried chicken with fries and a drink', 'tag' => 'Meals', 'title' => 'Combo meals', 'text' => 'Pieces, tenders, a burger, wrap or bowl, with fries and a drink. Lunch, sorted.' ),
               array( 'style' => 'red', 'desktop_only' => 0, 'img' => 'food-3pcs-strips.jpg', 'alt' => 'Three crispy chicken tenders', 'tag' => 'On the go', 'title' => 'Real Crispy Tenders', 'text' => 'Crispy chicken strips in 3, 6 or 12 pieces, easy to share and easier to eat on the go.' ),
-              array( 'style' => 'sand', 'desktop_only' => 0, 'img' => 'food-8pcs-fried.jpg', 'alt' => 'A bucket of eight pieces of fried chicken', 'tag' => '8 pieces', 'title' => 'Mega Party Bucket', 'text' => 'Eight pieces of Real Korean Fried Chicken. Add sides for everyone at the table.' ),
-              array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'sauce-secret-sauce.jpg', 'alt' => 'A bowl of Secret Sauce', 'tag' => '5 sauces', 'title' => 'Signature sauces', 'text' => 'Golden Original, or sauced in Secret Sauce, Honey Garlic, Galbi, Jasoman or Gangjeong.' ),
+              array( 'style' => 'sand', 'desktop_only' => 0, 'img' => 'food-party-bucket.jpg', 'alt' => 'A bucket of crispy tenders next to a bucket of fries', 'tag' => 'For sharing', 'title' => 'Mega Party Bucket', 'text' => '24 crispy tenders or 16 pieces of Korean fried chicken, with a bucket of fries for the table.' ),
+              array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'sauce-secret-sauce.jpg', 'alt' => 'A bowl of Secret Sauce', 'tag' => '9 sauces', 'title' => 'Signature sauces', 'text' => 'Nine sauces, from the sweet and mildly spicy Secret Sauce to the fiery Jasoman.' ),
           )
       );
       foreach ( $food as $card ) :
@@ -287,11 +287,12 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
         'Band texts',
         array(
             array( 'text' => 'Our signature sauces', 'strong' => 1 ),
-            array( 'text' => 'Golden Original', 'strong' => 0 ),
             array( 'text' => 'Secret Sauce', 'strong' => 0 ),
-            array( 'text' => 'Honey Garlic', 'strong' => 0 ),
-            array( 'text' => 'Soy Garlic', 'strong' => 0 ),
-            array( 'text' => 'Hot Spicy', 'strong' => 0 ),
+            array( 'text' => 'Galbi', 'strong' => 0 ),
+            array( 'text' => 'Gangjeong', 'strong' => 0 ),
+            array( 'text' => 'Jasoman', 'strong' => 0 ),
+            array( 'text' => 'Cheesling', 'strong' => 0 ),
+            array( 'text' => 'Red Chak Chak', 'strong' => 0 ),
         )
     );
     ?></div>

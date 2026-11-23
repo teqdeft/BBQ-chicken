@@ -14,6 +14,7 @@ $img_dims = array(
 	'cut-wrap.png'              => array( 848, 608 ),
 	'cut-bowl.png'              => array( 848, 734 ),
 	'cut-8pcs-fried-bucket.png' => array( 660, 838 ),
+	'cut-fries.png'             => array( 480, 624 ),
 );
 ?>
 
@@ -57,12 +58,12 @@ $img_dims = array(
               'alt'   => array( 'text', 'Image description (alt text)' ),
           ),
           array(
-              array( 'style' => 'dark', 'img' => 'cut-2pcs-fried.png', 'title' => 'Real Korean Fried Chicken', 'text' => 'Golden Original, double-fried. 2, 4 or 8 pieces.', 'alt' => 'Two pieces of golden fried chicken' ),
-              array( 'style' => 'red', 'img' => 'cut-tenders-3pcs.png', 'title' => 'Real Crispy Tenders', 'text' => 'Crispy chicken strips. 3, 6 or 12 pieces.', 'alt' => 'Three crispy chicken tenders' ),
-              array( 'style' => 'wine', 'img' => 'cut-burger.png', 'title' => 'Crispy Chicken Burger', 'text' => 'Crispy chicken in a soft bun.', 'alt' => 'A crispy chicken burger' ),
-              array( 'style' => 'wine', 'img' => 'cut-wrap.png', 'title' => 'Wraps', 'text' => 'Crispy or grilled chicken, wrapped to go.', 'alt' => 'A chicken wrap' ),
-              array( 'style' => 'dark', 'img' => 'cut-bowl.png', 'title' => 'Rice and salad bowls', 'text' => 'Crispy or grilled chicken on rice or salad.', 'alt' => 'A chicken rice bowl' ),
-              array( 'style' => 'red', 'img' => 'cut-8pcs-fried-bucket.png', 'title' => 'Mega Party Bucket', 'text' => 'Our biggest box of Real Korean Fried Chicken, made for sharing.', 'alt' => 'A bucket of fried chicken' ),
+              array( 'style' => 'dark', 'img' => 'cut-2pcs-fried.png', 'title' => 'Real Korean Fried Chicken', 'text' => '2, 4 or 8 crispy, juicy pieces of our authentic Korean fried chicken, made to the original recipe.', 'alt' => 'Two pieces of golden fried chicken' ),
+              array( 'style' => 'red', 'img' => 'cut-tenders-3pcs.png', 'title' => 'Real Crispy Tenders', 'text' => '3, 6 or 12 original crispy chicken strips, with 1, 2 or 4 sauces.', 'alt' => 'Three crispy chicken tenders' ),
+              array( 'style' => 'wine', 'img' => 'cut-fries.png', 'title' => 'Meals and meal boxes', 'text' => 'Any favourite with fries and a drink: tenders, Korean fried chicken, a burger, a wrap or a bowl. Also as a Meal Box for 2 or a Family Meal Box.', 'alt' => 'Fries in a bb.q fries box' ),
+              array( 'style' => 'wine', 'img' => 'cut-burger.png', 'title' => 'Burgers and wraps', 'text' => 'A crispy chicken burger with fresh vegetables and sauce in a soft bun, or crispy chicken strips in a wrap with fresh vegetables.', 'alt' => 'A crispy chicken burger' ),
+              array( 'style' => 'dark', 'img' => 'cut-bowl.png', 'title' => 'Rice and salad bowls', 'text' => 'Crispy chicken strips on white rice or on lettuce and mixed vegetables, with fresh vegetables and our special sauce.', 'alt' => 'A chicken rice bowl' ),
+              array( 'style' => 'red', 'img' => 'cut-8pcs-fried-bucket.png', 'title' => 'Mega Party Bucket', 'text' => '24 crispy tenders, 16 pieces of Korean fried chicken or a combo of both, each with a 1.25 kg bucket of fries.', 'alt' => 'A bucket of fried chicken' ),
           )
       );
       foreach ( $chicken as $card ) :
@@ -106,15 +107,15 @@ $img_dims = array(
               'alt'   => array( 'text', 'Photo description (alt text)' ),
           ),
           array(
-              array( 'img' => 'sauce-secret-sauce.jpg', 'title' => 'Secret Sauce', 'text' => 'Sweet and chilli, the bb.q classic.', 'spice' => '1', 'note' => '', 'alt' => 'A bowl of Secret Sauce' ),
-              array( 'img' => 'sauce-galbi.jpg', 'title' => 'Galbi', 'text' => 'Sweet and sour, smoky Korean barbecue sauce.', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Galbi sauce' ),
-              array( 'img' => 'sauce-gangjeong.jpg', 'title' => 'Gangjeong', 'text' => 'Sweet, crunchy and slightly spicy.', 'spice' => '1', 'note' => '', 'alt' => 'A bowl of Gangjeong sauce' ),
-              array( 'img' => 'sauce-jasoman.jpg', 'title' => 'Jasoman', 'text' => '', 'spice' => '2', 'note' => '', 'alt' => 'A bowl of Jasoman sauce' ),
-              array( 'img' => 'sauce-cheesling.jpg', 'title' => 'Cheesling', 'text' => '', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Cheesling seasoning' ),
-              array( 'img' => 'sauce-red-chak-chak-mayo.jpg', 'title' => 'Red Chak Chak Mayo', 'text' => '', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Red Chak Chak Mayo' ),
-              array( 'img' => 'sauce-galbi-mayo.jpg', 'title' => 'Galbi Mayo', 'text' => 'Creamy mayonnaise with the sweet and sour touch of Galbi.', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Galbi Mayo' ),
-              array( 'img' => 'sauce-garlic-mayo.jpg', 'title' => 'Garlic Mayo', 'text' => '', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Garlic Mayo' ),
-              array( 'img' => 'sauce-jamaica-mayo.jpg', 'title' => 'Jamaica Mayo', 'text' => '', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Jamaica Mayo' ),
+              array( 'img' => 'sauce-secret-sauce.jpg', 'title' => 'Secret Sauce', 'text' => 'Signature sweet and mildly spicy sauce.', 'spice' => '1', 'note' => '', 'alt' => 'A bowl of Secret Sauce' ),
+              array( 'img' => 'sauce-garlic-mayo.jpg', 'title' => 'Garlic Mayo Sauce', 'text' => 'Smooth and creamy mayonnaise with a bold garlic kick.', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Garlic Mayo Sauce' ),
+              array( 'img' => 'sauce-galbi.jpg', 'title' => 'Galbi Sauce', 'text' => 'Sweet, tangy, and smoky Korean BBQ sauce.', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Galbi Sauce' ),
+              array( 'img' => 'sauce-galbi-mayo.jpg', 'title' => 'Galbi Mayo Sauce', 'text' => 'Creamy mayonnaise infused with sweet and savory Galbi BBQ flavor.', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Galbi Mayo Sauce' ),
+              array( 'img' => 'sauce-gangjeong.jpg', 'title' => 'Gangjeong Sauce', 'text' => 'Sweet, crunchy, and mildly spicy sauce.', 'spice' => '1', 'note' => '', 'alt' => 'A bowl of Gangjeong Sauce' ),
+              array( 'img' => 'sauce-jasoman.jpg', 'title' => 'Jasoman Sauce', 'text' => 'Bold and fiery hot sauce with garlic and black pepper.', 'spice' => '2', 'note' => '', 'alt' => 'A bowl of Jasoman Sauce' ),
+              array( 'img' => 'sauce-jamaica-mayo.jpg', 'title' => 'Jamaica Mayo Sauce', 'text' => 'Creamy mayonnaise with a smoky and spicy kick.', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Jamaica Mayo Sauce' ),
+              array( 'img' => 'sauce-red-chak-chak-mayo.jpg', 'title' => 'Red Chak Chak Sauce', 'text' => 'Our Korean take on the classic brava sauce, creamier and extra spicy.', 'spice' => 'tbc', 'note' => '', 'alt' => 'A bowl of Red Chak Chak Sauce' ),
+              array( 'img' => 'sauce-cheesling.jpg', 'title' => 'Cheesling Sauce', 'text' => 'Irresistible cheddar cheese seasoning with a sweet and savory twist.', 'spice' => '0', 'note' => '', 'alt' => 'A bowl of Cheesling seasoning' ),
           )
       );
       foreach ( $sauces as $sauce ) :
@@ -149,9 +150,9 @@ $img_dims = array(
 <?php bbq_section( 'Sides' ); ?>
 <section class="section sides" aria-labelledby="sides-title">
   <div class="section-head">
-    <span class="eyebrow eyebrow--glass"><?php bbq_text( 'sides_eyebrow', 'Sides', 'Label' ); ?></span>
+    <span class="eyebrow eyebrow--glass"><?php bbq_text( 'sides_eyebrow', 'Sides and desserts', 'Label' ); ?></span>
     <h2 class="h2" id="sides-title"><?php bbq_text( 'sides_title', 'On the side', 'Heading' ); ?></h2>
-    <p class="lead"><?php bbq_textarea( 'sides_lead', 'Allergen and nutrition information per market will be published here.', 'Intro text' ); ?></p>
+    <p class="lead"><?php bbq_textarea( 'sides_lead', 'To drink: water, Coca-Cola, Fanta, Sprite, Fuze Tea, Aquarius and Monster. Allergen and nutrition information per market will be published here.', 'Intro text' ); ?></p>
   </div>
   <div class="row-slider" data-slider>
     <div class="side-grid" data-slider-viewport>
@@ -166,11 +167,11 @@ $img_dims = array(
               'alt'   => array( 'text', 'Photo description (alt text)' ),
           ),
           array(
-              array( 'img' => 'side-fries.jpg', 'title' => 'Fries', 'text' => 'Crispy, salted, the obvious partner.', 'alt' => 'Fries in a bb.q fries box' ),
-              array( 'img' => 'side-shaken-galaxy-fries.jpg', 'title' => 'Shaken Galaxy Fries', 'text' => 'Golden and crispy fries with our signature cheese topping.', 'alt' => 'Shaken Galaxy Fries spilling out of their bag' ),
-              array( 'img' => 'side-coleslaw.jpg', 'title' => 'Coleslaw', 'text' => 'Cool, creamy and sweet.', 'alt' => 'A bowl of coleslaw' ),
-              array( 'img' => 'side-tteokbokki.jpg', 'title' => 'Tteokbokki', 'text' => 'Chewy rice cakes, Classic Spicy or Rose.', 'alt' => 'A cup of tteokbokki rice cakes' ),
-              array( 'img' => 'side-chibboq-sweet-bites.jpg', 'title' => 'ChiBBoQ Sweet Bites', 'text' => '3 or 5 pieces, dusted with cinnamon sugar.', 'alt' => 'ChiBBoQ Sweet Bites dusted with cinnamon sugar' ),
+              array( 'img' => 'side-fries.jpg', 'title' => 'Fries', 'text' => 'Golden, crispy fries.', 'alt' => 'Fries in a bb.q fries box' ),
+              array( 'img' => 'side-shaken-galaxy-fries.jpg', 'title' => 'Shaken Galaxy Fries', 'text' => 'Golden, crispy fries with our signature spiced cheese seasoning.', 'alt' => 'Shaken Galaxy Fries spilling out of their bag' ),
+              array( 'img' => 'side-tteokbokki.jpg', 'title' => 'Tteokbokki', 'text' => 'Korean rice cakes slow-cooked in our traditional spicy sauce (Classic Spicy), or the creamier Rose, with cream and a touch of heat.', 'alt' => 'A cup of tteokbokki rice cakes' ),
+              array( 'img' => 'side-coleslaw.jpg', 'title' => 'Coleslaw', 'text' => 'Our classic, refreshing coleslaw with a creamy touch.', 'alt' => 'A bowl of coleslaw' ),
+              array( 'img' => 'side-chibboq-sweet-bites.jpg', 'title' => 'ChiBBoQ Sweet Bites', 'text' => 'Crispy, sweet rice bites. 3 or 5 pieces.', 'alt' => 'ChiBBoQ Sweet Bites' ),
           )
       );
       foreach ( $sides as $side ) :
