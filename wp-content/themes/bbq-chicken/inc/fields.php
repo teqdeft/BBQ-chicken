@@ -153,6 +153,13 @@ function bbq_acf_value( $store, $name, $type, $args, &$found ) {
 		case 'toggle':
 			$found = true;
 			return (int) $raw;
+		case 'posts':
+			$ids = array_values( array_filter( array_map( 'intval', (array) maybe_unserialize( $raw ) ) ) );
+			if ( ! $ids ) {
+				return null; // nothing picked: the caller shows all
+			}
+			$found = true;
+			return $ids;
 		case 'rows':
 			$count = (int) $raw;
 			if ( $count < 1 ) {
@@ -223,6 +230,20 @@ function bbq_link( $key, $default, $label = '' ) {
 function bbq_select( $key, $default, $label, $choices ) {
 	$value = bbq_field( $key, 'select', $label, $default, array( 'choices' => $choices ) );
 	return array_key_exists( $value, $choices ) ? $value : $default;
+}
+
+/**
+ * Posts picked by the editor, in their order (an ACF relationship field): array of post IDs, empty when
+ * nothing was picked (the section then shows all of them).
+ */
+function bbq_posts( $key, $label, $post_type, $args = array() ) {
+	$ids = bbq_field( $key, 'posts', $label, array(), array( 'post_type' => $post_type ) + $args );
+	return array_values( array_filter( array_map( 'intval', (array) $ids ) ) );
+}
+
+/** A note for editors in the section's fields (an ACF message field); stores no value. */
+function bbq_note( $key, $text, $label = '' ) {
+	bbq_field( $key, 'message', $label, $text );
 }
 
 /** On/off switch (e.g. "Show this section"). */

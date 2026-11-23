@@ -15,25 +15,9 @@ include __DIR__ . '/_shared.php';
   <div class="row-slider" data-slider>
     <div class="leaders__list" data-slider-viewport>
       <?php
-      $people = bbq_rows(
-          'leaders',
-          'People',
-          array(
-              'img'  => array( 'image', 'Portrait photo' ),
-              'name' => array( 'text', 'Name' ),
-              'role' => array( 'text', 'Role' ),
-              'alt'  => array( 'text', 'Photo description (alt text)' ),
-          ),
-          array(
-              array( 'img' => 'team-thomas-talarico.jpg', 'name' => 'Thomas C. Talarico', 'role' => 'CEO and Partner', 'alt' => 'Portrait of Thomas C. Talarico' ),
-              array( 'img' => 'team-maria-de-los-reyes-barrenengoa.jpg', 'name' => 'María de los Reyes Barrenengoa', 'role' => 'Marketing', 'alt' => 'Portrait of María de los Reyes Barrenengoa' ),
-              array( 'img' => 'team-daniela-haack.jpg', 'name' => 'Daniela Haack', 'role' => 'Marketing', 'alt' => 'Portrait of Daniela Haack' ),
-              array( 'img' => 'team-patricia-rader.jpg', 'name' => 'Patricia Rader', 'role' => 'Human Resources', 'alt' => 'Portrait of Patricia Rader' ),
-              array( 'img' => 'team-julian-de-miguel.jpg', 'name' => 'Julián de Miguel', 'role' => 'IT', 'alt' => 'Portrait of Julián de Miguel' ),
-              array( 'img' => 'team-julieta-cruz.jpg', 'name' => 'Julieta Cruz', 'role' => 'Staff Accountant', 'alt' => 'Portrait of Julieta Cruz' ),
-              array( 'img' => 'team-emma-heckel.jpg', 'name' => 'Emma Heckel', 'role' => 'Procurement', 'alt' => 'Portrait of Emma Heckel' ),
-          )
-      );
+      // The people are Team posts (menu: Team): the picked ones in the picked order, else all in their order.
+      $picked = bbq_posts( 'leaders_pick', 'Team members', 'team_member', array( 'help' => 'Pick the people for this section and drag them into order. Empty = all team members, in their Order. People are added and edited under Team in the admin menu.' ) );
+      $people = bbq_team_people( $picked );
       foreach ( $people as $person ) :
           ?>
       <article class="person">

@@ -169,6 +169,14 @@ function bbq_render_schema( $schema, $values, $name = 'bbq' ) {
 function bbq_render_field( $f, $value, $name, $changed ) {
 	$type = $f['type'];
 	$args = isset( $f['args'] ) ? (array) $f['args'] : array();
+	if ( 'message' === $type ) { // a note for editors (bbq_note()), no value
+		echo '<p class="description">' . esc_html( (string) $f['default'] ) . '</p>';
+		return;
+	}
+	if ( 'posts' === $type ) { // picked posts (bbq_posts()): only with ACF; without it all are shown
+		echo '<p class="description">' . esc_html( $f['label'] ) . ': all are shown (picking needs ACF Pro).</p>';
+		return;
+	}
 	echo '<div class="bbq-field bbq-field--' . esc_attr( $type ) . ( $changed ? ' is-changed' : '' ) . '">';
 	echo '<div class="bbq-field__head"><label class="bbq-field__label">' . esc_html( $f['label'] ) . '</label>';
 	if ( 'rows' !== $type ) {

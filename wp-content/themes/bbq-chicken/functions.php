@@ -26,6 +26,8 @@ require BBQ_DIR . '/inc/fields-admin.php';
 require BBQ_DIR . '/inc/options.php';
 require BBQ_DIR . '/inc/menus.php';
 require BBQ_DIR . '/inc/news.php';
+require BBQ_DIR . '/inc/team.php';
+require BBQ_DIR . '/inc/food.php';
 require BBQ_DIR . '/inc/forms.php';
 require BBQ_DIR . '/inc/analytics.php';
 require BBQ_DIR . '/inc/importer.php';

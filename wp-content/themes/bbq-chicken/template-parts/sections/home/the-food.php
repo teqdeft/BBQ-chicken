@@ -19,25 +19,9 @@ include __DIR__ . '/_shared.php';
   <div class="slider" data-slider data-slider-loop data-start="2" data-start-mobile="0">
     <div class="slider__viewport" data-slider-viewport>
       <?php
-      $food = bbq_rows(
-          'food_cards',
-          'Food cards (endless slider; the third card starts in the middle on desktop)',
-          array(
-              'title'        => array( 'text', 'Title' ),
-              'text'         => array( 'textarea', 'Text' ),
-              'tag'          => array( 'text', 'Tag on the photo' ),
-              'style'        => array( 'select', 'Colour', $food_styles ),
-              'desktop_only' => array( 'toggle', 'Desktop only (hidden on phones)' ),
-              'img'          => array( 'image', 'Photo' ),
-              'alt'          => array( 'text', 'Photo description (alt text)' ),
-          ),
-          array(
-              array( 'style' => 'yellow', 'desktop_only' => 0, 'img' => 'food-combo-meal.jpg', 'alt' => 'A meal of two pieces of Korean fried chicken with fries and a drink', 'tag' => 'Meals', 'title' => 'Combo meals', 'text' => 'Pieces, tenders, a burger, wrap or bowl, with fries and a drink. Lunch, sorted.' ),
-              array( 'style' => 'red', 'desktop_only' => 0, 'img' => 'food-3pcs-strips.jpg', 'alt' => 'Three crispy chicken tenders', 'tag' => 'On the go', 'title' => 'Real Crispy Tenders', 'text' => 'Crispy chicken strips in 3, 6 or 12 pieces, easy to share and easier to eat on the go.' ),
-              array( 'style' => 'sand', 'desktop_only' => 0, 'img' => 'food-party-bucket.jpg', 'alt' => 'A bucket of crispy tenders next to a bucket of fries', 'tag' => 'For sharing', 'title' => 'Mega Party Bucket', 'text' => '24 crispy tenders or 16 pieces of Korean fried chicken, with a bucket of fries for the table.' ),
-              array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'sauce-secret-sauce.jpg', 'alt' => 'A bowl of Secret Sauce', 'tag' => '9 sauces', 'title' => 'Signature sauces', 'text' => 'Nine sauces, from the sweet and mildly spicy Secret Sauce to the fiery Jasoman.' ),
-          )
-      );
+      // The cards are Food cards posts (menu: Food cards): the picked ones in the picked order, else all in their order.
+      $picked = bbq_posts( 'food_cards_pick', 'Food cards', 'food_card', array( 'help' => 'Pick the cards for this slider and drag them into order. Empty = all food cards, in their Order. Cards are added and edited under Food cards in the admin menu; the third card starts in the middle on desktop.' ) );
+      $food   = bbq_food_cards( $picked );
       foreach ( $food as $card ) :
           $style = isset( $food_styles[ $card['style'] ] ) ? $card['style'] : 'dark';
           ?>
