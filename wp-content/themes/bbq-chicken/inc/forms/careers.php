@@ -53,7 +53,7 @@ return array(
 </div>',
 	'mail'       => array(
 		'subject'            => '[_site_title] open application: [area] – [your-name]',
-		'recipient'          => '[_site_admin_email]',
+		'recipient'          => 'jobs@bltglobalbrands.com', // general career enquiries (client, 23 Nov)
 		'additional_headers' => 'Reply-To: [your-name] <[your-email]>',
 		'body'               => "Open application from the Careers page\n\n"
 			. "Full name: [your-name]\nEmail: [your-email]\nCountry: [country]\nArea of interest: [area]\n"

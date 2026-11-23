@@ -49,6 +49,34 @@ add_filter(
 	10,
 	2
 );
+/*
+ * Routing: a form definition's 'routing' => array( field => array( chosen option => email ) ) sends the main
+ * mail for that choice to its own team (e.g. the contact form's "Careers" to jobs@…) instead of the To address.
+ */
+add_filter(
+	'wpcf7_mail_components',
+	function ( $components, $contact_form, $mail ) {
+		if ( ! $contact_form || ! $mail || 'mail' !== $mail->name() || ! class_exists( 'WPCF7_Submission' ) ) {
+			return $components;
+		}
+		$name = array_search( (int) $contact_form->id(), array_map( 'intval', (array) get_option( 'bbq_forms', array() ) ), true );
+		$defs = bbq_form_definitions();
+		if ( false === $name || empty( $defs[ $name ]['routing'] ) ) {
+			return $components;
+		}
+		$submission = WPCF7_Submission::get_instance();
+		foreach ( (array) $defs[ $name ]['routing'] as $field => $map ) {
+			$value = $submission ? $submission->get_posted_data( $field ) : null;
+			$value = is_array( $value ) ? reset( $value ) : $value;
+			if ( is_string( $value ) && isset( $map[ $value ] ) && is_email( $map[ $value ] ) ) {
+				$components['recipient'] = $map[ $value ];
+			}
+		}
+		return $components;
+	},
+	20,
+	3
+);
 add_filter(
 	'wpcf7_mail_components',
 	function ( $components ) {
@@ -130,6 +158,11 @@ function bbq_install_forms( $overwrite = false, $only = array() ) {
 			if ( isset( $def[ $prop ] ) ) {
 				$props[ $prop ] = array_merge( (array) $form->prop( $prop ), $def[ $prop ] );
 			}
+		}
+		// A reset keeps a To address set by hand (anything other than the theme's default, the site admin email).
+		$old = $id ? (array) $form->prop( 'mail' ) : array();
+		if ( isset( $props['mail'], $old['recipient'] ) && '' !== trim( $old['recipient'] ) && '[_site_admin_email]' !== trim( $old['recipient'] ) ) {
+			$props['mail']['recipient'] = $old['recipient'];
 		}
 		$settings = isset( $def['additional_settings'] ) ? (string) $def['additional_settings'] : '';
 		if ( bbq_is_local_host() && false === strpos( $settings, 'skip_mail' ) ) {

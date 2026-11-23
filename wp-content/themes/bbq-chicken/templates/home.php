@@ -218,18 +218,18 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
       <?php
       $platforms = bbq_rows(
           'platforms',
-          'Ordering links (own shop, delivery apps)',
+          'Ordering links (delivery apps; a link without an address is hidden)',
           array( 'link' => array( 'link', 'Link' ) ),
           array(
-              array( 'link' => array( 'label' => 'Glovo', 'url' => '#', 'new_tab' => true ) ),
-              array( 'link' => array( 'label' => 'Uber Eats', 'url' => '#', 'new_tab' => true ) ),
-              array( 'link' => array( 'label' => 'Just Eat', 'url' => '#', 'new_tab' => true ) ),
-              array( 'link' => array( 'label' => 'Deliveroo', 'url' => '#', 'new_tab' => true ) ),
+              array( 'link' => array( 'label' => 'Glovo', 'url' => 'https://glovo.go.link/open?link_type=store&store_id=617208&adjust_t=s321jkn', 'new_tab' => true ) ),
+              array( 'link' => array( 'label' => 'Uber Eats', 'url' => 'https://www.ubereats.com/store-browse-uuid/7a2ca0a0-0ec2-5a74-997a-08690eed5876?diningMode=DELIVERY', 'new_tab' => true ) ),
+              array( 'link' => array( 'label' => 'Just Eat', 'url' => '', 'new_tab' => true ) ),
+              array( 'link' => array( 'label' => 'Deliveroo', 'url' => '', 'new_tab' => true ) ),
           )
       );
       foreach ( $platforms as $platform ) :
-          if ( '' === (string) $platform['link']['label'] ) {
-              continue;
+          if ( '' === (string) $platform['link']['label'] || in_array( trim( (string) $platform['link']['url'] ), array( '', '#' ), true ) ) {
+              continue; // no store link yet
           }
           ?>
       <a class="platform"<?php bbq_link_attrs( $platform['link'] ); ?>><?php bbq_e( $platform['link']['label'] ); ?> <span aria-hidden="true">↗</span></a>

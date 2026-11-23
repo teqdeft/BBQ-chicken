@@ -27,19 +27,22 @@ $apply = bbq_link( 'header_apply', array( 'label' => 'Submit your application', 
           bbq_section( 'Ordering platforms' );
           $platforms = bbq_rows(
               'platforms',
-              'Ordering platforms (order menu)',
+              'Ordering platforms (order menu; a platform without a link is hidden)',
               array(
                   'name' => array( 'text', 'Name' ),
                   'url'  => array( 'text', 'Link (https://…)' ),
               ),
               array(
-                  array( 'name' => 'Glovo', 'url' => '#' ),
-                  array( 'name' => 'Uber Eats', 'url' => '#' ),
-                  array( 'name' => 'Just Eat', 'url' => '#' ),
-                  array( 'name' => 'Deliveroo', 'url' => '#' ),
+                  array( 'name' => 'Glovo', 'url' => 'https://glovo.go.link/open?link_type=store&store_id=617208&adjust_t=s321jkn' ),
+                  array( 'name' => 'Uber Eats', 'url' => 'https://www.ubereats.com/store-browse-uuid/7a2ca0a0-0ec2-5a74-997a-08690eed5876?diningMode=DELIVERY' ),
+                  array( 'name' => 'Just Eat', 'url' => '' ),
+                  array( 'name' => 'Deliveroo', 'url' => '' ),
               )
           );
           foreach ( $platforms as $p ) :
+              if ( '' === (string) $p['name'] || in_array( trim( (string) $p['url'] ), array( '', '#' ), true ) ) {
+                  continue; // no store link yet
+              }
               ?>
           <a class="platform-link" href="<?php echo esc_url( bbq_url( $p['url'] ) ); ?>" target="_blank" rel="noopener"><span><?php bbq_e( $p['name'] ); ?></span><span aria-hidden="true">↗</span></a>
           <?php endforeach; ?>

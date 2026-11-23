@@ -48,7 +48,7 @@ function bbq_setup_screen() {
 	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 	echo '<input type="hidden" name="action" value="bbq_run_setup">';
 	wp_nonce_field( 'bbq_run_setup' );
-	echo '<p><label><input type="checkbox" name="overwrite_forms" value="1"> Also reset the forms to the theme\'s version (overwrites changes made under Contact → Contact Forms)</label></p>';
+	echo '<p><label><input type="checkbox" name="overwrite_forms" value="1"> Also reset the forms to the theme\'s version (overwrites changes made under Contact → Contact Forms, but keeps each form\'s To address)</label></p>';
 	submit_button( 'Run setup' );
 	echo '</form></div>';
 }

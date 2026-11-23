@@ -21,8 +21,8 @@ return array(
 </div>
 </div>
 <div class="field">
-<label class="field__label" for="ct-topic">Topic <span aria-hidden="true">*</span></label>
-[select* topic id:ct-topic class:select first_as_label "Franchise, real estate, press & media, careers, customer question, other" "Franchise" "Real estate" "Press & media" "Careers" "Customer question" "Other"]
+<label class="field__label" for="ct-topic">Department / Purpose <span aria-hidden="true">*</span></label>
+[select* topic id:ct-topic class:select first_as_label "Choose the team your message is for" "Franchise" "Real estate" "Press & media" "Careers" "Customer question" "Other"]
 </div>
 <p class="topic-hint topic-hint--franchise">Want to open bb.q restaurants? <a href="' . esc_url( bbq_page_url( 'apply' ) ) . '" data-apply>Submit your application →</a></p>
 <p class="topic-hint topic-hint--real-estate">Have a site that could suit bb.q? <a href="' . esc_url( bbq_page_url( 'real-estate', 'offer' ) ) . '">Offer your premises →</a></p>
@@ -39,7 +39,7 @@ return array(
 		'subject'            => '[_site_title] contact: [topic] – [your-name]',
 		'recipient'          => '[_site_admin_email]',
 		'additional_headers' => 'Reply-To: [your-name] <[your-email]>',
-		'body'               => "From: [your-name] <[your-email]>\nTopic: [topic]\n\n[your-message]\n\n-- \nSent from the contact form on [_site_title] ([_site_url])",
+		'body'               => "From: [your-name] <[your-email]>\nDepartment / purpose: [topic]\n\n[your-message]\n\n-- \nSent from the contact form on [_site_title] ([_site_url])",
 		'use_html'           => false,
 	),
 	'messages'   => array(
@@ -48,4 +48,10 @@ return array(
 	),
 	// Keep the submit button active (as in the design); an unticked consent box shows a message instead.
 	'additional_settings' => 'acceptance_as_validation: on',
+	// Department / Purpose choices that go to their own team instead of the form's To address (see inc/forms.php).
+	'routing'             => array(
+		'topic' => array(
+			'Careers' => 'jobs@bltglobalbrands.com',
+		),
+	),
 );
