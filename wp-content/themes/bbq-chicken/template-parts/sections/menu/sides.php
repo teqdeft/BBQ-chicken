@@ -11,7 +11,7 @@ include __DIR__ . '/_shared.php';
   <div class="section-head">
     <span class="eyebrow eyebrow--glass"><?php bbq_text( 'sides_eyebrow', 'Sides and desserts', 'Label' ); ?></span>
     <h2 class="h2" id="sides-title"><?php bbq_text( 'sides_title', 'On the side', 'Heading' ); ?></h2>
-    <p class="lead"><?php bbq_textarea( 'sides_lead', 'To drink: water, Coca-Cola, Fanta, Sprite, Fuze Tea, Aquarius and Monster. Allergen and nutrition information per market will be published here.', 'Intro text' ); ?></p>
+    <p class="lead"><?php bbq_textarea( 'sides_lead', 'Allergen and nutrition information per market will be published here.', 'Intro text' ); ?></p>
   </div>
   <div class="row-slider" data-slider>
     <div class="side-grid" data-slider-viewport>
@@ -27,9 +27,9 @@ include __DIR__ . '/_shared.php';
           ),
           array(
               array( 'img' => 'side-fries.jpg', 'title' => 'Fries', 'text' => 'Golden, crispy fries.', 'alt' => 'Fries in a bb.q fries box' ),
-              array( 'img' => 'side-shaken-galaxy-fries.jpg', 'title' => 'Shaken Galaxy Fries', 'text' => 'Golden, crispy fries with our signature spiced cheese seasoning.', 'alt' => 'Shaken Galaxy Fries spilling out of their bag' ),
-              array( 'img' => 'side-tteokbokki.jpg', 'title' => 'Tteokbokki', 'text' => 'Korean rice cakes slow-cooked in our traditional spicy sauce (Classic Spicy), or the creamier Rose, with cream and a touch of heat.', 'alt' => 'A cup of tteokbokki rice cakes' ),
+              array( 'img' => 'side-shaken-galaxy-fries.jpg', 'title' => 'Shaken Galaxy Fries', 'text' => 'Golden, crispy fries with our signature spiced cheese touch.', 'alt' => 'Shaken Galaxy Fries spilling out of their bag' ),
               array( 'img' => 'side-coleslaw.jpg', 'title' => 'Coleslaw', 'text' => 'Our classic, refreshing coleslaw with a creamy touch.', 'alt' => 'A bowl of coleslaw' ),
+              array( 'img' => 'side-tteokbokki.jpg', 'title' => 'Tteokbokki', 'text' => 'Korean rice cakes, Classic Spicy or creamy Rose.', 'alt' => 'A cup of tteokbokki rice cakes' ),
               array( 'img' => 'side-chibboq-sweet-bites.jpg', 'title' => 'ChiBBoQ Sweet Bites', 'text' => 'Crispy, sweet rice bites. 3 or 5 pieces.', 'alt' => 'ChiBBoQ Sweet Bites' ),
           )
       );

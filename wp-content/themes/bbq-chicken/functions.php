@@ -38,3 +38,5 @@ unset( $bbq_part );
 
 // Card post types (Team, Food cards, Chicken cards, Sauces); after the parts, it uses their helpers.
 require BBQ_DIR . '/inc/card-types.php';
+// One-off content updates for sites that already hold content (after the card types, uses them).
+require BBQ_DIR . '/inc/content-updates.php';

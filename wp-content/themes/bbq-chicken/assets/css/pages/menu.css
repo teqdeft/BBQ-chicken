@@ -21,8 +21,9 @@
 .format-grid { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .format-card {
   min-height: 420px;
-  /* insets shrink a little towards 1440 (Figma: image 20 → 18, text 28 → 25) */
-  padding: 20px clamp(18px, calc(0.833vw + 6px), 20px) 28px;
+  /* insets shrink a little towards 1440 (Figma: image 20 → 18, text 28 → 25); the cards stay 420 high,
+     a two-line title with two lines of text ends 8px above the bottom (Figma "Real Korean Fried Chicken") */
+  padding: 20px clamp(18px, calc(0.833vw + 6px), 20px) 8px;
   border-radius: var(--radius-card);
   overflow: hidden;
   display: flex; flex-direction: column;
@@ -35,6 +36,14 @@
 .format-card--dark { background: var(--char); }
 .format-card--red { background: var(--red); }
 .format-card--wine { background: #8E1220; }
+
+/* ---------- Meals and boxes (same section as the chicken; photo cards, 4 in a row) ---------- */
+.format-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.format-card--photo { min-height: 408px; padding: 20px 20px 28px; }
+.format-card--photo .format-card__img { height: 240px; border-radius: var(--radius-img); overflow: hidden; background: #E4DED2; box-shadow: 0 16px 24px rgba(0, 0, 0, .3); }
+.format-card--photo .format-card__img img { object-fit: cover; filter: none; }
+/* title 34 at 1680, 28 at 1440 (Figma 1440 frame) */
+.format-card--photo .format-card__title { margin-top: 14px; font-size: clamp(28px, calc(2.5vw - 8px), 34px); }
 
 /* ---------- 3. Sauces ---------- */
 .sauces {
@@ -114,6 +123,18 @@
 .side-card__text { font-size: 16px; line-height: 1.55; color: var(--muted-light); }
 .sides__cta { justify-content: center; }
 
+/* ---------- Something to drink (3-column list) ---------- */
+.drinks {
+  display: flex; flex-direction: column; align-items: center; gap: 56px;
+  padding-top: 80px; padding-bottom: 100px;
+  background: var(--cream);
+}
+.drinks .section-head { max-width: 820px; }
+.drink-list { width: 100%; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
+.drink { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(34, 30, 31, .15); }
+.drink__name { font-size: 20px; font-weight: 700; line-height: 24px; color: var(--char); }
+.drink__size { flex: none; font-size: 15px; line-height: 18px; color: var(--muted); }
+
 /* ---------- 5. Closing CTA ---------- */
 .page-menu .closing { padding-bottom: 210px; }
 
@@ -124,6 +145,8 @@
   .page-menu .page-hero .stamp { left: auto; right: 300px; top: auto; bottom: 40px; width: 140px; height: 140px; }
 
   .format-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .format-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .drink-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sauce-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sauces { padding-bottom: 260px; }
   .sauces__peek { left: 50%; bottom: 24px; transform: translateX(-50%); }
@@ -172,6 +195,17 @@
   .format-card__img img { filter: none; }
   .format-card__title { margin: 12px 6px 0; font-size: 28px; }
   .format-card__text { margin: 10px 6px 0; font-size: 15px; line-height: 1.2; }
+  .format-card--photo { min-height: 320px; padding: 14px 14px 20px; }
+  .format-card--photo .format-card__img { height: 152px; box-shadow: none; }
+  .format-card--photo .format-card__title { margin-top: 12px; font-size: 28px; }
+
+  .drinks { align-items: stretch; gap: 20px; padding-top: 56px; padding-bottom: 56px; }
+  .drinks .section-head { gap: 14px; }
+  .drinks .h2 { font-size: 32px; line-height: 1.06; }
+  .drink-list { grid-template-columns: minmax(0, 1fr); }
+  .drink { padding: 14px 0; }
+  .drink__name { font-size: 17px; line-height: 20px; }
+  .drink__size { font-size: 14px; line-height: 17px; }
 
   .sauces { align-items: stretch; gap: 20px; padding: 40px 0 56px 20px; }
   .sauce-grid { align-items: stretch; }

@@ -7,8 +7,10 @@ defined( 'ABSPATH' ) || exit;
 
 return array(
 	'menu_hero',
+	'menu_meals',
 	'menu_the_chicken',
-	'menu_sauces',
 	'menu_sides',
+	'menu_sauces',
+	'menu_drinks',
 	'menu_closing_call_to_action',
 );

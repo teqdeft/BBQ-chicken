@@ -12,5 +12,9 @@ $img_dims = array(
 	'cut-bowl.png'              => array( 848, 734 ),
 	'cut-8pcs-fried-bucket.png' => array( 660, 838 ),
 	'cut-fries.png'             => array( 480, 624 ),
+	'food-3pcs-strips.jpg'      => array( 960, 720 ),
+	'food-combo-meal.jpg'       => array( 960, 956 ),
+	'meal-box-for-2.jpg'        => array( 808, 642 ),
+	'food-party-bucket.jpg'     => array( 960, 887 ),
 );
 ?>

@@ -5,7 +5,7 @@
 defined( 'ABSPATH' ) || exit;
 include __DIR__ . '/_shared.php';
 ?>
-<!-- 3. Sauces -->
+<!-- 5. Sauces -->
 <?php bbq_section( 'Sauces' ); ?>
 <section class="section sauces" aria-labelledby="sauces-title">
   <div class="section-head">

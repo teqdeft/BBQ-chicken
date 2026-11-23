@@ -81,6 +81,10 @@ function bbq_acf_convert( $type, $value, $args, $key_prefix, $name ) {
 			);
 		case 'toggle':
 			return (int) $value;
+		case 'posts': // a picker: post ids
+			return array_values( array_filter( array_map( 'intval', (array) $value ) ) );
+		case 'message': // a note for editors: no value
+			return '';
 		case 'rows':
 			$rows = array();
 			foreach ( (array) $value as $row ) {
@@ -188,7 +192,7 @@ function bbq_acf_migrate( $force = false ) {
 	if ( $n ) {
 		$log[] = 'News cards filled in: ' . $n . ' posts.';
 	}
-	$log = array_merge( $log, bbq_cards_setup_all() ); // Team, Food cards, Chicken cards, Sauces (inc/card-types.php)
+	$log = array_merge( $log, bbq_cards_setup_all() ); // Team, Food cards, Meals, Chicken cards, Sauces (inc/card-types.php)
 	$log[] = 'Images in the Media Library: ' . count( (array) get_option( 'bbq_asset_media', array() ) ) . '.';
 	update_option( 'bbq_acf_migrated', time(), false );
 	return $log;
