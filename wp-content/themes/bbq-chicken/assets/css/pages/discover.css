@@ -108,12 +108,33 @@
 /* ---------- 6. Mascot ---------- */
 .page-discover .mascot__text p { letter-spacing: -0.002em; }
 
-/* ---------- Tablet ---------- */
-@media (max-width: 1199px) {
-  .page-discover .page-hero__media { left: auto; right: -40px; top: 170px; width: 420px; height: 532px; }
-  .page-discover .page-hero__text { max-width: calc(100% - 400px); }
-  .page-discover .page-hero .stamp { left: auto; right: 300px; top: auto; bottom: 40px; width: 140px; height: 140px; }
+/* ---------- Tablets (Figma "Tablet 1024" and "Tablet 768") ---------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-discover .page-hero { min-height: 640px; padding-top: 120px; padding-bottom: 48px; }
+  .page-discover .page-hero .h-display { font-size: 69px; }
+  .page-discover .page-hero__text { max-width: 540px; }
+  .page-discover .page-hero__text .lead { max-width: 480px; }
+  .page-discover .page-hero__media { left: calc(100% - 356px); top: 190px; width: 332px; height: 420px; }
+  .page-discover .page-hero .stamp { left: calc(100% - 386px); top: 476px; width: 134px; }
 
+  .story__intro, .timeline__text { font-size: 15px; line-height: 23px; }
+  .timeline__icon { margin-bottom: 36px; }
+  .timeline__step { padding: 0 6px; }
+
+  .format-card { min-height: 373px; padding: 20px 17px 24px; }
+  .format-card__img { height: 181px; }
+  .format-card__title, .format-card__text { margin-left: 7px; margin-right: 7px; }
+  .format-card__text { font-size: 15px; }
+
+  .presence__legend { zoom: .58; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .timeline { gap: 0; }
+  .presence__map { flex: 0 0 440px; }
+  .page-discover .mascot__img img { height: 352px; }
+}
+
+@media (max-width: 1023px) {
   /* vertical timeline (as on mobile) */
   .timeline { min-height: 0; max-width: 640px; grid-template-columns: 1fr; gap: 0; }
   .timeline::before { display: none; }
@@ -133,12 +154,42 @@
   .presence__map { order: -1; flex-basis: auto; width: 100%; }
 }
 
-/* small tablet: image above the text, as on mobile */
-@media (max-width: 1023px) {
+/* phones: image above the text */
+@media (max-width: 767px) {
   .page-discover .page-hero { flex-direction: column; gap: 24px; padding-top: 150px; }
   .page-discover .page-hero__media { position: relative; right: auto; top: auto; width: 400px; height: 506px; max-width: 100%; }
   .page-discover .page-hero__text { max-width: 640px; }
   .page-discover .page-hero .stamp { left: calc(var(--gutter) - 8px); right: auto; top: 470px; bottom: auto; width: 130px; height: 130px; }
+}
+
+/* 768 to 1023 (Figma "Tablet 768"): hero photo bottom right, the timeline is a 3 + 2 grid of icons, the map
+   follows the text and ChiBBoQ's picture sits above its text */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-discover .page-hero { min-height: 800px; }
+  .page-discover .page-hero__text { max-width: 520px; }
+  .page-discover .page-hero__media { left: calc(100% - 241px); top: 440px; width: 265px; height: 336px; }
+  .page-discover .page-hero .stamp { left: calc(100% - 261px); top: 642px; }
+
+  .timeline { display: flex; flex-wrap: wrap; justify-content: center; column-gap: 14px; row-gap: 40px; max-width: none; }
+  .timeline__step { display: flex; flex: 0 0 220px; flex-direction: column; align-items: center; text-align: center; padding-bottom: 0; }
+  .timeline__step:not(:last-child)::after { display: none; }
+  .timeline__icon { width: 104px; height: 104px; margin: 0 0 36px; }
+  .timeline__icon svg { width: 39px; height: 39px; }
+  .timeline__sep { display: inline; }
+  .timeline__year { display: inline; margin: 0; font-size: inherit; font-weight: inherit; line-height: inherit; letter-spacing: inherit; }
+  .timeline__title { padding-top: 0; font-size: 22px; line-height: 1.2; }
+  .timeline__text { margin-top: 14px; }
+
+  .format-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .format-card { min-height: 315px; }
+  .format-card__img { height: 123px; }
+  .format-card__title { font-size: 24px; line-height: 1; }
+
+  .presence__map { order: 0; }
+  .presence__legend { zoom: .87; }
+
+  .page-discover .mascot__img { height: 528px; }
+  .page-discover .mascot__img img { height: 510px; }
 }
 
 /* ---------- Mobile (390 reference) ---------- */

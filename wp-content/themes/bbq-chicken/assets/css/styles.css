@@ -26,7 +26,7 @@
   --gutter: clamp(80px, calc(100vw / 6 - 160px), 120px);
 
   --fs-display: clamp(40px, 5.84vw, 84px);
-  --fs-h2: clamp(34px, 4.17vw, 60px);
+  --fs-h2: 60px; /* 60 at every width from 768 up (Figma 1680, 1440, 1024 and 768); 34 on phones */
   --fs-lead: clamp(16px, 1.25vw, 18px);
 
   /* Figma v4 uses much tighter corners */
@@ -40,11 +40,20 @@
   --header-h: 88px;
 }
 
+/* Tablet (Figma "Tablet 1024" and "Tablet 768"): 48px sides at 1024, 40px at 768; the header is 66 tall,
+   12px from the top, 48px from the sides at 1024 and 24px at 768 */
+@media (max-width: 1439px) {
+  :root { --gutter: clamp(48px, calc(7.692vw - 30.77px), 80px); }
+}
 @media (max-width: 1199px) {
-  :root { --gutter: 40px; }
+  :root { --header-top: 12px; --header-h: 66px; --header-side: clamp(24px, calc(9.375vw - 48px), 48px); }
+}
+@media (max-width: 1023px) {
+  :root { --gutter: clamp(40px, calc(3.125vw + 16px), 48px); }
 }
 @media (max-width: 767px) {
   :root {
+    --fs-h2: 34px;
     --gutter: 20px;
     --header-top: 12px;
     --header-side: 12px;
@@ -361,6 +370,20 @@ ul, ol { padding: 0; list-style: none; }
   .lang-switch { display: none; }
   .burger { display: flex; }
 }
+/* Tablet header (Figma 1024 and 768): no main nav; "Order now", "Submit your application" and a 48px menu
+   button, plus the language switch at 1024. The logo is 237 wide at 1024 and 189 at 768. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .site-header { gap: 12px; padding: 0 20px; }
+  .header-right .btn--cream { display: inline-flex; }
+  .order-menu .btn { font-size: 14px; }
+  .burger { width: 48px; height: 48px; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .lang-switch { display: inline; padding: 8px 0; font-size: 14px; line-height: 17px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .site-header__logo { width: clamp(189px, calc(18.75vw + 45px), 237px); }
+}
 
 @media (max-width: 767px) {
   .site-header { border-radius: 8px; }
@@ -580,6 +603,18 @@ ul, ol { padding: 0; list-style: none; }
 @media (max-width: 1199px) {
   .footer-links { gap: 40px; flex-wrap: wrap; justify-content: center; }
 }
+/* Figma 1024: the four link columns stay in one row, 48 apart */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .footer-links { gap: 48px; flex-wrap: nowrap; }
+}
+/* Figma 768: the order bar's buttons go under its text, the links are two columns of two, and the
+   copyright line wraps next to the language links */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .order-bar { flex-wrap: wrap; row-gap: 16px; }
+  .order-bar__text { flex: 1 0 100%; }
+  .footer-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; width: 100%; }
+  .footer-base__row { gap: 12px; }
+}
 
 @media (max-width: 767px) {
   .site-footer { padding: 56px 20px 32px; background-image: url("../img/footer-bg-m.jpg"); background-size: cover; }
@@ -752,7 +787,7 @@ ul, ol { padding: 0; list-style: none; }
 .proof__items { display: grid; grid-template-columns: 335fr 368fr 368fr 368fr; }
 .proof__item { display: grid; gap: 10px; align-content: start; }
 .proof__item + .proof__item { padding-left: 32px; border-left: 1px solid rgba(255, 255, 255, .3); }
-.proof__num { font-size: clamp(40px, 3.8vw, 64px); font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+.proof__num { font-size: clamp(51px, 3.8vw, 64px); font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
 .proof__label { font-size: 16px; line-height: 1.55; color: var(--white); }
 .proof__note { margin-top: 36px; font-size: 14px; color: var(--white); }
 
@@ -1081,7 +1116,84 @@ ul, ol { padding: 0; list-style: none; }
   .markets__body, .find, .team, .mascot { gap: 56px; }
 }
 
-@media (max-width: 1199px) {
+/* Home on tablets, 1024 to 1199 (Figma "Tablet 1024"): the desktop layout, smaller */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .intro { gap: 48px; min-height: 640px; padding-top: 114px; padding-bottom: 48px; }
+  .intro__text { flex: 1 1 476px; gap: 20px; }
+  .intro .h-display { font-size: 52px; }
+  .intro__brands { flex: 0 0 404px; }
+  .intro__note { max-width: 330px; }
+  /* the bb.q card is the 380×440 desktop card at 68.4% (260×301) */
+  .brand-card { flex: 0 0 380px; min-width: 0; zoom: .684; }
+  .brand-card .cutout { left: 64.4px; }
+  .brand-card--soon { flex: 0 0 128px; height: 301px; padding: 0 12px; zoom: 1; }
+  .brand-card--soon .plus { width: 44px; height: 44px; font-size: 22px; }
+  .brand-card--soon strong { font-size: 16px; line-height: 18px; }
+  .intro .peek { width: 89px; right: -40px; bottom: -37px; }
+
+  .hero--home .hero__content { width: 720px; margin-top: 130px; }
+  .hero--home .hero__title { font-size: 69px; }
+  .hero--home .hero__lead { max-width: 560px; }
+  .hero__cut--left { width: 373px; left: -110px; bottom: -20px; }
+  .hero__cut--right { width: 237px; right: 24px; top: 524px; }
+  .hero--home .stamp { left: 143px; top: 662px; width: 158px; }
+
+  .proof__items { grid-template-columns: 207fr 240fr 240fr 240fr; }
+
+  .food .cutout--sauce { width: 252px; left: calc(100% - 222px); top: 8px; }
+  .food .cutout--fried { width: 219px; left: -30px; top: 8px; }
+
+  .find { gap: 48px; }
+  .find__text { flex: 1 1 440px; }
+  .map-card { flex: 0 1 440px; }
+  .kitchen-card { left: 24px; top: 375px; }
+  .find .cutout--bucket { width: 309px; right: auto; left: calc(100% - 325px); top: -20px; }
+
+  .markets__body { gap: 48px; }
+  .markets__text { flex: 0 0 480px; }
+  .europe-card { flex: 1 1 400px; }
+
+  .why .h2 { font-size: 51px; }
+  .reasons { grid-template-columns: repeat(2, 1fr); }
+  .reason { min-height: 274px; }
+  .why .cutout--cheesling { width: 270px; left: calc(100% - 290px); top: 373px; }
+
+  .mascot, .team { gap: 56px; }
+  .mascot__img { flex: 0 0 440px; height: 352px; }
+  .page-home .mascot__img img { height: 364px; margin-left: -6px; }
+  .mascot__text { flex: 1 1 432px; }
+  .team__img { flex: 0 0 440px; }
+  .team__text { flex: 1 1 432px; }
+
+  .news__track > .news-card { flex: 0 0 405px; }
+
+  .cta-card { padding: 72px 64px; }
+  .closing .stamp { left: 44px; top: 90px; width: 158px; height: 158px; }
+  .closing .cutout--fried { width: 343px; height: 187px; left: calc(100% - 315px); top: 460px; }
+  .closing .sparkle-lg { left: calc(100% - 129px); }
+  .closing .sparkle-sm { left: calc(100% - 82px); }
+}
+
+/* Shared by both tablet widths */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .section-head .h2, .cta-card .h2, .cta-card .lead { max-width: 760px; }
+  .section-head .lead { max-width: 680px; }
+  .order-bar__sub { font-size: 15px; }
+  .footer-brand__sub { font-size: 14px; line-height: 17px; }
+  .proof__label { font-size: 14px; line-height: 22px; }
+  .platform { padding: 14px 13px 14px 17px; font-size: 15px; line-height: 18px; }
+  .food-card__text, .reason__text { font-size: 15px; line-height: 23px; }
+  .market-row__name { font-size: 20px; }
+  .cta-card .lead { font-size: 15px; }
+  /* "Our team" and "Mascot" pattern headings (Home at 1024 keeps 60) */
+  .team__text .h2, .mascot__text .h2 { font-size: 56px; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .page-home .team__text .h2, .page-home .mascot__text .h2 { font-size: 60px; }
+}
+
+/* Columns stack below 1024 (and on phones) */
+@media (max-width: 1023px) {
   /* columns stack: flex-basis values meant for widths must not become heights */
   .intro > *, .find > *, .markets__body > *, .team > *, .mascot > * { flex: none; }
   .hero__content { width: min(900px, calc(100% - 2 * var(--gutter))); }
@@ -1112,6 +1224,68 @@ ul, ol { padding: 0; list-style: none; }
   .find .cutout--bucket { right: 0; width: 360px; top: -80px; }
   .closing .stamp { left: 4%; }
   .closing .cutout--fried { left: auto; right: 2%; }
+}
+
+/* Home on tablets, 768 to 1023 (Figma "Tablet 768") */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .intro { gap: 56px; padding-top: 114px; padding-bottom: 110px; }
+  .intro .h-display { font-size: 68px; }
+  .intro__text .lead { max-width: none; }
+  .intro__brands { position: relative; align-self: flex-start; }
+  .brand-card { flex: 0 0 380px; }
+  .brand-card--soon { flex: 0 0 220px; }
+  .brand-card__tag { font-size: 14px; }
+  .intro .peek { width: 111px; right: -104px; bottom: -57px; }
+
+  .hero--home { min-height: 860px; }
+  .hero--home .hero__content { width: 600px; margin-top: 120px; }
+  .hero--home .hero__title { font-size: 56px; }
+  .hero--home .hero__lead { max-width: 520px; }
+  .hero__cut--left { width: 317px; left: -90px; bottom: -20px; }
+  .hero__cut--right { width: 202px; right: 8px; top: 581px; bottom: auto; }
+  .hero--home .stamp { left: 117px; top: 696px; bottom: auto; width: 134px; }
+
+  .food__head .h2 { max-width: 640px; font-size: 51px; }
+  .food__head .lead { max-width: 600px; }
+  .food .cutout--sauce { width: 202px; right: auto; left: calc(100% - 172px); top: 4px; }
+  .food .cutout--fried { width: 175px; left: -30px; top: 4px; }
+
+  .find { gap: 48px; }
+  .find__text .lead, .postcode, .postcode-result, .find__note { max-width: none; }
+  .map-card { max-width: none; height: 440px; }
+  .kitchen-card { left: 24px; top: auto; bottom: 24px; }
+  .find .cutout--bucket { width: 216px; right: auto; left: calc(100% - 206px); top: -50px; }
+
+  .markets .section-head .h2, .markets .section-head .lead { max-width: 640px; }
+  .markets__body { gap: 40px; }
+  .europe-card { height: 520px; aspect-ratio: auto; }
+
+  .why .section-head .h2, .why .section-head .lead { max-width: 640px; }
+  .why .h2 { font-size: 52px; }
+  .why .cutout--cheesling { width: 270px; height: auto; right: auto; left: calc(100% - 280px); top: -64px; }
+
+  /* Home: ChiBBoQ stays beside its text (other pages put the picture above it) */
+  .page-home .mascot { flex-direction: row; align-items: center; gap: 40px; }
+  .page-home .mascot__img { flex: 0 0 300px; height: 240px; }
+  .page-home .mascot__img img { height: 248px; margin-left: 0; }
+  .page-home .mascot__text { flex: 1 1 348px; }
+  .mascot { gap: 40px; }
+
+  .team { gap: 40px; }
+
+  .news__track > .news-card { flex: 0 0 405px; }
+
+  .cta-card { padding: 72px 40px; }
+  .cta-card .h2, .cta-card .lead { max-width: none; }
+  .closing .stamp { left: 36px; top: 90px; width: 158px; height: 158px; }
+  .closing .cutout--fried { width: 343px; height: 187px; right: auto; left: calc(100% - 270px); top: 452px; }
+  .closing .sparkle-lg { left: calc(100% - 110px); }
+  .closing .sparkle-sm { left: calc(100% - 63px); }
+  .page-home .cta-card .h2 { font-size: 52px; }
+  .page-home .cta-card .h2, .page-home .cta-card .lead { max-width: 600px; }
+  .page-home .closing .cutout--fried { width: 274px; height: 149px; left: calc(100% - 260px); top: 555px; }
+  .page-home .closing .sparkle-lg { left: calc(100% - 121px); }
+  .page-home .closing .sparkle-sm { left: calc(100% - 74px); }
 }
 
 /* ---------- Home: mobile (390 reference) ---------- */
@@ -1338,6 +1512,19 @@ ul, ol { padding: 0; list-style: none; }
   .page-hero { min-height: 0; padding-bottom: 80px; }
   .page-hero__media { opacity: .9; }
 }
+/* Tablets (Figma "Tablet 1024" and "Tablet 768"): 69px titles; short page headers stay 600 tall with the text
+   80px from the left at 1024 (40 at 768, 520 wide) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-hero .h-display { font-size: 69px; }
+  .page-hero__media { opacity: 1; }
+  .page-hero--short { min-height: 600px; padding-bottom: 48px; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .page-hero--short { padding-inline: 80px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-hero--short .page-hero__text { max-width: 520px; }
+}
 @media (max-width: 767px) {
   .page-hero { padding: 152px 20px 64px; flex-direction: column; gap: 24px; background: radial-gradient(50% 50% at 50% 50%, rgba(227, 25, 55, .5) 0%, rgba(140, 24, 30, .15) 60%, rgba(34, 30, 31, 0) 100%), var(--char); }
   .page-hero--short { padding-top: 152px; background: url("../img/closing-bg-m.jpg") center / cover no-repeat, #180D10; }
@@ -1452,6 +1639,16 @@ ul, ol { padding: 0; list-style: none; }
 
 @media (max-width: 1199px) {
   .form-card { grid-template-columns: 1fr; gap: 40px; padding: 56px; }
+}
+@media (min-width: 768px) and (max-width: 1199px) {
+  .form-card__intro .lead { font-size: 15px; line-height: 23px; }
+}
+/* Figma 1024: intro and form side by side (380 + the rest); Figma 768: one column */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .form-card { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 48px; padding: 72px 48px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .form-card { padding: 72px 40px; }
 }
 @media (max-width: 767px) {
   .form-section {

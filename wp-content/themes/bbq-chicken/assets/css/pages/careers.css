@@ -136,6 +136,14 @@
   .tile__body { padding: 24px 24px 32px; }
   .tile__title { font-size: 22px; }
 }
+/* Figma "Tablet 1024" and "Tablet 768": three cards in a row with 220px photos; ChiBBoQ (290 wide) 40px from
+   the right edge, 142px below the section */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .tile__img { height: 220px; }
+  .tile__body { padding: 28px 32px 40px; }
+  .tile__title { font-size: 26px; }
+  .chibboq-peek { right: 40px; bottom: -142px; width: 290px; }
+}
 
 /* ---------- Mobile (390 reference) ---------- */
 @media (max-width: 767px) {

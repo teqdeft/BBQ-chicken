@@ -138,24 +138,60 @@
 /* ---------- 5. Closing CTA ---------- */
 .page-menu .closing { padding-bottom: 210px; }
 
-/* ---------- Tablet ---------- */
-@media (max-width: 1199px) {
-  .page-menu .page-hero__media { left: auto; right: -40px; top: 170px; width: 420px; height: 532px; }
-  .page-menu .page-hero__text { max-width: calc(100% - 400px); }
-  .page-menu .page-hero .stamp { left: auto; right: 300px; top: auto; bottom: 40px; width: 140px; height: 140px; }
+/* ---------- Tablets (Figma "Tablet 1024" and "Tablet 768") ---------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .page-menu .page-hero { min-height: 640px; padding-top: 120px; padding-bottom: 48px; }
+  .page-menu .page-hero .h-display { font-size: 69px; }
+  .page-menu .page-hero__text { max-width: 540px; }
+  .page-menu .page-hero__text .lead { max-width: 480px; }
+  .page-menu .page-hero__media { left: calc(100% - 356px); top: 190px; width: 332px; height: 420px; }
+  .page-menu .page-hero .stamp { left: calc(100% - 386px); top: 476px; width: 134px; }
 
-  .format-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .format-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .drink-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sauce-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .sauces { padding-bottom: 260px; }
-  .sauces__peek { left: 50%; bottom: 24px; transform: translateX(-50%); }
+  /* meals and the chicken: two cards a row */
+  .format-grid, .format-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .format-card { padding: 18px 18px 8px; }
+  .format-card__img { height: 260px; }
+  .format-card__title { margin-top: 14px; font-size: 34px; }
+  .format-card__title, .format-card__text { margin-left: 7px; margin-right: 7px; }
+  .format-card__text { font-size: 15px; }
+  .format-card--photo { min-height: 0; padding: 18px 18px 24px; }
+  .format-card--photo .format-card__img { height: auto; aspect-ratio: 416 / 260; }
+  .format-card--photo .format-card__title { margin-top: 16px; font-size: 28px; }
+
   .side-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .page-menu .closing { padding-bottom: 180px; }
+  .side-card { min-height: 330px; }
+  .side-card__text { font-size: 15px; line-height: 23px; }
+
+  .sauce-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* ChiBBoQ peeks over the top of the eighth sauce card, as in the tablet frames */
+  .sauces__peek { left: calc(100% - 295px); bottom: 903px; width: 141px; }
+
+  .drink-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .page-menu .cta-card { padding: 72px 80px; }
+  .page-menu .closing .stamp { left: calc(50% - 316px); }
+  .page-menu .closing .cutout--fried { left: calc(50% + 45px); }
+  .page-menu .closing .sparkle-lg { left: calc(50% + 231px); }
+  .page-menu .closing .sparkle-sm { left: calc(50% + 278px); }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .page-menu .page-hero { min-height: 800px; }
+  .page-menu .page-hero__text { max-width: 520px; }
+  .page-menu .page-hero__media { left: calc(100% - 241px); top: 440px; width: 265px; height: 336px; }
+  .page-menu .page-hero .stamp { left: calc(100% - 261px); top: 642px; }
+
+  .format-card:not(.format-card--photo) { min-height: 401px; padding-bottom: 24px; }
+  .format-card__img { height: 205px; }
+
+  .side-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sauces__peek { bottom: 909px; }
+
+  .page-menu .closing .cutout--fried { top: 368px; }
 }
 
-/* small tablet: image above the text, as on mobile */
-@media (max-width: 1023px) {
+/* phones: image above the text */
+@media (max-width: 767px) {
   .page-menu .page-hero { flex-direction: column; gap: 24px; padding-top: 150px; }
   .page-menu .page-hero__media { position: relative; right: auto; top: auto; width: 400px; height: 506px; max-width: 100%; }
   .page-menu .page-hero__text { max-width: 640px; }

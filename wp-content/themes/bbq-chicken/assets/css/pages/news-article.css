@@ -32,6 +32,14 @@
 .news-card--static:hover .news-card__img img { transform: none; }
 .related__nav { display: none; }
 
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .page-news-article .closing .cutout--fried { top: 432px; }
+}
+/* Tablets (Figma "Tablet 768"): the three related articles stay in one row */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .related .news__list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 /* Mobile (390 reference) */
 @media (max-width: 767px) {
   .page-news-article .page-hero { padding-bottom: 64px; }

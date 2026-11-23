@@ -41,9 +41,16 @@
 a.pagination__link:hover { color: var(--red); }
 .pagination__link[aria-current="page"] { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
 
-/* Tablet */
-@media (max-width: 1199px) {
-  .featured { flex-direction: column; align-items: stretch; gap: 48px; }
+/* Tablets (Figma "Tablet 1024" and "Tablet 768") */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  /* featured article: photo 440 beside a 432 text column */
+  .featured { gap: 56px; }
+  .featured__img { flex: 0 0 440px; }
+  .featured__text { flex: 1 1 432px; }
+  .page-news .closing .cutout--fried { top: 432px; }
+}
+@media (max-width: 1023px) {
+  .featured { flex-direction: column; align-items: stretch; gap: 40px; }
   .featured__img { flex-basis: auto; width: 100%; }
   .featured__text { flex-basis: auto; }
   .news-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }

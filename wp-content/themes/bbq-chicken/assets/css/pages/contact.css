@@ -75,6 +75,16 @@ a.tile__link:hover { opacity: 1; text-decoration: underline; }
   .tile { padding: 28px 24px 32px; }
   .tile__title { font-size: 22px; }
 }
+/* Figma "Tablet 1024" and "Tablet 768": the cards keep their desktop insets; ChiBBoQ (135 wide) sits on the
+   last card's corner, 350 from the top at 1024 and 466 at 768 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .tile { padding: 32px 32px 40px; }
+  .tile__title { font-size: 26px; }
+  .chibboq-peek { right: 27px; top: 350px; width: 135px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .chibboq-peek { right: -61px; top: 466px; }
+}
 
 /* ---------- Mobile (390 reference) ---------- */
 @media (max-width: 767px) {

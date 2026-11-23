@@ -29,12 +29,15 @@
     z-index: 2;
   }
 }
+/* Tablets (Figma "Tablet 1024" and "Tablet 768"): 640 tall, text from y 170, the cut-outs sit low in the corners */
 @media (min-width: 768px) and (max-width: 1199px) {
-  /* smaller screens: tuck the cut-outs lower so they frame the text instead of covering it */
-  .re-hero__cutout { top: auto; bottom: -4%; }
-  .re-hero__cutout--sauce { left: -9vw; width: 34vw; }
-  .re-hero__cutout--fried { left: auto; right: -9vw; width: 33vw; }
-  .re-hero .stamp { left: 4vw; top: auto; bottom: 2%; width: 120px; }
+  .re-hero { height: 640px; }
+  .re-hero .hero__content { width: min(720px, calc(100% - 2 * var(--gutter))); margin-top: 170px; }
+  .re-hero .hero__title { font-size: 69px; }
+  .re-hero .hero__lead { max-width: 600px; }
+  .re-hero__cutout--sauce { left: -80px; top: 420px; width: 425px; }
+  .re-hero__cutout--fried { left: calc(100% - 351px); top: 433px; width: 411px; }
+  .re-hero .stamp { left: 205px; top: 476px; width: 134px; }
 }
 
 /* 2. What we look for (site criteria + accordion)
@@ -157,11 +160,26 @@
 .dropzone:has(.wpcf7-not-valid-tip) { margin-bottom: 23px; }
 
 
-/* ---------- Tablet ---------- */
-@media (max-width: 1199px) {
+/* ---------- Below 1024: one column ---------- */
+@media (max-width: 1023px) {
   .criteria { flex-direction: column; align-items: stretch; gap: 48px; padding-top: 120px; padding-bottom: 120px; }
   .criteria__head, .criteria__list { flex: none; }
   .criteria__cutout { display: none; }
+}
+
+/* ---------- Tablets (Figma "Tablet 1024" and "Tablet 768") ---------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .criteria__head .lead { max-width: none; }
+  .crit__answer { font-size: 15px; line-height: 23px; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .criteria { gap: 48px; }
+  .criteria__head { flex: 0 0 400px; }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+  .criteria { gap: 40px; padding-bottom: 100px; }
+  .criteria__cutout { display: block; }
+  .page-realestate .form-card { padding: 72px 48px; }
 }
 
 /* ---------- Mobile (390 reference) ---------- */

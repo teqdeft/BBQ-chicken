@@ -119,8 +119,34 @@
 .person__role { color: var(--red-text); font-size: 13px; font-weight: 700; line-height: 1.2; letter-spacing: .12em; }
 .person__name { font-size: 22px; font-weight: 700; line-height: 1.25; letter-spacing: -0.005em; }
 
-/* ---------- Tablet ---------- */
-@media (max-width: 1199px) {
+/* ---------- Tablets (Figma "Tablet 1024" and "Tablet 768") ---------- */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .about-hero { padding-top: 120px; padding-bottom: 56px; }
+  .about-hero .h2 { font-size: 52px; }
+  .page-about .relation .h2 { font-size: 60px; }
+
+  /* mission: 860 tall, text from y 175, a bucket bleeding off each side */
+  .mission .hero__content { width: min(720px, calc(100% - 2 * var(--gutter))); margin-top: 175px; }
+  .mission .hero__title { font-size: 69px; }
+  .mission .hero__lead { max-width: 600px; }
+  .mission__cut { top: 544px; width: 257px; }
+  .mission__cut--left { left: -90px; }
+  .mission__cut--right { left: calc(100% - 187px); }
+  .mission .stamp { left: 134px; top: 632px; width: 158px; }
+
+  .values__lead { font-size: 16px; line-height: 25px; }
+  .value-grid { gap: 16px; }
+  .person__photo { height: 295px; }
+  .page-about .closing .cutout--fried { top: 409px; }
+}
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .about-hero { gap: 48px; }
+  .about-hero .team__img { flex: 0 0 380px; }
+  .about-hero .team__text { flex: 1 1 500px; }
+  .value-grid { grid-template-rows: minmax(324px, auto) minmax(334px, auto) minmax(334px, auto); }
+}
+
+@media (max-width: 1023px) {
   .about-hero { padding-top: 170px; }
 
   .mission { height: 760px; }
@@ -138,6 +164,34 @@
 
   .leaders__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .relation .team__img { order: -1; }
+}
+
+/* 768 to 1023 (Figma "Tablet 768"): values two a row (ChiBBoQ next to "Believe in the possible", the bucket
+   last, full width), leaders three a row, the Genesis photo under its text */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-hero { padding-top: 120px; padding-bottom: 56px; }
+
+  .mission { height: 860px; }
+  .mission .hero__content { margin-top: 175px; padding-inline: 0; }
+  .mission__cut { top: 544px; width: 257px; height: auto; }
+  .mission__cut--left { left: -90px; }
+  .mission__cut--right { left: calc(100% - 187px); right: auto; }
+  .mission .stamp { left: 134px; top: 632px; bottom: auto; width: 158px; height: auto; transform-origin: 0 0; }
+
+  .value-grid { grid-auto-rows: 330px; }
+  .value--respect { grid-area: 1 / 1 / 2 / 3; }
+  .value--act { grid-area: 2 / 1; }
+  .value--ethics { grid-area: 2 / 2; }
+  .value--customers { grid-area: 3 / 1; }
+  .value--give { grid-area: 3 / 2; }
+  .value--possible { grid-area: 4 / 1; }
+  .value-tile--chibboq { grid-area: 4 / 2; }
+  .value--learning { grid-area: 5 / 1 / 6 / 3; }
+  .value-tile--product { display: block; grid-area: 6 / 1 / 7 / 3; }
+  .value-tile--chibboq img { left: 0; right: 0; bottom: 0; width: 100%; }
+
+  .leaders__list { grid-template-columns: repeat(3, minmax(0, 208px)); justify-content: space-between; }
+  .relation .team__img { order: 0; }
 }
 
 /* ---------- Mobile (390 reference) ---------- */
