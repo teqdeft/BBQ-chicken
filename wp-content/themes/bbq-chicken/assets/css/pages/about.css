@@ -101,7 +101,8 @@
 }
 .value-tile--chibboq img { left: 6px; right: 6px; bottom: 20px; width: calc(100% - 12px); height: 419px; object-position: 50% 100%; }
 .value-tile--product { background: var(--yellow); }
-.value-tile--product img { left: 0; right: 0; top: 20px; width: 100%; height: clamp(279px, calc(545px - 15.83vw), 317px); } /* 279 at 1680, 317 at 1440 */
+/* the whole bucket stays in view at every width (the design let it run off the bottom of the tile) */
+.value-tile--product img { left: 0; right: 0; top: 20px; bottom: 20px; width: 100%; height: calc(100% - 40px); max-height: 317px; margin: auto 0; }
 
 /* ---------- 4. Leadership ---------- */
 .leaders {

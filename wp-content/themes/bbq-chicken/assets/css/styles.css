@@ -668,8 +668,10 @@ ul, ol { padding: 0; list-style: none; }
 .brand-card--soon .plus { width: 64px; height: 64px; border-radius: 50%; background: rgba(34, 30, 31, .08); display: grid; place-items: center; font-size: 32px; font-weight: 700; }
 .brand-card--soon strong { font-size: 22px; font-weight: 800; line-height: 1.1; letter-spacing: -0.01em; }
 .intro__note { font-size: 13px; line-height: 16px; color: rgba(107, 96, 92, .95); }
-/* ChiBBoQ peeks at the "coming soon" card: 130 wide 44px from the edge at 1680, 111 wide 30px from the edge at 1440 */
-.intro .peek { position: absolute; right: max(calc(5.833vw - 54px), calc(50% - 796px)); top: 459px; width: min(7.738vw, 130px); height: auto; aspect-ratio: 130 / 233; object-fit: contain; filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .18)); }
+/* ChiBBoQ peeks out from behind the "coming soon" card (130 wide at 1680, 111 at 1440). Positioned against the
+   brand cards and low enough that its head stays below the card text at every desktop width. */
+.intro__brands { position: relative; }
+.intro .peek { position: absolute; right: calc(min(7.738vw, 130px) * -0.55); bottom: -100px; width: min(7.738vw, 130px); height: auto; aspect-ratio: 130 / 233; object-fit: contain; filter: drop-shadow(0 10px 24px rgba(0, 0, 0, .18)); }
 
 /* Home carousels (brand cards and reasons on mobile, news everywhere): arrows + dots, driven by the
    inline script at the end of src/pages/index.html */
@@ -1085,6 +1087,7 @@ ul, ol { padding: 0; list-style: none; }
   .hero__content { width: min(900px, calc(100% - 2 * var(--gutter))); }
   .intro { flex-direction: column; align-items: stretch; padding-top: 170px; }
   .intro__brands { flex-basis: auto; }
+  .intro__brands { position: static; } /* ChiBBoQ is placed against the section again */
   .intro .peek { top: auto; bottom: 60px; right: 44px; width: 111px; }
   .hero--home { min-height: 760px; }
   .hero--home .hero__content { margin-top: 150px; }

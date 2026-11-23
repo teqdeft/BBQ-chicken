@@ -72,13 +72,12 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
         <button class="slider__arrow" type="button" aria-label="Next brand" data-carousel-next><?php bbq_icon( 'right' ); ?></button>
       </div>
     </div>
-    <?php $note = bbq_get( 'brands_note', 'Built to grow: with more brands, this row becomes a brand switcher (one card per brand).', 'Note under the cards (desktop only, empty = hidden)', 'textarea' ); ?>
+    <?php $note = bbq_get( 'brands_note', '', 'Note under the cards (desktop only, empty = hidden)', 'textarea' ); ?>
     <?php if ( '' !== trim( (string) $note ) ) : ?>
     <p class="intro__note only-desktop"><?php bbq_e( $note ); ?></p>
     <?php endif; ?>
+    <?php bbq_img( $peek, array( 'class' => 'peek', 'alt' => '', 'width' => 300, 'height' => 537 ) ); ?>
   </div>
-
-  <?php bbq_img( $peek, array( 'class' => 'peek', 'alt' => '', 'width' => 300, 'height' => 537 ) ); ?>
 </section>
 
 <!-- 2. Hero -->
@@ -172,11 +171,10 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
               'alt'          => array( 'text', 'Photo description (alt text)' ),
           ),
           array(
-              array( 'style' => 'dark', 'desktop_only' => 1, 'img' => 'food-2pcs-secret-sauce.jpg', 'alt' => 'Two pieces of chicken glazed in Secret Sauce', 'tag' => '5 sauces', 'title' => 'Signature sauces', 'text' => 'Golden Original, or sauced in Secret Sauce, Honey Garlic, Galbi, Jasoman or Gangjeong.' ),
               array( 'style' => 'yellow', 'desktop_only' => 0, 'img' => 'food-2pcs-fried.jpg', 'alt' => 'Two pieces of golden fried chicken', 'tag' => 'Meals', 'title' => 'Combo meals', 'text' => 'Pieces, tenders, a burger, wrap or bowl, with fries and a drink. Lunch, sorted.' ),
               array( 'style' => 'red', 'desktop_only' => 0, 'img' => 'food-3pcs-strips.jpg', 'alt' => 'Three crispy chicken tenders', 'tag' => 'On the go', 'title' => 'Real Crispy Tenders', 'text' => 'Crispy chicken strips in 3, 6 or 12 pieces, easy to share and easier to eat on the go.' ),
               array( 'style' => 'sand', 'desktop_only' => 0, 'img' => 'food-8pcs-fried.jpg', 'alt' => 'A bucket of eight pieces of fried chicken', 'tag' => '8 pieces', 'title' => 'Mega Party Bucket', 'text' => 'Eight pieces of Real Korean Fried Chicken. Add sides for everyone at the table.' ),
-              array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'food-8pcs-secret-sauce.jpg', 'alt' => 'A bucket of chicken glazed in Secret Sauce', 'tag' => '5 sauces', 'title' => 'Signature sauces', 'text' => 'Golden Original, or sauced in Secret Sauce, Honey Garlic, Galbi, Jasoman or Gangjeong.' ),
+              array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'sauce-secret-sauce.jpg', 'alt' => 'A bowl of Secret Sauce', 'tag' => '5 sauces', 'title' => 'Signature sauces', 'text' => 'Golden Original, or sauced in Secret Sauce, Honey Garlic, Galbi, Jasoman or Gangjeong.' ),
           )
       );
       foreach ( $food as $card ) :
@@ -223,7 +221,6 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
           'Ordering links (own shop, delivery apps)',
           array( 'link' => array( 'link', 'Link' ) ),
           array(
-              array( 'link' => array( 'label' => 'Order direct from bb.q', 'url' => '#', 'new_tab' => false ) ),
               array( 'link' => array( 'label' => 'Glovo', 'url' => '#', 'new_tab' => true ) ),
               array( 'link' => array( 'label' => 'Uber Eats', 'url' => '#', 'new_tab' => true ) ),
               array( 'link' => array( 'label' => 'Just Eat', 'url' => '#', 'new_tab' => true ) ),
@@ -257,20 +254,25 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
     </picture>
     <div class="map-card__area"></div>
     <img class="map-card__pin" src="<?php echo esc_url( bbq_asset( 'svg/pin.svg' ) ); ?>" alt="" width="56" height="70">
-    <p class="map-card__caption"><?php bbq_text( 'map_caption', 'Map: kitchens and delivery areas', 'Caption' ); ?></p>
+    <?php $map_caption = bbq_get( 'map_caption', '', 'Caption (empty = hidden)' ); ?>
+    <?php if ( '' !== trim( (string) $map_caption ) ) : ?>
+    <p class="map-card__caption"><?php bbq_e( $map_caption ); ?></p>
+    <?php endif; ?>
     <?php
-    // Kitchen card on the map: shown once a kitchen name is filled in
-    $kitchen_name = bbq_get( 'kitchen_name', '', 'Kitchen card: name (empty = no card)' );
-    $kitchen_info = bbq_get( 'kitchen_info', '', 'Kitchen card: details, e.g. opening hours (optional)' );
+    // Card on the map: opening hours (title empty = no card)
+    $kitchen_name = bbq_get( 'kitchen_name', 'Opening hours', 'Map card: title (empty = no card)' );
+    $kitchen_info = bbq_get( 'kitchen_info', "Sunday to Thursday: 12:00 to 23:00\nFriday and Saturday: 12:00 to midnight", 'Map card: text (one line per row)', 'textarea' );
     $l            = bbq_link( 'kitchen_btn', array( 'label' => 'Order now', 'url' => '#' ), 'Kitchen card: button' );
     if ( '' !== trim( (string) $kitchen_name ) ) :
         ?>
     <div class="kitchen-card">
       <strong><?php bbq_e( $kitchen_name ); ?></strong>
       <?php if ( '' !== trim( (string) $kitchen_info ) ) : ?>
-      <p><?php bbq_e( $kitchen_info ); ?></p>
+      <p><?php echo nl2br( esc_html( trim( (string) $kitchen_info ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped ?></p>
       <?php endif; ?>
+      <?php if ( '' !== $l['label'] && ! in_array( (string) $l['url'], array( '', '#' ), true ) ) : ?>
       <a class="btn btn--red"<?php bbq_link_attrs( $l ); ?>><?php bbq_e( $l['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a>
+      <?php endif; ?>
     </div>
     <?php endif; ?>
   </div>
@@ -378,7 +380,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
                 array( 'title' => 'A brand guests already know', 'text' => 'Korea\'s best-known fried chicken, with restaurants from Seoul to New York and a fast-growing following in the US.' ),
                 array( 'title' => 'Express, built for speed', 'text' => 'Our Express kiosk runs on 10 to 40 m², focused on takeaway and delivery, with a tight menu and low labour costs.' ),
                 array( 'title' => 'Training from the source', 'text' => 'Owners and teams train at Chicken University, bb.q\'s own training and R&D centre, running since 1999.' ),
-                array( 'title' => 'A European team behind you', 'text' => 'Site selection, supply, launch marketing and day-to-day support from the team leading bb.q in Europe.' ),
+                array( 'title' => 'A new European team behind you', 'text' => 'Site selection, supply, launch marketing and day-to-day support from the team leading bb.q in Europe.' ),
             )
         );
         foreach ( $reasons as $i => $reason ) :
@@ -409,7 +411,7 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
   <div class="mascot__text">
     <span class="eyebrow"><?php bbq_text( 'mascot_eyebrow', 'For the whole family', 'Label' ); ?></span>
     <h2 class="h2" id="mascot-title"><?php bbq_text( 'mascot_title', 'Meet ChiBBoQ', 'Heading' ); ?></h2>
-    <p><?php bbq_textarea( 'mascot_text', 'ChiBBoQ is the softest member of the bb.q family. You\'ll find them on our boxes and bags, peeking in at the counter and now and then dressed for the occasion. Kids tend to remember them long after the last wing is gone.', 'Text' ); ?></p>
+    <p><?php bbq_textarea( 'mascot_text', 'ChiBBoQ is the softest member of the bb.q family. You\'ll find them on our boxes and bags, peeking in at the counter and now and then dressed for the occasion. Kids tend to remember them long after the last tender is gone.', 'Text' ); ?></p>
     <?php $l = bbq_link( 'mascot_btn', array( 'label' => 'Follow ChiBBoQ on Instagram', 'url' => '#', 'new_tab' => true ), 'Button (Instagram link)' ); ?>
     <div class="btn-row"><a class="btn btn--outline-light"<?php bbq_link_attrs( $l ); ?>><?php bbq_e( $l['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a></div>
   </div>

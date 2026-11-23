@@ -128,6 +128,7 @@ foreach ( bbq_rows(
 <?php bbq_section( 'Formats' ); ?>
 <section class="section formats" aria-labelledby="formats-title">
   <div class="section-head formats__head">
+    <span class="eyebrow"><?php bbq_text( 'formats_eyebrow', 'The formats', 'Label' ); ?></span>
     <h2 class="h2" id="formats-title"><?php bbq_text( 'formats_title', 'Compact, fast and built for delivery', 'Heading' ); ?></h2>
   </div>
   <p class="formats__sub"><?php bbq_text( 'formats_sub', 'One bb.q QSR design, in the format that fits your site.', 'Subheading' ); ?></p>
@@ -145,15 +146,15 @@ foreach ( bbq_rows(
               'text'  => array( 'textarea', 'Text' ),
           ),
           array(
-              array( 'style' => 'dark', 'img' => 'cut-tenders-3pcs.png', 'title' => 'Flagship', 'text' => 'A full-size bb.q restaurant for prime locations. 300 to 500 m².' ),
-              array( 'style' => 'red', 'img' => 'cut-2pcs-fried.png', 'title' => 'Traditional restaurant', 'text' => 'The classic quick-service restaurant, for dine-in and takeaway. 120 to 200 m².' ),
-              array( 'style' => 'yellow', 'img' => 'cut-2pcs-secret-sauce.png', 'title' => 'Shop-in-shop', 'text' => 'A bb.q counter inside an existing venue. 60 to 120 m².' ),
+              array( 'style' => 'dark', 'img' => 'format-flagship.jpg', 'title' => 'Flagship', 'text' => 'A full-size bb.q restaurant for prime locations. 300 to 500 m².' ),
+              array( 'style' => 'red', 'img' => 'format-traditional.jpg', 'title' => 'Traditional restaurant', 'text' => 'The classic quick-service restaurant, for dine-in and takeaway. 120 to 200 m².' ),
+              array( 'style' => 'yellow', 'img' => 'format-shop-in-shop.jpg', 'title' => 'Shop-in-shop', 'text' => 'A bb.q counter inside an existing venue. 60 to 120 m².' ),
           )
       );
       foreach ( $formats as $item ) :
           ?>
       <li class="format-block format-block--<?php echo esc_attr( $item['style'] ? $item['style'] : 'dark' ); ?>">
-        <div class="format-block__img"><?php bbq_img( $item['img'], array( 'alt' => '' ) + bbq_franchise_img_size( $item['img'] ) + array( 'loading' => 'lazy' ) ); ?></div>
+        <div class="format-block__img<?php echo bbq_franchise_is_cutout( $item['img'] ) ? '' : ' format-block__img--photo'; ?>"><?php bbq_img( $item['img'], array( 'alt' => '' ) + bbq_franchise_img_size( $item['img'] ) + array( 'loading' => 'lazy' ) ); ?></div>
         <h3 class="format-block__title"><?php bbq_e( $item['title'] ); ?></h3>
         <p class="format-block__text"><?php bbq_e( $item['text'] ); ?></p>
       </li>

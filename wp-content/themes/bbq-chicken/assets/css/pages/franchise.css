@@ -85,6 +85,9 @@
 .format-block--dark { background: var(--char); color: var(--white); }
 .format-block--red { background: var(--red); color: var(--white); }
 .format-block--yellow { background: var(--yellow); color: var(--char); }
+/* photo instead of a cut-out: full card width, rounded, no shadow */
+.format-block__img--photo { align-self: stretch; width: auto; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; }
+.format-block__img--photo img { object-fit: cover; filter: none; }
 
 /* Mobile slider nav (arrows + dots, built by main.js [data-slider]); desktop shows the grid */
 .fslider__nav { display: none; }
@@ -390,6 +393,7 @@
 
   .format-block { flex: 0 0 280px; align-self: stretch; min-height: 371px; padding: 20px; border-radius: var(--radius-img); scroll-snap-align: start; }
   .format-block__img { width: 222px; aspect-ratio: 222 / 188; }
+  .format-block__img--photo { width: auto; aspect-ratio: 16 / 10; border-radius: 8px; }
   .format-block__img img { filter: none; }
   .format-block__title { margin-top: 14px; font-size: 28px; }
   .format-block__text { margin-top: 14px; font-size: 15px; }

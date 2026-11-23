@@ -24,6 +24,14 @@ function bbq_franchise_application_form() {
  * width/height attributes for a row image that is one of the design's files in assets/
  * (media-library images get theirs from WordPress). Returns array( 'width' => …, 'height' => … ) or array().
  */
+/** A cut-out (transparent PNG, drawn with a shadow) rather than a photo (shown edge to edge)? */
+function bbq_franchise_is_cutout( $value ) {
+	if ( is_numeric( $value ) ) {
+		return 'image/png' === get_post_mime_type( (int) $value );
+	}
+	return (bool) preg_match( '/\.png$/i', (string) $value );
+}
+
 function bbq_franchise_img_size( $value ) {
 	static $cache = array();
 	if ( is_numeric( $value ) || ! is_string( $value ) || '' === $value || preg_match( '#^(https?:)?//#', $value ) ) {

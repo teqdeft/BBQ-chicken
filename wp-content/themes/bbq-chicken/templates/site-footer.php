@@ -30,6 +30,10 @@ bbq_section( 'Footer: "Hungry?" bar' );
         <a href="<?php echo esc_url( bbq_get( 'social_instagram', '#', 'Instagram link (https://…)' ) ); ?>" aria-label="Instagram"><?php bbq_icon( 'instagram' ); ?></a>
         <a href="<?php echo esc_url( bbq_get( 'social_facebook', '#', 'Facebook link (https://…)' ) ); ?>" aria-label="Facebook"><?php bbq_icon( 'facebook' ); ?></a>
         <a href="<?php echo esc_url( bbq_get( 'social_linkedin', '#', 'LinkedIn link (https://…)' ) ); ?>" aria-label="LinkedIn"><?php bbq_icon( 'linkedin' ); ?></a>
+        <?php $tiktok = bbq_get( 'social_tiktok', 'https://www.tiktok.com/@bbqchicken.es', 'TikTok link (https://…, empty = hidden)' ); ?>
+        <?php if ( '' !== trim( (string) $tiktok ) ) : ?>
+        <a href="<?php echo esc_url( $tiktok ); ?>" aria-label="TikTok" target="_blank" rel="noopener"><?php bbq_icon( 'tiktok' ); ?></a>
+        <?php endif; ?>
       </div>
     </div>
 
