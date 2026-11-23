@@ -271,6 +271,10 @@ add_filter(
 			// The raw title keeps the design's straight apostrophes ("bb.q's").
 			return get_post_field( 'post_title', $id, 'raw' ) . ' – News – ' . get_bloginfo( 'name' );
 		}
+		if ( 'legal' === $t['key'] && $id ) {
+			// Several pages use the legal template (privacy policy, cookie policy, legal notice): use the page's own title.
+			return get_post_field( 'post_title', $id, 'raw' ) . ' – ' . get_bloginfo( 'name' );
+		}
 		return $t['seo'] ? $t['seo'] : $title;
 	}
 );
@@ -286,6 +290,9 @@ add_action(
 		$desc = $id ? bbq_meta_value( $id, 'seo_description' ) : '';
 		if ( ! $desc && 'news-article' === $t['key'] && $id ) {
 			$desc = get_the_excerpt( $id );
+		}
+		if ( ! $desc && 'legal' === $t['key'] && $id ) {
+			$desc = get_post_field( 'post_title', $id, 'raw' ) . ' for the bb.q Chicken Europe website, operated by BLT Global Brands.';
 		}
 		if ( ! $desc ) {
 			$desc = $t['desc'];

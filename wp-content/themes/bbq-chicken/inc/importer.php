@@ -4,6 +4,7 @@
  *   - one page per template (Home, Franchise, Apply + Thank you, Discover, The menu, About,
  *     Real estate, Careers, Contact, Privacy policy, News) with the right template
  *   - Settings → Reading: Home as the front page, News as the posts page
+ *   - the legal pages with their text (inc/import/legal.html, inc/import/legal/*.html), see bbq_setup_legal_pages()
  *   - the Header and Footer menus
  *   - the news posts with their photos (inc/import/news.php)
  *   - the Contact Form 7 forms (inc/forms/*.php)
@@ -43,7 +44,7 @@ function bbq_setup_screen() {
 	if ( ! class_exists( 'WPCF7_ContactForm' ) ) {
 		echo '<div class="notice notice-warning"><p>Contact Form 7 is not active. Install and activate it first, or the forms will be skipped (you can run the setup again later).</p></div>';
 	}
-	echo '<p>Creates the pages (with their templates), sets the home and news pages, builds the header and footer menus, adds the news posts with their photos and creates the Contact Form 7 forms. Anything that already exists is left alone.</p>';
+	echo '<p>Creates the pages (with their templates), sets the home and news pages, adds the legal pages (privacy policy, cookie policy, legal notice), builds the header and footer menus, adds the news posts with their photos and creates the Contact Form 7 forms. Anything that already exists is left alone.</p>';
 	echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">';
 	echo '<input type="hidden" name="action" value="bbq_run_setup">';
 	wp_nonce_field( 'bbq_run_setup' );
@@ -70,6 +71,7 @@ function bbq_run_setup( $overwrite_forms = false ) {
 	$log = array();
 	$log = array_merge( $log, bbq_setup_pages() );
 	$log = array_merge( $log, bbq_setup_reading() );
+	$log = array_merge( $log, bbq_setup_legal_pages() );
 	$log = array_merge( $log, bbq_setup_menus() );
 	$log = array_merge( $log, bbq_setup_news() );
 	$ids = bbq_install_forms( $overwrite_forms );
@@ -122,6 +124,90 @@ function bbq_setup_pages() {
 			update_option( 'wp_page_for_privacy_policy', $id );
 		}
 		$log[] = 'Page created: ' . $t['title'];
+	}
+	return $log;
+}
+
+/* ---------- Legal pages ---------- */
+
+/** The legal pages besides the privacy policy (the "legal" template page): slug => title, text file. */
+function bbq_legal_pages() {
+	return array(
+		'cookie-policy' => array( 'title' => 'Cookie policy', 'file' => 'legal/cookie-policy.html' ),
+		'legal-notice'  => array( 'title' => 'Legal notice', 'file' => 'legal/legal-notice.html' ),
+	);
+}
+
+/** A legal text file with its {{url:<slug>}} links filled in for this site. */
+function bbq_legal_text( $file ) {
+	$path = BBQ_DIR . '/inc/import/' . $file;
+	$html = file_exists( $path ) ? file_get_contents( $path ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions
+	return preg_replace_callback(
+		'/\{\{url:([a-z0-9-]+)\}\}/',
+		function ( $m ) {
+			return esc_url( bbq_url( 'privacy-policy' === $m[1] ? 'page:legal' : 'slug:' . $m[1] ) );
+		},
+		$html
+	);
+}
+
+/**
+ * Legal pages (texts from BLT's lawyers, PLL 13.11.2026):
+ *   - the privacy policy gets its text if it still has the theme's placeholder text ("[Legal text");
+ *   - the cookie policy and legal notice are created when missing (legal template);
+ *   - footer menu items "Cookie policy" and "Website terms" that still link to the privacy policy
+ *     are pointed at their own pages ("Website terms" becomes "Legal notice").
+ * Pages or menu items that were edited by hand are left alone.
+ */
+function bbq_setup_legal_pages() {
+	$log     = array();
+	$privacy = bbq_find_page( 'legal' );
+	if ( $privacy && false !== strpos( $privacy->post_content, '[Legal text' ) ) {
+		wp_update_post( array( 'ID' => $privacy->ID, 'post_content' => wp_slash( bbq_legal_text( 'legal.html' ) ) ) );
+		$log[] = 'Page text added: ' . $privacy->post_title;
+	}
+	// In this order the cookie policy exists before the legal notice, whose text links to it.
+	$pages = array();
+	foreach ( bbq_legal_pages() as $slug => $page ) {
+		$existing = get_page_by_path( $slug );
+		if ( $existing ) {
+			$pages[ $slug ] = $existing->ID;
+			continue;
+		}
+		$id = wp_insert_post(
+			array(
+				'post_type'    => 'page',
+				'post_status'  => 'publish',
+				'post_title'   => $page['title'],
+				'post_name'    => $slug,
+				'post_content' => wp_slash( bbq_legal_text( $page['file'] ) ),
+				'meta_input'   => array( '_wp_page_template' => 'page-templates/legal.php' ),
+			)
+		);
+		if ( $id && ! is_wp_error( $id ) ) {
+			$pages[ $slug ] = $id;
+			$log[]          = 'Page created: ' . $page['title'];
+		}
+	}
+	// Footer menu: items still pointing at the privacy policy
+	$locations = get_nav_menu_locations();
+	if ( $privacy && ! empty( $locations['footer'] ) ) {
+		$targets = array(
+			'Cookie policy' => array( 'cookie-policy', 'Cookie policy' ),
+			'Website terms' => array( 'legal-notice', 'Legal notice' ),
+		);
+		foreach ( (array) wp_get_nav_menu_items( $locations['footer'] ) as $item ) {
+			if ( ! isset( $targets[ $item->title ] ) || 'post_type' !== $item->type || (int) $item->object_id !== (int) $privacy->ID ) {
+				continue;
+			}
+			list( $slug, $title ) = $targets[ $item->title ];
+			if ( empty( $pages[ $slug ] ) ) {
+				continue;
+			}
+			update_post_meta( $item->ID, '_menu_item_object_id', (int) $pages[ $slug ] );
+			wp_update_post( array( 'ID' => $item->ID, 'post_title' => $title ) );
+			$log[] = 'Footer menu: "' . $title . '" links to its page';
+		}
 	}
 	return $log;
 }
@@ -179,6 +265,8 @@ function bbq_setup_menu_items( $menu_id, $items, $parent ) {
 		if ( 0 === strpos( $url, 'page:' ) && false === strpos( $url, '#' ) ) {
 			$key  = substr( $url, 5 );
 			$page = 'home' === $key ? get_post( (int) get_option( 'page_on_front' ) ) : ( 'news' === $key ? get_post( (int) get_option( 'page_for_posts' ) ) : bbq_find_page( $key ) );
+		} elseif ( 0 === strpos( $url, 'slug:' ) && false === strpos( $url, '#' ) ) {
+			$page = get_page_by_path( substr( $url, 5 ) );
 		}
 		if ( $page ) {
 			$args['menu-item-type']      = 'post_type';

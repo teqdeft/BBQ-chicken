@@ -71,9 +71,9 @@ function bbq_default_menus() {
 				'url'      => '#',
 				'children' => array(
 					array( 'title' => 'Privacy policy', 'url' => 'page:legal' ),
-					array( 'title' => 'Cookie policy', 'url' => 'page:legal' ),
+					array( 'title' => 'Cookie policy', 'url' => 'slug:cookie-policy' ),
 					array( 'title' => 'Cookie settings', 'url' => '#', 'classes' => array( 'data-cookie-settings' ) ),
-					array( 'title' => 'Website terms', 'url' => 'page:legal' ),
+					array( 'title' => 'Legal notice', 'url' => 'slug:legal-notice' ),
 					array( 'title' => 'Franchise disclaimer', 'url' => 'page:legal' ),
 					array( 'title' => 'Accessibility', 'url' => 'page:legal' ),
 				),

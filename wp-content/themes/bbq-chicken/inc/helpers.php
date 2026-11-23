@@ -38,14 +38,26 @@ function bbq_page_url( $key, $hash = '' ) {
 	return $cache[ $key ] . ( $hash ? '#' . ltrim( $hash, '#' ) : '' );
 }
 
-/** The page (post object) that uses page-templates/<key>.php, or null. */
+/**
+ * The page (post object) that uses page-templates/<key>.php, or null (the oldest one if several do).
+ * Several pages use the legal template (privacy policy, cookie policy, legal notice): "legal" is the
+ * privacy policy (Settings → Privacy).
+ */
 function bbq_find_page( $key ) {
+	if ( 'legal' === $key ) {
+		$privacy = get_post( (int) get_option( 'wp_page_for_privacy_policy' ) );
+		if ( $privacy && 'page' === $privacy->post_type && 'trash' !== $privacy->post_status && 'page-templates/legal.php' === get_post_meta( $privacy->ID, '_wp_page_template', true ) ) {
+			return $privacy;
+		}
+	}
 	$pages = get_posts(
 		array(
 			'post_type'      => 'page',
 			'post_status'    => array( 'publish', 'private', 'draft' ),
 			'meta_key'       => '_wp_page_template',
 			'meta_value'     => 'page-templates/' . $key . '.php',
+			'orderby'        => 'ID',
+			'order'          => 'ASC',
 			'posts_per_page' => 1,
 			'no_found_rows'  => true,
 		)
@@ -55,17 +67,25 @@ function bbq_find_page( $key ) {
 
 /**
  * Resolve link values. "page:franchise#apply" → the Franchise page's permalink + #apply.
+ * "slug:cookie-policy" → the permalink of the page with that slug (for pages that share a template).
  * Anything else (https://…, mailto:, #find) is returned unchanged.
  */
 function bbq_url( $value ) {
 	$value = (string) $value;
-	if ( 0 === strpos( $value, 'page:' ) ) {
-		$rest = substr( $value, 5 );
+	foreach ( array( 'page:', 'slug:' ) as $prefix ) {
+		if ( 0 !== strpos( $value, $prefix ) ) {
+			continue;
+		}
+		$rest = substr( $value, strlen( $prefix ) );
 		$hash = '';
 		if ( false !== strpos( $rest, '#' ) ) {
 			list( $rest, $hash ) = explode( '#', $rest, 2 );
 		}
-		return bbq_page_url( $rest, $hash );
+		if ( 'page:' === $prefix ) {
+			return bbq_page_url( $rest, $hash );
+		}
+		$page = get_page_by_path( $rest );
+		return ( $page ? get_permalink( $page ) : home_url( '/' . $rest . '/' ) ) . ( '' !== $hash ? '#' . $hash : '' );
 	}
 	return $value;
 }
