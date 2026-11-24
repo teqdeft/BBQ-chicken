@@ -237,6 +237,10 @@ function bbq_nav_footer() {
 		echo '<button class="footer-col__head" type="button" aria-expanded="' . ( $open ? 'true' : 'false' ) . '"><span class="footer-col__title">' . esc_html( $col['title'] ) . '</span><span class="footer-col__toggle" aria-hidden="true"></span></button>';
 		echo '<div class="footer-col__list">';
 		foreach ( $col['children'] as $link ) {
+			// "Cookie settings" reopens the Cookiebot banner (assets/js/main.js); without Cookiebot it opens the cookie policy
+			if ( in_array( 'data-cookie-settings', (array) $link['classes'], true ) && in_array( trim( (string) $link['url'] ), array( '', '#' ), true ) && function_exists( 'bbq_cookiebot_id' ) && '' === bbq_cookiebot_id() ) {
+				$link['url'] = bbq_url( 'slug:cookie-policy' );
+			}
 			echo '<a href="' . esc_url( $link['url'] ) . '"' . bbq_menu_attrs( $link ) . '>' . esc_html( $link['title'] ) . '</a>'; // phpcs:ignore WordPress.Security.EscapeOutput
 		}
 		echo '</div></div>';

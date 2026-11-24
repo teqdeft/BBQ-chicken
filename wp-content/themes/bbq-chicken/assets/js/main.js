@@ -42,6 +42,14 @@
     if (e.key === 'Escape') { closeAll(); setMenu(false); }
   });
 
+  /* ---------- "Cookie settings" (footer): reopens the Cookiebot banner (inc/analytics.php) ---------- */
+  doc.addEventListener('click', function (e) {
+    var link = e.target.closest && e.target.closest('[data-cookie-settings]');
+    if (!link || !window.Cookiebot || typeof window.Cookiebot.renew !== 'function') return;
+    e.preventDefault();
+    window.Cookiebot.renew();
+  });
+
   /* ---------- Mobile / tablet menu ---------- */
   var burger = doc.querySelector('[data-burger]');
   function setMenu(open) {
