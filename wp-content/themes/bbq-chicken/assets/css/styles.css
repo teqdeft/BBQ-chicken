@@ -1729,3 +1729,59 @@ ul, ol { padding: 0; list-style: none; }
 .dropzone.has-file { border-style: solid; border-color: var(--char); }
 .dropzone.has-file .dropzone__title { color: var(--char); word-break: break-all; }
 .dropzone.is-dragover { border-color: var(--red); background: rgba(227, 25, 55, .06); }
+
+/* ==========================================================================
+   Cookiebot consent banner (#CybotCookiebotDialog, inc/analytics.php) in the theme's look
+   Cookiebot adds its own styles after the theme's, with ID selectors, so these rules repeat the dialog's ID
+   to win. Theme font and colours, 16px corners, red for the active tab and for switched-on toggles. Deny,
+   Allow selection and Allow all stay identical dark buttons: refusing has to be as easy and as visible as
+   accepting (GDPR / AEPD cookie guidance), so no button is singled out in red.
+   ========================================================================== */
+#CybotCookiebotDialog#CybotCookiebotDialog {
+  font-family: var(--font);
+  color: var(--char);
+  letter-spacing: -0.001em;
+  border-radius: var(--radius-card);
+  box-shadow: 0 24px 64px rgba(34, 30, 31, .28);
+}
+#CybotCookiebotDialog#CybotCookiebotDialog * { letter-spacing: -0.001em; } /* Cookiebot spaces its text out */
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogBodyContentTitle { font-size: 18px; font-weight: 700; }
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogBodyContentText { color: var(--muted); }
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogNav .CybotCookiebotDialogNavItemLink:hover,
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogNav .CybotCookiebotDialogNavItemLink.CybotCookiebotDialogActive { color: var(--red-text); }
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogNav .CybotCookiebotDialogNavItemLink.CybotCookiebotDialogActive { border-bottom-color: var(--red); }
+
+/* toggles: dark when off, red when on; "Necessary" can't be switched off, so it is a lighter red */
+#CybotCookiebotDialog#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonSlider { background-color: var(--char); }
+#CybotCookiebotDialog#CybotCookiebotDialog input:checked + .CybotCookiebotDialogBodyLevelButtonSlider { background-color: var(--red); }
+#CybotCookiebotDialog#CybotCookiebotDialog input:checked:disabled + .CybotCookiebotDialogBodyLevelButtonSlider { background-color: #F18C9B; }
+
+/* Deny, Allow selection, Allow all */
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogFooter .CybotCookiebotDialogBodyButton {
+  border: 2px solid var(--char);
+  border-radius: var(--radius-btn);
+  background-color: var(--char);
+  color: var(--cream);
+  font-weight: 700;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogFooter .CybotCookiebotDialogBodyButton:hover {
+  border-color: var(--red);
+  background-color: var(--red);
+  opacity: 1;
+}
+
+/* links and arrows in the Details and About tabs */
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogDetailBulkConsentLink:hover,
+#CybotCookiebotDialog#CybotCookiebotDialog .CookieCard .CybotCookiebotDialogDetailBodyContentCookieContainerButton:hover,
+#CybotCookiebotDialog#CybotCookiebotDialog .CookieCard .CybotCookiebotDialogDetailBodyContentIABv2Tab:hover,
+#CybotCookiebotDialog#CybotCookiebotDialog #CybotCookiebotDialogBody a:hover { color: var(--red-text); }
+#CybotCookiebotDialog#CybotCookiebotDialog a:hover::before,
+#CybotCookiebotDialog#CybotCookiebotDialog a:hover::after,
+#CybotCookiebotDialog#CybotCookiebotDialog button:hover::before,
+#CybotCookiebotDialog#CybotCookiebotDialog button:hover::after { border-color: var(--red); }
+
+/* keyboard focus */
+#CybotCookiebotDialog#CybotCookiebotDialog:focus-visible,
+#CybotCookiebotDialog#CybotCookiebotDialog :focus-visible,
+#CybotCookiebotDialog#CybotCookiebotDialog .CybotCookiebotDialogBodyLevelButtonSliderWrapper input:focus-visible + span { outline-color: var(--char); }
