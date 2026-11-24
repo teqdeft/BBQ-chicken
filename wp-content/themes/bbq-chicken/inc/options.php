@@ -11,8 +11,15 @@ function bbq_site_schema() {
 	return bbq_collect_schema( array( 'site-header', 'site-footer', 'site-settings' ), 'options' );
 }
 
-/** A site setting value (with the schema default) for use outside the header/footer templates. */
+/**
+ * A site setting value (with the schema default) for use outside the header/footer templates: the
+ * "Website settings" (ACF options page) first, then the older "bbq_site" option. Empty = the default.
+ */
 function bbq_opt( $key, $default = '' ) {
+	$acf = get_option( 'options_' . $key, null );
+	if ( is_scalar( $acf ) && '' !== trim( (string) $acf ) ) {
+		return $acf;
+	}
 	$values = get_option( BBQ_OPTION, array() );
 	return is_array( $values ) && array_key_exists( $key, $values ) ? $values[ $key ] : $default;
 }

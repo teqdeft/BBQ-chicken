@@ -28,8 +28,8 @@ include __DIR__ . '/_shared.php';
           ),
           array(
               array( 'style' => 'dark', 'img' => 'cut-tenders-3pcs.png', 'title' => 'Double-fried', 'text' => 'Fried twice, so the coating stays crisp even under a glaze.', 'alt' => 'Three crispy chicken tenders' ),
-              array( 'style' => 'red', 'img' => 'cut-4pcs-cheesling.png', 'title' => 'Sauced, not smothered', 'text' => 'Secret Sauce, Galbi, Gangjeong or Jasoman, brushed on right after frying.', 'alt' => 'Four pieces of Cheesling chicken' ),
-              array( 'style' => 'wine', 'img' => 'cut-8pcs-secret-sauce-bucket.png', 'title' => 'Made for sharing', 'text' => 'Buckets, boxes and sides meant for the middle of the table.', 'alt' => 'A sharing bucket of chicken glazed in Secret Sauce' ),
+              array( 'style' => 'red', 'img' => 'cut-2pcs-secret-sauce.png', 'title' => 'Sauced, not smothered', 'text' => 'Secret Sauce, Galbi, Gangjeong or Jasoman, brushed on right after frying.', 'alt' => 'Two pieces of chicken glazed in Secret Sauce' ),
+              array( 'style' => 'wine', 'img' => 'cut-8pcs-fried-bucket.png', 'title' => 'Made for sharing', 'text' => 'Buckets, boxes and sides meant for the middle of the table.', 'alt' => 'A sharing bucket of fried chicken' ),
           )
       );
       foreach ( $formats as $card ) :

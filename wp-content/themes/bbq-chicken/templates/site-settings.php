@@ -6,8 +6,9 @@
 defined( 'ABSPATH' ) || exit;
 
 bbq_section( 'Delivery map (home page)' );
-bbq_get( 'map_lat', '40.4168', 'Map centre: latitude', 'text', array( 'help' => 'Madrid by default.' ) );
-bbq_get( 'map_lng', '-3.7038', 'Map centre: longitude' );
-bbq_get( 'map_zoom', '13', 'Zoom level (desktop; one less on phones)' );
-bbq_get( 'map_radius', '2400', 'Delivery circle radius (metres)' );
+bbq_get( 'map_lat', '40.4319', 'Map centre: latitude', 'text', array( 'help' => 'The middle of the three Madrid kitchens by default.' ) );
+bbq_get( 'map_lng', '-3.6831', 'Map centre: longitude' );
+bbq_get( 'map_zoom', '12', 'Zoom level (desktop; one less on phones)' );
+bbq_get( 'map_radius', '4600', 'Delivery circle radius (metres)' );
+bbq_get( 'map_pins', "40.4409, -3.6753\n40.3971, -3.6660\n40.4577, -3.7080", 'Kitchens on the map (one per line: latitude, longitude)', 'textarea', array( 'help' => 'One pin per kitchen. Madrid: Calle Zabaleta 1, Calle Felipe Fraile 5 and Calle José Calvo 10. Empty = these three.' ) );
 bbq_get( 'map_gmaps_key', '', 'Google Maps API key', 'text', array( 'help' => 'With a key the map uses Google Maps (dark style). Without one it uses Esri\'s dark tiles, which need an ArcGIS account for production use.' ) );

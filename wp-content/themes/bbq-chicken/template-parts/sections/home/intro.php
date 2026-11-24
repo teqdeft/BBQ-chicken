@@ -54,10 +54,15 @@ $peek = bbq_get( 'intro_peek', 'chibboq-peeking.png', 'ChiBBoQ peeking in (image
           <?php endif; ?>
         </article>
         <?php endforeach; ?>
-        <?php if ( bbq_toggle( 'brands_soon_show', true, 'Show the "More brands coming soon" card' ) ) : ?>
+        <?php
+        // off since Figma v5 (one brand); the text field stays editable for when it is switched back on
+        $soon_show = bbq_toggle( 'brands_soon_show', false, 'Show the "More brands coming soon" card' );
+        $soon_text = bbq_get( 'brands_soon_text', 'More brands<br>coming soon', '"Coming soon" card text', 'html' );
+        if ( $soon_show ) :
+            ?>
         <div class="brand-card brand-card--soon">
           <span class="plus" aria-hidden="true">+</span>
-          <strong><?php bbq_html( 'brands_soon_text', 'More brands<br>coming soon', '"Coming soon" card text' ); ?></strong>
+          <strong><?php echo wp_kses_post( $soon_text ); ?></strong>
         </div>
         <?php endif; ?>
       </div>

@@ -36,11 +36,29 @@
 .format-card--dark { background: var(--char); }
 .format-card--red { background: var(--red); }
 .format-card--wine { background: #8E1220; }
+/* the chicken (Figma v5): square cards, the cut-out inset 42 at 1680 and 37 at 1440 (380 × 299, 337 × 251),
+   one-line 28px titles 16 below it */
+.format-card:not(.format-card--photo) { min-height: 0; padding-bottom: 24px; }
+.format-card:not(.format-card--photo) .format-card__img {
+  height: clamp(251px, calc(20vw - 37px), 299px);
+  margin: clamp(17px, calc(2.083vw - 13px), 22px) clamp(19px, calc(1.25vw + 1px), 22px) 0;
+}
+.format-card:not(.format-card--photo) .format-card__title { margin-top: 16px; font-size: 28px; }
+/* square (as wide as a column) but never shorter than its content, so a two-line title or text is never cut off */
+@media (min-width: 1200px) {
+  .format-grid { container-type: inline-size; }
+  .format-card:not(.format-card--photo) { min-height: calc((100cqw - 48px) / 3); }
+}
+/* narrower than 1440: the cut-out keeps Figma's 1440 proportions (337 × 251): card width minus 2 × 37, × 251/337 */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .format-card:not(.format-card--photo) .format-card__img { height: calc(((100cqw - 48px) / 3 - 74px) * 0.7448); }
+}
 
 /* ---------- Meals and boxes (same section as the chicken; photo cards, 4 in a row) ---------- */
 .format-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.format-card--photo { min-height: 408px; padding: 20px 20px 28px; }
-.format-card--photo .format-card__img { height: 240px; border-radius: var(--radius-img); overflow: hidden; background: #E4DED2; box-shadow: 0 16px 24px rgba(0, 0, 0, .3); }
+/* square photos (Figma v5: 302 at 1680, 262 at 1440) */
+.format-card--photo { min-height: 0; padding: 20px clamp(18px, calc(0.833vw + 6px), 20px) 24px; }
+.format-card--photo .format-card__img { height: auto; aspect-ratio: 1 / 1; border-radius: var(--radius-img); overflow: hidden; background: #E4DED2; box-shadow: 0 16px 24px rgba(0, 0, 0, .3); }
 .format-card--photo .format-card__img img { object-fit: cover; filter: none; }
 /* title 34 at 1680, 28 at 1440 (Figma 1440 frame) */
 .format-card--photo .format-card__title { margin-top: 14px; font-size: clamp(28px, calc(2.5vw - 8px), 34px); }
@@ -130,6 +148,9 @@
   background: var(--cream);
 }
 .drinks .section-head { max-width: 820px; }
+/* two groups (soft drinks, Monster), each with a small heading */
+.drink-groups { width: 100%; display: grid; gap: 40px; }
+.drink-group__title { margin-bottom: 4px; color: var(--muted); }
 .drink-list { width: 100%; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; }
 .drink { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(34, 30, 31, .15); }
 .drink__name { font-size: 20px; font-weight: 700; line-height: 24px; color: var(--char); }
@@ -154,9 +175,13 @@
   .format-card__title { margin-top: 14px; font-size: 34px; }
   .format-card__title, .format-card__text { margin-left: 7px; margin-right: 7px; }
   .format-card__text { font-size: 15px; }
-  .format-card--photo { min-height: 0; padding: 18px 18px 24px; }
-  .format-card--photo .format-card__img { height: auto; aspect-ratio: 416 / 260; }
-  .format-card--photo .format-card__title { margin-top: 16px; font-size: 28px; }
+  .format-card--photo { min-height: 0; padding: 20px 18px 24px; }
+  .format-card--photo .format-card__img { height: auto; aspect-ratio: 1 / 1; }
+  .format-card--photo .format-card__title { margin-top: 14px; font-size: 28px; }
+  /* the chicken at 1024: Figma's 411 card (cut-out 337 × 251, inset 37) in the two equal columns */
+  .format-card:not(.format-card--photo) { aspect-ratio: auto; min-height: 411px; }
+  .format-card:not(.format-card--photo) .format-card__img { height: 251px; margin: 19px 19px 0; }
+  .format-card:not(.format-card--photo) .format-card__title { margin-top: 16px; font-size: 28px; }
 
   .side-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .side-card { min-height: 330px; }
@@ -181,8 +206,10 @@
   .page-menu .page-hero__media { left: calc(100% - 241px); top: 440px; width: 265px; height: 336px; }
   .page-menu .page-hero .stamp { left: calc(100% - 261px); top: 642px; }
 
-  .format-card:not(.format-card--photo) { min-height: 401px; padding-bottom: 24px; }
-  .format-card__img { height: 205px; }
+  /* the chicken at 768: 332 × 361 cards, cut-out 272 × 183 (inset 30), 26px titles */
+  .format-card:not(.format-card--photo) { min-height: 361px; padding-bottom: 24px; }
+  .format-card:not(.format-card--photo) .format-card__img { height: 183px; margin: 12px 12px 0; }
+  .format-card:not(.format-card--photo) .format-card__title { font-size: 26px; }
 
   .side-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .sauces__peek { bottom: 909px; }
@@ -231,14 +258,21 @@
   .format-card__img img { filter: none; }
   .format-card__title { margin: 12px 6px 0; font-size: 28px; }
   .format-card__text { margin: 10px 6px 0; font-size: 15px; line-height: 1.2; }
-  .format-card--photo { min-height: 320px; padding: 14px 14px 20px; }
-  .format-card--photo .format-card__img { height: 152px; box-shadow: none; }
+  .format-card--photo { min-height: 392px; padding: 14px 14px 20px; }
+  .format-card--photo .format-card__img { height: auto; aspect-ratio: 1 / 1; box-shadow: none; }
   .format-card--photo .format-card__title { margin-top: 12px; font-size: 28px; }
+  .format-card--photo .format-card__text { margin-top: 8px; }
+  /* the chicken: 250 × 311 cards, cut-out 204 × 138 (inset 23), 24px titles */
+  .format-card:not(.format-card--photo) { aspect-ratio: auto; min-height: 311px; }
+  .format-card:not(.format-card--photo) .format-card__img { height: 138px; margin: 9px 9px 0; }
+  .format-card:not(.format-card--photo) .format-card__title { margin-top: 16px; font-size: 24px; }
+  .format-card:not(.format-card--photo) .format-card__text { margin-top: 8px; }
 
   .drinks { align-items: stretch; gap: 20px; padding-top: 56px; padding-bottom: 56px; }
   .drinks .section-head { gap: 14px; }
   .drinks .h2 { font-size: 32px; line-height: 1.06; }
   .drink-list { grid-template-columns: minmax(0, 1fr); }
+  .drink-groups { gap: 28px; }
   .drink { padding: 14px 0; }
   .drink__name { font-size: 17px; line-height: 20px; }
   .drink__size { font-size: 14px; line-height: 17px; }

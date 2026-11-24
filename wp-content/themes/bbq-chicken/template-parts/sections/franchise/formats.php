@@ -27,9 +27,9 @@ include __DIR__ . '/_shared.php';
               'text'  => array( 'textarea', 'Text' ),
           ),
           array(
-              array( 'style' => 'dark', 'img' => 'format-flagship.jpg', 'title' => 'Flagship', 'text' => 'A full-size bb.q restaurant for prime locations. 300 to 500 m².' ),
-              array( 'style' => 'red', 'img' => 'format-traditional.jpg', 'title' => 'Traditional restaurant', 'text' => 'The classic quick-service restaurant, for dine-in and takeaway. 120 to 200 m².' ),
-              array( 'style' => 'yellow', 'img' => 'format-shop-in-shop.jpg', 'title' => 'Shop-in-shop', 'text' => 'A bb.q counter inside an existing venue. 60 to 120 m².' ),
+              array( 'style' => 'dark', 'img' => 'format-flagship-render.jpg', 'title' => 'Flagship', 'text' => 'A full-size bb.q restaurant for prime locations. 300 to 500 m².' ),
+              array( 'style' => 'yellow', 'img' => 'format-shop-in-shop-render.jpg', 'title' => 'Shop-in-shop', 'text' => 'A bb.q counter inside an existing venue. 60 to 120 m².' ),
+              array( 'style' => 'red', 'img' => 'format-traditional-render.jpg', 'title' => 'Traditional restaurant', 'text' => 'The classic quick-service restaurant, for dine-in and takeaway. 120 to 200 m².' ),
           )
       );
       foreach ( $formats as $item ) :

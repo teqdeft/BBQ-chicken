@@ -85,9 +85,18 @@
 .format-block--dark { background: var(--char); color: var(--white); }
 .format-block--red { background: var(--red); color: var(--white); }
 .format-block--yellow { background: var(--yellow); color: var(--char); }
-/* photo instead of a cut-out: full card width, rounded, no shadow */
-.format-block__img--photo { align-self: stretch; width: auto; aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden; }
+/* photo instead of a cut-out (Figma v5: BLT's QSR design renders): inset 42 at 1680 and 37 at 1440, 380 × 285 and
+   337 × 237, rounded, with a drop shadow; the cards come out square */
+.format-block:has(> .format-block__img--photo) { min-height: 0; }
+.format-block__img--photo {
+  align-self: stretch; width: auto; aspect-ratio: auto;
+  height: clamp(237px, calc(20vw - 51px), 285px);
+  margin: clamp(17px, calc(2.083vw - 13px), 22px) clamp(9px, calc(2.083vw - 21px), 14px) 0;
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, .3);
+}
 .format-block__img--photo img { object-fit: cover; filter: none; }
+.format-block__img--photo + .format-block__title { margin-top: 16px; }
 
 /* Mobile slider nav (arrows + dots, built by main.js [data-slider]); desktop shows the grid */
 .fslider__nav { display: none; }
@@ -309,6 +318,7 @@
 
   .format-block { padding: 20px 24px 28px; min-height: 415px; }
   .format-block__img { width: 242px; }
+  .format-block__img--photo { width: auto; height: auto; aspect-ratio: 3 / 2; margin: 6px 2px 0; }
   .format-block__text { font-size: 15px; line-height: 23px; }
   .mid-cta__chibboq { display: none; }
 
@@ -375,6 +385,7 @@
 
   .format-block { padding: 16px 16px 24px; min-height: 351px; }
   .format-block__img { width: 181px; }
+  .format-block__img--photo { width: auto; margin: 3px 3px 0; }
   .format-block__title { font-size: 34px; }
 
   .mid-cta { align-self: stretch; }
@@ -456,7 +467,9 @@
 
   .format-block { flex: 0 0 280px; align-self: stretch; min-height: 371px; padding: 20px; border-radius: var(--radius-img); scroll-snap-align: start; }
   .format-block__img { width: 222px; aspect-ratio: 222 / 188; }
-  .format-block__img--photo { width: auto; aspect-ratio: 16 / 10; border-radius: 8px; }
+  .format-block__img--photo { width: auto; height: auto; aspect-ratio: 3 / 2; margin: 0 5px; border-radius: 12px; box-shadow: none; }
+  .format-block:has(> .format-block__img--photo) { min-height: 360px; }
+  .format-block__img--photo + .format-block__title { margin-top: 14px; }
   .format-block__img img { filter: none; }
   .format-block__title { margin-top: 14px; font-size: 28px; }
   .format-block__text { margin-top: 14px; font-size: 15px; }

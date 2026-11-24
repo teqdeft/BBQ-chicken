@@ -19,5 +19,6 @@ $img_dims = array(
 	'cut-2pcs-secret-sauce.png' => array( 760, 412 ),
 	'cut-4pcs-cheesling.png'    => array( 860, 419 ),
 	'cut-8pcs-secret-sauce-bucket.png' => array( 760, 962 ),
+	'cut-8pcs-fried-bucket.png' => array( 660, 838 ),
 );
 ?>

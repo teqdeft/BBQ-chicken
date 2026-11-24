@@ -15,6 +15,7 @@
   aspect-ratio: 760 / 460;
   border-radius: var(--radius-card);
   overflow: hidden;
+  background: #E4DED2; /* until the story has a photo */
 }
 .featured__img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
 .featured__img:hover img { transform: scale(1.03); }
@@ -26,7 +27,6 @@
 .news-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 32px; row-gap: 40px; }
 /* Figma keeps the card images 270 tall at every desktop width (458×270 at 1680, 405×270 at 1440) */
 .news-grid .news-card__img { aspect-ratio: auto; height: 270px; }
-.news-card__img--placeholder { background: #E4DED2; }
 /* cards without a link yet (placeholders, global media page) don't zoom on hover */
 .news-card--static:hover .news-card__img img { transform: none; }
 

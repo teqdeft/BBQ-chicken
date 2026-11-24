@@ -111,7 +111,9 @@
   background: var(--cream);
 }
 .leaders__head { gap: 20px; }
-.leaders__list { width: 100%; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 48px 32px; }
+/* four a row (336 at 1680, 296 at 1440, 208 at 1024); a shorter last row is centred (Figma v5) */
+.leaders__list { width: 100%; display: flex; flex-wrap: wrap; justify-content: center; gap: 48px 32px; }
+.leaders__list > .person { flex: 0 0 calc((100% - 96px) / 4); min-width: 0; }
 .person { display: flex; flex-direction: column; gap: 20px; }
 .person__photo { height: 420px; border-radius: var(--radius-img); overflow: hidden; background: var(--sand); } /* stays 420 tall at 1440 */
 .person__photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -139,6 +141,11 @@
   .person__photo { height: 295px; }
   .page-about .closing .cutout--fried { top: 409px; }
 }
+/* desktop: the closing section is 690 tall with the cut-out 432 from its top (Figma 1680 and 1440) */
+@media (min-width: 1200px) {
+  .page-about .closing { padding-bottom: 198px; }
+  .page-about .closing .cutout--fried { top: 432px; }
+}
 @media (min-width: 1024px) and (max-width: 1199px) {
   .about-hero { gap: 48px; }
   .about-hero .team__img { flex: 0 0 380px; }
@@ -162,13 +169,14 @@
   .value-tile--chibboq { grid-row: span 2; }
   .value-tile--product { display: none; }
 
-  .leaders__list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .leaders__list > .person { flex-basis: calc((100% - 32px) / 2); }
   .relation .team__img { order: -1; }
 }
 
 /* 768 to 1023 (Figma "Tablet 768"): values two a row (ChiBBoQ next to "Believe in the possible", the bucket
    last, full width), leaders three a row, the Genesis photo under its text */
 @media (min-width: 768px) and (max-width: 1023px) {
+  .page-about .closing .cutout--fried { top: 429px; } /* Figma 768 */
   .about-hero { padding-top: 120px; padding-bottom: 56px; }
 
   .mission { height: 860px; }
@@ -190,7 +198,7 @@
   .value-tile--product { display: block; grid-area: 6 / 1 / 7 / 3; }
   .value-tile--chibboq img { left: 0; right: 0; bottom: 0; width: 100%; }
 
-  .leaders__list { grid-template-columns: repeat(3, minmax(0, 208px)); justify-content: space-between; }
+  .leaders__list > .person { flex-basis: calc((100% - 64px) / 3); } /* 208 at 768; Emma centred on the last row */
   .relation .team__img { order: 0; }
 }
 
@@ -218,6 +226,7 @@
   }
   .value-grid::-webkit-scrollbar, .leaders__list::-webkit-scrollbar { display: none; }
   .value-grid > *, .leaders__list > * { scroll-snap-align: start; }
+  .leaders__list { flex-wrap: nowrap; justify-content: flex-start; }
 
 
   .values { align-items: stretch; gap: 20px; padding: 40px 0 56px 20px; }
@@ -237,7 +246,7 @@
   .leaders { align-items: stretch; gap: 20px; padding: 56px 0 56px 20px; }
   .leaders__head { gap: 12px; padding-right: 20px; }
   .leaders .h2 { line-height: 1.2; }
-  .person { flex: 0 0 280px; gap: 12px; }
+  .person, .leaders__list > .person { flex: 0 0 280px; gap: 12px; }
   .person__photo { height: 350px; border-radius: 8px; }
   .person__meta { gap: 12px; }
   .person__role { font-size: 12px; letter-spacing: .1em; }

@@ -79,6 +79,22 @@
 .format-card--dark { background: var(--char); }
 .format-card--red { background: var(--red); }
 .format-card--wine { background: #8E1220; }
+/* Figma v5: square cards, the cut-out inset 42 at 1680 and 37 at 1440 (380 × 293, 337 × 245), titles 16 below it */
+.format-card { min-height: 0; padding-bottom: 24px; }
+.format-card__img {
+  height: clamp(245px, calc(20vw - 43px), 293px);
+  margin: clamp(17px, calc(2.083vw - 13px), 22px) clamp(19px, calc(1.25vw + 1px), 22px) 0;
+}
+.format-card__title { margin-top: 16px; }
+/* square (as wide as a column) but never shorter than its content */
+@media (min-width: 1200px) {
+  .format-grid { container-type: inline-size; }
+  .format-card { min-height: calc((100cqw - 48px) / 3); }
+}
+/* narrower than 1440: the cut-out keeps Figma's 1440 proportions (337 × 245): card width minus 2 × 37, × 245/337 */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .format-card__img { height: calc(((100cqw - 48px) / 3 - 74px) * 0.727); }
+}
 
 /* ---------- 4. Global presence (map card) ---------- */
 .presence__map {
@@ -121,8 +137,9 @@
   .timeline__icon { margin-bottom: 36px; }
   .timeline__step { padding: 0 6px; }
 
-  .format-card { min-height: 373px; padding: 20px 17px 24px; }
-  .format-card__img { height: 181px; }
+  /* 1024: 293 × 367 cards, cut-out 241 × 161 (inset 26) */
+  .format-card { aspect-ratio: auto; min-height: 367px; padding: 20px 17px 24px; }
+  .format-card__img { height: 161px; margin: 6px 9px 0; }
   .format-card__title, .format-card__text { margin-left: 7px; margin-right: 7px; }
   .format-card__text { font-size: 15px; }
 
@@ -181,8 +198,10 @@
   .timeline__text { margin-top: 14px; }
 
   .format-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .format-card { min-height: 315px; }
-  .format-card__img { height: 123px; }
+  /* 768: 213 × 316 cards, cut-out 175 × 117 (inset 19) */
+  .format-card { min-height: 316px; padding-top: 19px; }
+  .format-card__img { height: 117px; margin: 0 2px; }
+  .format-card__text { margin-top: 8px; }
   .format-card__title { font-size: 24px; line-height: 1; }
 
   .presence__map { order: 0; }
@@ -224,11 +243,11 @@
     padding: 0 20px; scroll-padding-inline: 20px;
   }
   .format-grid::-webkit-scrollbar { display: none; }
-  .format-card { flex: 0 0 250px; min-height: 320px; padding: 14px 14px 20px; border-radius: var(--radius-img); scroll-snap-align: start; }
+  .format-card { flex: 0 0 250px; aspect-ratio: auto; min-height: 341px; padding: 14px 14px 20px; border-radius: var(--radius-img); scroll-snap-align: start; }
 
-  .format-card__img { height: 152px; }
+  .format-card__img { height: 138px; margin: 9px 9px 0; }
   .format-card__img img { filter: none; }
-  .format-card__title { margin: 12px 6px 0; font-size: 28px; }
+  .format-card__title { margin: 16px 6px 0; font-size: 28px; }
   .format-card__text { margin: 10px 6px 0; font-size: 15px; line-height: 1.2; }
 
   .page-discover .team__text .lead { line-height: 1.52; }

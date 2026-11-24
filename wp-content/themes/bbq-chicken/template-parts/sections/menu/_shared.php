@@ -6,6 +6,7 @@ defined( 'ABSPATH' ) || exit;
 // Size attributes of the design's card images (media-library images bring their own).
 $img_dims = array(
 	'cut-2pcs-fried.png'        => array( 880, 463 ),
+	'cut-korean-fried-chicken.png' => array( 1000, 582 ),
 	'cut-tenders-3pcs.png'      => array( 880, 573 ),
 	'cut-burger.png'            => array( 848, 674 ),
 	'cut-wrap.png'              => array( 848, 608 ),
@@ -16,5 +17,9 @@ $img_dims = array(
 	'food-combo-meal.jpg'       => array( 960, 956 ),
 	'meal-box-for-2.jpg'        => array( 808, 642 ),
 	'food-party-bucket.jpg'     => array( 960, 887 ),
+	'meal-felixs-choice.jpg'    => array( 840, 840 ),
+	'meal-best-sellers.jpg'     => array( 840, 840 ),
+	'meal-box-for-2-square.jpg' => array( 840, 840 ),
+	'meal-family-meal-box.jpg'  => array( 840, 840 ),
 );
 ?>

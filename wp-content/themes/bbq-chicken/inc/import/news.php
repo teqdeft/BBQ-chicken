@@ -26,8 +26,8 @@ return ( function () {
 	$spain = 'spain-is-bbqs-door-to-europe';
 
 	// The article photo as an Image block (media library image, or the theme file as a fallback).
-	$hq     = $media( $spain, 'news-europe-hq.jpg', 'Guests at the inauguration of the bb.q Europe headquarters' );
-	$hq_url = $hq ? wp_get_attachment_url( $hq ) : bbq_asset( 'img/news-europe-hq.jpg' );
+	$hq     = $media( $spain, 'news-europe-hq-ceremony.jpg', 'Guests at the inauguration of the bb.q Europe headquarters' );
+	$hq_url = $hq ? wp_get_attachment_url( $hq ) : bbq_asset( 'img/news-europe-hq-ceremony.jpg' );
 	$figure = '<!-- wp:image ' . ( $hq ? '{"id":' . $hq . ',"sizeSlug":"full","linkDestination":"none"}' : '{"sizeSlug":"full","linkDestination":"none"}' ) . ' -->' . "\n"
 		. '<figure class="wp-block-image size-full"><img src="' . esc_url( $hq_url ) . '" alt="Officials from Genesis BBQ Group and BLT F&amp;B Group in front of the BBQ Europe HQ Inauguration Ceremony banner"' . ( $hq ? ' class="wp-image-' . $hq . '"' : '' ) . '/>'
 		. '<figcaption class="wp-element-caption">Officials from Genesis BBQ Group and BLT F&amp;B Group at the inauguration of the European headquarters, held at Genesis BBQ\'s head office in Seoul. Photo: Genesis BBQ Group.</figcaption></figure>' . "\n"
@@ -69,7 +69,7 @@ return ( function () {
 			'date'    => '2025-12-08',
 			'excerpt' => 'Genesis BBQ Group and BLT F&B Group set up bb.q\'s European headquarters in Spain, the base for flagship restaurants in Spain, the UK, France, Poland and the Netherlands.',
 			'content' => $spain_content,
-			'image'   => 'news-europe-hq.jpg',
+			'image'   => 'news-europe-hq-ceremony.jpg',
 			'sticky'  => true,
 			'fields'  => array(
 				'card_meta'    => '8 Dec 2025 · Europe',
