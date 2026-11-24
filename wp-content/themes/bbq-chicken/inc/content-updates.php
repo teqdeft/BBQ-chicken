@@ -13,6 +13,7 @@
  *      (Felix's Choice and the Family Meal Box for real); the glazed Korean fried chicken on the Menu; confirmed
  *      spice levels for the sauces ("Not spicy"); the Monster drinks as their own group; a new portrait of
  *      Emma Heckel; the new inauguration photo on the Spain story.
+ *   3  The cookie policy shows Cookiebot's list of cookies ([cookie_declaration]) at the end of section 4.
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -606,10 +607,32 @@ function bbq_content_update_2() {
 	return $log;
 }
 
+/**
+ * Update 3: Cookiebot's list of cookies ([cookie_declaration]) in the cookie policy, at the end of section 4
+ * "Who uses cookies?" (as in inc/import/legal/cookie-policy.html). Only on a page that has no list yet and
+ * still holds section 5's heading; without a Cookiebot ID the shortcode prints nothing.
+ */
+function bbq_content_update_3() {
+	$log  = array();
+	$page = get_page_by_path( 'cookie-policy' );
+	if ( ! $page || has_shortcode( $page->post_content, 'cookie_declaration' ) ) {
+		return $log;
+	}
+	$text = str_replace( "\r\n", "\n", $page->post_content );
+	$at   = strpos( $text, "<!-- wp:heading -->\n<h2 class=\"wp-block-heading\">5. Managing Cookies</h2>" );
+	if ( false === $at ) {
+		return $log;
+	}
+	$text = substr_replace( $text, "<!-- wp:shortcode -->\n[cookie_declaration]\n<!-- /wp:shortcode -->\n\n", $at, 0 );
+	wp_update_post( wp_slash( array( 'ID' => $page->ID, 'post_content' => $text ) ) );
+	$log[] = 'Cookie policy: Cookiebot\'s list of cookies added to section 4.';
+	return $log;
+}
+
 /** Run the updates this site has not had yet. */
 function bbq_content_updates() {
 	$done    = (int) get_option( 'bbq_content_version', 0 );
-	$updates = array( 1 => 'bbq_content_update_1', 2 => 'bbq_content_update_2' );
+	$updates = array( 1 => 'bbq_content_update_1', 2 => 'bbq_content_update_2', 3 => 'bbq_content_update_3' );
 	$log     = array();
 	foreach ( $updates as $version => $fn ) {
 		if ( $version <= $done ) {
