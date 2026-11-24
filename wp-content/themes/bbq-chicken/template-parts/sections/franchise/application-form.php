@@ -12,7 +12,7 @@ include __DIR__ . '/_shared.php';
     <div class="form-card__intro">
       <span class="eyebrow"><?php bbq_text( 'apply_eyebrow', 'Apply', 'Label' ); ?></span>
       <h2 class="h2" id="apply-title"><?php bbq_text( 'apply_title', 'Submit your application', 'Heading' ); ?></h2>
-      <p class="lead"><?php bbq_html( 'apply_lead', 'Ready to join the bb.q Chicken franchise network? Tell us who you are and where you\'d like to grow. Our expansion team reads every application<span class="only-desktop"> personally</span>.', 'Intro text', array( 'help' => 'Text inside <span class="only-desktop">…</span> is hidden on phones.' ) ); ?></p>
+      <p class="lead"><?php bbq_html( 'apply_lead', 'Ready to join the bb.q Chicken franchise network? Tell us who you are and where you\'d like to grow. Our expansion team reads every application<span class="only-desktop"> personally</span>.', 'Intro text', array( 'help' => 'Text inside &lt;span class="only-desktop"&gt;…&lt;/span&gt; is hidden on phones.' ) ); ?></p>
       <div class="info-box">
         <p class="info-box__title"><?php bbq_text( 'apply_info_title', 'What happens next', 'Info box: title' ); ?></p>
         <?php

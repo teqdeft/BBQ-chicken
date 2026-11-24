@@ -35,7 +35,7 @@ $acf_field = function ( $prefix, $f ) use ( &$acf_field, &$keys_seen ) {
 			break;
 		case 'html':
 			$out += array( 'type' => 'textarea', 'default_value' => (string) $f['default'], 'rows' => 3, 'new_lines' => '' );
-			$help = trim( $help . ' Simple formatting allowed: <strong>, <em>, <br>, links.' );
+			$help = trim( $help . ' Simple formatting allowed: bold, italic, line breaks and links (HTML).' ); // ACF prints help text as HTML: no tags here
 			break;
 		case 'image':
 			$out += array( 'type' => 'image', 'return_format' => 'id', 'preview_size' => 'medium', 'library' => 'all' );
