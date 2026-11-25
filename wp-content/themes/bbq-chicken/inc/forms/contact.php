@@ -51,7 +51,9 @@ return array(
 	// Department / Purpose choices that go to their own team instead of the form's To address (see inc/forms.php).
 	'routing'             => array(
 		'topic' => array(
-			'Careers' => 'jobs@bltglobalbrands.com',
+			'Real estate'   => 'development@bltglobalbrands.com',
+			'Press & media' => 'marketing@bltglobalbrands.com',
+			'Careers'       => 'jobs@bltglobalbrands.com',
 		),
 	),
 );
