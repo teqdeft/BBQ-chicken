@@ -79,14 +79,103 @@ add_filter(
 		if ( ! $form || ! bbq_languages() || bbq_is_default_language() ) {
 			return $html;
 		}
+		$texts = array_map( 'trim', array_map( 'strval', (array) $form->prop( 'messages' ) ) );
+		$mail  = (array) $form->prop( 'mail_2' );
+		if ( ! empty( $mail['active'] ) && empty( $mail['use_html'] ) ) { // the confirmation to the visitor, see below
+			foreach ( array( $mail['subject'], $mail['body'] ) as $text ) {
+				foreach ( bbq_mail_pieces( $text ) as $piece ) {
+					$texts[] = is_array( $piece ) ? $piece[1] : '';
+				}
+			}
+		}
 		$out = '';
-		foreach ( array_unique( array_filter( array_map( 'trim', array_map( 'strval', (array) $form->prop( 'messages' ) ) ) ) ) as $message ) {
-			$out .= '<span>' . htmlspecialchars( $message, ENT_NOQUOTES, 'UTF-8', false ) . '</span>'; // apostrophes stay as they are in the reply, so both are the same text to TranslatePress
+		foreach ( array_unique( array_filter( $texts ) ) as $text ) {
+			$out .= '<span>' . htmlspecialchars( $text, ENT_NOQUOTES, 'UTF-8', false ) . '</span>'; // apostrophes stay as they are in the reply, so both are the same text to TranslatePress
 		}
 		return '' === $out ? $html : $html . '<div class="form-messages" hidden>' . $out . '</div>';
 	},
 	20
 );
+
+/*
+ * Form mails: TranslatePress would translate every mail sent from a translated page, and so keep the visitor's name,
+ * address and message in its tables and send them to the translation service. Our forms' mails are left out:
+ *   - the mails to the teams arrive as the visitor typed them;
+ *   - the confirmation to the visitor (Mail (2)) has its own words translated, before the visitor's details are filled in.
+ */
+add_filter(
+	'wpcf7_mail_components',
+	function ( $components, $form, $mail ) {
+		$GLOBALS['bbq_form_mail'] = $mail; // the mail about to be sent
+		return $components;
+	},
+	99,
+	3
+);
+add_filter(
+	'wp_mail',
+	function ( $args ) {
+		$mail                     = isset( $GLOBALS['bbq_form_mail'] ) ? $GLOBALS['bbq_form_mail'] : null;
+		$GLOBALS['bbq_form_mail'] = null;
+		$headers                  = isset( $args['headers'] ) ? implode( "\n", (array) $args['headers'] ) : '';
+		if ( ! $mail || false === stripos( $headers, 'X-WPCF7-Content-Type' ) || ! class_exists( 'TRP_Translate_Press' ) ) {
+			return $args; // not a form mail
+		}
+		$render = TRP_Translate_Press::get_trp_instance()->get_component( 'translation_render' );
+		if ( is_object( $render ) && remove_filter( 'wp_mail', array( $render, 'wp_mail_filter' ), 1 ) ) {
+			$restore = function ( $args ) use ( &$restore, $render ) { // TranslatePress is back for the next mail
+				remove_filter( 'wp_mail', $restore, 2 );
+				add_filter( 'wp_mail', array( $render, 'wp_mail_filter' ), 1 );
+				return $args;
+			};
+			add_filter( 'wp_mail', $restore, 2 );
+		}
+		if ( 'mail_2' === $mail->name() && ! bbq_is_default_language() ) {
+			$form     = wpcf7_get_current_contact_form();
+			$template = $form ? (array) $form->prop( 'mail_2' ) : array();
+			if ( $template && empty( $template['use_html'] ) ) {
+				$args['subject'] = wpcf7_strip_newline( $mail->replace_tags( bbq_translate_mail( $mail->get( 'subject' ) ) ) );
+				$args['message'] = $mail->replace_tags( bbq_translate_mail( $mail->get( 'body' ) ), array( 'exclude_blank' => ! empty( $template['exclude_blank'] ) ) );
+			}
+		}
+		if ( class_exists( 'TRP_Gettext_Manager' ) && method_exists( 'TRP_Gettext_Manager', 'strip_gettext_tags' ) ) { // its markers around WordPress's own texts
+			$args['subject'] = TRP_Gettext_Manager::strip_gettext_tags( $args['subject'] );
+			$args['message'] = TRP_Gettext_Manager::strip_gettext_tags( $args['message'] );
+		}
+		return $args;
+	},
+	0
+);
+
+/**
+ * A mail's text in pieces: strings to keep (mail-tags such as [your-name], web addresses, line breaks) and
+ * array( before, text, after ) for the words in between ("before" and "after" hold spaces and punctuation).
+ */
+function bbq_mail_pieces( $text ) {
+	$out = array();
+	foreach ( (array) preg_split( '~(\[[^\[\]\r\n]+\]|https?://[^\s<>"]*[^\s<>".,;:!?)]|\r\n|\r|\n)~', (string) $text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY ) as $part ) {
+		$words = ! preg_match( '~^(\[[^\[\]]+\]$|https?://|[\r\n])~', $part ) && preg_match( '~^([\s.,;:!?–—-]*)(.*?)(\s*)$~su', $part, $m ) && preg_match( '~\p{L}~u', $m[2] );
+		$out[] = $words ? array( $m[1], $m[2], $m[3] ) : $part;
+	}
+	return $out;
+}
+
+/** A mail's text in the language of the page: its words translated, its mail-tags untouched, our own addresses in that language. */
+function bbq_translate_mail( $text ) {
+	global $TRP_LANGUAGE; // phpcs:ignore WordPress.NamingConventions.ValidVariableName
+	$out       = '';
+	$converter = TRP_Translate_Press::get_trp_instance()->get_component( 'url_converter' );
+	foreach ( bbq_mail_pieces( $text ) as $piece ) {
+		if ( is_array( $piece ) ) {
+			$out .= $piece[0] . html_entity_decode( trp_translate( $piece[1], $TRP_LANGUAGE, false ), ENT_QUOTES, 'UTF-8' ) . $piece[2]; // phpcs:ignore WordPress.NamingConventions.ValidVariableName
+		} elseif ( is_object( $converter ) && 0 === strpos( $piece, untrailingslashit( get_option( 'home' ) ) ) ) {
+			$out .= $converter->get_url_for_language( $TRP_LANGUAGE, $piece, '' ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName
+		} else {
+			$out .= $piece;
+		}
+	}
+	return $out;
+}
 
 /** Is the page shown in the site's own (default) language? True without TranslatePress. */
 function bbq_is_default_language() {
