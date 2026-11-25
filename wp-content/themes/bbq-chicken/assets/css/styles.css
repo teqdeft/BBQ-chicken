@@ -984,7 +984,7 @@ ul, ol { padding: 0; list-style: none; }
 .map-card__marker { background: none; border: 0; }
 .map-card__marker svg { width: 100%; height: 100%; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .35)); animation: bob 2.8s ease-in-out infinite; }
 /* bucket_02 (v4 image): 480 wide 30px from the edge at 1680, 411 wide 20px from the edge at 1440 */
-.find .cutout--bucket { width: min(28.571vw, 480px); height: auto; aspect-ratio: 480 / 342; right: max(calc(4.167vw - 40px), calc(50% - 810px)); bottom: calc(100% - 116px); z-index: 3; } /* stands just above the map (its top is at 120px), so no kitchen is covered */
+.find .cutout--bucket { width: min(28.571vw, 480px); height: auto; aspect-ratio: 480 / 342; right: max(calc(4.167vw - 40px), calc(50% - 810px)); bottom: calc(100% - 120px - min(2.85vw, 48px)); z-index: 3; } /* the map's top is at 120px: only the edge of the paper lies over it (map.js keeps the kitchens clear of it) */
 
 /* 8. Markets */
 .markets {
@@ -1200,7 +1200,7 @@ ul, ol { padding: 0; list-style: none; }
   .find__text { flex: 1 1 440px; }
   .map-card { flex: 0 1 440px; }
   .kitchen-card { left: 24px; }
-  .find .cutout--bucket { width: 309px; right: auto; left: calc(100% - 325px); }
+  .find .cutout--bucket { width: 309px; right: auto; left: calc(100% - 325px); bottom: calc(100% - 151px); }
 
   .markets__body { gap: 48px; }
   .markets__text { flex: 0 0 480px; }

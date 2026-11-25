@@ -32,6 +32,25 @@
     return Math.max(30, Math.min(room, card.offsetHeight * 0.6));
   }
 
+  // the paper of the bucket lies over the map's top edge: move the pins out from under it, as far as the kitchen card leaves room
+  function clearCutout(map, size) {
+    var cut = document.querySelector('.find .cutout--bucket');
+    // layout positions: the map may still be moving in (scroll reveal)
+    if (!cut || !cut.offsetWidth || cut.offsetParent !== card.offsetParent) return;
+    var left = cut.offsetLeft - card.offsetLeft, right = left + cut.offsetWidth;
+    var edge = cut.offsetTop + cut.offsetHeight - card.offsetTop + 10; // 10: the pins bob up and down
+    var kc = card.querySelector('.kitchen-card');
+    var floor = kc ? kc.offsetTop - 8 : card.offsetHeight;
+    var need = 0, lowest = 0;
+    pins.forEach(function (p) {
+      var pt = map.latLngToContainerPoint(p);
+      lowest = Math.max(lowest, pt.y);
+      if (pt.x + size[0] / 2 > left && pt.x - size[0] / 2 < right) need = Math.max(need, edge - (pt.y - size[1]));
+    });
+    var by = Math.round(Math.min(need, floor - lowest));
+    if (by > 0) map.panBy([0, -by], { animate: false });
+  }
+
   var el = document.createElement('div');
   el.className = 'map-card__live';
   el.setAttribute('role', 'region');
@@ -107,6 +126,7 @@
       if (pins.length > 1) {
         // every kitchen in view, in the open part of the map above the kitchen card
         map.fitBounds(L.latLngBounds(pins), { paddingTopLeft: [40, s[1] + 16], paddingBottomRight: [40, cardRoom()], maxZoom: zoom, animate: false });
+        clearCutout(map, s);
       } else {
         // keep the delivery circle in the open part of the card, above the kitchen card
         map.panBy([0, mob() ? 15 : 30], { animate: false });
