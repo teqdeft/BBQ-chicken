@@ -25,6 +25,7 @@ require BBQ_DIR . '/inc/acf-migrate.php';
 require BBQ_DIR . '/inc/fields-admin.php';
 require BBQ_DIR . '/inc/options.php';
 require BBQ_DIR . '/inc/menus.php';
+require BBQ_DIR . '/inc/languages.php';
 require BBQ_DIR . '/inc/news.php';
 require BBQ_DIR . '/inc/forms.php';
 require BBQ_DIR . '/inc/analytics.php';

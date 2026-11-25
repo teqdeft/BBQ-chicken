@@ -43,7 +43,7 @@ bbq_section( 'Footer: "Hungry?" bar' );
     <div class="footer-base">
       <div class="footer-base__row">
         <p><?php bbq_text( 'footer_copyright', '© 2026 BLT Global Brands. bb.q Chicken is a trademark of Genesis BBQ.', 'Copyright' ); ?></p>
-        <p><?php bbq_html( 'footer_langs', '<a href="#">English</a> · <a href="#">Español</a>', 'Languages' ); ?></p>
+        <p><?php if ( ! bbq_language_links( true ) ) { bbq_html( 'footer_langs', '<a href="#">English</a> · <a href="#">Español</a>', 'Languages', array( 'help' => 'Shown only without TranslatePress.' ) ); } ?></p>
       </div>
       <p class="footer-base__love"><?php echo str_replace( '{heart}', bbq_icon_svg( 'heart' ), wp_kses_post( bbq_get( 'footer_love', 'Made with love {heart} by Studio Ubique', 'Credit line ({heart} = the heart icon)', 'html' ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput ?></p>
     </div>

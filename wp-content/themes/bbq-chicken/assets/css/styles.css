@@ -291,6 +291,14 @@ ul, ol { padding: 0; list-style: none; }
   font-size: 16px; font-weight: 700; color: var(--white);
   padding: 8px 4px;
 }
+/* language dropdown (TranslatePress, inc/languages.php) */
+.lang-menu { position: relative; }
+.lang-menu .lang-switch { white-space: nowrap; }
+.lang-switch__mark { display: inline-block; transition: transform .2s ease; }
+.lang-menu.is-open .lang-switch__mark { transform: rotate(180deg); }
+.lang-menu .dropdown { left: auto; right: -12px; min-width: 168px; }
+.lang-menu .dropdown__link[aria-current] { background: var(--cream); color: var(--red-text); }
+.lang-menu .dropdown__link + .dropdown__link { margin-top: 4px; }
 .header-right .btn { padding: 14px 14px 14px 20px; }
 .header-right .btn--outline-light { padding: 12.5px 12.5px 12.5px 18.5px; }
 .header-right .btn:hover { box-shadow: none; }
@@ -380,7 +388,7 @@ ul, ol { padding: 0; list-style: none; }
   }
   .main-nav { display: none; }
   .site-header__logo { order: -1; margin-right: auto; }
-  .lang-switch { display: none; }
+  .lang-switch, .lang-menu { display: none; }
   .burger { display: flex; }
 }
 /* Tablet header (Figma 1024 and 768): no main nav; "Order now", "Submit your application" and a 48px menu
@@ -393,6 +401,7 @@ ul, ol { padding: 0; list-style: none; }
 }
 @media (min-width: 1024px) and (max-width: 1199px) {
   .lang-switch { display: inline; padding: 8px 0; font-size: 14px; line-height: 17px; }
+  .lang-menu { display: block; }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   .site-header__logo { width: clamp(189px, calc(18.75vw + 45px), 237px); }
@@ -442,6 +451,9 @@ ul, ol { padding: 0; list-style: none; }
 .mobile-menu__actions { display: grid; gap: 10px; }
 .mobile-menu__actions .btn { width: 100%; justify-content: space-between; }
 .mobile-menu__lang { margin-top: 6px; color: rgba(245, 241, 232, .7); font-size: 14px; font-weight: 700; }
+.mobile-menu__lang [lang] { display: inline-block; margin: -10px 0; padding: 10px 4px; } /* easy to tap, same place */
+.mobile-menu__lang [lang]:first-child { padding-left: 0; }
+.mobile-menu__lang [aria-current] { color: var(--yellow); }
 .mobile-menu__peek { display: block; width: 102px; height: auto; margin: 8px max(0px, calc((100% - 640px) / 2)) -40px auto; pointer-events: none; }
 
 /* ---------- Marquee ---------- */

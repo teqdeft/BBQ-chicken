@@ -15,7 +15,9 @@ $apply = bbq_link( 'header_apply', array( 'label' => 'Submit your application', 
   </a>
 
   <div class="header-right">
-    <a class="lang-switch" href="#" aria-label="Language: English"><?php bbq_text( 'lang_label', 'EN ▾', 'Language switch' ); ?></a>
+    <?php if ( ! bbq_language_menu() ) : // inc/languages.php ?>
+    <a class="lang-switch" href="#" aria-label="Language: English"><?php bbq_text( 'lang_label', 'EN ▾', 'Language switch', array( 'help' => 'Shown only without TranslatePress; with it, the languages come from TranslatePress.' ) ); ?></a>
+    <?php endif; ?>
     <div class="order-menu" data-dropdown>
       <button class="btn btn--outline-light" type="button" aria-expanded="false" aria-controls="dd-order">
         <?php bbq_text( 'order_label', 'Order now', 'Order button' ); ?> <span class="btn__chip"><?php bbq_icon( 'chevdown' ); ?></span>
@@ -68,7 +70,7 @@ $apply = bbq_link( 'header_apply', array( 'label' => 'Submit your application', 
       <a class="btn btn--cream"<?php bbq_link_attrs( $apply ); ?>><?php bbq_e( $apply['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a>
       <?php $morder = bbq_link( 'mobile_order', array( 'label' => 'Order now', 'url' => 'page:home#find' ), 'Mobile menu: order button' ); ?>
       <a class="btn btn--outline-light"<?php bbq_link_attrs( $morder ); ?>><?php bbq_e( $morder['label'] ); ?> <span class="btn__chip"><?php bbq_icon( 'arrow' ); ?></span></a>
-      <p class="mobile-menu__lang"><?php bbq_html( 'mobile_lang', 'English · <a href="#">Español</a>', 'Mobile menu: languages' ); ?></p>
+      <p class="mobile-menu__lang"><?php if ( ! bbq_language_links() ) { bbq_html( 'mobile_lang', 'English · <a href="#">Español</a>', 'Mobile menu: languages', array( 'help' => 'Shown only without TranslatePress.' ) ); } ?></p>
     </div>
   </div>
   <?php bbq_image( 'mobile_peek', 'chibboq-peeking.png', 'Mobile menu: ChiBBoQ image', array( 'class' => 'mobile-menu__peek', 'alt' => '', 'width' => 300, 'height' => 537, 'loading' => 'lazy' ) ); ?>
