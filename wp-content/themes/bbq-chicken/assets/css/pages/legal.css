@@ -80,10 +80,10 @@
    Each h2 starts a .legal-section (templates/legal.php); other blocks inside a section follow its 16px rhythm. */
 .legal-section h3 { font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -0.005em; color: var(--char); }
 .legal-section ul,
-.legal-section ol { display: grid; gap: 8px; padding-left: 1.4em; font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; color: var(--muted); }
+.legal-section ol { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; padding-left: 1.4em; font-size: 16px; line-height: 1.55; letter-spacing: -0.001em; color: var(--muted); }
 .legal-section ul { list-style: disc; }
 .legal-section ol { list-style: decimal; }
-.legal-section a { color: var(--char); text-decoration: underline; text-underline-offset: 3px; transition: color .15s ease; }
+.legal-section a { overflow-wrap: anywhere; /* long addresses */ color: var(--char); text-decoration: underline; text-underline-offset: 3px; transition: color .15s ease; }
 .legal-section a:hover { color: var(--red); }
 .legal-section strong { color: var(--char); }
 @media (max-width: 767px) {

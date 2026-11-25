@@ -172,6 +172,28 @@
       a.style.transition = keepA; o.style.transition = keepO;
     }
     function grows() { return !mqMobile.matches && sizes && sizes.active !== sizes.other; }
+    /* Endless row: the cards are as tall as their longest text needs (translations can be longer), all the same,
+       so the row keeps its height while the active card changes. Phones line the cards up with CSS. */
+    function fitHeights() {
+      if (!loop) return;
+      slider.style.removeProperty('--card-h');
+      slider.style.removeProperty('--card-active-h');
+      if (mqMobile.matches) return;
+      var other = 0, big = 0;
+      viewport.classList.add('is-measuring');
+      real.forEach(function (c) {
+        var on = c.classList.contains('is-active');
+        c.classList.remove('is-active');
+        other = Math.max(other, c.offsetHeight);
+        c.classList.add('is-active');
+        big = Math.max(big, c.offsetHeight);
+        c.classList.toggle('is-active', on);
+      });
+      slider.style.setProperty('--card-h', other + 'px');
+      slider.style.setProperty('--card-active-h', big + 'px');
+      void viewport.offsetHeight; // take the new sizes before the transitions are back on
+      viewport.classList.remove('is-measuring');
+    }
     function targetFor(i) {
       var card = cards[i];
       if (mqMobile.matches) return card.offsetLeft - viewport.offsetLeft - 20;
@@ -259,13 +281,15 @@
     }, true);
 
     setActive(active);
+    fitHeights();
     measure();
     // wait for layout (fonts/images) before centring the starting card
-    window.addEventListener('load', function () { measure(); go(active, true); });
+    window.addEventListener('load', function () { fitHeights(); measure(); go(active, true); });
+    if (loop && doc.fonts && doc.fonts.ready) doc.fonts.ready.then(fitHeights);
     var resizeTimer = null;
     window.addEventListener('resize', function () {
       clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () { measure(); go(active, true); }, 120);
+      resizeTimer = setTimeout(function () { fitHeights(); measure(); go(active, true); }, 120);
     });
     go(active, true);
   });

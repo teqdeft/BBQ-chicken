@@ -45,7 +45,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: 320px 280px 320px;
+  grid-template-rows: minmax(320px, auto) minmax(280px, auto) minmax(320px, auto); /* rows grow with longer texts (translations) */
   gap: 24px;
 }
 .value-tile--mobile { display: none; }
@@ -186,7 +186,7 @@
   .mission__cut--right { left: calc(100% - 187px); right: auto; }
   .mission .stamp { left: 134px; top: 632px; bottom: auto; width: 158px; height: auto; transform-origin: 0 0; }
 
-  .value-grid { grid-auto-rows: 330px; }
+  .value-grid { grid-auto-rows: minmax(330px, auto); }
   .value--respect { grid-area: 1 / 1 / 2 / 3; }
   .value--act { grid-area: 2 / 1; }
   .value--ethics { grid-area: 2 / 2; }
@@ -224,6 +224,7 @@
     overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
     padding: 0 20px; scroll-padding-inline: 20px;
   }
+  .value-grid { align-items: stretch; } /* cards as tall as the longest text */
   .value-grid::-webkit-scrollbar, .leaders__list::-webkit-scrollbar { display: none; }
   .value-grid > *, .leaders__list > * { scroll-snap-align: start; }
   .leaders__list { flex-wrap: nowrap; justify-content: flex-start; }
@@ -236,7 +237,7 @@
   .value-tile--desktop { display: none; }
   .value-tile--mobile { display: block; flex: none; height: 280px; margin-right: 20px; border-radius: var(--radius-card); }
   .value-tile--mobile img { left: 0; right: 0; top: 16px; bottom: auto; width: 100%; height: 250px; object-position: 50% 0; }
-  .value { flex: 0 0 250px; height: 354px; padding: 22px 22px 26px; border-radius: var(--radius-img); }
+  .value { flex: 0 0 250px; min-height: 354px; padding: 22px 22px 26px; border-radius: var(--radius-img); }
   .value__icon { width: 72px; height: 72px; margin-bottom: 54px; } /* 40px spacer between two 14px gaps */
   .value__icon svg { width: 40px; height: 40px; }
   .value__title { font-size: 22px; line-height: 1.2; }

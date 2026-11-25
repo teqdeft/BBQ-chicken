@@ -123,7 +123,7 @@
 /* Segmented choice ("You are *") */
 .choice { min-width: 0; margin: 0; padding: 0; border: 0; }
 .choice > .field__label { float: left; width: 100%; margin: 0 0 10px; padding: 0; }
-.choice__options { clear: both; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.choice__options { clear: both; display: grid; grid-template-columns: repeat(4, minmax(min-content, 1fr)); gap: 10px; } /* min-content: a long word (translations) gets the room it needs */
 /* WordPress: Contact Form 7 prints each option as span.wpcf7-list-item > label > input + span.wpcf7-list-item-label
    (= .choice__opt / .choice__chip); its outer spans drop out of the grid so every option is a grid cell. */
 .choice__options .wpcf7-form-control-wrap,

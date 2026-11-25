@@ -841,17 +841,20 @@ ul, ol { padding: 0; list-style: none; }
 .slider__viewport::-webkit-scrollbar { display: none; }
 /* the food row keeps its height (20 + 520 active card + 20) while one card grows and another shrinks,
    so the arrows and the button below don't jump */
-@media (min-width: 768px) { .slider[data-slider-loop] .slider__viewport { min-height: 560px; } }
+@media (min-width: 768px) { .slider[data-slider-loop] .slider__viewport { min-height: calc(var(--card-active-h, 520px) + 40px); } }
+/* longer texts (translations): main.js sets --card-h and --card-active-h to the tallest card, so every card grows by the
+   same amount; without it a card grows on its own */
+.slider__viewport.is-measuring, .slider__viewport.is-measuring * { transition: none !important; }
 .food-card {
   flex: none;
-  width: 440px; height: 475px;
+  width: 440px; min-height: var(--card-h, 475px);
   padding: 18px 18px 30px;
   border-radius: var(--radius-card);
   display: flex; flex-direction: column; gap: 18px;
   scroll-snap-align: center;
-  transition: width .35s ease, height .35s ease;
+  transition: width .35s ease, min-height .35s ease;
 }
-.food-card.is-active { width: 480px; height: 520px; }
+.food-card.is-active { width: 480px; min-height: var(--card-active-h, 520px); }
 .food-card__img { position: relative; height: 320px; border-radius: var(--radius-img); overflow: hidden; flex: none; transition: height .35s ease; background: #fff; }
 .food-card.is-active .food-card__img { height: 360px; }
 .food-card__img img { width: 100%; height: 100%; object-fit: cover; }
@@ -946,7 +949,7 @@ ul, ol { padding: 0; list-style: none; }
 .map-card__pin--single { --pin-x: 0px; --pin-y: 200px; }
 .map-card__caption { position: absolute; left: 32px; top: 28px; font-size: 13px; font-weight: 500; color: rgba(255, 255, 255, .6); }
 .kitchen-card {
-  position: absolute; left: 32px; top: 375px;
+  position: absolute; left: 32px; bottom: 24px; /* grows upwards with longer texts (translations) */
   width: 324px; max-width: calc(100% - 48px);
   display: grid; gap: 6px; justify-items: start;
   padding: 18px 22px;
@@ -973,8 +976,11 @@ ul, ol { padding: 0; list-style: none; }
 .map-card__live .leaflet-control-zoom { border: 0; box-shadow: none; margin: 16px; }
 .map-card__live .leaflet-control-zoom a { width: 36px; height: 36px; line-height: 34px; background: var(--char); color: var(--cream); border: 1px solid rgba(255, 255, 255, .14); font-weight: 700; }
 .map-card__live .leaflet-control-zoom a:hover { background: #3a3334; }
-.map-card__live .leaflet-control-attribution { background: rgba(34, 30, 31, .75); color: rgba(245, 241, 232, .6); font: 11px/1.4 Pretendard, sans-serif; }
-.map-card__live .leaflet-control-attribution a { color: rgba(245, 241, 232, .8); }
+/* the map's credit (Esri and OpenStreetMap ask for it), one line in the strip under the kitchen card; .map-card in front:
+   Leaflet's own stylesheet loads later (map.js) and would put its white bar back */
+.map-card .map-card__live .leaflet-control-attribution { padding: 2px 14px 2px 8px; border-top-left-radius: 6px; background: rgba(34, 30, 31, .8); color: rgba(245, 241, 232, .75); font: 11px/1.4 Pretendard, sans-serif; white-space: nowrap; }
+.map-card .map-card__live .leaflet-control-attribution a { color: inherit; text-decoration: underline; }
+.map-card .map-card__live .leaflet-control-attribution a:hover { color: var(--cream); }
 .map-card__marker { background: none; border: 0; }
 .map-card__marker svg { width: 100%; height: 100%; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .35)); animation: bob 2.8s ease-in-out infinite; }
 /* bucket_02 (v4 image): 480 wide 30px from the edge at 1680, 411 wide 20px from the edge at 1440 */
@@ -1193,7 +1199,7 @@ ul, ol { padding: 0; list-style: none; }
   .find { gap: 48px; }
   .find__text { flex: 1 1 440px; }
   .map-card { flex: 0 1 440px; }
-  .kitchen-card { left: 24px; top: 375px; }
+  .kitchen-card { left: 24px; }
   .find .cutout--bucket { width: 309px; right: auto; left: calc(100% - 325px); top: -20px; }
 
   .markets__body { gap: 48px; }
@@ -1300,7 +1306,7 @@ ul, ol { padding: 0; list-style: none; }
   .find { gap: 48px; }
   .find__text .lead, .postcode, .postcode-result, .find__note { max-width: none; }
   .map-card { max-width: none; height: 440px; }
-  .kitchen-card { left: 24px; top: auto; bottom: 24px; }
+  .kitchen-card { left: 24px; }
   /* the 440-high map: delivery area and pins 80 higher (Figma 768) */
   .map-card__area { top: 40px; }
   .map-card__pin--1 { --pin-y: 65px; }
@@ -1392,7 +1398,7 @@ ul, ol { padding: 0; list-style: none; }
   .slider { margin-top: 22px; }
   .slider__viewport { gap: 12px; padding: 0 20px; scroll-padding-inline: 20px; align-items: stretch; }
   .food-card--desktop-only { display: none; }
-  .food-card, .food-card.is-active { width: 280px; height: auto; min-height: 386px; padding: 14px 14px 22px; border-radius: var(--radius-img); gap: 14px; scroll-snap-align: start; }
+  .food-card, .food-card.is-active { width: 280px; min-height: 386px; padding: 14px 14px 22px; border-radius: var(--radius-img); gap: 14px; scroll-snap-align: start; }
   .food-card__img, .food-card.is-active .food-card__img { height: 240px; border-radius: 8px; }
   .food-card__tag { top: 10px; right: 10px; padding: 5px 8px; font-size: 12px; line-height: 14px; }
   .food-card__title, .food-card.is-active .food-card__title { font-size: 22px; line-height: 1.1; letter-spacing: -0.01em; }
@@ -1417,10 +1423,11 @@ ul, ol { padding: 0; list-style: none; }
   .map-card__pin--3 { --pin-x: 60px; --pin-y: 62px; }
   .map-card__pin--single { --pin-x: 0px; --pin-y: 90px; }
   .map-card__caption { display: none; }
-  .kitchen-card { left: 16px; right: 32px; top: auto; bottom: 16px; width: auto; max-width: none; padding: 12px 16px; gap: 4px; border-radius: 8px; }
+  .kitchen-card { left: 16px; right: 32px; bottom: 16px; width: auto; max-width: none; padding: 12px 16px; gap: 4px; border-radius: 8px; }
   .kitchen-card strong { font-size: 16px; }
   .kitchen-card p { font-size: 12px; margin: 0; }
   .kitchen-card .btn, .kitchen-card__order { display: none; }
+  .map-card .map-card__live .leaflet-control-attribution { padding: 0 10px 0 6px; font-size: 9.5px; }
   .find .cutout--bucket { display: none; }
 
   .markets {

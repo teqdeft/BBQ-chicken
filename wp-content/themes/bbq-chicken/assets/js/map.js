@@ -93,8 +93,9 @@
       var L = window.L;
       var map = L.map(el, { center: [lat, lng], zoom: zoom, zoomSnap: 0.25, scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false, zoomControl: !mob(), keyboard: false, attributionControl: true });
       if (map.zoomControl) map.zoomControl.setPosition('bottomright');
+      map.attributionControl.setPrefix(false); // only the map data's credit, without "Leaflet"
       var esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/';
-      var base = L.tileLayer(esri + 'World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, &copy; OpenStreetMap contributors' }).addTo(map);
+      var base = L.tileLayer(esri + 'World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, attribution: 'Powered by <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a> | HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors' }).addTo(map);
       L.tileLayer(esri + 'World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', { maxZoom: 16, pane: 'overlayPane' }).addTo(map);
       var loaded = 0;
       base.on('tileload', function () { if (++loaded === 4) live(); });
