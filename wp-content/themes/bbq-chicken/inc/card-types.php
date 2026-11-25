@@ -88,7 +88,7 @@ function bbq_card_types() {
 			'defaults'     => array(
 					array( 'style' => 'yellow', 'desktop_only' => 0, 'img' => 'food-combo-meal.jpg', 'alt' => 'A meal of two pieces of Korean fried chicken with fries and a drink', 'tag' => 'Meals', 'title' => 'Combo meals', 'text' => 'Pieces, tenders, a burger, wrap or bowl, with fries and a drink. Lunch, sorted.' ),
 					array( 'style' => 'red', 'desktop_only' => 0, 'img' => 'food-3pcs-strips.jpg', 'alt' => 'Three crispy chicken tenders', 'tag' => 'On the go', 'title' => 'Real Crispy Tenders', 'text' => 'Crispy chicken strips in 3, 6 or 12 pieces, easy to share and easier to eat on the go.' ),
-					array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'cut-korean-fried-chicken.png', 'alt' => 'Korean fried chicken glazed in Secret Sauce, on a plate', 'tag' => '3 sizes', 'title' => 'Real Korean Fried Chicken', 'text' => 'Crispy, juicy pieces made to the original recipe. 2, 4 or 8 pieces.' ),
+					array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'food-boneless-fried-chicken.jpg', 'alt' => 'Pieces of glazed boneless Korean fried chicken with chopped nuts', 'tag' => '3 sizes', 'title' => 'Real Korean Fried Chicken', 'text' => 'Crispy, juicy pieces made to the original recipe. 2, 4 or 8 pieces.' ),
 					array( 'style' => 'sand', 'desktop_only' => 0, 'img' => 'food-party-bucket.jpg', 'alt' => 'A bucket of crispy tenders next to a bucket of fries', 'tag' => 'For sharing', 'title' => 'Mega Party Bucket', 'text' => '24 crispy tenders or 16 pieces of Korean fried chicken, with a bucket of fries for the table.' ),
 					array( 'style' => 'dark', 'desktop_only' => 0, 'img' => 'sauce-secret-sauce.jpg', 'alt' => 'A bowl of Secret Sauce', 'tag' => '9 sauces', 'title' => 'Signature sauces', 'text' => 'Nine sauces, from the sweet and mildly spicy Secret Sauce to the fiery Jasoman.' ),
 			),
@@ -140,7 +140,7 @@ function bbq_card_types() {
 			'section'      => array( 'page' => 'menu', 'layout' => 'menu_the_chicken', 'rows' => 'chicken' ),
 			'setup_option' => 'bbq_chicken_setup',
 			'defaults'     => array(
-					array( 'style' => 'dark', 'img' => 'cut-korean-fried-chicken.png', 'title' => 'Real Korean Fried Chicken', 'text' => 'Crispy, juicy pieces made to the original recipe. 2, 4 or 8 pieces.', 'alt' => 'Korean fried chicken glazed in Secret Sauce, on a plate' ),
+					array( 'style' => 'dark', 'img' => 'cut-boneless-fried-chicken.png', 'title' => 'Real Korean Fried Chicken', 'text' => 'Crispy, juicy pieces made to the original recipe. 2, 4 or 8 pieces.', 'alt' => 'Pieces of glazed boneless Korean fried chicken with chopped nuts' ),
 					array( 'style' => 'red', 'img' => 'cut-tenders-3pcs.png', 'title' => 'Real Crispy Tenders', 'text' => 'Original crispy chicken strips. 3, 6 or 12 pieces, with 1, 2 or 4 sauces.', 'alt' => 'Three crispy chicken tenders' ),
 					array( 'style' => 'wine', 'img' => 'cut-burger.png', 'title' => 'Crispy Chicken Burger', 'text' => 'Crispy golden chicken with fresh vegetables and sauce in a soft bun.', 'alt' => 'A crispy chicken burger' ),
 					array( 'style' => 'wine', 'img' => 'cut-wrap.png', 'title' => 'Crispy Chicken Wrap', 'text' => 'Crispy, juicy chicken strips in a wrap with fresh vegetables.', 'alt' => 'A crispy chicken wrap' ),

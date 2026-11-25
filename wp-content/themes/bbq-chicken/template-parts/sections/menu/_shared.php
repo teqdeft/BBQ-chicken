@@ -7,6 +7,7 @@ defined( 'ABSPATH' ) || exit;
 $img_dims = array(
 	'cut-2pcs-fried.png'        => array( 880, 463 ),
 	'cut-korean-fried-chicken.png' => array( 1000, 582 ),
+	'cut-boneless-fried-chicken.png' => array( 683, 547 ),
 	'cut-tenders-3pcs.png'      => array( 880, 573 ),
 	'cut-burger.png'            => array( 848, 674 ),
 	'cut-wrap.png'              => array( 848, 608 ),

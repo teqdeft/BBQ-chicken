@@ -29,7 +29,7 @@ include __DIR__ . '/_shared.php';
         <?php if ( $news_img ) : ?>
         <div class="news-card__img"><?php bbq_img( $news_img, array( 'size' => 'bbq-card', 'loading' => 'lazy' ) ); ?></div>
         <?php else : ?>
-        <div class="news-card__img news-card__img--placeholder" aria-hidden="true"></div>
+        <div class="news-card__img news-card__img--logo" aria-hidden="true"><?php echo bbq_news_cover_logo(); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in the function ?></div>
         <?php endif; ?>
         <div class="news-card__meta"><span class="news-card__date"><?php bbq_e( bbq_news_card_meta( $news_id ) ); ?></span><h3 class="news-card__title"><?php bbq_e( get_post_field( 'post_title', $news_id, 'raw' ) ); ?><?php if ( $news_link && $news_link['new_tab'] ) : ?><span class="sr-only"> (opens in a new tab)</span><?php endif; ?></h3></div>
       </<?php echo $news_tag; // phpcs:ignore WordPress.Security.EscapeOutput ?>>

@@ -217,3 +217,9 @@ function bbq_link_attrs( $link, $extra = '' ) {
 	}
 	echo $out . $extra; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above
 }
+
+/** href of a social media link; outside addresses open in a new tab ("#" = no address yet). */
+function bbq_social_attrs( $url ) {
+	$url = trim( (string) $url );
+	echo ' href="' . esc_url( $url ) . '"' . ( preg_match( '#^https?://#i', $url ) ? ' target="_blank" rel="noopener"' : '' ); // phpcs:ignore WordPress.Security.EscapeOutput -- escaped
+}

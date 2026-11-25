@@ -27,9 +27,9 @@ bbq_section( 'Footer: "Hungry?" bar' );
       <p class="footer-brand__slogan"><?php bbq_html( 'footer_slogan', 'REAL CRISPY.<br class="only-mobile"> REAL KOREAN.', 'Slogan' ); ?></p>
       <p class="footer-brand__sub"><?php bbq_text( 'footer_sub', 'bb.q Chicken in Europe is developed by BLT Global Brands.', 'Line under the slogan' ); ?></p>
       <div class="socials">
-        <a href="<?php echo esc_url( bbq_get( 'social_instagram', '#', 'Instagram link (https://…)' ) ); ?>" aria-label="Instagram"><?php bbq_icon( 'instagram' ); ?></a>
-        <a href="<?php echo esc_url( bbq_get( 'social_facebook', '#', 'Facebook link (https://…)' ) ); ?>" aria-label="Facebook"><?php bbq_icon( 'facebook' ); ?></a>
-        <a href="<?php echo esc_url( bbq_get( 'social_linkedin', '#', 'LinkedIn link (https://…)' ) ); ?>" aria-label="LinkedIn"><?php bbq_icon( 'linkedin' ); ?></a>
+        <a<?php bbq_social_attrs( bbq_get( 'social_instagram', 'https://www.instagram.com/bbqchicken.es/', 'Instagram link (https://…)' ) ); ?> aria-label="Instagram"><?php bbq_icon( 'instagram' ); ?></a>
+        <a<?php bbq_social_attrs( bbq_get( 'social_facebook', '#', 'Facebook link (https://…)' ) ); ?> aria-label="Facebook"><?php bbq_icon( 'facebook' ); ?></a>
+        <a<?php bbq_social_attrs( bbq_get( 'social_linkedin', 'https://www.linkedin.com/company/blt-global-brands-europe/', 'LinkedIn link (https://…)' ) ); ?> aria-label="LinkedIn"><?php bbq_icon( 'linkedin' ); ?></a>
         <?php $tiktok = bbq_get( 'social_tiktok', 'https://www.tiktok.com/@bbqchicken.es', 'TikTok link (https://…, empty = hidden)' ); ?>
         <?php if ( '' !== trim( (string) $tiktok ) ) : ?>
         <a href="<?php echo esc_url( $tiktok ); ?>" aria-label="TikTok" target="_blank" rel="noopener"><?php bbq_icon( 'tiktok' ); ?></a>

@@ -14,6 +14,8 @@
  *      spice levels for the sauces ("Not spicy"); the Monster drinks as their own group; a new portrait of
  *      Emma Heckel; the new inauguration photo on the Spain story.
  *   3  The cookie policy shows Cookiebot's list of cookies ([cookie_declaration]) at the end of section 4.
+ *   4  BLT's feedback (25 Nov 2026): the social media links, ChiBBoQ's Instagram behind the "Follow ChiBBoQ"
+ *      buttons, and the boneless photo for "Real Korean Fried Chicken" (food card and Menu).
  */
 defined( 'ABSPATH' ) || exit;
 
@@ -383,7 +385,7 @@ function bbq_content_update_2() {
 	}
 
 	// news: the Madrid and London press releases (23 Nov 2026) replace the two placeholder posts, as short
-	// articles (the photos follow; until then the cards show the grey placeholder)
+	// articles (the photos follow; until then the cards show the logo)
 	$p_ = function ( $text ) {
 		return "<!-- wp:paragraph -->\n<p>" . $text . "</p>\n<!-- /wp:paragraph -->";
 	};
@@ -629,10 +631,66 @@ function bbq_content_update_3() {
 	return $log;
 }
 
+/** Point a stored button (ACF link field, meta key) at $new while its address is still "#" or empty. Returns 1 when changed. */
+function bbq_link_fill( $post_id, $key, $new ) {
+	$link = get_post_meta( $post_id, $key, true );
+	if ( ! is_array( $link ) || ! in_array( trim( (string) ( isset( $link['url'] ) ? $link['url'] : '' ) ), array( '', '#' ), true ) ) {
+		return 0;
+	}
+	$link['url']    = $new;
+	$link['target'] = '_blank';
+	update_post_meta( $post_id, $key, $link );
+	return 1;
+}
+
+/** 4 · BLT's feedback of 25 November 2026 (see the top of this file). */
+function bbq_content_update_4() {
+	$log = array();
+
+	// footer: social media links
+	$n  = bbq_option_swap( 'social_instagram', '#', 'https://www.instagram.com/bbqchicken.es/' );
+	$n += bbq_option_swap( 'social_linkedin', '#', 'https://www.linkedin.com/company/blt-global-brands-europe/' );
+	if ( $n ) {
+		$log[] = 'Footer: social media links (' . $n . ').';
+	}
+
+	// "Follow ChiBBoQ on Instagram" on the home and Discover pages
+	$n        = 0;
+	$home     = (int) get_option( 'page_on_front' );
+	$discover = bbq_find_page( 'discover' );
+	foreach ( array( array( $home, 'home_mascot', 'mascot_btn' ), array( $discover ? $discover->ID : 0, 'discover_chibboq', 'mascot_cta' ) ) as $b ) {
+		$i = $b[0] ? bbq_section_index( $b[0], $b[1] ) : false;
+		if ( false !== $i ) {
+			$n += bbq_link_fill( $b[0], 'sections_' . $i . '_' . $b[2], 'https://www.instagram.com/chibboq_official/' );
+		}
+	}
+	if ( $n ) {
+		$log[] = 'ChiBBoQ: Instagram link (' . $n . ').';
+	}
+
+	// Real Korean Fried Chicken: the boneless photo (food card) and its cut-out (Menu)
+	$alt = 'Pieces of glazed boneless Korean fried chicken with chopped nuts';
+	bbq_media_with_alt( 'food-boneless-fried-chicken.jpg', $alt );
+	bbq_media_with_alt( 'cut-boneless-fried-chicken.png', $alt );
+	$n = bbq_card_update( 'food_card', 'Real Korean Fried Chicken', array( 'photo' => array( 'cut-korean-fried-chicken.png', 'food-boneless-fried-chicken.jpg' ) ) );
+	$n += bbq_card_update(
+		'chicken_card',
+		'Real Korean Fried Chicken',
+		array(
+			'image' => array( 'cut-korean-fried-chicken.png', 'cut-boneless-fried-chicken.png' ),
+			'alt'   => array( 'Korean fried chicken glazed in Secret Sauce, on a plate', $alt ),
+		)
+	);
+	if ( $n ) {
+		$log[] = 'Real Korean Fried Chicken: boneless photo (food card and Menu).';
+	}
+	return $log;
+}
+
 /** Run the updates this site has not had yet. */
 function bbq_content_updates() {
 	$done    = (int) get_option( 'bbq_content_version', 0 );
-	$updates = array( 1 => 'bbq_content_update_1', 2 => 'bbq_content_update_2', 3 => 'bbq_content_update_3' );
+	$updates = array( 1 => 'bbq_content_update_1', 2 => 'bbq_content_update_2', 3 => 'bbq_content_update_3', 4 => 'bbq_content_update_4' );
 	$log     = array();
 	foreach ( $updates as $version => $fn ) {
 		if ( $version <= $done ) {

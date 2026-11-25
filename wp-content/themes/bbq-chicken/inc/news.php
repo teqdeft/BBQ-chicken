@@ -8,7 +8,7 @@
  *   internal     links to the article on this site
  *   external     links to an outside article (new tab)        – "Link to an outside article"
  *   static       not clickable, keeps its photo                – "No link yet"
- *   placeholder  not clickable, grey image                     – "Placeholder card"
+ *   placeholder  not clickable, logo cover                     – "Placeholder card"
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -30,7 +30,7 @@ function bbq_news_schema() {
 		'card_meta'    => $f( 'card_meta', 'text', 'Date line on cards', '', array( 'placeholder' => 'e.g. 8 Dec 2025 · Europe (empty = the post date)' ) ),
 		'external_url' => $f( 'external_url', 'text', 'Link to an outside article (https://…)', '', array( 'help' => 'If set, the news cards open this link in a new tab instead of the article on this site.' ) ),
 		'no_link'      => $f( 'no_link', 'toggle', 'No link yet (card keeps its photo but is not clickable)', 0 ),
-		'placeholder'  => $f( 'placeholder', 'toggle', 'Placeholder card (not clickable, grey image)', 0 ),
+		'placeholder'  => $f( 'placeholder', 'toggle', 'Placeholder card (not clickable, logo as cover)', 0 ),
 		'date_line'    => $f( 'date_line', 'text', 'Date line on the featured story and the article page', '', array( 'placeholder' => 'e.g. 8 December 2025 · Europe (empty = the post date)' ), $article ),
 		'label'        => $f( 'label', 'text', 'Label above the title (article page)', '', array( 'placeholder' => 'e.g. Press / Europe (empty = the default label set on the News page)' ), $article ),
 		'sources'      => $f( 'sources', 'html', 'Sources line (below the article)', '', array(), $article ),
@@ -101,6 +101,11 @@ function bbq_news_title( $post ) {
 	return $post ? esc_html( $post->post_title ) : '';
 }
 
+/** The cover of an article without a photo: the bb.q logo (on the dark brand colour, see .news-card__img--logo). */
+function bbq_news_cover_logo() {
+	return '<img src="' . esc_url( bbq_asset( 'svg/logo-on-dark.svg' ) ) . '" alt="" width="250" height="42" loading="lazy">';
+}
+
 /**
  * Print a news card (the static site's .news-card markup; used on Home, News and the article page).
  * $args: 'new_tab_text' – screen-reader text after the titles of outside links ("(opens in a new tab)").
@@ -127,7 +132,7 @@ function bbq_news_card( $post, $args = array() ) {
 	if ( $thumb ) {
 		echo '  <div class="news-card__img">' . wp_get_attachment_image( $thumb, 'bbq-card', false, array( 'loading' => 'lazy' ) ) . "</div>\n";
 	} else {
-		echo "  <div class=\"news-card__img news-card__img--placeholder\" aria-hidden=\"true\"></div>\n";
+		echo '  <div class="news-card__img news-card__img--logo" aria-hidden="true">' . bbq_news_cover_logo() . "</div>\n"; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped in the function
 	}
 	echo '  <div class="news-card__meta"><span class="news-card__date">' . esc_html( bbq_news_card_meta( $post->ID ) ) . '</span><h3 class="news-card__title">' . $title . "</h3></div>\n"; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above
 	echo $link ? "</a>\n" : "</div>\n";

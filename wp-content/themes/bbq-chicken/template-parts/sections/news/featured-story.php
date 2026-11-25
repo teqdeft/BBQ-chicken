@@ -18,12 +18,12 @@ if ( $featured ) :
 	?>
 <section class="section featured" aria-labelledby="featured-title">
   <?php if ( $f_link ) : ?>
-  <a class="featured__img"<?php echo $f_attrs; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?> tabindex="-1" aria-hidden="true">
-    <?php echo $f_thumb ? wp_get_attachment_image( $f_thumb, 'full', false, array( 'alt' => '', 'loading' => false ) ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+  <a class="featured__img<?php echo $f_thumb ? '' : ' featured__img--logo'; ?>"<?php echo $f_attrs; // phpcs:ignore WordPress.Security.EscapeOutput -- escaped above ?> tabindex="-1" aria-hidden="true">
+    <?php echo $f_thumb ? wp_get_attachment_image( $f_thumb, 'full', false, array( 'alt' => '', 'loading' => false ) ) : bbq_news_cover_logo(); // phpcs:ignore WordPress.Security.EscapeOutput ?>
   </a>
   <?php else : ?>
-  <div class="featured__img">
-    <?php echo $f_thumb ? wp_get_attachment_image( $f_thumb, 'full', false, array( 'alt' => '', 'loading' => false ) ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput ?>
+  <div class="featured__img<?php echo $f_thumb ? '' : ' featured__img--logo'; ?>">
+    <?php echo $f_thumb ? wp_get_attachment_image( $f_thumb, 'full', false, array( 'alt' => '', 'loading' => false ) ) : bbq_news_cover_logo(); // phpcs:ignore WordPress.Security.EscapeOutput ?>
   </div>
   <?php endif; ?>
   <div class="featured__text">
