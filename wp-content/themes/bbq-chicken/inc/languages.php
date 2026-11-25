@@ -44,6 +44,16 @@ function bbq_languages() {
 	return $list;
 }
 
+/*
+ * TranslatePress's own floating box (bottom right) is left out: the header has the languages.
+ * Its other switchers (shortcode, menu items) keep working.
+ */
+function bbq_hide_floating_languages( $html ) {
+	return bbq_languages() ? '' : $html;
+}
+add_filter( 'trp_floater_ls_html_v2', 'bbq_hide_floating_languages' );
+add_filter( 'trp_floating_ls_html', 'bbq_hide_floating_languages' ); // TranslatePress's older ("legacy") switcher
+
 /** A link to a language. (The links stand inside data-no-translation: TranslatePress leaves their address and name alone.) */
 function bbq_language_link( $lang, $class = '' ) {
 	return '<a' . ( '' !== $class ? ' class="' . esc_attr( $class ) . '"' : '' ) . ' href="' . esc_url( $lang['url'] ) . '" hreflang="' . esc_attr( $lang['tag'] ) . '" lang="' . esc_attr( $lang['tag'] ) . '"' . ( $lang['current'] ? ' aria-current="true"' : '' ) . '>' . esc_html( $lang['name'] ) . '</a>';
